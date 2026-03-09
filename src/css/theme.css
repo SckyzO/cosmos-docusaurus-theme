@@ -17,7 +17,7 @@
  */
 
 /* ── Outfit + JetBrains Mono fonts ───────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap';
 
 /* ── Light mode ──────────────────────────────────────────────────────────── */
 :root {
@@ -43,7 +43,7 @@
 
   /* Background — TailAdmin gray-50 / white */
   --ifm-background-color:          #f9fafb;  /* gray-50 */
-  --ifm-background-surface-color:  #ffffff;  /* white */
+  --ifm-background-surface-color:  #fff;  /* white */
 
   /* Text — TailAdmin gray-900 / gray-500 */
   --ifm-font-color-base:      #101828;  /* gray-900 */
@@ -51,7 +51,7 @@
 
   /* Navbar — 72px height to match TailAdmin header proportions */
   --ifm-navbar-height:              72px;
-  --ifm-navbar-background-color:    #ffffff;
+  --ifm-navbar-background-color:    #fff;
   --ifm-navbar-shadow:              0px 1px 3px 0px rgba(16,24,40,0.10), 0px 1px 2px 0px rgba(16,24,40,0.06);
   --ifm-navbar-link-color:          #344054;  /* gray-700 */
   --ifm-navbar-link-hover-color:    #465fff;  /* brand-500 */
@@ -101,7 +101,6 @@
   --ifm-color-primary-light:   #9cb9ff;  /* brand-300 */
   --ifm-color-primary-lighter: #c2d6ff;  /* brand-200 */
   --ifm-color-primary-lightest:#dde9ff;  /* brand-100 */
-
   --docusaurus-highlighted-code-line-bg: rgba(117, 146, 255, 0.15);
 
   /* Background — TailAdmin dark surfaces */
@@ -266,6 +265,7 @@ code {
 }
 
 .markdown h1 { font-size: 2.2rem; }
+
 .markdown h2 {
   font-size: 1.6rem;
   padding-bottom: 8px;
@@ -287,20 +287,57 @@ code {
 }
 
 /* ── Admonitions — TailAdmin semantic color palette ──────────────────────── */
-.alert--info    { border-left-color: #465fff; background: rgba(70, 95, 255, 0.05); }
-.alert--success { border-left-color: #12b76a; background: rgba(18, 183, 106, 0.05); }
-.alert--warning { border-left-color: #f79009; background: rgba(247, 144, 9, 0.05); }
-.alert--danger  { border-left-color: #f04438; background: rgba(240, 68, 56, 0.05); }
+.alert--info {
+  border-left-color: #465fff;
+  background: rgba(70, 95, 255, 0.05);
+}
 
-[data-theme='dark'] .alert--info    { background: rgba(70, 95, 255, 0.08); }
-[data-theme='dark'] .alert--success { background: rgba(18, 183, 106, 0.08); }
-[data-theme='dark'] .alert--warning { background: rgba(247, 144, 9, 0.08); }
-[data-theme='dark'] .alert--danger  { background: rgba(240, 68, 56, 0.08); }
+.alert--success {
+  border-left-color: #12b76a;
+  background: rgba(18, 183, 106, 0.05);
+}
+
+.alert--warning {
+  border-left-color: #f79009;
+  background: rgba(247, 144, 9, 0.05);
+}
+
+.alert--danger {
+  border-left-color: #f04438;
+  background: rgba(240, 68, 56, 0.05);
+}
+
+[data-theme='dark'] .alert--info {
+  background: rgba(70, 95, 255, 0.08);
+}
+
+[data-theme='dark'] .alert--success {
+  background: rgba(18, 183, 106, 0.08);
+}
+
+[data-theme='dark'] .alert--warning {
+  background: rgba(247, 144, 9, 0.08);
+}
+
+[data-theme='dark'] .alert--danger {
+  background: rgba(240, 68, 56, 0.08);
+}
 
 /* ── Badges ───────────────────────────────────────────────────────────────── */
-.badge--success { background: #12b76a; color: white; }
-.badge--warning { background: #f79009; color: white; }
-.badge--danger  { background: #f04438; color: white; }
+.badge--success {
+  background: #12b76a;
+  color: white;
+}
+
+.badge--warning {
+  background: #f79009;
+  color: white;
+}
+
+.badge--danger {
+  background: #f04438;
+  color: white;
+}
 
 /* ── Footer ───────────────────────────────────────────────────────────────── */
 .footer {
@@ -325,13 +362,31 @@ code {
 }
 
 /* ── Scrollbar — thin, TailAdmin style ───────────────────────────────────── */
-::-webkit-scrollbar       { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #d0d5dd; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #98a2b3; }
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
 
-[data-theme='dark'] ::-webkit-scrollbar-thumb       { background: #344054; }
-[data-theme='dark'] ::-webkit-scrollbar-thumb:hover { background: #475467; }
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d0d5dd;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #98a2b3;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: #344054;
+}
+
+[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: #475467;
+}
 
 /* =============================================================================
    OPTIONAL UTILITY CLASSES
@@ -340,14 +395,53 @@ code {
    ============================================================================= */
 
 /* HTTP method badges — useful for API reference pages */
-.method-get    { color: #12b76a; font-weight: 700; font-family: var(--ifm-font-family-monospace); }
-.method-post   { color: #465fff; font-weight: 700; font-family: var(--ifm-font-family-monospace); }
-.method-put    { color: #f79009; font-weight: 700; font-family: var(--ifm-font-family-monospace); }
-.method-delete { color: #f04438; font-weight: 700; font-family: var(--ifm-font-family-monospace); }
-.method-patch  { color: #9b59b6; font-weight: 700; font-family: var(--ifm-font-family-monospace); }
+.method-get {
+  color: #12b76a;
+  font-weight: 700;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.method-post {
+  color: #465fff;
+  font-weight: 700;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.method-put {
+  color: #f79009;
+  font-weight: 700;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.method-delete {
+  color: #f04438;
+  font-weight: 700;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.method-patch {
+  color: #9b59b6;
+  font-weight: 700;
+  font-family: var(--ifm-font-family-monospace);
+}
 
 /* Status / health state labels — useful for operational docs */
-.status-ok      { color: #12b76a; font-weight: 600; }
-.status-warn    { color: #f79009; font-weight: 600; }
-.status-crit    { color: #f04438; font-weight: 600; }
-.status-unknown { color: #667085; font-weight: 600; }
+.status-ok {
+  color: #12b76a;
+  font-weight: 600;
+}
+
+.status-warn {
+  color: #f79009;
+  font-weight: 600;
+}
+
+.status-crit {
+  color: #f04438;
+  font-weight: 600;
+}
+
+.status-unknown {
+  color: #667085;
+  font-weight: 600;
+}
