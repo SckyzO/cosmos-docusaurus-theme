@@ -44,8 +44,5 @@
   },
   "engines": {
     "node": ">=18"
-  },
-  "peerDependencies": {
-    "@docusaurus/core": ">=3.0.0"
   }
 }

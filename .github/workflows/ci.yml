@@ -42,10 +42,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Audit only production dependencies — this package ships no runtime deps
-      # so the audit will always pass. Dev tools (stylelint) are excluded.
-      - name: Run npm audit on production dependencies
-        run: npm audit --audit-level=moderate --omit=dev
+      # This package is CSS-only with no runtime dependencies.
+      # Audit dev tools at high severity — peer deps are excluded from the report.
+      - name: Run npm audit (high and above)
+        run: npm audit --audit-level=high
+
+      # Verify the package ships no runtime dependencies (CSS-only invariant)
+      - name: Verify no runtime dependencies
+        run: |
+          node -e "
+            const pkg = require('./package.json');
+            const deps = pkg.dependencies || {};
+            const count = Object.keys(deps).length;
+            if (count > 0) {
+              console.error('ERROR: Package must not ship runtime dependencies. Found:', deps);
+              process.exit(1);
+            }
+            console.log('OK: No runtime dependencies.');
+          "
 
   demo-build:
     name: Build demo site
