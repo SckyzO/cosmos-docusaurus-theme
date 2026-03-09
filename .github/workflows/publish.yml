@@ -63,7 +63,7 @@ jobs:
           DOCS_BASE_URL: /cosmos-docusaurus-theme/
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: demo/build
 
