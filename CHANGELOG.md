@@ -7,6 +7,19 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.1.1] — 2026-03-09
+
+### Fixed
+
+- **Navbar regression**: dark mode navbar was rendering white with dark text. Root cause:
+  `--ifm-navbar-background-color` CSS variable was not reliably applied in Docusaurus 3
+  SSG/CSR builds. Fix: add direct CSS property overrides on `.navbar` and `.navbar__link`
+  instead of relying solely on CSS custom properties.
+- Dark mode navbar: `background-color: #111827` (Void gray-900) forced directly on element
+- Dark mode footer: `background-color: #030712` (Void gray-950) forced directly
+- Dark mode `.main-wrapper`: `background-color: #030712` forced directly
+- Navbar links/brand/toggle: explicit `color: #e5e5e5` in dark mode
+
 ## [1.1.0] — 2026-03-09
 
 ### Added
