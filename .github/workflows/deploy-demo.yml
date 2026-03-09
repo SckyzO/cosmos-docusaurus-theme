@@ -1,0 +1,47 @@
+name: Deploy Demo
+
+on:
+  # Auto-deploy whenever main is updated — demo always reflects latest code
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  pages: write
+  id-token: write
+
+jobs:
+  deploy-demo:
+    name: Build & deploy demo to GitHub Pages
+    runs-on: ubuntu-latest
+    # Always deploy from main so GitHub Pages environment rules are satisfied
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "20"
+
+      - name: Install demo dependencies
+        working-directory: demo
+        run: npm install
+
+      - name: Build demo site
+        working-directory: demo
+        run: npm run build
+        env:
+          DOCS_BASE_URL: /cosmos-docusaurus-theme/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: demo/build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

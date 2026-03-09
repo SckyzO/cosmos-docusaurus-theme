@@ -24,7 +24,7 @@ updates:
       - "npm"
       - "demo"
 
-  # GitHub Actions versions
+  # GitHub Actions versions (covers all workflow files)
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
