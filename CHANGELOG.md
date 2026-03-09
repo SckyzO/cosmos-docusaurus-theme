@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.1.4] — 2026-03-10
+
+### Fixed
+
+- Tooltip now appears **below** the toggle button instead of above (was clipped
+  by the top of the viewport since the navbar sits at the very top of the page)
+- Arrow direction corrected accordingly (points up toward the button)
+
 ## [1.1.3] — 2026-03-10
 
 ### Added
