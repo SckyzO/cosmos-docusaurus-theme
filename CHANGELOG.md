@@ -7,6 +7,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.1.3] — 2026-03-10
+
+### Added
+
+- **Theme transition**: smooth 0.25s fade on `background-color`, `color`, `border-color`
+  for navbar, sidebar, article, footer and cards — no more abrupt color switch
+- **Color mode tooltip**: shows current mode (`dark mode` / `light mode` / `system mode`)
+  on hover over the Docusaurus toggle button — styled per Void/Slate palette
+
 ## [1.1.2] — 2026-03-10
 
 ### Added

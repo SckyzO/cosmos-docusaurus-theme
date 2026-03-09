@@ -146,6 +146,86 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
+/* ── Smooth dark/light theme transition ──────────────────────────────────── */
+/* Fades background, text and borders when the user toggles the color mode.  */
+/* Scoped to key layout elements — avoids blanket html/body transitions that  */
+/* can cause perf issues on pages with many elements.                         */
+.navbar,
+.theme-doc-sidebar-container,
+.menu__link,
+.main-wrapper,
+article,
+.footer,
+.table-of-contents__link,
+.pagination-nav__link,
+.prism-code,
+.alert,
+.card {
+  transition:
+    background-color 0.25s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* ── Color mode toggle — styled tooltip ──────────────────────────────────── */
+/* The toggle button has title="dark mode" | "light mode" | "system mode"    */
+/* which updates to reflect the current state. We display it as a tooltip.   */
+button[aria-label*="dark and light mode"] {
+  position: relative;
+}
+
+button[aria-label*="dark and light mode"]::after {
+  content: attr(title);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  background: #111827;
+  color: #e5e5e5;
+  border: 1px solid #1f2937;
+  border-radius: 6px;
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 100;
+}
+
+/* Arrow pointing down from tooltip */
+button[aria-label*="dark and light mode"]::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1f2937;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 100;
+}
+
+button[aria-label*="dark and light mode"]:hover::after,
+button[aria-label*="dark and light mode"]:hover::before {
+  opacity: 1;
+}
+
+[data-theme='light'] button[aria-label*="dark and light mode"]::after {
+  background: #fff;
+  color: #1a1714;
+  border-color: #e5e7eb;
+  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] button[aria-label*="dark and light mode"]::before {
+  border-top-color: #e5e7eb;
+}
+
 /* ── Navbar ──────────────────────────────────────────────────────────────── */
 .navbar {
   border-bottom: 1px solid var(--ifm-toc-border-color);
