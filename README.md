@@ -1,27 +1,44 @@
 # cosmos-docusaurus-theme
 
-[![npm version](https://img.shields.io/npm/v/cosmos-docusaurus-theme.svg)](https://www.npmjs.com/package/cosmos-docusaurus-theme)
-[![npm downloads](https://img.shields.io/npm/dm/cosmos-docusaurus-theme.svg)](https://www.npmjs.com/package/cosmos-docusaurus-theme)
-[![CI](https://github.com/SckyzO/cosmos-docusaurus-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/SckyzO/cosmos-docusaurus-theme/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+<div align="center">
 
-A clean, dark-first Docusaurus theme based on the [TailAdmin](https://tailadmin.com) design system.
+**A clean, dark-first Docusaurus theme based on [TailAdmin](https://tailadmin.com) design system.**
+
+[![npm version](https://img.shields.io/npm/v/cosmos-docusaurus-theme.svg?style=flat-square)](https://www.npmjs.com/package/cosmos-docusaurus-theme)
+[![npm downloads](https://img.shields.io/npm/dm/cosmos-docusaurus-theme.svg?style=flat-square)](https://www.npmjs.com/package/cosmos-docusaurus-theme)
+[![CI](https://github.com/SckyzO/cosmos-docusaurus-theme/actions/workflows/ci.yml/badge.svg)](https://github.com/SckyzO/cosmos-docusaurus-theme/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
+[![Docusaurus](https://img.shields.io/badge/Docusaurus-3.x-green?style=flat-square)](https://docusaurus.io)
+
+### [Live Demo](https://sckyzo.github.io/cosmos-docusaurus-theme/) &nbsp;·&nbsp; [Release notes](https://github.com/SckyzO/cosmos-docusaurus-theme/releases) &nbsp;·&nbsp; [npm](https://www.npmjs.com/package/cosmos-docusaurus-theme)
+
+</div>
+
+---
+
+## Features
 
 - **CSS-only** — no swizzled components, no JavaScript
 - **Dark mode first-class** (default), full light mode support
-- **Outfit** + **JetBrains Mono** typography
+- **[Outfit](https://fonts.google.com/specimen/Outfit)** + **JetBrains Mono** typography
 - **Indigo** brand palette (`#465fff`) mapped to Infima variables
+- Styled navbar, sidebar, code blocks, admonitions, tables, pagination, footer, scrollbar
+- Optional utility classes for API reference and status docs
 - Compatible with **Docusaurus 3+**
-
-**[Live Demo](https://sckyzo.github.io/cosmos-docusaurus-theme)**
 
 ---
 
 ## Screenshots
 
-> Light and dark mode — navbar, sidebar, code blocks, admonitions
+> Dark mode (default) — navbar, sidebar, code blocks, admonitions
 
-<!-- Screenshots are added after the first gh-pages deployment -->
+![Dark mode screenshot](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/dark.png)
+
+> Light mode
+
+![Light mode screenshot](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/light.png)
+
+> See the full theme live at **[sckyzo.github.io/cosmos-docusaurus-theme](https://sckyzo.github.io/cosmos-docusaurus-theme/)**
 
 ---
 
@@ -33,7 +50,7 @@ npm install cosmos-docusaurus-theme
 
 ## Usage
 
-Register it as a Docusaurus theme plugin in `docusaurus.config.js`:
+Register as a Docusaurus theme plugin in `docusaurus.config.js`:
 
 ```js title="docusaurus.config.js"
 export default {
@@ -48,11 +65,9 @@ export default {
 };
 ```
 
-The CSS is injected automatically. No `customCss` entry needed.
+The CSS is injected automatically via `getClientModules()`. No `customCss` entry needed.
 
 ### Alternative — direct CSS import
-
-If you prefer to control injection manually:
 
 ```js title="docusaurus.config.js"
 export default {
@@ -70,7 +85,7 @@ export default {
 
 ## Customization
 
-Override any Infima variable after the theme import:
+Override any Infima variable in your own `custom.css` after the theme is loaded:
 
 ```css title="src/css/custom.css"
 /* Change brand color */
@@ -88,31 +103,23 @@ Override any Infima variable after the theme import:
 :root {
   --ifm-font-family-base: 'Inter', system-ui, sans-serif;
 }
-
-/* Adjust sidebar width */
-:root {
-  --ifm-sidebar-width: 320px;
-  --doc-sidebar-width: 320px;
-}
 ```
 
 ---
 
 ## Utility classes
 
-The theme ships optional utility classes for API and operational docs:
-
-| Class            | Usage                                  |
-|------------------|----------------------------------------|
-| `.method-get`    | HTTP GET label (green, monospace)      |
-| `.method-post`   | HTTP POST label (blue, monospace)      |
-| `.method-put`    | HTTP PUT label (orange, monospace)     |
-| `.method-delete` | HTTP DELETE label (red, monospace)     |
-| `.method-patch`  | HTTP PATCH label (purple, monospace)   |
-| `.status-ok`     | OK state (green, bold)                 |
-| `.status-warn`   | WARN state (orange, bold)              |
-| `.status-crit`   | CRIT state (red, bold)                 |
-| `.status-unknown`| UNKNOWN state (gray, bold)             |
+| Class            | Usage                               |
+|------------------|-------------------------------------|
+| `.method-get`    | HTTP GET label (green, monospace)   |
+| `.method-post`   | HTTP POST label (blue, monospace)   |
+| `.method-put`    | HTTP PUT label (orange, monospace)  |
+| `.method-delete` | HTTP DELETE label (red, monospace)  |
+| `.method-patch`  | HTTP PATCH label (purple, monospace)|
+| `.status-ok`     | OK state (green, bold)              |
+| `.status-warn`   | WARN state (orange, bold)           |
+| `.status-crit`   | CRIT state (red, bold)              |
+| `.status-unknown`| UNKNOWN state (gray, bold)          |
 
 ---
 
