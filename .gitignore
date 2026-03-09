@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+demo/node_modules/
+
+# Docusaurus build output
+demo/.docusaurus/
+demo/build/
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+
+# Coverage
+coverage/

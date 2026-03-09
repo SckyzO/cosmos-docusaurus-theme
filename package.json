@@ -1,0 +1,51 @@
+{
+  "name": "cosmos-docusaurus-theme",
+  "version": "1.0.0",
+  "description": "A clean, dark-first Docusaurus CSS theme based on TailAdmin design system with Outfit typography",
+  "keywords": [
+    "docusaurus",
+    "docusaurus-theme",
+    "theme",
+    "tailadmin",
+    "css",
+    "dark-mode",
+    "outfit",
+    "infima"
+  ],
+  "homepage": "https://sckyzo.github.io/cosmos-docusaurus-theme",
+  "bugs": {
+    "url": "https://github.com/SckyzO/cosmos-docusaurus-theme/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SckyzO/cosmos-docusaurus-theme.git"
+  },
+  "license": "MIT",
+  "author": "SckyzO",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./css/theme.css": "./src/css/theme.css"
+  },
+  "files": [
+    "src/",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "lint:css": "stylelint \"src/css/**/*.css\"",
+    "lint": "npm run lint:css",
+    "audit:check": "npm audit --audit-level=moderate"
+  },
+  "devDependencies": {
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "peerDependencies": {
+    "@docusaurus/core": ">=3.0.0"
+  }
+}
