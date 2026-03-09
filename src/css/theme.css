@@ -1,12 +1,13 @@
 /**
  * Cosmos Docusaurus Theme
  *
- * A clean, dark-first Docusaurus CSS theme based on the TailAdmin design system.
- * Colors, typography, shadows and spacing extracted from TailAdmin's design tokens.
- * Mapped to Docusaurus Infima CSS variables for seamless integration.
+ * A clean, dark-first Docusaurus CSS theme.
+ * Palette aligned with the Rackscope design system:
+ *   - Dark  → "Void"  : Tailwind gray-950/900/800 neutral blacks
+ *   - Light → "Slate" : Tailwind gray-50/white with warm brown text tones
  *
  * Brand: #465fff (indigo)
- * Font:  Outfit (same as TailAdmin) + JetBrains Mono for code
+ * Font:  Outfit + JetBrains Mono for code
  *
  * Usage:
  *   In docusaurus.config.js → theme.customCss:
@@ -41,19 +42,19 @@
   --ifm-h2-font-size:          1.6rem;
   --ifm-h3-font-size:          1.25rem;
 
-  /* Background — TailAdmin gray-50 / white */
+  /* Background — Slate: Tailwind gray-50 / white */
   --ifm-background-color:          #f9fafb;  /* gray-50 */
-  --ifm-background-surface-color:  #fff;  /* white */
+  --ifm-background-surface-color:  #fff;     /* white */
 
-  /* Text — TailAdmin gray-900 / gray-500 */
-  --ifm-font-color-base:      #101828;  /* gray-900 */
-  --ifm-font-color-secondary: #667085;  /* gray-500 */
+  /* Text — Slate: warm brown tones (not cold blue-gray) */
+  --ifm-font-color-base:      #1a1714;  /* warm near-black */
+  --ifm-font-color-secondary: #5c574f;  /* warm muted brown */
 
-  /* Navbar — 72px height to match TailAdmin header proportions */
+  /* Navbar — 72px height */
   --ifm-navbar-height:              72px;
   --ifm-navbar-background-color:    #fff;
   --ifm-navbar-shadow:              0px 1px 3px 0px rgb(16,24,40,0.10), 0px 1px 2px 0px rgb(16,24,40,0.06);
-  --ifm-navbar-link-color:          #344054;  /* gray-700 */
+  --ifm-navbar-link-color:          #2c2822;  /* warm dark text */
   --ifm-navbar-link-hover-color:    #465fff;  /* brand-500 */
   --ifm-navbar-link-active-color:   #465fff;
 
@@ -61,24 +62,24 @@
   --ifm-sidebar-width:         280px;
   --doc-sidebar-width:         280px;
   --ifm-sidebar-padding:       16px;
-  --docusaurus-collapse-button-bg-hover-color: #f2f4f7; /* gray-100 */
+  --docusaurus-collapse-button-bg-hover-color: #f3f4f6; /* gray-100 */
 
   /* Links */
   --ifm-link-color:        #465fff;
   --ifm-link-hover-color:  #3641f5;
 
-  /* Borders — TailAdmin gray-200 */
-  --ifm-toc-border-color:   #e4e7ec;
-  --ifm-hr-border-color:    #e4e7ec;
-  --ifm-color-emphasis-300: #e4e7ec;
-  --ifm-color-emphasis-600: #667085;
+  /* Borders — Slate: Tailwind gray-200 */
+  --ifm-toc-border-color:   #e5e7eb;
+  --ifm-hr-border-color:    #e5e7eb;
+  --ifm-color-emphasis-300: #e5e7eb;
+  --ifm-color-emphasis-600: #5c574f;
 
   /* Code blocks */
-  --ifm-code-background:   #f2f4f7;  /* gray-100 */
-  --prism-background-color:#1d2939;  /* gray-800 — TailAdmin dark surface */
+  --ifm-code-background:   #f3f4f6;  /* Tailwind gray-100 */
+  --prism-background-color:#1f2937;  /* Void gray-800 — dark code on light pages */
   --docusaurus-highlighted-code-line-bg: rgb(70, 95, 255, 0.1);
 
-  /* Shadows — from TailAdmin elevation tokens */
+  /* Shadows */
   --ifm-global-shadow-md:   0px 4px 8px -2px rgb(16,24,40,0.10), 0px 2px 4px -2px rgb(16,24,40,0.06);
   --ifm-global-shadow-lw:   0px 1px 2px 0px rgb(16,24,40,0.05);
 
@@ -87,7 +88,7 @@
   --ifm-menu-link-padding-vertical:   8px;
 
   /* Table */
-  --ifm-table-border-color:    #e4e7ec;
+  --ifm-table-border-color:    #e5e7eb;
   --ifm-table-head-background: #f9fafb;
 }
 
@@ -103,36 +104,36 @@
   --ifm-color-primary-lightest:#dde9ff;  /* brand-100 */
   --docusaurus-highlighted-code-line-bg: rgb(117, 146, 255, 0.15);
 
-  /* Background — TailAdmin dark surfaces */
-  --ifm-background-color:         #0f1117;   /* deeper than gray-dark for body */
-  --ifm-background-surface-color: #1a2231;   /* gray-dark — card/sidebar surfaces */
-  --ifm-navbar-background-color:  #1a2231;
-  --ifm-footer-background-color:  #0c111d;   /* gray-950 */
+  /* Background — Void: Tailwind gray-950 / gray-900 neutral blacks */
+  --ifm-background-color:         #030712;  /* gray-950 — deepest background */
+  --ifm-background-surface-color: #111827;  /* gray-900 — cards, sidebar, panels */
+  --ifm-navbar-background-color:  #111827;  /* gray-900 */
+  --ifm-footer-background-color:  #030712;  /* gray-950 */
 
-  /* Text */
-  --ifm-font-color-base:      #e4e7ec;  /* light body text */
-  --ifm-font-color-secondary: #98a2b3;  /* muted / secondary text */
+  /* Text — neutral grays, no blue tint */
+  --ifm-font-color-base:      #e5e5e5;  /* neutral light */
+  --ifm-font-color-secondary: #a3a3a3;  /* neutral muted */
 
-  /* Borders — TailAdmin gray-700 */
-  --ifm-toc-border-color:   #344054;
-  --ifm-hr-border-color:    #344054;
-  --ifm-color-emphasis-300: #344054;
-  --ifm-color-emphasis-600: #98a2b3;
-  --ifm-table-border-color: #344054;
-  --ifm-table-head-background: #1d2939;
+  /* Borders — Void: Tailwind gray-800 */
+  --ifm-toc-border-color:   #1f2937;
+  --ifm-hr-border-color:    #1f2937;
+  --ifm-color-emphasis-300: #1f2937;
+  --ifm-color-emphasis-600: #a3a3a3;
+  --ifm-table-border-color: #1f2937;
+  --ifm-table-head-background: #111827;
 
   /* Links */
   --ifm-link-color:       #7592ff;
   --ifm-link-hover-color: #9cb9ff;
 
   /* Navbar */
-  --ifm-navbar-link-color:       #d0d5dd;  /* gray-300 */
+  --ifm-navbar-link-color:       #e5e5e5;
   --ifm-navbar-link-hover-color: #7592ff;
   --ifm-navbar-link-active-color:#7592ff;
-  --ifm-navbar-shadow: 0px 1px 0px 0px #344054;
+  --ifm-navbar-shadow: 0px 1px 0px 0px #1f2937;
 
   /* Code */
-  --ifm-code-background: #1d2939;
+  --ifm-code-background: #1f2937;  /* gray-800 */
 
   /* Sidebar collapse button */
   --docusaurus-collapse-button-bg-hover-color: rgb(255,255,255,0.05);
@@ -176,7 +177,7 @@ html {
 }
 
 [data-theme='dark'] .navbar {
-  border-bottom-color: #344054;
+  border-bottom-color: #1f2937;  /* Void gray-800 */
 }
 
 /* ── Sidebar ─────────────────────────────────────────────────────────────── */
@@ -185,8 +186,8 @@ html {
 }
 
 [data-theme='dark'] .theme-doc-sidebar-container {
-  border-right-color: #344054 !important;
-  background: #1a2231;
+  border-right-color: #1f2937 !important;  /* Void gray-800 */
+  background: #111827;                      /* Void gray-900 */
 }
 
 .theme-doc-sidebar-menu {
@@ -222,20 +223,20 @@ html {
 }
 
 .menu__list-item-collapsible:hover {
-  background: #f2f4f7;  /* gray-100 */
+  background: #f3f4f6;  /* Slate gray-100 */
 }
 
 [data-theme='dark'] .menu__list-item-collapsible:hover {
   background: rgb(255,255,255,0.05);
 }
 
-/* Sidebar section separator — uppercase label style from TailAdmin */
+/* Sidebar section separator — uppercase label */
 .sidebar_menu_section_title {
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #98a2b3;  /* gray-400 */
+  color: #a3a3a3;  /* neutral gray-400 */
   padding: 12px 12px 4px;
 }
 
@@ -346,7 +347,7 @@ code {
 }
 
 [data-theme='dark'] .footer {
-  border-top-color: #344054;
+  border-top-color: #1f2937;  /* Void gray-800 */
 }
 
 /* ── Pagination nav ───────────────────────────────────────────────────────── */
@@ -377,11 +378,11 @@ code {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #98a2b3;
+  background: #a3a3a3;  /* neutral gray-400 */
 }
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb {
-  background: #344054;
+  background: #374151;  /* Void gray-700 */
 }
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
@@ -442,6 +443,6 @@ code {
 }
 
 .status-unknown {
-  color: #667085;
+  color: #6b7280;  /* neutral gray-500 */
   font-weight: 600;
 }
