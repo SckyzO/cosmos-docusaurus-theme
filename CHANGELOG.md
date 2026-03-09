@@ -7,6 +7,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.0.1] — 2026-03-09
+
+### Fixed
+
+- Aligned dark palette to **Void** (Tailwind gray-950/900/800 neutral blacks — not TailAdmin bluish-gray)
+- Aligned light palette to **Slate** (warm brown text tones `#1a1714` / `#5c574f` — not cold blue-gray)
+- Corrected all hardcoded color values in sidebar, navbar border, footer border, scrollbar
+- Updated screenshots to reflect corrected palette
+
 ## [1.0.0] — 2024-03-09
 
 ### Added
