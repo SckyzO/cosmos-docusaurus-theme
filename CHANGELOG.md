@@ -7,6 +7,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.1.5] — 2026-03-10
+
+### Fixed
+
+- Tooltip right-aligned (`right: 0`) so it never overflows outside the viewport
+  when the toggle button is at the far right of the navbar
+- Arrow adjusted to match right-aligned position
+
 ## [1.1.4] — 2026-03-10
 
 ### Fixed

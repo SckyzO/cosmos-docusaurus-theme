@@ -178,8 +178,8 @@ button[aria-label*="dark and light mode"]::after {
   content: attr(title);
   position: absolute;
   top: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%);
+  /* Right-align: button sits at the far right of the navbar */
+  right: 0;
   padding: 5px 10px;
   background: #111827;
   color: #e5e5e5;
@@ -195,13 +195,12 @@ button[aria-label*="dark and light mode"]::after {
   z-index: 100;
 }
 
-/* Arrow pointing up toward button */
+/* Arrow pointing up — aligned with button center */
 button[aria-label*="dark and light mode"]::before {
   content: '';
   position: absolute;
   top: calc(100% + 4px);
-  left: 50%;
-  transform: translateX(-50%);
+  right: 10px;
   border: 5px solid transparent;
   border-bottom-color: #1f2937;
   pointer-events: none;
