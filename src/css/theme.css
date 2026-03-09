@@ -652,3 +652,24 @@ code {
   color: #6b7280;  /* neutral gray-500 */
   font-weight: 600;
 }
+
+/* Aliases for projects that use .state-* naming (e.g. Rackscope docs) */
+.state-ok {
+  color: #12b76a;
+  font-weight: 600;
+}
+
+.state-warn {
+  color: #f79009;
+  font-weight: 600;
+}
+
+.state-crit {
+  color: #f04438;
+  font-weight: 600;
+}
+
+.state-unknown {
+  color: #6b7280;
+  font-weight: 600;
+}

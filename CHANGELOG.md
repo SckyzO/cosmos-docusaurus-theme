@@ -7,6 +7,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.1.2] — 2026-03-10
+
+### Added
+
+- `.state-ok`, `.state-warn`, `.state-crit`, `.state-unknown` — aliases for projects
+  that use `.state-*` naming convention (identical colors to `.status-*`)
+
 ## [1.1.1] — 2026-03-09
 
 ### Fixed
