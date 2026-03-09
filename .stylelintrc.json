@@ -7,6 +7,7 @@
     "custom-property-pattern": null,
     "alpha-value-notation": "number",
     "color-function-notation": "legacy",
-    "import-notation": "string"
+    "import-notation": "string",
+    "no-duplicate-selectors": null
   }
 }

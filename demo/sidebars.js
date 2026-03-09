@@ -19,6 +19,7 @@ const sidebars = {
         'components',
         'typography',
         'utility-classes',
+        'native-features',
       ],
     },
   ],

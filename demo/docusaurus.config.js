@@ -1,9 +1,5 @@
 // @ts-check
 import { themes as prismThemes } from 'prism-react-renderer';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
  * Docusaurus configuration for the cosmos-docusaurus-theme demo site.
@@ -29,10 +25,10 @@ const config = {
     locales: ['en'],
   },
 
-  // Load the theme as a proper Docusaurus theme plugin.
-  // In production: themes: ['cosmos-docusaurus-theme']
-  // Here we reference the local package source directly.
-  themes: [path.resolve(__dirname, '..')],
+  // Load the theme exactly as a real consumer would — using the npm package name.
+  // The demo depends on cosmos-docusaurus-theme via "file:.." in package.json,
+  // so this resolves to the local source during development and CI.
+  themes: ['cosmos-docusaurus-theme'],
 
   presets: [
     [

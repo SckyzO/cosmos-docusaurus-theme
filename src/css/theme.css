@@ -362,6 +362,185 @@ code {
   box-shadow: 0 0 0 3px rgb(70, 95, 255, 0.12);
 }
 
+/* ── Progress bar (page loading indicator) ───────────────────────────────── */
+:root {
+  --docusaurus-progress-bar-color: #465fff;
+}
+
+[data-theme='dark'] {
+  --docusaurus-progress-bar-color: #7592ff;
+}
+
+/* ── Announcement bar ─────────────────────────────────────────────────────── */
+.announcement {
+  background-color: #465fff;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.announcement a {
+  color: #dde9ff;
+  text-decoration: underline;
+}
+
+.announcement a:hover {
+  color: #fff;
+}
+
+.announcement-close {
+  color: rgb(255,255,255,0.7);
+}
+
+.announcement-close:hover {
+  color: #fff;
+}
+
+[data-theme='dark'] .announcement {
+  background-color: #3641f5;
+}
+
+/* ── Breadcrumbs ─────────────────────────────────────────────────────────── */
+:root {
+  --ifm-breadcrumb-color-active:            #465fff;
+  --ifm-breadcrumb-item-background-active:  rgb(70, 95, 255, 0.08);
+  --ifm-breadcrumb-border-radius:           6px;
+  --ifm-breadcrumb-padding-horizontal:      8px;
+  --ifm-breadcrumb-padding-vertical:        4px;
+  --ifm-breadcrumb-separator-size-multiplier: 0.6;
+}
+
+.breadcrumbs__link {
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  transition: background 0.12s, color 0.12s;
+}
+
+/* ── Tabs ────────────────────────────────────────────────────────────────── */
+:root {
+  --ifm-tabs-color:               #5c574f;
+  --ifm-tabs-color-active:        #465fff;
+  --ifm-tabs-color-active-border: #465fff;
+  --ifm-tabs-padding-horizontal:  16px;
+  --ifm-tabs-padding-vertical:    10px;
+}
+
+[data-theme='dark'] {
+  --ifm-tabs-color: #a3a3a3;
+}
+
+.tabs__item {
+  border-radius: 6px 6px 0 0;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: color 0.12s, background 0.12s;
+}
+
+.tabs__item:hover:not(.tabs__item--active) {
+  background: var(--ifm-breadcrumb-item-background-active);
+  color: var(--ifm-color-primary);
+}
+
+/* ── Cards ───────────────────────────────────────────────────────────────── */
+:root {
+  --ifm-card-background-color: #fff;
+  --ifm-card-border-radius:    12px;
+}
+
+[data-theme='dark'] {
+  --ifm-card-background-color: #111827;  /* Void gray-900 */
+}
+
+.card {
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: var(--ifm-card-border-radius);
+  box-shadow: var(--ifm-global-shadow-lw);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+/* ── Tags ────────────────────────────────────────────────────────────────── */
+:root {
+  --ifm-tag-background:    rgb(70, 95, 255, 0.08);
+  --ifm-tag-color:         #465fff;
+  --ifm-tag-border-color:  rgb(70, 95, 255, 0.2);
+}
+
+[data-theme='dark'] {
+  --ifm-tag-background:   rgb(117, 146, 255, 0.1);
+  --ifm-tag-color:        #7592ff;
+  --ifm-tag-border-color: rgb(117, 146, 255, 0.25);
+}
+
+.tag {
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 2px 10px;
+  transition: background 0.12s, color 0.12s;
+}
+
+/* ── Back-to-top button ──────────────────────────────────────────────────── */
+.theme-back-to-top-button {
+  background-color: #465fff;
+  border-radius: 8px;
+}
+
+.theme-back-to-top-button:hover {
+  background-color: #3641f5;
+}
+
+[data-theme='dark'] .theme-back-to-top-button {
+  background-color: #7592ff;
+}
+
+[data-theme='dark'] .theme-back-to-top-button:hover {
+  background-color: #9cb9ff;
+}
+
+/* ── Algolia DocSearch ───────────────────────────────────────────────────── */
+/* Applied when Algolia search is configured in themeConfig.algolia.         */
+[data-theme='light'] .DocSearch {
+  --docsearch-primary-color:             #465fff;
+  --docsearch-text-color:                #1a1714;
+  --docsearch-muted-color:               #5c574f;
+  --docsearch-container-background:      rgb(26, 23, 20, 0.6);
+  --docsearch-modal-background:          #fff;
+  --docsearch-modal-shadow:              0px 8px 24px rgb(0, 0, 0, 0.12);
+  --docsearch-searchbox-background:      #f9fafb;
+  --docsearch-searchbox-focus-background:#fff;
+  --docsearch-searchbox-shadow:          inset 0 0 0 2px #465fff;
+  --docsearch-hit-color:                 #1a1714;
+  --docsearch-hit-active-color:          #fff;
+  --docsearch-hit-background:            #fff;
+  --docsearch-hit-shadow:                0 1px 3px rgb(0, 0, 0, 0.08);
+  --docsearch-footer-background:         #f9fafb;
+  --docsearch-logo-color:                #465fff;
+}
+
+[data-theme='dark'] .DocSearch {
+  --docsearch-primary-color:             #7592ff;
+  --docsearch-text-color:                #e5e5e5;
+  --docsearch-muted-color:               #a3a3a3;
+  --docsearch-container-background:      rgb(3, 7, 18, 0.8);
+  --docsearch-modal-background:          #111827;
+  --docsearch-modal-shadow:              0px 8px 24px rgb(0, 0, 0, 0.4);
+  --docsearch-searchbox-background:      #030712;
+  --docsearch-searchbox-focus-background:#030712;
+  --docsearch-searchbox-shadow:          inset 0 0 0 2px #7592ff;
+  --docsearch-hit-color:                 #e5e5e5;
+  --docsearch-hit-active-color:          #fff;
+  --docsearch-hit-background:            #1f2937;
+  --docsearch-hit-shadow:                none;
+  --docsearch-footer-background:         #030712;
+  --docsearch-key-gradient:              linear-gradient(-26.5deg, #1f2937 0%, #111827 100%);
+  --docsearch-logo-color:                #7592ff;
+}
+
 /* ── Scrollbar — thin, TailAdmin style ───────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 5px;

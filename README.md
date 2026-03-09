@@ -19,26 +19,47 @@
 ## Features
 
 - **CSS-only** — no swizzled components, no JavaScript
-- **Dark mode first-class** (default), full light mode support
+- **Dark mode first-class** (default) with full light mode support
 - **[Outfit](https://fonts.google.com/specimen/Outfit)** + **JetBrains Mono** typography
-- **Indigo** brand palette (`#465fff`) mapped to Infima variables
-- Styled navbar, sidebar, code blocks, admonitions, tables, pagination, footer, scrollbar
-- Optional utility classes for API reference and status docs
+- **Indigo** brand palette (`#465fff`) — Void dark / Slate light design tokens
+- Covers **every native Docusaurus element** out of the box:
+
+| Element | Styled |
+|---|:---:|
+| Navbar + sidebar | ✅ |
+| Code blocks + inline code | ✅ |
+| Admonitions (note/tip/warning/danger) | ✅ |
+| Tables | ✅ |
+| Pagination + breadcrumbs | ✅ |
+| Footer + scrollbar | ✅ |
+| **Tabs** | ✅ |
+| **Cards** | ✅ |
+| **Tags / pill badges** | ✅ |
+| **Announcement bar** | ✅ |
+| **Back-to-top button** | ✅ |
+| **Progress bar** | ✅ |
+| **Algolia DocSearch** | ✅ |
+
+- Optional utility classes: `.method-get/post/put/delete`, `.status-ok/warn/crit/unknown`
 - Compatible with **Docusaurus 3+**
 
 ---
 
 ## Screenshots
 
-> Dark mode (default) — navbar, sidebar, code blocks, admonitions
+> Dark mode (default) — Void palette: navbar, sidebar, code blocks
 
 ![Dark mode screenshot](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/dark.png)
 
-> Light mode
+> Light mode — Slate palette: Components showcase
 
 ![Light mode screenshot](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/light.png)
 
-> See the full theme live at **[sckyzo.github.io/cosmos-docusaurus-theme](https://sckyzo.github.io/cosmos-docusaurus-theme/)**
+> Native features — tabs, cards, tags, breadcrumbs, DocSearch
+
+![Native features screenshot](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/features.png)
+
+> See all features live at **[sckyzo.github.io/cosmos-docusaurus-theme](https://sckyzo.github.io/cosmos-docusaurus-theme/)**
 
 ---
 

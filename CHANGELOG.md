@@ -7,6 +7,27 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.1.0] — 2026-03-09
+
+### Added
+
+- **Progress bar**: `--docusaurus-progress-bar-color` → brand indigo (light + dark)
+- **Announcement bar**: brand-colored banner with styled links and close button
+- **Breadcrumbs**: active crumb uses brand color with subtle hover background
+- **Tabs**: styled active tab border + color, hover state on inactive tabs
+- **Cards**: border, rounded corners (12px), hover effect with brand border
+- **Tags**: pill style with brand-colored background and border
+- **Back-to-top button**: brand indigo with hover state (both modes)
+- **Algolia DocSearch**: full `--docsearch-*` variable set for light and dark
+- **Demo**: now loads `cosmos-docusaurus-theme` as a real npm package (`file:..`)
+  instead of a local path — exactly mirrors real consumer setup
+- **Demo**: new "Native Features" page showcasing all newly styled elements
+
+### Changed
+
+- `demo/docusaurus.config.js`: `themes: ['cosmos-docusaurus-theme']` (was local path)
+- `demo/package.json`: added `cosmos-docusaurus-theme: "file:.."` dependency
+
 ## [1.0.1] — 2026-03-09
 
 ### Fixed
