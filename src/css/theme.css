@@ -52,7 +52,7 @@
   /* Navbar — 72px height to match TailAdmin header proportions */
   --ifm-navbar-height:              72px;
   --ifm-navbar-background-color:    #fff;
-  --ifm-navbar-shadow:              0px 1px 3px 0px rgba(16,24,40,0.10), 0px 1px 2px 0px rgba(16,24,40,0.06);
+  --ifm-navbar-shadow:              0px 1px 3px 0px rgb(16,24,40,0.10), 0px 1px 2px 0px rgb(16,24,40,0.06);
   --ifm-navbar-link-color:          #344054;  /* gray-700 */
   --ifm-navbar-link-hover-color:    #465fff;  /* brand-500 */
   --ifm-navbar-link-active-color:   #465fff;
@@ -76,11 +76,11 @@
   /* Code blocks */
   --ifm-code-background:   #f2f4f7;  /* gray-100 */
   --prism-background-color:#1d2939;  /* gray-800 — TailAdmin dark surface */
-  --docusaurus-highlighted-code-line-bg: rgba(70, 95, 255, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgb(70, 95, 255, 0.1);
 
   /* Shadows — from TailAdmin elevation tokens */
-  --ifm-global-shadow-md:   0px 4px 8px -2px rgba(16,24,40,0.10), 0px 2px 4px -2px rgba(16,24,40,0.06);
-  --ifm-global-shadow-lw:   0px 1px 2px 0px rgba(16,24,40,0.05);
+  --ifm-global-shadow-md:   0px 4px 8px -2px rgb(16,24,40,0.10), 0px 2px 4px -2px rgb(16,24,40,0.06);
+  --ifm-global-shadow-lw:   0px 1px 2px 0px rgb(16,24,40,0.05);
 
   /* Menu item spacing */
   --ifm-menu-link-padding-horizontal: 12px;
@@ -101,7 +101,7 @@
   --ifm-color-primary-light:   #9cb9ff;  /* brand-300 */
   --ifm-color-primary-lighter: #c2d6ff;  /* brand-200 */
   --ifm-color-primary-lightest:#dde9ff;  /* brand-100 */
-  --docusaurus-highlighted-code-line-bg: rgba(117, 146, 255, 0.15);
+  --docusaurus-highlighted-code-line-bg: rgb(117, 146, 255, 0.15);
 
   /* Background — TailAdmin dark surfaces */
   --ifm-background-color:         #0f1117;   /* deeper than gray-dark for body */
@@ -135,7 +135,7 @@
   --ifm-code-background: #1d2939;
 
   /* Sidebar collapse button */
-  --docusaurus-collapse-button-bg-hover-color: rgba(255,255,255,0.05);
+  --docusaurus-collapse-button-bg-hover-color: rgb(255,255,255,0.05);
 }
 
 /* ── Global body ─────────────────────────────────────────────────────────── */
@@ -172,7 +172,7 @@ html {
 }
 
 .navbar__link:hover {
-  background: rgba(70, 95, 255, 0.08);
+  background: rgb(70, 95, 255, 0.08);
 }
 
 [data-theme='dark'] .navbar {
@@ -212,7 +212,7 @@ html {
 
 [data-theme='dark'] .menu__link--active,
 [data-theme='dark'] .menu__link--active:hover {
-  background: rgba(70, 95, 255, 0.12);
+  background: rgb(70, 95, 255, 0.12);
   color: #7592ff;  /* brand-400 */
 }
 
@@ -226,7 +226,7 @@ html {
 }
 
 [data-theme='dark'] .menu__list-item-collapsible:hover {
-  background: rgba(255,255,255,0.05);
+  background: rgb(255,255,255,0.05);
 }
 
 /* Sidebar section separator — uppercase label style from TailAdmin */
@@ -289,38 +289,38 @@ code {
 /* ── Admonitions — TailAdmin semantic color palette ──────────────────────── */
 .alert--info {
   border-left-color: #465fff;
-  background: rgba(70, 95, 255, 0.05);
+  background: rgb(70, 95, 255, 0.05);
 }
 
 .alert--success {
   border-left-color: #12b76a;
-  background: rgba(18, 183, 106, 0.05);
+  background: rgb(18, 183, 106, 0.05);
 }
 
 .alert--warning {
   border-left-color: #f79009;
-  background: rgba(247, 144, 9, 0.05);
+  background: rgb(247, 144, 9, 0.05);
 }
 
 .alert--danger {
   border-left-color: #f04438;
-  background: rgba(240, 68, 56, 0.05);
+  background: rgb(240, 68, 56, 0.05);
 }
 
 [data-theme='dark'] .alert--info {
-  background: rgba(70, 95, 255, 0.08);
+  background: rgb(70, 95, 255, 0.08);
 }
 
 [data-theme='dark'] .alert--success {
-  background: rgba(18, 183, 106, 0.08);
+  background: rgb(18, 183, 106, 0.08);
 }
 
 [data-theme='dark'] .alert--warning {
-  background: rgba(247, 144, 9, 0.08);
+  background: rgb(247, 144, 9, 0.08);
 }
 
 [data-theme='dark'] .alert--danger {
-  background: rgba(240, 68, 56, 0.08);
+  background: rgb(240, 68, 56, 0.08);
 }
 
 /* ── Badges ───────────────────────────────────────────────────────────────── */
@@ -358,7 +358,7 @@ code {
 
 .pagination-nav__link:hover {
   border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 3px rgba(70, 95, 255, 0.12);
+  box-shadow: 0 0 0 3px rgb(70, 95, 255, 0.12);
 }
 
 /* ── Scrollbar — thin, TailAdmin style ───────────────────────────────────── */

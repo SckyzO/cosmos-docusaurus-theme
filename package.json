@@ -39,8 +39,8 @@
     "audit:check": "npm audit --audit-level=moderate"
   },
   "devDependencies": {
-    "stylelint": "^16.0.0",
-    "stylelint-config-standard": "^36.0.0"
+    "stylelint": "^17.4.0",
+    "stylelint-config-standard": "^40.0.0"
   },
   "engines": {
     "node": ">=18"
