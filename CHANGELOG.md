@@ -11,9 +11,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixed
 
-- Tooltip right-aligned (`right: 0`) so it never overflows outside the viewport
-  when the toggle button is at the far right of the navbar
-- Arrow adjusted to match right-aligned position
+- **Tooltip**: right-aligned to prevent viewport overflow; appears below button
+- **Tables dark mode**: direct overrides on `th`/`td`/`thead` — CSS variables
+  were not cascaded to table cells by Infima
+- **Cards dark mode**: direct `background-color: #111827` override
+- **Breadcrumbs**: explicit active/inactive link colors + separator in dark mode
+- **Toggle button**: subtle hover background for better visibility
 
 ## [1.1.4] — 2026-03-10
 

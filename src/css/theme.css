@@ -369,6 +369,72 @@ code {
   margin-top: 2.5rem;
 }
 
+/* ── Tables — direct overrides (CSS variables not reliably cascaded) ─────── */
+
+/* Dark mode: Void gray-800 borders, gray-900 header */
+[data-theme='dark'] table {
+  border-color: #1f2937;
+}
+
+[data-theme='dark'] th,
+[data-theme='dark'] td {
+  border-color: #1f2937;
+}
+
+[data-theme='dark'] thead,
+[data-theme='dark'] thead tr {
+  background-color: #111827;
+}
+
+[data-theme='dark'] tr:nth-child(2n) {
+  background-color: rgb(255, 255, 255, 0.03);
+}
+
+/* Light mode: Slate gray-200 borders, gray-50 header */
+[data-theme='light'] table {
+  border-color: #e5e7eb;
+}
+
+[data-theme='light'] th,
+[data-theme='light'] td {
+  border-color: #e5e7eb;
+}
+
+[data-theme='light'] thead,
+[data-theme='light'] thead tr {
+  background-color: #f9fafb;
+}
+
+/* ── Cards — direct background override ──────────────────────────────────── */
+[data-theme='dark'] .card {
+  background-color: #111827;
+  border-color: #1f2937;
+}
+
+/* ── Breadcrumbs — explicit active + separator colors ────────────────────── */
+.breadcrumbs__link--active,
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .breadcrumbs__item + .breadcrumbs__item::before {
+  color: #374151;
+}
+
+[data-theme='dark'] .breadcrumbs__link:not(.breadcrumbs__link--active) {
+  color: #a3a3a3;
+}
+
+/* ── Color mode toggle button — subtle hover ─────────────────────────────── */
+button[aria-label*="dark and light mode"]:hover {
+  background: rgb(70, 95, 255, 0.08);
+  border-radius: 6px;
+}
+
+[data-theme='dark'] button[aria-label*="dark and light mode"] {
+  color: #e5e5e5;
+}
+
 /* ── Table of contents (right panel) ─────────────────────────────────────── */
 .table-of-contents__link {
   font-size: 0.8125rem;
