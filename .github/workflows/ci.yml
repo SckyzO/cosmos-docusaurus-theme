@@ -42,20 +42,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # This package is CSS-only with no runtime dependencies.
-      # Audit dev tools at high severity — peer deps are excluded from the report.
+      # CSS-only package — no runtime deps. Audit dev tools at high severity.
       - name: Run npm audit (high and above)
         run: npm audit --audit-level=high
 
-      # Verify the package ships no runtime dependencies (CSS-only invariant)
+      # Invariant check: package must never ship runtime dependencies
       - name: Verify no runtime dependencies
         run: |
           node -e "
             const pkg = require('./package.json');
             const deps = pkg.dependencies || {};
-            const count = Object.keys(deps).length;
-            if (count > 0) {
-              console.error('ERROR: Package must not ship runtime dependencies. Found:', deps);
+            if (Object.keys(deps).length > 0) {
+              console.error('ERROR: Package must not ship runtime dependencies:', deps);
               process.exit(1);
             }
             console.log('OK: No runtime dependencies.');
@@ -80,3 +78,14 @@ jobs:
       - name: Build demo site
         working-directory: demo
         run: npm run build
+
+  docker-build:
+    name: Verify Dockerfile builds
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      # Build the demo Docker image without pushing — validates the Dockerfile
+      - name: Build Docker image (no push)
+        run: docker build -t cosmos-docusaurus-theme:ci-check .
