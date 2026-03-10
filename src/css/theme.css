@@ -425,10 +425,40 @@ code {
   color: #a3a3a3;
 }
 
-/* ── Color mode toggle button — subtle hover ─────────────────────────────── */
-button[aria-label*="dark and light mode"]:hover {
+/* ── Right navbar — unified ghost button style ───────────────────────────── */
+/* Both the external links (GitHub, npm…) and the color mode toggle get the  */
+/* same bordered ghost button treatment for visual consistency.               */
+
+/* External links on the right side (GitHub, npm, etc.) */
+.navbar__items--right .navbar__link {
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.navbar__items--right .navbar__link:hover {
+  border-color: var(--ifm-color-primary);
   background: rgb(70, 95, 255, 0.08);
-  border-radius: 6px;
+  color: var(--ifm-color-primary);
+}
+
+/* Color mode toggle — match the ghost button style of external links */
+button[aria-label*="dark and light mode"] {
+  border: 1px solid var(--ifm-toc-border-color) !important;
+  border-radius: 8px !important;
+  padding: 5px 8px !important;
+  transition: border-color 0.15s, background 0.15s !important;
+}
+
+button[aria-label*="dark and light mode"]:hover {
+  border-color: var(--ifm-color-primary) !important;
+  background: rgb(70, 95, 255, 0.08) !important;
 }
 
 [data-theme='dark'] button[aria-label*="dark and light mode"] {

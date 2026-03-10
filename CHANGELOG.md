@@ -7,6 +7,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.1.6] — 2026-03-10
+
+### Changed
+
+- **Navbar right items**: unified ghost button style — external links (GitHub, npm…)
+  and the color mode toggle now share the same bordered appearance:
+  `1px solid border`, `border-radius: 8px`, identical hover (indigo border + tint)
+- Replaces the inconsistent circular toggle + plain text link combo
+
 ## [1.1.5] — 2026-03-10
 
 ### Fixed
