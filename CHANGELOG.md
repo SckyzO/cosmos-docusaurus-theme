@@ -7,6 +7,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.2.0] — 2026-03-10
+
+### Changed — Rackscope design system alignment
+
+6 axes inspired by the `templates/default` component library:
+
+- **Border radius**: Cards `16px` (rounded-2xl), code `12px`, inline code `6px`, pagination `12px`
+- **Admonitions**: AlertBanner style — `rounded-2xl`, all-around border at semantic opacity, `padding: 16px 20px`
+- **Dark shadows**: shadow-card pattern on cards + code blocks (heavier on dark surfaces)
+- **Details/summary**: SectionCard style — `rounded-2xl`, chevron that rotates, dark bg-gray-900
+- **TOC active**: bg pill `rgb(70,95,255,0.08)` + border-radius + padding (mirrors sidebar active)
+- **Sidebar labels**: `10px` + `letter-spacing: 0.12em` — exact Rackscope LayoutLabel
+- **Typography**: `h1 font-weight: 800`, tight letter-spacing (`-0.04em` → `-0.01em`)
+- **Scrollbar**: `4px` (was 5px) — matches Rackscope index.css
+
 ## [1.1.6] — 2026-03-10
 
 ### Changed

@@ -325,48 +325,69 @@ button[aria-label*="dark and light mode"]:hover::before {
   background: rgb(255,255,255,0.05);
 }
 
-/* Sidebar section separator — uppercase label */
+/* Sidebar section separator — exact Rackscope LayoutLabel pattern */
 .sidebar_menu_section_title {
-  font-size: 0.6875rem;
+  font-size: 0.625rem;  /* 10px — matches text-[10px] */
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;  /* tracking-wider */
   text-transform: uppercase;
-  color: #a3a3a3;  /* neutral gray-400 */
+  color: #a3a3a3;
   padding: 12px 12px 4px;
 }
 
 /* ── Code blocks ─────────────────────────────────────────────────────────── */
 .prism-code {
-  border-radius: 10px;
+  border-radius: 12px;  /* rounded-xl — matches Rackscope input/button radius */
   font-size: 0.8625rem;
   line-height: 1.65;
 }
 
-/* Inline code — subtle bordered style */
+[data-theme='dark'] .prism-code {
+  /* Heavier shadow in dark — matches Rackscope shadow-card pattern */
+  box-shadow: 0 1px 3px rgb(0, 0, 0, 0.4), 0 1px 2px rgb(0, 0, 0, 0.3);
+}
+
+/* Code block title bar */
+.codeBlockTitle_Ktv7 {
+  border-radius: 12px 12px 0 0;
+}
+
+/* Inline code — rounded-md, subtle bordered style */
 code {
-  border-radius: 5px;
-  padding: 2px 6px;
+  border-radius: 6px;
+  padding: 2px 7px;
   font-size: 0.875em;
   border: 1px solid var(--ifm-toc-border-color);
   background: var(--ifm-code-background);
 }
 
-/* ── Content headings ─────────────────────────────────────────────────────── */
-.markdown h1,
-.markdown h2,
-.markdown h3,
-.markdown h4 {
-  font-weight: 700;
-  letter-spacing: -0.3px;
+/* ── Content headings — tight letter-spacing (Rackscope -0.03em / -0.04em) ── */
+.markdown h1 {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  font-size: 2.2rem;
 }
 
-.markdown h1 { font-size: 2.2rem; }
-
 .markdown h2 {
+  font-weight: 700;
+  letter-spacing: -0.03em;
   font-size: 1.6rem;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--ifm-toc-border-color);
   margin-top: 2.5rem;
+}
+
+.markdown h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 1.25rem;
+}
+
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 /* ── Tables — direct overrides (CSS variables not reliably cascaded) ─────── */
@@ -474,49 +495,147 @@ button[aria-label*="dark and light mode"]:hover {
 .table-of-contents__link {
   font-size: 0.8125rem;
   color: var(--ifm-font-color-secondary);
-  transition: color 0.12s;
+  transition: color 0.12s, background 0.12s;
+  border-radius: 6px;
+  padding: 2px 6px;
+  margin-left: -6px;
+  display: block;
 }
 
-.table-of-contents__link:hover,
+.table-of-contents__link:hover {
+  color: var(--ifm-color-primary);
+  background: rgb(70, 95, 255, 0.06);
+}
+
+/* Active TOC link — bg pill like sidebar active item */
 .table-of-contents__link--active {
   color: var(--ifm-color-primary);
-  font-weight: 500;
+  font-weight: 600;
+  background: rgb(70, 95, 255, 0.08);
 }
 
-/* ── Admonitions — TailAdmin semantic color palette ──────────────────────── */
+[data-theme='dark'] .table-of-contents__link:hover {
+  background: rgb(117, 146, 255, 0.08);
+}
+
+[data-theme='dark'] .table-of-contents__link--active {
+  background: rgb(117, 146, 255, 0.1);
+}
+
+/* ── Details / Summary — SectionCard style ───────────────────────────────── */
+/* Matches Rackscope: rounded-2xl border border-gray-200 bg-white p-6
+   dark:border-gray-800 dark:bg-gray-900                                      */
+details {
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 16px;  /* rounded-2xl */
+  background: var(--ifm-background-surface-color);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+[data-theme='dark'] details {
+  background: #111827;
+  border-color: #1f2937;
+  box-shadow: 0 1px 3px rgb(0, 0, 0, 0.4), 0 1px 2px rgb(0, 0, 0, 0.3);
+}
+
+details > summary {
+  padding: 14px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--ifm-font-color-base);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.12s;
+}
+
+details > summary:hover {
+  background: rgb(70, 95, 255, 0.04);
+}
+
+[data-theme='dark'] details > summary:hover {
+  background: rgb(255, 255, 255, 0.04);
+}
+
+details > summary::before {
+  content: '›';
+  font-size: 1.125rem;
+  color: var(--ifm-color-primary);
+  transition: transform 0.2s;
+  display: inline-block;
+  line-height: 1;
+}
+
+details[open] > summary::before {
+  transform: rotate(90deg);
+}
+
+details > :not(summary) {
+  padding: 0 20px 16px;
+  border-top: 1px solid var(--ifm-toc-border-color);
+  margin-top: 0;
+}
+
+[data-theme='dark'] details > :not(summary) {
+  border-top-color: #1f2937;
+}
+
+/* ── Admonitions — AlertBanner style (Rackscope rounded-2xl full border) ─── */
+/* Full all-around border with semantic opacity — matches Rackscope AlertBanner:
+   rounded-2xl border px-5 py-3.5 (border + bg at semantic opacity)           */
+.alert {
+  border-radius: 16px;     /* rounded-2xl */
+  border-left-width: 3px;  /* keep accent left stripe */
+  padding: 16px 20px;
+}
+
+/* Light mode — 5% opacity bg, 25% opacity border */
 .alert--info {
+  border-color: rgb(70, 95, 255, 0.25);
   border-left-color: #465fff;
   background: rgb(70, 95, 255, 0.05);
 }
 
 .alert--success {
+  border-color: rgb(18, 183, 106, 0.25);
   border-left-color: #12b76a;
   background: rgb(18, 183, 106, 0.05);
 }
 
 .alert--warning {
+  border-color: rgb(247, 144, 9, 0.25);
   border-left-color: #f79009;
   background: rgb(247, 144, 9, 0.05);
 }
 
 .alert--danger {
+  border-color: rgb(240, 68, 56, 0.25);
   border-left-color: #f04438;
   background: rgb(240, 68, 56, 0.05);
 }
 
+/* Dark mode — 8% opacity bg, 20% opacity border (subtle on dark surface) */
 [data-theme='dark'] .alert--info {
+  border-color: rgb(70, 95, 255, 0.2);
   background: rgb(70, 95, 255, 0.08);
 }
 
 [data-theme='dark'] .alert--success {
+  border-color: rgb(18, 183, 106, 0.2);
   background: rgb(18, 183, 106, 0.08);
 }
 
 [data-theme='dark'] .alert--warning {
+  border-color: rgb(247, 144, 9, 0.2);
   background: rgb(247, 144, 9, 0.08);
 }
 
 [data-theme='dark'] .alert--danger {
+  border-color: rgb(240, 68, 56, 0.2);
   background: rgb(240, 68, 56, 0.08);
 }
 
@@ -561,13 +680,17 @@ button[aria-label*="dark and light mode"]:hover {
 /* ── Pagination nav ───────────────────────────────────────────────────────── */
 .pagination-nav__link {
   border-color: var(--ifm-toc-border-color);
-  border-radius: 10px;
+  border-radius: 12px;  /* rounded-xl — matches Rackscope button radius */
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .pagination-nav__link:hover {
   border-color: var(--ifm-color-primary);
   box-shadow: 0 0 0 3px rgb(70, 95, 255, 0.12);
+}
+
+[data-theme='dark'] .pagination-nav__link:hover {
+  box-shadow: 0 4px 12px rgb(0, 0, 0, 0.3), 0 0 0 2px rgb(117, 146, 255, 0.2);
 }
 
 /* ── Progress bar (page loading indicator) ───────────────────────────────── */
@@ -652,7 +775,7 @@ button[aria-label*="dark and light mode"]:hover {
 /* ── Cards ───────────────────────────────────────────────────────────────── */
 :root {
   --ifm-card-background-color: #fff;
-  --ifm-card-border-radius:    12px;
+  --ifm-card-border-radius:    16px;  /* rounded-2xl — matches Rackscope SectionCard */
 }
 
 [data-theme='dark'] {
@@ -666,9 +789,18 @@ button[aria-label*="dark and light mode"]:hover {
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
+/* Dark mode: heavier shadow — matches Rackscope shadow-card pattern */
+[data-theme='dark'] .card {
+  box-shadow: 0 1px 3px rgb(0, 0, 0, 0.4), 0 1px 2px rgb(0, 0, 0, 0.3);
+}
+
 .card:hover {
   border-color: var(--ifm-color-primary);
   box-shadow: var(--ifm-global-shadow-md);
+}
+
+[data-theme='dark'] .card:hover {
+  box-shadow: 0 10px 25px rgb(0, 0, 0, 0.5), 0 4px 6px rgb(0, 0, 0, 0.2);
 }
 
 /* ── Tags ────────────────────────────────────────────────────────────────── */
@@ -749,10 +881,10 @@ button[aria-label*="dark and light mode"]:hover {
   --docsearch-logo-color:                #7592ff;
 }
 
-/* ── Scrollbar — thin, TailAdmin style ───────────────────────────────────── */
+/* ── Scrollbar — 4px, matches Rackscope index.css ───────────────────────── */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
 }
 
 ::-webkit-scrollbar-track {
