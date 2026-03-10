@@ -25,10 +25,24 @@ const config = {
     locales: ['en'],
   },
 
-  // Load the theme exactly as a real consumer would — using the npm package name.
-  // The demo depends on cosmos-docusaurus-theme via "file:.." in package.json,
-  // so this resolves to the local source during development and CI.
-  themes: ['cosmos-docusaurus-theme'],
+  themes: [
+    // CSS theme plugin
+    'cosmos-docusaurus-theme',
+    // Local search — zero config, works offline, no API key required
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        indexDocs: true,
+        indexBlog: false,
+        docsRouteBasePath: '/',
+        language: ['en'],
+        highlightSearchTermsOnTargetPage: true,
+        searchResultLimits: 8,
+        searchBarShortcutHint: true,
+      },
+    ],
+  ],
 
   presets: [
     [

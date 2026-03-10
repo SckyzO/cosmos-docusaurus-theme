@@ -31,13 +31,17 @@ Dark-first, opinionated, and refined.
 
 ## Screenshots
 
-> Dark mode — Void palette
+> Dark mode — Void palette — with local search
 
-![Dark mode screenshot](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/dark.png)
+![Dark mode](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/dark.png)
 
-> Light mode — Slate palette
+> Search — dropdown styled to Void/Slate palette
 
-![Light mode screenshot](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/light.png)
+![Search active](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/search.png)
+
+> Light mode — Slate palette — admonitions AlertBanner style
+
+![Light mode](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/light.png)
 
 > See all components live → **[sckyzo.github.io/cosmos-docusaurus-theme](https://sckyzo.github.io/cosmos-docusaurus-theme/)**
 

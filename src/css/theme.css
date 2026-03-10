@@ -881,6 +881,62 @@ details > :not(summary) {
   background-color: #9cb9ff;
 }
 
+/* ── @easyops-cn/docusaurus-search-local ────────────────────────────────── */
+/* Palette overrides for the local search plugin.                            */
+/* https://github.com/easyops-cn/docusaurus-search-local                     */
+/* All values mirror Void (dark) / Slate (light) design tokens.              */
+
+/* Light mode (Slate) */
+:root {
+  /* Modal dropdown */
+  --search-local-modal-background: #fff;
+  --search-local-modal-shadow:
+    0 8px 24px rgb(0, 0, 0, 0.12),
+    inset 1px 1px 0 0 rgb(255, 255, 255, 0.8);
+  /* Result items */
+  --search-local-hit-background: #fff;
+  --search-local-hit-shadow: 0 1px 3px rgb(0, 0, 0, 0.08);
+  --search-local-hit-color: #1a1714;
+  /* Muted text (paths, icons) */
+  --search-local-muted-color: #8a8479;
+  /* Brand highlight */
+  --search-local-highlight-color: #465fff;
+  --search-local-input-active-border-color: #465fff;
+  /* Navbar search input */
+  --ifm-navbar-search-input-background-color: #f3f4f6;
+  --ifm-navbar-search-input-color: #1a1714;
+  --ifm-navbar-search-input-placeholder-color: #8a8479;
+}
+
+/* Dark mode (Void) */
+[data-theme='dark'] {
+  --search-local-modal-background: #111827;  /* Void gray-900 */
+  --search-local-modal-shadow:
+    inset 1px 1px 0 0 #2c2e40,
+    0 8px 32px rgb(0, 0, 0, 0.5);
+  --search-local-hit-background: #1f2937;    /* Void gray-800 */
+  --search-local-hit-shadow: none;
+  --search-local-hit-color: #e5e5e5;
+  --search-local-muted-color: #71717a;
+  --search-local-highlight-color: #7592ff;
+  --search-local-input-active-border-color: #7592ff;
+  /* Navbar search input */
+  --ifm-navbar-search-input-background-color: #1f2937;
+  --ifm-navbar-search-input-color: #e5e5e5;
+  --ifm-navbar-search-input-placeholder-color: #a3a3a3;
+}
+
+/* Navbar search input — styled as ghost button to match navbar buttons */
+.navbar__search-input {
+  border-radius: 8px;
+  border: 1px solid var(--ifm-toc-border-color);
+  transition: border-color 0.15s;
+}
+
+.navbar__search-input:focus {
+  border-color: var(--ifm-color-primary);
+}
+
 /* ── Algolia DocSearch ───────────────────────────────────────────────────── */
 /* Applied when Algolia search is configured in themeConfig.algolia.         */
 [data-theme='light'] .DocSearch {

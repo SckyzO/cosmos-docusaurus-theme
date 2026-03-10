@@ -7,6 +7,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.2.2] — 2026-03-10
+
+### Added
+
+- **`@easyops-cn/docusaurus-search-local` native support** — CSS palette overrides
+  so the search dropdown matches Void (dark) / Slate (light) out of the box.
+  Set `--search-local-*` variables and `--ifm-navbar-search-input-*` for both modes.
+  Navbar search input styled as ghost button matching navbar external links.
+- Demo site ships with `@easyops-cn/docusaurus-search-local` pre-configured
+
+### Changed
+
+- Screenshots updated to 2560×1440 (2K) with search bar visible
+- New `search.png` screenshot of active search dropdown
+
 ## [1.2.0] — 2026-03-10
 
 ### Changed — Rackscope design system alignment
