@@ -22,6 +22,20 @@ const sidebars = {
         'native-features',
       ],
     },
+    {
+      type: 'category',
+      label: 'Showcase',
+      collapsed: false,
+      items: [
+        'showcase/showcase-index',
+        'showcase/showcase-text',
+        'showcase/showcase-code',
+        'showcase/showcase-admonitions',
+        'showcase/showcase-tabs-details',
+        'showcase/showcase-tables-lists',
+        'showcase/showcase-badges',
+      ],
+    },
   ],
 };
 
