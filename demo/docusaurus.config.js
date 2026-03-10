@@ -80,6 +80,8 @@ const config = {
             position: 'left',
             label: 'Documentation',
           },
+          // Search positioned explicitly before external links
+          { type: 'search', position: 'right' },
           {
             href: 'https://github.com/SckyzO/cosmos-docusaurus-theme',
             label: 'GitHub',
