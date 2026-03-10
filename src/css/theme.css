@@ -926,15 +926,33 @@ details > :not(summary) {
   --ifm-navbar-search-input-placeholder-color: #a3a3a3;
 }
 
-/* Navbar search input — styled as ghost button to match navbar buttons */
+/* Navbar search input — styled like Rackscope's AppSearch component       */
+/* rounded-lg, bg surface, border, focus ring — consistent with the app   */
 .navbar__search-input {
+  height: 36px;
+  min-width: 180px;
   border-radius: 8px;
   border: 1px solid var(--ifm-toc-border-color);
-  transition: border-color 0.15s;
+  background-color: var(--ifm-code-background);
+  color: var(--ifm-font-color-base);
+  font-size: 0.875rem;
+  transition: border-color 0.15s, background-color 0.15s, box-shadow 0.15s;
+}
+
+.navbar__search-input::placeholder {
+  color: var(--ifm-font-color-secondary);
+  font-size: 0.875rem;
 }
 
 .navbar__search-input:focus {
   border-color: var(--ifm-color-primary);
+  background-color: var(--ifm-background-surface-color);
+  box-shadow: 0 0 0 3px rgb(70, 95, 255, 0.10);
+  outline: none;
+}
+
+[data-theme='dark'] .navbar__search-input:focus {
+  box-shadow: 0 0 0 3px rgb(117, 146, 255, 0.12);
 }
 
 /* ── Algolia DocSearch ───────────────────────────────────────────────────── */
