@@ -924,13 +924,14 @@ details > :not(summary) {
   --ifm-navbar-search-input-background-color: #1f2937;
   --ifm-navbar-search-input-color: #e5e5e5;
   --ifm-navbar-search-input-placeholder-color: #a3a3a3;
+  /* Fix: SVG background-image can't use currentColor — hardcode a light fill */
+  --ifm-navbar-search-input-icon: url("data:image/svg+xml;utf8,<svg fill='%23a3a3a3' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' height='16px' width='16px'><path d='M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z' /></svg>");
 }
 
-/* Navbar search input — styled like Rackscope's AppSearch component       */
-/* rounded-lg, bg surface, border, focus ring — consistent with the app   */
+/* Navbar search input — styled like Rackscope AppSearch component */
 .navbar__search-input {
-  height: 36px;
-  min-width: 180px;
+  height: 38px;
+  min-width: 220px;
   border-radius: 8px;
   border: 1px solid var(--ifm-toc-border-color);
   background-color: var(--ifm-code-background);
@@ -953,6 +954,34 @@ details > :not(summary) {
 
 [data-theme='dark'] .navbar__search-input:focus {
   box-shadow: 0 0 0 3px rgb(117, 146, 255, 0.12);
+}
+
+/* Ctrl+K hint badges inside search input */
+[class*="searchHint"] kbd,
+.navbar__search-input ~ * kbd {
+  background: var(--ifm-code-background);
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 4px;
+  color: var(--ifm-font-color-secondary);
+  font-size: 0.65rem;
+  font-family: var(--ifm-font-family-monospace);
+  padding: 1px 5px;
+  box-shadow: none;
+}
+
+/* Right-side navbar ordering: Search | GitHub | Theme toggle */
+.navbar__search {
+  order: 0;
+}
+
+.navbar__items--right .navbar__link {
+  order: 1;
+}
+
+/* Color mode toggle wrapper (direct flex child) — rightmost */
+/* Must target the wrapper div, not button[aria-label] which is a nested child */
+[class*="colorModeToggle"] {
+  order: 2;
 }
 
 /* ── Algolia DocSearch ───────────────────────────────────────────────────── */
