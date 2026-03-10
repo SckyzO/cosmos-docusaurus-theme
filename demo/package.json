@@ -1,6 +1,6 @@
 {
   "name": "cosmos-docusaurus-theme-demo",
-  "version": "1.0.0",
+  "version": "1.2.5",
   "private": true,
   "description": "Demo site showcasing cosmos-docusaurus-theme",
   "scripts": {

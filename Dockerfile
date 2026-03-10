@@ -1,16 +1,12 @@
 FROM node:20-alpine
 
-WORKDIR /app
+# Copy the entire project so demo/package.json can resolve "file:.." to /workspace
+WORKDIR /workspace
+COPY . .
 
-# Copy demo package.json first for layer caching
-# cosmos-docusaurus-theme is installed from npm (^1.x range)
-COPY demo/package.json ./package.json
-
-# Install all dependencies
+# Install demo dependencies (resolves file:.. to /workspace/src)
+WORKDIR /workspace/demo
 RUN npm install --legacy-peer-deps
-
-# Copy demo source files
-COPY demo/ .
 
 EXPOSE 3000
 

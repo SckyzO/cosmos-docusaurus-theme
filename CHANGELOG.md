@@ -7,6 +7,29 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.2.6] — 2026-03-10
+
+### Added
+
+- **Sidebar icons** — category icon system via `className: 'sidebar-cat-*'` in `sidebars.js`.
+  10 Lucide-style SVG icons (rocket, monitor, pencil, puzzle, sliders, folder, server,
+  database, layers, grid, code). CSS-only with dark-mode `filter:invert(1)`.
+- **Sidebar sub-menu vertical line** — Rackscope-style left border on nested items.
+  Sub-items: slightly smaller font, muted color, left padding.
+- **Sidebar version badge** — always pinned at the very bottom of the sidebar viewport
+  (`[class*="sidebarViewport"]` flex-column + `::after` outside scroll area).
+  Hardcoded backgrounds (#fff / #111827) to always cover scrolled content.
+- **Ctrl+K hint redesign** — ghost style: transparent chips with hairline border,
+  `+` separator via `::before`, opacity 0.7 at rest, 0.9 on input focus.
+  Preserves plugin positioning (only kbd elements restyled).
+
+### Changed
+
+- Search input: `min-width` 220px → 300px; font-family → `var(--ifm-font-family-base)` (Outfit)
+- Demo `docusaurus.config.js`: `{ type:'search' }` positioned before external links;
+  `searchBarShortcutHint: true`
+- Dockerfile: copies full project so `file:..` resolves during local dev
+
 ## [1.2.5] — 2026-03-10
 
 ### Fixed

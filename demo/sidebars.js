@@ -7,6 +7,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Getting Started',
+      className: 'sidebar-cat-rocket',
       collapsed: false,
       items: [
         'getting-started',
@@ -19,6 +20,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Component Reference',
+      className: 'sidebar-cat-layers',
       collapsed: false,
       items: [
         'native-features',
@@ -32,6 +34,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Showcase',
+      className: 'sidebar-cat-grid',
       collapsed: true,
       items: [
         'showcase/showcase-index',
