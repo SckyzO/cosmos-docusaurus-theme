@@ -2,15 +2,12 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Install demo site dependencies
-# cosmos-docusaurus-theme is installed from the published npm package
+# Copy demo package.json first for layer caching
+# cosmos-docusaurus-theme is installed from npm (^1.x range)
 COPY demo/package.json ./package.json
 
-# Replace the local file: reference with the published npm package
-RUN sed -i 's|"cosmos-docusaurus-theme": "file:\.\."||g' package.json && \
-    sed -i '/^  "cosmos-docusaurus-theme"/d' package.json && \
-    npm install --legacy-peer-deps && \
-    npm install cosmos-docusaurus-theme --legacy-peer-deps
+# Install all dependencies
+RUN npm install --legacy-peer-deps
 
 # Copy demo source files
 COPY demo/ .

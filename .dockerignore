@@ -1,0 +1,18 @@
+# Exclude node_modules from build context — they are installed inside the image
+node_modules/
+demo/node_modules/
+demo/.docusaurus/
+demo/build/
+
+# Git and IDE
+.git/
+.github/
+.vscode/
+.idea/
+
+# Dev files not needed in the Docker image
+*.md
+!demo/**/*.md
+src/
+.stylelintrc.json
+.npmrc
