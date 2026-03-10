@@ -7,6 +7,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.0.1] — 2026-03-10
+
+### Fixed
+
+- **Tables full-width**: `display:table; width:100%` on desktop (>996px),
+  `display:block; overflow-x:auto` on mobile — responsive, never breaks layout
+
 ## [2.0.0] — 2026-03-10
 
 ### Added — Native Docusaurus component coverage
