@@ -254,6 +254,12 @@ button[aria-label*="dark and light mode"]:hover::before {
 
 .navbar__link:hover {
   background: rgb(70, 95, 255, 0.08);
+  color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .navbar__link:hover {
+  color: #7592ff;
+  background: rgb(117, 146, 255, 0.10);
 }
 
 /* Force direct properties — CSS variables alone are not reliable for navbar
