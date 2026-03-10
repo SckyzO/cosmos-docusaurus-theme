@@ -10,8 +10,7 @@
  * Font:  Outfit + JetBrains Mono for code
  *
  * Usage:
- *   In docusaurus.config.js → theme.customCss:
- *   require.resolve('cosmos-docusaurus-theme')
+ *   themes: ['cosmos-docusaurus-theme']
  *
  * @see https://github.com/SckyzO/cosmos-docusaurus-theme
  * @license MIT
@@ -22,16 +21,16 @@
 
 /* ── Light mode ──────────────────────────────────────────────────────────── */
 :root {
-  /* Primary brand colors — TailAdmin brand-* palette */
-  --ifm-color-primary:         #465fff;  /* brand-500 */
-  --ifm-color-primary-dark:    #3641f5;  /* brand-600 */
-  --ifm-color-primary-darker:  #2a31d8;  /* brand-700 */
-  --ifm-color-primary-darkest: #252dae;  /* brand-800 */
-  --ifm-color-primary-light:   #7592ff;  /* brand-400 */
-  --ifm-color-primary-lighter: #9cb9ff;  /* brand-300 */
-  --ifm-color-primary-lightest:#dde9ff;  /* brand-100 */
+  /* Brand palette (indigo) — matches Rackscope accent color */
+  --ifm-color-primary:         #465fff;
+  --ifm-color-primary-dark:    #3641f5;
+  --ifm-color-primary-darker:  #2a31d8;
+  --ifm-color-primary-darkest: #252dae;
+  --ifm-color-primary-light:   #7592ff;
+  --ifm-color-primary-lighter: #9cb9ff;
+  --ifm-color-primary-lightest:#dde9ff;
 
-  /* Typography — TailAdmin uses Outfit as the primary typeface */
+  /* Typography — Outfit + JetBrains Mono, same as Rackscope app */
   --ifm-font-family-base:      'Outfit', system-ui, -apple-system, sans-serif;
   --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', monospace;
   --ifm-font-size-base:        16.5px;
@@ -43,8 +42,8 @@
   --ifm-h3-font-size:          1.25rem;
 
   /* Background — Slate: Tailwind gray-50 / white */
-  --ifm-background-color:          #f9fafb;  /* gray-50 */
-  --ifm-background-surface-color:  #fff;     /* white */
+  --ifm-background-color:          #f9fafb;
+  --ifm-background-surface-color:  #fff;     
 
   /* Text — Slate: warm brown tones (not cold blue-gray) */
   --ifm-font-color-base:      #1a1714;  /* warm near-black */
@@ -55,14 +54,14 @@
   --ifm-navbar-background-color:    #fff;
   --ifm-navbar-shadow:              0px 1px 3px 0px rgb(16,24,40,0.10), 0px 1px 2px 0px rgb(16,24,40,0.06);
   --ifm-navbar-link-color:          #2c2822;  /* warm dark text */
-  --ifm-navbar-link-hover-color:    #465fff;  /* brand-500 */
+  --ifm-navbar-link-hover-color:    #465fff;
   --ifm-navbar-link-active-color:   #465fff;
 
   /* Sidebar */
   --ifm-sidebar-width:         280px;
   --doc-sidebar-width:         280px;
   --ifm-sidebar-padding:       16px;
-  --docusaurus-collapse-button-bg-hover-color: #f3f4f6; /* gray-100 */
+  --docusaurus-collapse-button-bg-hover-color: #f3f4f6; 
 
   /* Links */
   --ifm-link-color:        #465fff;
@@ -95,20 +94,20 @@
 /* ── Dark mode ───────────────────────────────────────────────────────────── */
 [data-theme='dark'] {
   /* Primary — lighter variant for readability on dark backgrounds */
-  --ifm-color-primary:         #7592ff;  /* brand-400 */
-  --ifm-color-primary-dark:    #465fff;  /* brand-500 */
-  --ifm-color-primary-darker:  #3641f5;  /* brand-600 */
-  --ifm-color-primary-darkest: #2a31d8;  /* brand-700 */
-  --ifm-color-primary-light:   #9cb9ff;  /* brand-300 */
-  --ifm-color-primary-lighter: #c2d6ff;  /* brand-200 */
-  --ifm-color-primary-lightest:#dde9ff;  /* brand-100 */
+  --ifm-color-primary:         #7592ff;
+  --ifm-color-primary-dark:    #465fff;
+  --ifm-color-primary-darker:  #3641f5;
+  --ifm-color-primary-darkest: #2a31d8;
+  --ifm-color-primary-light:   #9cb9ff;
+  --ifm-color-primary-lighter: #c2d6ff;
+  --ifm-color-primary-lightest:#dde9ff;
   --docusaurus-highlighted-code-line-bg: rgb(117, 146, 255, 0.15);
 
   /* Background — Void: Tailwind gray-950 / gray-900 neutral blacks */
   --ifm-background-color:         #030712;  /* gray-950 — deepest background */
   --ifm-background-surface-color: #111827;  /* gray-900 — cards, sidebar, panels */
-  --ifm-navbar-background-color:  #111827;  /* gray-900 */
-  --ifm-footer-background-color:  #030712;  /* gray-950 */
+  --ifm-navbar-background-color:  #111827;
+  --ifm-footer-background-color:  #030712;
 
   /* Text — neutral grays, no blue tint */
   --ifm-font-color-base:      #e5e5e5;  /* neutral light */
@@ -133,7 +132,7 @@
   --ifm-navbar-shadow: 0px 1px 0px 0px #1f2937;
 
   /* Code */
-  --ifm-code-background: #1f2937;  /* gray-800 */
+  --ifm-code-background: #1f2937;
 
   /* Sidebar collapse button */
   --docusaurus-collapse-button-bg-hover-color: rgb(255,255,255,0.05);
@@ -304,21 +303,21 @@ button[aria-label*="dark and light mode"]:hover::before {
   transition: background 0.12s, color 0.12s;
 }
 
-/* Active sidebar link — TailAdmin: bg-brand-50 + text-brand-500 */
+/* Active sidebar link — brand tint bg + brand color text */
 .menu__link--active,
 .menu__link--active:hover {
-  background: #ecf3ff;  /* brand-50 */
-  color: #465fff;       /* brand-500 */
+  background: #ecf3ff;
+  color: #465fff;       
   font-weight: 600;
 }
 
 [data-theme='dark'] .menu__link--active,
 [data-theme='dark'] .menu__link--active:hover {
   background: rgb(70, 95, 255, 0.12);
-  color: #7592ff;  /* brand-400 */
+  color: #7592ff;
 }
 
-/* Sidebar collapsible category */
+/* Sidebar category toggle */
 .menu__list-item-collapsible {
   border-radius: 8px;
 }
