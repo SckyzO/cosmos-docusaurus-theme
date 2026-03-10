@@ -429,6 +429,11 @@ code {
 /* Both the external links (GitHub, npm…) and the color mode toggle get the  */
 /* same bordered ghost button treatment for visual consistency.               */
 
+/* Add spacing between right-side navbar items */
+.navbar__items--right {
+  gap: 8px;
+}
+
 /* External links on the right side (GitHub, npm, etc.) */
 .navbar__items--right .navbar__link {
   border: 1px solid var(--ifm-toc-border-color);
