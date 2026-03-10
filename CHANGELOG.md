@@ -7,6 +7,23 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.0.0] — 2026-03-10
+
+### Added — Native Docusaurus component coverage
+
+1. **Color mode toggle icons** — sun (amber `#fbbf24`) in dark mode, moon (brand indigo `#7592ff`) in light mode via CSS `filter` colorization
+2. **TOCCollapsible** — mobile table-of-contents styled as bordered card with uppercase monospace label, matching sidebar section labels
+3. **DocCard / DocCardList** — auto-generated category index cards follow Void/Slate palette with hover lift
+4. **Announcement bar close button** — `×` styled with opacity + hover bg tint
+5. **Tag pages** — `/docs/tags/...` pages use pill tags with brand hover state
+6. **Mobile search** — search input collapses to `2rem` icon-only on ≤576px, expands on focus with smooth width transition
+7. **prefers-reduced-motion** — all transitions and animations disabled when the OS accessibility setting is active
+
+### Fixed
+
+- **Docker GHCR push timeout** — `provenance: false` + `sbom: false` on `docker/build-push-action` eliminates attestation overhead that caused network timeouts; `timeout-minutes: 30` on job; `docker/setup-buildx-action` added explicitly
+- **CSS comments** — removed stale TailAdmin references, fixed redundant inline color-name comments
+
 ## [1.2.6] — 2026-03-10
 
 ### Added

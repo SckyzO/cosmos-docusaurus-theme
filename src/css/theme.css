@@ -1281,6 +1281,175 @@ details > :not(summary) {
 }
 
 /* =============================================================================
+   NATIVE DOCUSAURUS COMPONENTS
+   ============================================================================= */
+
+/* ── 1. Color mode toggle icons ──────────────────────────────────────────── */
+/* Sun = amber shown in dark mode (hints "switch to light").
+   Moon = brand indigo shown in light mode (hints "switch to dark").
+   Uses CSS filter to colorize since Docusaurus SVG paths use hardcoded fill. */
+
+/* Dark mode shows the sun icon */
+[data-theme='dark'] [class*="toggleButton"] [class*="lightToggleIcon"],
+[data-theme='dark'] [class*="toggleButton"] svg {
+  filter: drop-shadow(0 0 0 #fbbf24) sepia(1) saturate(4) hue-rotate(5deg) brightness(1.1);
+}
+
+/* Light mode shows the moon icon */
+[data-theme='light'] [class*="toggleButton"] [class*="darkToggleIcon"],
+[data-theme='light'] [class*="toggleButton"] svg {
+  filter: drop-shadow(0 0 0 #7592ff) sepia(1) saturate(6) hue-rotate(190deg) brightness(0.9);
+}
+
+/* ── 2. TOCCollapsible (mobile table of contents) ────────────────────────── */
+[class*="tocCollapsible"] {
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+[class*="tocCollapsibleButton"] {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ifm-font-color-secondary);
+  transition: color 0.12s, background 0.12s;
+}
+
+[class*="tocCollapsibleButton"]:hover {
+  color: var(--ifm-color-primary);
+  background: rgb(70, 95, 255, 0.04);
+}
+
+[class*="tocCollapsibleContent"] {
+  border-top: 1px solid var(--ifm-toc-border-color);
+  padding: 8px 0;
+}
+
+/* ── 3. DocCard / DocCardList (auto-generated category index pages) ─────── */
+[class*="cardContainer"] > article.card {
+  height: 100%;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+
+[class*="cardContainer"] > article.card:hover {
+  transform: translateY(-2px);
+}
+
+[class*="cardContainer"] a {
+  text-decoration: none;
+}
+
+/* Category card title */
+[class*="cardContainer"] h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+/* Category card description */
+[class*="cardContainer"] p {
+  font-size: 0.875rem;
+  color: var(--ifm-font-color-secondary);
+  margin: 0;
+}
+
+/* ── 4. Announcement bar close button ────────────────────────────────────── */
+.announcement-close,
+[class*="announcementBarClose"] {
+  color: rgb(255, 255, 255, 0.65) !important;
+  border-radius: 6px !important;
+  padding: 4px 6px !important;
+  transition: color 0.15s, background 0.15s !important;
+}
+
+.announcement-close:hover,
+[class*="announcementBarClose"]:hover {
+  color: #fff !important;
+  background: rgb(255, 255, 255, 0.12) !important;
+}
+
+/* ── 5. Tag pages (/docs/tags/...) ───────────────────────────────────────── */
+[class*="tagList"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+[class*="tagItem"] a,
+[class*="tag_"] {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+[class*="tagItem"] a:hover,
+[class*="tag_"]:hover {
+  border-color: var(--ifm-color-primary);
+  background: rgb(70, 95, 255, 0.06);
+  color: var(--ifm-color-primary);
+}
+
+/* ── 7. Responsive search ─────────────────────────────────────────────────── */
+/* On mobile the input collapses — restore sizing on focus */
+@media (width <= 576px) {
+  .navbar__search-input {
+    min-width: 0 !important;
+    width: 2rem !important;
+    padding-left: 2rem !important;
+    transition: width 0.25s ease, background-color 0.15s !important;
+  }
+
+  .navbar__search-input:focus {
+    width: 220px !important;
+  }
+}
+
+/* ── 8. prefers-reduced-motion ───────────────────────────────────────────── */
+/* Respects the OS-level "reduce motion" accessibility setting by
+   disabling all transitions and animations. */
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .theme-doc-sidebar-container,
+  .menu__link,
+  .main-wrapper,
+  article,
+  .footer,
+  .table-of-contents__link,
+  .pagination-nav__link,
+  .prism-code,
+  .alert,
+  .card,
+  [class*="sidebar-cat-"] > .menu__list-item-collapsible > .menu__link,
+  [class*="toggleIcon"],
+  button[aria-label*="dark and light mode"] {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* =============================================================================
    OPTIONAL UTILITY CLASSES
    The following classes are not required for the theme to work.
    Include them when building API reference or status documentation.
