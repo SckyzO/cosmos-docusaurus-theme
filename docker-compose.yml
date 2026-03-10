@@ -1,0 +1,12 @@
+services:
+  # cosmos-docusaurus-theme demo site
+  # Run:  docker compose up
+  # Open: http://localhost:3000
+  cosmos-theme:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development

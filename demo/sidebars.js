@@ -3,6 +3,7 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   docs: [
+    // ── Getting Started ───────────────────────────────────────────────────────
     {
       type: 'category',
       label: 'Getting Started',
@@ -10,22 +11,28 @@ const sidebars = {
       items: [
         'getting-started',
         'customization',
+        'color-tokens',
       ],
     },
+
+    // ── Component Reference ───────────────────────────────────────────────────
     {
       type: 'category',
-      label: 'Components',
+      label: 'Component Reference',
+      collapsed: false,
       items: [
+        'native-features',
         'components',
         'typography',
         'utility-classes',
-        'native-features',
       ],
     },
+
+    // ── Showcase ──────────────────────────────────────────────────────────────
     {
       type: 'category',
       label: 'Showcase',
-      collapsed: false,
+      collapsed: true,
       items: [
         'showcase/showcase-index',
         'showcase/showcase-text',
