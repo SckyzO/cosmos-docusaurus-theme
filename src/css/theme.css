@@ -397,6 +397,23 @@ code {
 
 /* ── Tables — direct overrides (CSS variables not reliably cascaded) ─────── */
 
+/* Full-width tables on desktop; scrollable on mobile.
+   Infima forces display:block which caps width — we override for desktop,
+   and restore scrollable block on narrow viewports. */
+.markdown table {
+  display: table !important;
+  width: 100% !important;
+}
+
+@media (width <= 996px) {
+  .markdown table {
+    display: block !important;
+    overflow-x: auto !important;
+    max-width: 100% !important;
+    width: max-content !important;
+  }
+}
+
 /* Dark mode — Infima applies --ifm-table-head-background directly on th,
    so we must target th explicitly (higher specificity than thead).           */
 [data-theme='dark'] table {
