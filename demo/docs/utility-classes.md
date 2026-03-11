@@ -10,11 +10,11 @@ Optional CSS classes for use in MDX pages. All included in `theme.css` — no ex
 
 ## Buttons `.btn-*`
 
-<a class="btn btn-primary" href="#">Primary</a>&nbsp;
-<a class="btn btn-secondary" href="#">Secondary</a>&nbsp;
-<a class="btn btn-danger" href="#">Danger</a>
+<a className="btn btn-primary" href="#">Primary</a>&nbsp;
+<a className="btn btn-secondary" href="#">Secondary</a>&nbsp;
+<a className="btn btn-danger" href="#">Danger</a>
 
-Sizes: <a class="btn btn-primary btn-sm" href="#">Small</a>&nbsp; <a class="btn btn-primary btn-lg" href="#">Large</a>
+Sizes: <a className="btn btn-primary btn-sm" href="#">Small</a>&nbsp; <a className="btn btn-primary btn-lg" href="#">Large</a>
 
 ```mdx
 <a class="btn btn-primary" href="/docs/getting-started">Get started</a>
@@ -26,10 +26,10 @@ Sizes: <a class="btn btn-primary btn-sm" href="#">Small</a>&nbsp; <a class="btn 
 
 Inline pill labels for marking feature lifecycle state.
 
-<span class="badge-new">New</span>&nbsp;
-<span class="badge-beta">Beta</span>&nbsp;
-<span class="badge-deprecated">Deprecated</span>&nbsp;
-<span class="badge-experimental">Experimental</span>
+<span className="badge-new">New</span>&nbsp;
+<span className="badge-beta">Beta</span>&nbsp;
+<span className="badge-deprecated">Deprecated</span>&nbsp;
+<span className="badge-experimental">Experimental</span>
 
 ```mdx
 ## Slurm integration <span class="badge-new">New</span>
@@ -38,15 +38,15 @@ Inline pill labels for marking feature lifecycle state.
 
 ## HTTP method labels `.method-*`
 
-<span class="method-get">GET</span> `/api/topology/rooms`
+<span className="method-get">GET</span> `/api/topology/rooms`
 
-<span class="method-post">POST</span> `/api/topology/rooms`
+<span className="method-post">POST</span> `/api/topology/rooms`
 
-<span class="method-put">PUT</span> `/api/topology/rooms/{id}`
+<span className="method-put">PUT</span> `/api/topology/rooms/{id}`
 
-<span class="method-patch">PATCH</span> `/api/topology/rooms/{id}`
+<span className="method-patch">PATCH</span> `/api/topology/rooms/{id}`
 
-<span class="method-delete">DELETE</span> `/api/topology/rooms/{id}`
+<span className="method-delete">DELETE</span> `/api/topology/rooms/{id}`
 
 ```mdx
 <span class="method-get">GET</span> `/api/topology/rooms`
@@ -56,16 +56,16 @@ Inline pill labels for marking feature lifecycle state.
 
 | Node | Status |
 | --- | --- |
-| `web-01` | <span class="status-ok">OK</span> |
-| `db-primary` | <span class="status-warn">WARN</span> |
-| `cache-01` | <span class="status-crit">CRIT</span> |
-| `worker-03` | <span class="status-unknown">UNKNOWN</span> |
+| `web-01` | <span className="status-ok">OK</span> |
+| `db-primary` | <span className="status-warn">WARN</span> |
+| `cache-01` | <span className="status-crit">CRIT</span> |
+| `worker-03` | <span className="status-unknown">UNKNOWN</span> |
 
 `.state-ok/warn/crit/unknown` are identical aliases.
 
-## Numbered steps `<ol class="steps">`
+## Numbered steps `<ol className="steps">`
 
-<ol class="steps">
+<ol className="steps">
   <li><strong>Install</strong> — run <code>npm install cosmos-docusaurus-theme</code></li>
   <li><strong>Register</strong> — add <code>'cosmos-docusaurus-theme'</code> to the <code>themes</code> array</li>
   <li><strong>Configure</strong> — set <code>defaultMode: 'dark'</code> in <code>colorMode</code></li>
@@ -79,9 +79,9 @@ Inline pill labels for marking feature lifecycle state.
 </ol>
 ```
 
-## Timeline `<ul class="timeline">`
+## Timeline `<ul className="timeline">`
 
-<ul class="timeline">
+<ul className="timeline">
   <li><strong>v2.1.0</strong> — Buttons, steps, timeline, blockquote, kbd, tooltip, 4-col footer</li>
   <li><strong>v2.0.3</strong> — Full lint suite: ESLint, Prettier, markdownlint, Makefile</li>
   <li><strong>v2.0.2</strong> — Dynamic version badge via <code>injectHtmlTags()</code></li>
@@ -96,9 +96,9 @@ Inline pill labels for marking feature lifecycle state.
 </ul>
 ```
 
-## Check list `<ul class="list-check">`
+## Check list `<ul className="list-check">`
 
-<ul class="list-check">
+<ul className="list-check">
   <li>CSS-only — no JavaScript, no React component swizzling</li>
   <li>Dark-first with full light mode support (Void + Slate palettes)</li>
   <li>Outfit + JetBrains Mono typography</li>
@@ -116,11 +116,11 @@ Inline pill labels for marking feature lifecycle state.
 
 ## Docusaurus built-in badges
 
-<span class="badge badge--primary">primary</span>&nbsp;
-<span class="badge badge--secondary">secondary</span>&nbsp;
-<span class="badge badge--success">stable</span>&nbsp;
-<span class="badge badge--warning">beta</span>&nbsp;
-<span class="badge badge--danger">deprecated</span>
+<span className="badge badge--primary">primary</span>&nbsp;
+<span className="badge badge--secondary">secondary</span>&nbsp;
+<span className="badge badge--success">stable</span>&nbsp;
+<span className="badge badge--warning">beta</span>&nbsp;
+<span className="badge badge--danger">deprecated</span>
 
 ```mdx
 <span class="badge badge--success">stable</span>

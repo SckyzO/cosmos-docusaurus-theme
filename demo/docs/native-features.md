@@ -96,7 +96,7 @@ Destructive, irreversible, or security-critical operation.
 
 ## Cards
 
-<div class="card" style={{padding: '16px 20px', marginBottom: '12px'}}>
+<div className="card" style={{padding: '16px 20px', marginBottom: '12px'}}>
 
 **Styled card**
 
@@ -110,10 +110,10 @@ Border, `border-radius: 16px`, dark shadow, brand border on hover.
 
 ## Tags
 
-<span class="tag">docusaurus</span>&nbsp;
-<span class="tag">css-only</span>&nbsp;
-<span class="tag">dark-first</span>&nbsp;
-<span class="tag">void-palette</span>
+<span className="tag">docusaurus</span>&nbsp;
+<span className="tag">css-only</span>&nbsp;
+<span className="tag">dark-first</span>&nbsp;
+<span className="tag">void-palette</span>
 
 ```mdx
 <span class="tag">docusaurus</span>

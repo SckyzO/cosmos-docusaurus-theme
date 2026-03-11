@@ -9,9 +9,9 @@ Layout and content utilities for enriching documentation pages.
 
 ## Numbered steps `.steps`
 
-Use `<ol class="steps">` for multi-step guides, install sequences, and procedures.
+Use `<ol className="steps">` for multi-step guides, install sequences, and procedures.
 
-<ol class="steps">
+<ol className="steps">
   <li>
     <strong>Install the package</strong><br/>
     Run <code>npm install cosmos-docusaurus-theme</code> in your Docusaurus project.
@@ -39,9 +39,9 @@ Use `<ol class="steps">` for multi-step guides, install sequences, and procedure
 
 ## Timeline `.timeline`
 
-Use `<ul class="timeline">` for changelogs, roadmaps, and versioned event sequences.
+Use `<ul className="timeline">` for changelogs, roadmaps, and versioned event sequences.
 
-<ul class="timeline">
+<ul className="timeline">
   <li><strong>v2.1.0</strong> — Buttons, steps, timeline, blockquote, kbd, tooltip utilities</li>
   <li><strong>v2.0.3</strong> — Makefile, ESLint, Prettier, markdownlint full lint suite</li>
   <li><strong>v2.0.2</strong> — Dynamic version badge via <code>injectHtmlTags()</code>, Dockerfile simplified</li>
@@ -59,9 +59,9 @@ Use `<ul class="timeline">` for changelogs, roadmaps, and versioned event sequen
 
 ## Check list `.list-check`
 
-Use `<ul class="list-check">` for feature lists, requirements, and prerequisites.
+Use `<ul className="list-check">` for feature lists, requirements, and prerequisites.
 
-<ul class="list-check">
+<ul className="list-check">
   <li>Zero JavaScript — pure CSS theme override</li>
   <li>Dark-first with full light mode support</li>
   <li>Outfit + JetBrains Mono typography</li>

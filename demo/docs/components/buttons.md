@@ -9,9 +9,9 @@ sidebar_position: 9
 
 ## Variants
 
-<a class="btn btn-primary" href="#">Primary action</a>&nbsp;
-<a class="btn btn-secondary" href="#">Secondary</a>&nbsp;
-<a class="btn btn-danger" href="#">Danger</a>
+<a className="btn btn-primary" href="#">Primary action</a>&nbsp;
+<a className="btn btn-secondary" href="#">Secondary</a>&nbsp;
+<a className="btn btn-danger" href="#">Danger</a>
 
 ```mdx
 <a class="btn btn-primary" href="/docs/getting-started">Get started</a>
@@ -21,9 +21,9 @@ sidebar_position: 9
 
 ## Sizes
 
-<a class="btn btn-primary btn-sm" href="#">Small</a>&nbsp;
-<a class="btn btn-primary" href="#">Default</a>&nbsp;
-<a class="btn btn-primary btn-lg" href="#">Large</a>
+<a className="btn btn-primary btn-sm" href="#">Small</a>&nbsp;
+<a className="btn btn-primary" href="#">Default</a>&nbsp;
+<a className="btn btn-primary btn-lg" href="#">Large</a>
 
 ```mdx
 <a class="btn btn-primary btn-sm" href="#">Small</a>
@@ -34,8 +34,8 @@ sidebar_position: 9
 ## Typical usage — landing page CTA
 
 <div style={{display:'flex', gap:'12px', flexWrap:'wrap', marginBottom:'1rem'}}>
-  <a class="btn btn-primary btn-lg" href="/docs/getting-started">Quick start →</a>
-  <a class="btn btn-secondary" href="https://github.com/SckyzO/cosmos-docusaurus-theme">View on GitHub</a>
+  <a className="btn btn-primary btn-lg" href="/docs/getting-started">Quick start →</a>
+  <a className="btn btn-secondary" href="https://github.com/SckyzO/cosmos-docusaurus-theme">View on GitHub</a>
 </div>
 
 ```mdx

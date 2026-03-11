@@ -93,8 +93,8 @@ Everything styled automatically — no classes, no configuration required:
 | Code blocks — all languages, titles | Line highlighting supported |
 | Admonitions — Toast style, semantic icons | 5 types: note / tip / info / warning / danger |
 | Tables — full-width desktop, scroll mobile | Automatic |
-| Cards — rounded-2xl, dark shadow, hover | `<div class="card">` |
-| Tags — pill style, brand hover | `<span class="tag">` |
+| Cards — rounded-2xl, dark shadow, hover | `<div className="card">` |
+| Tags — pill style, brand hover | `<span className="tag">` |
 | Details / summary — accordion style | `<details><summary>` |
 | TOC — active pill, H2/H3 hierarchy | Right panel |
 | Blockquote — brand left border | `>` markdown syntax |
@@ -121,7 +121,7 @@ Optional classes for MDX pages — full reference at [Utility Classes](/utility-
 
 ## Requirements
 
-- Docusaurus **3.0+** <span class="badge-new">Required</span>
+- Docusaurus **3.0+** <span className="badge-new">Required</span>
 - Node.js **18+**
 - Docker — optional for zero-install preview
 

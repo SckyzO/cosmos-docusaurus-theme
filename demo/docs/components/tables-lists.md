@@ -11,9 +11,9 @@ Full-width on desktop, horizontally scrollable on mobile.
 
 | Plugin | Status | Description |
 | --- | --- | --- |
-| Simulator | <span class="status-ok">Active</span> | Generates synthetic Prometheus metrics |
-| Slurm | <span class="status-warn">Optional</span> | HPC workload manager integration |
-| NetBox | <span class="badge-beta">Beta</span> | CMDB importer |
+| Simulator | <span className="status-ok">Active</span> | Generates synthetic Prometheus metrics |
+| Slurm | <span className="status-warn">Optional</span> | HPC workload manager integration |
+| NetBox | <span className="badge-beta">Beta</span> | CMDB importer |
 
 ### With alignment
 
@@ -46,9 +46,9 @@ Images get automatic rounded corners and a subtle shadow:
 
 ## Check list `.list-check`
 
-Use `<ul class="list-check">` for feature lists and prerequisites:
+Use `<ul className="list-check">` for feature lists and prerequisites:
 
-<ul class="list-check">
+<ul className="list-check">
   <li>Prometheus scraping configured and reachable</li>
   <li>Topology YAML file created with at least one site and room</li>
   <li>Device templates defined for your hardware</li>

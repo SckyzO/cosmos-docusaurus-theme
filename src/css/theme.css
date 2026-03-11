@@ -527,18 +527,6 @@ code {
   border-color: #1f2937;
 }
 
-/* ── Breadcrumbs — explicit active + separator colors ────────────────────── */
-.breadcrumbs__link--active,
-.breadcrumbs__item--active .breadcrumbs__link {
-  color: var(--ifm-color-primary);
-  /* No background on active breadcrumb — avoids computed #080d25 artifact */
-  background: none;
-}
-
-[data-theme='dark'] .breadcrumbs__link:not(.breadcrumbs__link--active) {
-  color: #9ca3af; /* gray-400 — readable on Void dark without being dominant */
-}
-
 /* ── Right navbar — unified ghost button style ───────────────────────────── */
 /* Both the external links (GitHub, npm…) and the color mode toggle get the  */
 /* same bordered ghost button treatment for visual consistency.               */
@@ -727,51 +715,19 @@ details > :not(summary) {
   border: 1px solid;
   border-radius: 12px;
   padding: 16px;
+  overflow: hidden;
 }
 
 /* Heading — flex row: icon as first item, title text as second.
    align-items: center = perfect icon ↔ title baseline alignment.             */
-[class*='admonitionHeading'] {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 1.25rem !important;
-  font-weight: 600 !important;
-  text-transform: none;
-  letter-spacing: 0;
-  line-height: 1.4;
-  margin-bottom: 8px;
+[class*='admonitionHeading']:not(:last-child) {
+  margin-bottom: 1rem;
 }
 
-/* Icon span — 20px, natural Docusaurus SVG size */
 [class*='admonitionIcon'] {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-}
-
-[class*='admonitionIcon'] svg {
-  width: 20px !important;
-  height: 20px !important;
-  min-width: 20px;
-  max-width: 20px;
-  min-height: 20px;
-  max-height: 20px;
-  display: block;
-  flex-shrink: 0;
-}
-
-/* Force SVG paths to inherit color from parent (overrides any hardcoded fill) */
-[class*='admonitionIcon'] svg path,
-[class*='admonitionIcon'] svg circle,
-[class*='admonitionIcon'] svg rect,
-[class*='admonitionIcon'] svg polyline,
-[class*='admonitionIcon'] svg line {
-  fill: currentcolor;
-  stroke: none;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.4em;
 }
 
 /* Body — indented under title (20px icon + 12px gap = 32px) */
@@ -787,13 +743,6 @@ details > :not(summary) {
 
 [class*='admonitionContent'] > p:last-child {
   margin-bottom: 0;
-}
-
-/* Code blocks inside banners — full width, cancel body indent */
-[class*='admonitionContent'] pre,
-[class*='admonitionContent'] [class*='codeBlockContainer'] {
-  margin-left: -32px;
-  margin-right: 0;
 }
 
 /* ── note (secondary) — gray ─────────────────── */
@@ -1121,27 +1070,44 @@ details > :not(summary) {
   border-bottom-color: rgb(255, 255, 255, 0.08);
 }
 
-/* ── Breadcrumbs ─────────────────────────────────────────────────────────── */
-/* Matches Rackscope "With Icons" variant — ChevronRight separator,
-   brand hover on inactive items, muted color for trail.                      */
+/* ── Breadcrumbs — rewritten from scratch ────────────────────────────────── */
+/* ul flex container → no HTML whitespace between items.
+   Text separator › always vertically aligned (no SVG alignment hell).
+   Active item: brand color. Inactive: muted gray. Hover: brand.              */
 :root {
   --ifm-breadcrumb-color-active: #465fff;
   --ifm-breadcrumb-item-background-active: transparent;
   --ifm-breadcrumb-border-radius: 4px;
-  --ifm-breadcrumb-padding-horizontal: 4px;
+  --ifm-breadcrumb-padding-horizontal: 0;
   --ifm-breadcrumb-padding-vertical: 2px;
-  /* Disable Infima's built-in separator — we supply our own SVG via ::before */
   --ifm-breadcrumb-separator: none;
   --ifm-breadcrumb-separator-size-multiplier: 0;
 }
 
+ul.breadcrumbs {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.breadcrumbs__item {
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Infima injects ::after { content: ' ' } on breadcrumb items — kills it */
+.breadcrumbs__item::after {
+  content: none !important;
+  display: none !important;
+}
+
 .breadcrumbs__link {
-  border-radius: 4px;
   font-size: 0.8125rem;
-  color: #6b7280; /* gray-500 — muted trail */
-  transition:
-    color 0.12s,
-    background 0.12s;
+  color: #6b7280;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: color 0.12s;
 }
 
 .breadcrumbs__link:hover {
@@ -1149,39 +1115,40 @@ details > :not(summary) {
   color: var(--ifm-color-primary);
 }
 
-/* ChevronRight separator — our SVG, Infima's built-in separator disabled via
-   --ifm-breadcrumb-separator: none above. background shorthand resets all
-   sub-properties to prevent Infima's background from bleeding through.       */
-/* Each breadcrumb item is a flex row — ::before becomes a flex item,
-   align-items: center provides true pixel-perfect vertical centering.
-   vertical-align has no effect in flex context and is intentionally omitted. */
-.breadcrumbs__item {
-  display: flex;
-  align-items: center;
+/* Active breadcrumb — brand color, no background */
+.breadcrumbs__link--active,
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--ifm-color-primary);
+  background: none;
 }
 
+/* Separator — ChevronRight SVG, flex item inside flex li → perfectly centered */
 .breadcrumbs__item + .breadcrumbs__item::before {
   content: '';
-  display: block; /* flex item, not inline-block */
+  display: block;
   flex-shrink: 0;
   width: 14px;
   height: 14px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E")
-    center / 14px no-repeat;
-  margin: 0 2px;
-}
-
-[data-theme='dark'] .breadcrumbs__item + .breadcrumbs__item::before {
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E")
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E")
     center / 14px no-repeat;
 }
 
+/* Dark mode */
 [data-theme='dark'] .breadcrumbs__link {
   color: #6b7280;
 }
 
 [data-theme='dark'] .breadcrumbs__link:hover {
   color: #7592ff;
+}
+
+[data-theme='dark'] .breadcrumbs__link--active,
+[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link {
+  color: #7592ff;
+}
+
+[data-theme='dark'] .breadcrumbs__item + .breadcrumbs__item::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E");
 }
 
 /* ── Tabs ────────────────────────────────────────────────────────────────── */
@@ -1541,32 +1508,27 @@ details > :not(summary) {
 /*                   │ sub item                                                */
 /*                   │ sub item                                                */
 
-.theme-doc-sidebar-menu .menu__list .menu__list {
-  margin-left: 8px;
-  padding-left: 12px;
+/* Nested list: border-left aligned under title text (after icon).
+   Measured: title text at x=51.3, sub-list default at x=16.3 → need +35px.
+   !important required to override Infima's margin reset.                     */
+/* Nested sub-menu: border-left aligned under title text (after icon 15px+8px gap).
+   Selector uses direct child (>) to match the DOM: ul>li>ul structure.
+   margin-left: 35px !important needed to override Infima's margin reset.    */
+.menu__list > .menu__list-item > .menu__list {
+  margin-left: 35px !important;
+  padding-left: 8px;
   border-left: 1.5px solid var(--ifm-toc-border-color);
 }
 
-[data-theme='dark'] .theme-doc-sidebar-menu .menu__list .menu__list {
-  border-left-color: #374151; /* Void gray-700 — slightly more visible */
+[data-theme='dark'] .menu__list > .menu__list-item > .menu__list {
+  border-left-color: #374151;
 }
 
-/* Sub-items: slightly smaller + muted when inactive */
-.menu__list .menu__list > .menu__list-item > .menu__link {
+/* Sub-items — normal menu color (not muted), slightly smaller font */
+.menu__list > .menu__list-item > .menu__list > .menu__list-item > .menu__link {
   font-size: 0.8375rem;
-  padding-left: 12px;
-}
-
-.menu__list .menu__list > .menu__list-item > .menu__link:not(.menu__link--active) {
-  color: var(--ifm-font-color-secondary);
-}
-
-[data-theme='dark']
-  .menu__list
-  .menu__list
-  > .menu__list-item
-  > .menu__link:not(.menu__link--active) {
-  color: #71717a;
+  padding-left: 8px;
+  color: var(--ifm-menu-color);
 }
 
 /* ── Category icons — via className in sidebars.js ───────────────────────── */
@@ -2305,7 +2267,7 @@ ul.timeline > li:last-child {
 ul.timeline > li::before {
   content: '';
   position: absolute;
-  left: -1.15rem;
+  left: -1.37rem;
   top: 0.35rem;
   width: 0.65rem;
   height: 0.65rem;

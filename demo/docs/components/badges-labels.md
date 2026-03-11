@@ -9,10 +9,10 @@ sidebar_position: 8
 
 Inline pill badges for marking feature lifecycle state. Monospace uppercase, semantic color.
 
-<span class="badge-new">New</span>&nbsp;
-<span class="badge-beta">Beta</span>&nbsp;
-<span class="badge-deprecated">Deprecated</span>&nbsp;
-<span class="badge-experimental">Experimental</span>
+<span className="badge-new">New</span>&nbsp;
+<span className="badge-beta">Beta</span>&nbsp;
+<span className="badge-deprecated">Deprecated</span>&nbsp;
+<span className="badge-experimental">Experimental</span>
 
 ```mdx
 <span class="badge-new">New</span>
@@ -23,20 +23,20 @@ Inline pill badges for marking feature lifecycle state. Monospace uppercase, sem
 
 ### In headings
 
-## Slurm plugin <span class="badge-new">New</span>
+## Slurm plugin <span className="badge-new">New</span>
 
-## Topology importers <span class="badge-beta">Beta</span>
+## Topology importers <span className="badge-beta">Beta</span>
 
-## Legacy CSV export <span class="badge-deprecated">Deprecated</span>
+## Legacy CSV export <span className="badge-deprecated">Deprecated</span>
 
 ## Docusaurus built-in `.badge--*`
 
-<span class="badge badge--primary">primary</span>&nbsp;
-<span class="badge badge--secondary">secondary</span>&nbsp;
-<span class="badge badge--success">stable</span>&nbsp;
-<span class="badge badge--info">info</span>&nbsp;
-<span class="badge badge--warning">beta</span>&nbsp;
-<span class="badge badge--danger">deprecated</span>
+<span className="badge badge--primary">primary</span>&nbsp;
+<span className="badge badge--secondary">secondary</span>&nbsp;
+<span className="badge badge--success">stable</span>&nbsp;
+<span className="badge badge--info">info</span>&nbsp;
+<span className="badge badge--warning">beta</span>&nbsp;
+<span className="badge badge--danger">deprecated</span>
 
 ```mdx
 <span class="badge badge--success">stable</span>
@@ -48,15 +48,15 @@ Inline pill badges for marking feature lifecycle state. Monospace uppercase, sem
 
 For API reference pages — monospace, semantic colors.
 
-<span class="method-get">GET</span> `/api/topology/rooms`
+<span className="method-get">GET</span> `/api/topology/rooms`
 
-<span class="method-post">POST</span> `/api/topology/rooms`
+<span className="method-post">POST</span> `/api/topology/rooms`
 
-<span class="method-put">PUT</span> `/api/topology/rooms/{id}`
+<span className="method-put">PUT</span> `/api/topology/rooms/{id}`
 
-<span class="method-patch">PATCH</span> `/api/topology/rooms/{id}`
+<span className="method-patch">PATCH</span> `/api/topology/rooms/{id}`
 
-<span class="method-delete">DELETE</span> `/api/topology/rooms/{id}`
+<span className="method-delete">DELETE</span> `/api/topology/rooms/{id}`
 
 ```mdx
 <span class="method-get">GET</span> `/api/topology/rooms`
@@ -69,10 +69,10 @@ For operational runbooks, health check tables, and node status docs.
 
 | Node | Status |
 | --- | --- |
-| `web-01` | <span class="status-ok">OK</span> |
-| `db-primary` | <span class="status-warn">WARN</span> |
-| `cache-01` | <span class="status-crit">CRIT</span> |
-| `worker-03` | <span class="status-unknown">UNKNOWN</span> |
+| `web-01` | <span className="status-ok">OK</span> |
+| `db-primary` | <span className="status-warn">WARN</span> |
+| `cache-01` | <span className="status-crit">CRIT</span> |
+| `worker-03` | <span className="status-unknown">UNKNOWN</span> |
 
 ```mdx
 <span class="status-ok">OK</span>
