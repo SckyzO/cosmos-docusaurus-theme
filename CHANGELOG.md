@@ -7,6 +7,71 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.1.1] — 2026-03-11
+
+### Fixed
+
+- **Breadcrumb**: `ul.breadcrumbs { display: flex }` + `::after { content: none }` — kills Infima's
+  whitespace injection between items; ChevronRight separator correctly aligned as flex child
+- **Sidebar sub-menu**: corrected CSS selector from `.theme-doc-sidebar-menu .menu__list .menu__list`
+  to `.menu__list > .menu__list-item > .menu__list` (direct child `>`) — matches actual DOM depth;
+  `margin-left: 35px !important` aligns `|` line under category title text (measured 51.3px)
+- **Sidebar sub-menu color**: `var(--ifm-menu-color)` instead of muted secondary
+- **Banners (admonitions)**: reverted unsolicited CSS overrides; kept only the two requested rules:
+  `[class*='admonitionHeading']:not(:last-child) { margin-bottom: 1rem }` and
+  `[class*='admonitionIcon'] { display: inline-block; vertical-align: middle; margin-right: 0.4em }`
+- **Demo MDX**: `class=` → `className=` in 7 files (fixes React DOM property warning)
+
+### Added
+
+- **`lint-mdx`** Makefile target — scans `demo/docs/**/*.md` for `class=` outside code blocks,
+  preventing React prop warnings from slipping through the lint pipeline
+- **`demo-check`** Makefile target — verifies 12 key pages exist in the static build output
+  after `make demo-build`; more reliable than HTTP checks against the SPA dev server
+- **`demo/scripts/check-pages.js`** — static build file checker used by `demo-check`
+- `lint` target now includes `lint-mdx` as 5th step
+
+## [2.1.0] — 2026-03-11
+
+### Added
+
+- **Banners (admonitions) — complete redesign**: Dismissible Alert style from Rackscope
+  `ui-library/alerts` — uniform full border (not left-only), semantic icon colors, flex
+  heading layout, `overflow: hidden` clips child shadows at rounded corners
+- **Navbar COSMOS wordmark**: Outfit 700 uppercase, brand indigo `#465fff` / `#7592ff` dark;
+  `|` vertical separator; active nav tab underline indicator matching Tabs style
+- **Tabs**: flat underline (no border-radius), brand active state, proper dark mode vars
+- **Pagination**: `rounded-lg`, monospace uppercase sublabel, brand hover ring
+- **Breadcrumb**: ChevronRight SVG separator (disables Infima default), brand hover
+- **Details accordion**: ChevronRight SVG arrow replacing `›` character
+- **Blockquote**: brand left border + subtle tint
+- **`<kbd>`**: chip style with 3D bottom border
+- **Markdown images**: `border-radius: 12px` + shadow
+- **`<abbr title>`**: styled tooltip on hover
+- **Buttons**: `.btn` `.btn-primary` `.btn-secondary` `.btn-danger` `.btn-sm` `.btn-lg`
+- **Release badges**: `.badge-new` `.badge-beta` `.badge-deprecated` `.badge-experimental`
+- **Steps**: `ol.steps` — numbered procedure with circle indicators
+- **Timeline**: `ul.timeline` — versioned event list with vertical line
+- **Check list**: `ul.list-check` — feature list with checkmarks
+- **Footer CSS**: 4-column grid, responsive (4→2→1), monospace section titles, brand colors
+- **Announcement bar**: gradient indigo, improved link style
+- **Favicon**: cosmos atom SVG injected via `injectHtmlTags()` with opt-out option
+  `injectFavicon: false`; SVG properly `encodeURIComponent()`-encoded for `data:` URI
+- **`validateOptions()`** exported — Docusaurus options validation for the theme plugin
+- **Demo site restructure**: `showcase/` → `components/` (10 pages); dual navbar
+  Documentation | Components; Components sidebar dedicated; `class=` → `className=` in MDX
+
+### Changed
+
+- **Font**: JetBrains Mono → **IBM Plex Mono** (code blocks, kbd, monospace elements)
+- **Sidebar sub-menu**: `var(--ifm-menu-color)` color; `|` line aligned under title text
+- **GitHub Actions**: all SHA-pinned (supply chain hardening); Node 20.19 pinned
+- **CI**: Trivy vulnerability scan before Docker push; `npm ci` in all demo jobs;
+  `publish.yml` runs full `npm run lint` before publish; `workflow_dispatch` default removed
+- **Dockerfile**: `node:20.19-alpine3.21` (was floating `node:20-alpine`)
+- **`demo/package.json`**: `@easyops-cn ^0.55` (was `latest`); `file:..` dependency
+- **package.json**: description updated, removes stale "TailAdmin" reference
+
 ## [2.0.3] — 2026-03-11
 
 ### Added

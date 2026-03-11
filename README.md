@@ -16,32 +16,31 @@
 
 ---
 
-A **CSS-only** Docusaurus theme built from the same design system that powers
-[Rackscope](https://rackscope.dev) — a production monitoring platform for datacenters and HPC clusters.
-Dark-first, opinionated, and refined.
+A **CSS-only** Docusaurus theme built from the same design system that powers [Rackscope](https://rackscope.dev).
+Dark-first, opinionated, pixel-perfect.
 
 - **Void** dark palette — deep neutral blacks (`#030712 / #111827`) with indigo accents
 - **Slate** light palette — warm white surfaces with brown text tones, not cold blue-gray
-- **Outfit** display typeface + **JetBrains Mono** for code
+- **Outfit** display typeface + **IBM Plex Mono** for code
 - Zero JavaScript, no swizzled components — pure CSS override of Docusaurus Infima
-- Every element covered: admonitions, tabs, cards, tables, details, DocSearch, breadcrumbs…
-- Smooth dark/light transition, ghost-button navbar, TOC active state, 4px scrollbar
+- Every native Docusaurus element styled out of the box
+- Utility classes for MDX pages: buttons, badges, steps, timeline, check lists
 
 ---
 
 ## Screenshots
 
-> Dark mode — Void palette — with local search
+> Dark mode — Void palette
 
 ![Dark mode](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/dark.png)
 
-> Search — dropdown styled to Void/Slate palette
-
-![Search active](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/search.png)
-
-> Light mode — Slate palette — admonitions AlertBanner style
+> Light mode — Slate palette
 
 ![Light mode](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/light.png)
+
+> Banners — Dismissible Alert style, semantic icons, full border
+
+![Banners](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/banners.png)
 
 > See all components live → **[sckyzo.github.io/cosmos-docusaurus-theme](https://sckyzo.github.io/cosmos-docusaurus-theme/)**
 
@@ -65,9 +64,17 @@ export default {
 };
 ```
 
-### Try it instantly with Docker
+### Options
 
-Zero npm install required — the full demo runs in a container:
+```js title="docusaurus.config.js"
+themes: [
+  ['cosmos-docusaurus-theme', {
+    injectFavicon: false,  // disable cosmos favicon injection (default: true)
+  }],
+],
+```
+
+### Try it instantly with Docker
 
 ```bash
 git clone https://github.com/SckyzO/cosmos-docusaurus-theme.git
@@ -76,43 +83,77 @@ docker compose up
 # → http://localhost:3000
 ```
 
-Or pull from GitHub Container Registry:
-
-```bash
-docker run -p 3000:3000 ghcr.io/sckyzo/cosmos-docusaurus-theme:latest
-```
-
 ---
 
 ## What's covered
 
-| Element                                      | Styled |
-| -------------------------------------------- | :----: |
-| Navbar + ghost buttons                       |   ✅   |
-| Sidebar + section labels                     |   ✅   |
-| Code blocks (all languages)                  |   ✅   |
-| Admonitions — AlertBanner style, rounded-2xl |   ✅   |
-| Tables                                       |   ✅   |
-| Tabs + synced tabs                           |   ✅   |
-| Details/summary — SectionCard style          |   ✅   |
-| Cards — rounded-2xl + dark shadow            |   ✅   |
-| Tags + Badges                                |   ✅   |
-| Breadcrumbs                                  |   ✅   |
-| TOC — H2/H3 hierarchy + active pill          |   ✅   |
-| Pagination                                   |   ✅   |
-| Announcement bar                             |   ✅   |
-| Back-to-top + Progress bar                   |   ✅   |
-| Algolia DocSearch                            |   ✅   |
-| Smooth dark/light transition                 |   ✅   |
+### Native Docusaurus elements
+
+Styled automatically — no configuration needed:
+
+| Element                                                 | Notes                                         |
+| ------------------------------------------------------- | --------------------------------------------- |
+| Navbar — COSMOS wordmark, ghost buttons, `\|` separator | Brand indigo title                            |
+| Sidebar — icons, sub-menu line, version badge           | `className: 'sidebar-cat-*'` for icons        |
+| Breadcrumb — ChevronRight separator, brand hover        | Automatic                                     |
+| Tabs — flat underline, brand active                     | `import Tabs from '@theme/Tabs'`              |
+| Pagination — monospace sublabel, brand hover            | Automatic prev / next                         |
+| Code blocks — all languages, titles                     | IBM Plex Mono                                 |
+| Banners — Dismissible Alert style, semantic icons       | 5 types: note / tip / info / warning / danger |
+| Tables — full-width desktop, scroll mobile              | Automatic                                     |
+| Cards — rounded-2xl, dark shadow, hover                 | `<div class="card">`                          |
+| Tags                                                    | `<span class="tag">`                          |
+| Details / summary — accordion style                     | `<details><summary>`                          |
+| TOC — H2/H3 hierarchy + active pill                     | Right panel                                   |
+| Blockquote — brand left border                          | `>` markdown syntax                           |
+| `<kbd>` — chip style                                    | `<kbd>Ctrl</kbd>`                             |
+| Images — rounded-xl, shadow                             | `![alt](src)`                                 |
+| `<abbr title>` — tooltip on hover                       | `<abbr title="...">`                          |
+| Back-to-top + progress bar                              | Automatic                                     |
+| Algolia DocSearch                                       | `--docsearch-*` variables                     |
+| Local search (easyops-cn)                               | `--search-local-*` variables                  |
+| Announcement bar                                        | `themeConfig.announcementBar`                 |
+| Smooth dark/light transition                            | Automatic                                     |
+
+### Utility classes
+
+For use in MDX pages (`className=` in JSX context):
+
+| Class                                                                | Purpose                     |
+| -------------------------------------------------------------------- | --------------------------- |
+| `.btn` `.btn-primary` `.btn-secondary` `.btn-danger`                 | CTA buttons                 |
+| `.btn-sm` `.btn-lg`                                                  | Button sizes                |
+| `.badge-new` `.badge-beta` `.badge-deprecated` `.badge-experimental` | Release lifecycle labels    |
+| `.method-get/post/put/delete/patch`                                  | HTTP method labels          |
+| `.status-ok/warn/crit/unknown`                                       | Operational health labels   |
+| `ol.steps`                                                           | Numbered procedure guide    |
+| `ul.timeline`                                                        | Version history / changelog |
+| `ul.list-check`                                                      | Feature checklist           |
+
+---
+
+## Sidebar icons
+
+Add `className: 'sidebar-cat-*'` to any category in `sidebars.js`:
+
+```js title="sidebars.js"
+{
+  type: 'category',
+  label: 'Getting Started',
+  className: 'sidebar-cat-rocket',
+  items: ['getting-started'],
+}
+```
+
+Available icons: `rocket` `monitor` `pencil` `puzzle` `sliders` `folder` `server` `database` `layers` `grid` `code`
 
 ---
 
 ## Customization
 
-Override any CSS variable in your own `custom.css`:
+Override any CSS variable in `custom.css`:
 
 ```css title="src/css/custom.css"
-/* Brand color */
 :root {
   --ifm-color-primary: #e11d48;
   --ifm-color-primary-dark: #be123c;
@@ -122,25 +163,7 @@ Override any CSS variable in your own `custom.css`:
   --ifm-color-primary-lighter: #fda4af;
   --ifm-color-primary-lightest: #ffe4e6;
 }
-
-/* Font */
-:root {
-  --ifm-font-family-base: 'Inter', system-ui, sans-serif;
-}
 ```
-
-See the [Color Tokens](https://sckyzo.github.io/cosmos-docusaurus-theme/color-tokens) page
-for all available tokens (dark + light with visual swatches).
-
----
-
-## Utility classes
-
-| Class                               | Usage                                          |
-| ----------------------------------- | ---------------------------------------------- |
-| `.method-get/post/put/delete/patch` | HTTP method labels (monospace, semantic color) |
-| `.status-ok/warn/crit/unknown`      | Health state labels                            |
-| `.state-ok/warn/crit/unknown`       | Aliases for the above                          |
 
 ---
 
@@ -148,9 +171,10 @@ for all available tokens (dark + light with visual swatches).
 
 ```bash
 make install         # install devDependencies
-make lint            # CSS + JS + Markdown + format check
-make security        # npm audit + no-runtime-deps check
+make lint            # CSS + JS + Markdown + format + MDX class= check
+make security        # npm audit + no-runtime-deps
 make demo-build      # build demo static site
+make demo-check      # verify 12 key pages exist in build output
 make demo-start      # dev server at http://localhost:3000
 make docker-up       # demo in Docker at http://localhost:3000
 ```
