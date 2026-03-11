@@ -10,7 +10,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Docusaurus](https://img.shields.io/badge/Docusaurus-3.x-green?style=flat-square)](https://docusaurus.io)
 
-### [Live Demo](https://sckyzo.github.io/cosmos-docusaurus-theme/) &nbsp;·&nbsp; [Releases](https://github.com/SckyzO/cosmos-docusaurus-theme/releases) &nbsp;·&nbsp; [npm](https://www.npmjs.com/package/cosmos-docusaurus-theme)
+## [Live Demo](https://sckyzo.github.io/cosmos-docusaurus-theme/) &nbsp;·&nbsp; [Releases](https://github.com/SckyzO/cosmos-docusaurus-theme/releases) &nbsp;·&nbsp; [npm](https://www.npmjs.com/package/cosmos-docusaurus-theme)
 
 </div>
 
@@ -86,24 +86,24 @@ docker run -p 3000:3000 ghcr.io/sckyzo/cosmos-docusaurus-theme:latest
 
 ## What's covered
 
-| Element | Styled |
-|---|:---:|
-| Navbar + ghost buttons | ✅ |
-| Sidebar + section labels | ✅ |
-| Code blocks (all languages) | ✅ |
-| Admonitions — AlertBanner style, rounded-2xl | ✅ |
-| Tables | ✅ |
-| Tabs + synced tabs | ✅ |
-| Details/summary — SectionCard style | ✅ |
-| Cards — rounded-2xl + dark shadow | ✅ |
-| Tags + Badges | ✅ |
-| Breadcrumbs | ✅ |
-| TOC — H2/H3 hierarchy + active pill | ✅ |
-| Pagination | ✅ |
-| Announcement bar | ✅ |
-| Back-to-top + Progress bar | ✅ |
-| Algolia DocSearch | ✅ |
-| Smooth dark/light transition | ✅ |
+| Element                                      | Styled |
+| -------------------------------------------- | :----: |
+| Navbar + ghost buttons                       |   ✅   |
+| Sidebar + section labels                     |   ✅   |
+| Code blocks (all languages)                  |   ✅   |
+| Admonitions — AlertBanner style, rounded-2xl |   ✅   |
+| Tables                                       |   ✅   |
+| Tabs + synced tabs                           |   ✅   |
+| Details/summary — SectionCard style          |   ✅   |
+| Cards — rounded-2xl + dark shadow            |   ✅   |
+| Tags + Badges                                |   ✅   |
+| Breadcrumbs                                  |   ✅   |
+| TOC — H2/H3 hierarchy + active pill          |   ✅   |
+| Pagination                                   |   ✅   |
+| Announcement bar                             |   ✅   |
+| Back-to-top + Progress bar                   |   ✅   |
+| Algolia DocSearch                            |   ✅   |
+| Smooth dark/light transition                 |   ✅   |
 
 ---
 
@@ -114,13 +114,13 @@ Override any CSS variable in your own `custom.css`:
 ```css title="src/css/custom.css"
 /* Brand color */
 :root {
-  --ifm-color-primary:         #e11d48;
-  --ifm-color-primary-dark:    #be123c;
-  --ifm-color-primary-darker:  #9f1239;
+  --ifm-color-primary: #e11d48;
+  --ifm-color-primary-dark: #be123c;
+  --ifm-color-primary-darker: #9f1239;
   --ifm-color-primary-darkest: #881337;
-  --ifm-color-primary-light:   #fb7185;
+  --ifm-color-primary-light: #fb7185;
   --ifm-color-primary-lighter: #fda4af;
-  --ifm-color-primary-lightest:#ffe4e6;
+  --ifm-color-primary-lightest: #ffe4e6;
 }
 
 /* Font */
@@ -136,22 +136,23 @@ for all available tokens (dark + light with visual swatches).
 
 ## Utility classes
 
-| Class | Usage |
-|---|---|
+| Class                               | Usage                                          |
+| ----------------------------------- | ---------------------------------------------- |
 | `.method-get/post/put/delete/patch` | HTTP method labels (monospace, semantic color) |
-| `.status-ok/warn/crit/unknown` | Health state labels |
-| `.state-ok/warn/crit/unknown` | Aliases for the above |
+| `.status-ok/warn/crit/unknown`      | Health state labels                            |
+| `.state-ok/warn/crit/unknown`       | Aliases for the above                          |
 
 ---
 
 ## Development
 
 ```bash
-npm install          # stylelint devDeps
-npm run lint         # CSS lint
-
-# Demo site
-cd demo && npm install && npm run start
+make install         # install devDependencies
+make lint            # CSS + JS + Markdown + format check
+make security        # npm audit + no-runtime-deps check
+make demo-build      # build demo static site
+make demo-start      # dev server at http://localhost:3000
+make docker-up       # demo in Docker at http://localhost:3000
 ```
 
 ---

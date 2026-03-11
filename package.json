@@ -35,10 +35,19 @@
   ],
   "scripts": {
     "lint:css": "stylelint \"src/css/**/*.css\"",
-    "lint": "npm run lint:css",
+    "lint:js": "eslint src/",
+    "lint:md": "markdownlint \"*.md\" \"docs/**/*.md\"",
+    "lint:format": "prettier --check \"src/**/*.{js,css}\" \"*.{json,md}\"",
+    "lint": "npm run lint:css && npm run lint:js && npm run lint:md && npm run lint:format",
+    "format": "prettier --write \"src/**/*.{js,css}\" \"*.{json,md}\"",
+    "lint:fix": "stylelint --fix \"src/css/**/*.css\" && eslint --fix src/ && prettier --write \"src/**/*.{js,css}\" \"*.{json,md}\"",
     "audit:check": "npm audit --audit-level=moderate"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "eslint": "^9.39.4",
+    "markdownlint-cli": "^0.48.0",
+    "prettier": "^3.8.1",
     "stylelint": "^17.4.0",
     "stylelint-config-standard": "^40.0.0"
   },

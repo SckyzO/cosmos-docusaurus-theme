@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint:
-    name: Lint CSS
+    name: Lint (CSS + JS + Markdown + Format)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -25,6 +25,15 @@ jobs:
 
       - name: Run CSS linter (stylelint)
         run: npm run lint:css
+
+      - name: Run JS linter (ESLint)
+        run: npm run lint:js
+
+      - name: Run Markdown linter (markdownlint)
+        run: npm run lint:md
+
+      - name: Check formatting (Prettier)
+        run: npm run lint:format
 
   security:
     name: Security audit

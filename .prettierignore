@@ -1,0 +1,8 @@
+node_modules/
+build/
+.docusaurus/
+demo/node_modules/
+demo/build/
+demo/.docusaurus/
+package-lock.json
+demo/package-lock.json

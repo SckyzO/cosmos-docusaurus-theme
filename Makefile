@@ -8,8 +8,9 @@
 # ─────────────────────────────────────────────────────────────────────────────
 
 .DEFAULT_GOAL := all
-.PHONY: all help install lint lint-css security audit demo-install demo-build \
-        demo-start demo-serve demo-clear docker-build docker-up docker-down clean
+.PHONY: all help install lint lint-css lint-js lint-md lint-format format lint-fix \
+        security audit demo-install demo-build demo-start demo-serve demo-clear \
+        docker-build docker-up docker-down clean
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
@@ -36,8 +37,13 @@ help:
 	@echo "    demo-install     Install demo site dependencies"
 	@echo ""
 	@echo "  Lint & Quality"
-	@echo "    lint             Run all linters (CSS)"
+	@echo "    lint             Run all linters (CSS + JS + Markdown + format)"
 	@echo "    lint-css         Run stylelint on src/css/**/*.css"
+	@echo "    lint-js          Run ESLint on src/**/*.js"
+	@echo "    lint-md          Run markdownlint on *.md and docs/**/*.md"
+	@echo "    lint-format      Check formatting with Prettier (no write)"
+	@echo "    format           Auto-fix formatting with Prettier"
+	@echo "    lint-fix         Auto-fix all fixable lint issues (CSS + JS + format)"
 	@echo ""
 	@echo "  Security"
 	@echo "    security         npm audit + no-runtime-deps check"
@@ -70,12 +76,32 @@ demo-install:
 
 # ── Lint & Quality ────────────────────────────────────────────────────────────
 
-## Run stylelint on CSS sources
+## Run stylelint on src/css/**/*.css
 lint-css:
 	$(NPM) run lint:css
 
-## Run all linters
-lint: lint-css
+## Run ESLint on src/**/*.js
+lint-js:
+	$(NPM) run lint:js
+
+## Run markdownlint on *.md and docs/**/*.md
+lint-md:
+	$(NPM) run lint:md
+
+## Check formatting with Prettier (read-only, no write)
+lint-format:
+	$(NPM) run lint:format
+
+## Auto-fix formatting with Prettier
+format:
+	$(NPM) run format
+
+## Auto-fix all fixable issues (stylelint --fix + eslint --fix + prettier --write)
+lint-fix:
+	$(NPM) run lint:fix
+
+## Run all linters: CSS + JS + Markdown + Prettier format check
+lint: lint-css lint-js lint-md lint-format
 
 # ── Security ──────────────────────────────────────────────────────────────────
 

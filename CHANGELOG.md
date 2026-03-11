@@ -85,7 +85,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - **Search position**: add `{ type: 'search' }` in demo config before external links
   (CSS `order` alone insufficient when easyops inserts search last in DOM)
 - **Search CSS selectors**: `[class*="navbarSearchContainer"]` with `order: -1 !important`
-  + `[class*="navbarSearch"]` — previous `.navbar__search` didn't match actual class
+  and `[class*="navbarSearch"]` — previous `.navbar__search` didn't match actual class
 - **Search input styling**: `!important` on bg/color to beat CSS module specificity
 - **CTRL+K**: redesigned as compact transparent pill with clean kbd elements
 - **colorModeToggle**: `order: 1 !important` on wrapper div (not button)

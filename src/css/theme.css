@@ -22,120 +22,121 @@
 /* ── Light mode ──────────────────────────────────────────────────────────── */
 :root {
   /* Brand palette (indigo) — matches Rackscope accent color */
-  --ifm-color-primary:         #465fff;
-  --ifm-color-primary-dark:    #3641f5;
-  --ifm-color-primary-darker:  #2a31d8;
+  --ifm-color-primary: #465fff;
+  --ifm-color-primary-dark: #3641f5;
+  --ifm-color-primary-darker: #2a31d8;
   --ifm-color-primary-darkest: #252dae;
-  --ifm-color-primary-light:   #7592ff;
+  --ifm-color-primary-light: #7592ff;
   --ifm-color-primary-lighter: #9cb9ff;
-  --ifm-color-primary-lightest:#dde9ff;
+  --ifm-color-primary-lightest: #dde9ff;
 
   /* Typography — Outfit + JetBrains Mono, same as Rackscope app */
-  --ifm-font-family-base:      'Outfit', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-base: 'Outfit', system-ui, -apple-system, sans-serif;
   --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', monospace;
-  --ifm-font-size-base:        16.5px;
-  --ifm-font-weight-bold:      600;
-  --ifm-line-height-base:      1.7;
-  --ifm-code-font-size:        93%;
-  --ifm-h1-font-size:          2.2rem;
-  --ifm-h2-font-size:          1.6rem;
-  --ifm-h3-font-size:          1.25rem;
+  --ifm-font-size-base: 16.5px;
+  --ifm-font-weight-bold: 600;
+  --ifm-line-height-base: 1.7;
+  --ifm-code-font-size: 93%;
+  --ifm-h1-font-size: 2.2rem;
+  --ifm-h2-font-size: 1.6rem;
+  --ifm-h3-font-size: 1.25rem;
 
   /* Background — Slate: Tailwind gray-50 / white */
-  --ifm-background-color:          #f9fafb;
-  --ifm-background-surface-color:  #fff;     
+  --ifm-background-color: #f9fafb;
+  --ifm-background-surface-color: #fff;
 
   /* Text — Slate: warm brown tones (not cold blue-gray) */
-  --ifm-font-color-base:      #1a1714;  /* warm near-black */
-  --ifm-font-color-secondary: #5c574f;  /* warm muted brown */
+  --ifm-font-color-base: #1a1714; /* warm near-black */
+  --ifm-font-color-secondary: #5c574f; /* warm muted brown */
 
   /* Navbar — 72px height */
-  --ifm-navbar-height:              72px;
-  --ifm-navbar-background-color:    #fff;
-  --ifm-navbar-shadow:              0px 1px 3px 0px rgb(16,24,40,0.10), 0px 1px 2px 0px rgb(16,24,40,0.06);
-  --ifm-navbar-link-color:          #2c2822;  /* warm dark text */
-  --ifm-navbar-link-hover-color:    #465fff;
-  --ifm-navbar-link-active-color:   #465fff;
+  --ifm-navbar-height: 72px;
+  --ifm-navbar-background-color: #fff;
+  --ifm-navbar-shadow: 0px 1px 3px 0px rgb(16, 24, 40, 0.1), 0px 1px 2px 0px rgb(16, 24, 40, 0.06);
+  --ifm-navbar-link-color: #2c2822; /* warm dark text */
+  --ifm-navbar-link-hover-color: #465fff;
+  --ifm-navbar-link-active-color: #465fff;
 
   /* Sidebar */
-  --ifm-sidebar-width:         280px;
-  --doc-sidebar-width:         280px;
-  --ifm-sidebar-padding:       16px;
-  --docusaurus-collapse-button-bg-hover-color: #f3f4f6; 
+  --ifm-sidebar-width: 280px;
+  --doc-sidebar-width: 280px;
+  --ifm-sidebar-padding: 16px;
+  --docusaurus-collapse-button-bg-hover-color: #f3f4f6;
 
   /* Links */
-  --ifm-link-color:        #465fff;
-  --ifm-link-hover-color:  #3641f5;
+  --ifm-link-color: #465fff;
+  --ifm-link-hover-color: #3641f5;
 
   /* Borders — Slate: Tailwind gray-200 */
-  --ifm-toc-border-color:   #e5e7eb;
-  --ifm-hr-border-color:    #e5e7eb;
+  --ifm-toc-border-color: #e5e7eb;
+  --ifm-hr-border-color: #e5e7eb;
   --ifm-color-emphasis-300: #e5e7eb;
   --ifm-color-emphasis-600: #5c574f;
 
   /* Code blocks */
-  --ifm-code-background:   #f3f4f6;  /* Tailwind gray-100 */
-  --prism-background-color:#1f2937;  /* Void gray-800 — dark code on light pages */
+  --ifm-code-background: #f3f4f6; /* Tailwind gray-100 */
+  --prism-background-color: #1f2937; /* Void gray-800 — dark code on light pages */
   --docusaurus-highlighted-code-line-bg: rgb(70, 95, 255, 0.1);
 
   /* Shadows */
-  --ifm-global-shadow-md:   0px 4px 8px -2px rgb(16,24,40,0.10), 0px 2px 4px -2px rgb(16,24,40,0.06);
-  --ifm-global-shadow-lw:   0px 1px 2px 0px rgb(16,24,40,0.05);
+  --ifm-global-shadow-md:
+    0px 4px 8px -2px rgb(16, 24, 40, 0.1), 0px 2px 4px -2px rgb(16, 24, 40, 0.06);
+  --ifm-global-shadow-lw: 0px 1px 2px 0px rgb(16, 24, 40, 0.05);
 
   /* Menu item spacing */
   --ifm-menu-link-padding-horizontal: 12px;
-  --ifm-menu-link-padding-vertical:   8px;
+  --ifm-menu-link-padding-vertical: 8px;
 
   /* Table */
-  --ifm-table-border-color:    #e5e7eb;
+  --ifm-table-border-color: #e5e7eb;
   --ifm-table-head-background: #f9fafb;
 }
 
 /* ── Dark mode ───────────────────────────────────────────────────────────── */
 [data-theme='dark'] {
   /* Primary — lighter variant for readability on dark backgrounds */
-  --ifm-color-primary:         #7592ff;
-  --ifm-color-primary-dark:    #465fff;
-  --ifm-color-primary-darker:  #3641f5;
+  --ifm-color-primary: #7592ff;
+  --ifm-color-primary-dark: #465fff;
+  --ifm-color-primary-darker: #3641f5;
   --ifm-color-primary-darkest: #2a31d8;
-  --ifm-color-primary-light:   #9cb9ff;
+  --ifm-color-primary-light: #9cb9ff;
   --ifm-color-primary-lighter: #c2d6ff;
-  --ifm-color-primary-lightest:#dde9ff;
+  --ifm-color-primary-lightest: #dde9ff;
   --docusaurus-highlighted-code-line-bg: rgb(117, 146, 255, 0.15);
 
   /* Background — Void: Tailwind gray-950 / gray-900 neutral blacks */
-  --ifm-background-color:         #030712;  /* gray-950 — deepest background */
-  --ifm-background-surface-color: #111827;  /* gray-900 — cards, sidebar, panels */
-  --ifm-navbar-background-color:  #111827;
-  --ifm-footer-background-color:  #030712;
+  --ifm-background-color: #030712; /* gray-950 — deepest background */
+  --ifm-background-surface-color: #111827; /* gray-900 — cards, sidebar, panels */
+  --ifm-navbar-background-color: #111827;
+  --ifm-footer-background-color: #030712;
 
   /* Text — neutral grays, no blue tint */
-  --ifm-font-color-base:      #e5e5e5;  /* neutral light */
-  --ifm-font-color-secondary: #a3a3a3;  /* neutral muted */
+  --ifm-font-color-base: #e5e5e5; /* neutral light */
+  --ifm-font-color-secondary: #a3a3a3; /* neutral muted */
 
   /* Borders — Void: Tailwind gray-800 */
-  --ifm-toc-border-color:   #1f2937;
-  --ifm-hr-border-color:    #1f2937;
+  --ifm-toc-border-color: #1f2937;
+  --ifm-hr-border-color: #1f2937;
   --ifm-color-emphasis-300: #1f2937;
   --ifm-color-emphasis-600: #a3a3a3;
   --ifm-table-border-color: #1f2937;
   --ifm-table-head-background: #111827;
 
   /* Links */
-  --ifm-link-color:       #7592ff;
+  --ifm-link-color: #7592ff;
   --ifm-link-hover-color: #9cb9ff;
 
   /* Navbar */
-  --ifm-navbar-link-color:       #e5e5e5;
+  --ifm-navbar-link-color: #e5e5e5;
   --ifm-navbar-link-hover-color: #7592ff;
-  --ifm-navbar-link-active-color:#7592ff;
+  --ifm-navbar-link-active-color: #7592ff;
   --ifm-navbar-shadow: 0px 1px 0px 0px #1f2937;
 
   /* Code */
   --ifm-code-background: #1f2937;
 
   /* Sidebar collapse button */
-  --docusaurus-collapse-button-bg-hover-color: rgb(255,255,255,0.05);
+  --docusaurus-collapse-button-bg-hover-color: rgb(255, 255, 255, 0.05);
 }
 
 /* ── Global body ─────────────────────────────────────────────────────────── */
@@ -169,11 +170,11 @@ article,
 /* ── Color mode toggle — styled tooltip ──────────────────────────────────── */
 /* The toggle button has title="dark mode" | "light mode" | "system mode"    */
 /* which updates to reflect the current state. We display it as a tooltip.   */
-button[aria-label*="dark and light mode"] {
+button[aria-label*='dark and light mode'] {
   position: relative;
 }
 
-button[aria-label*="dark and light mode"]::after {
+button[aria-label*='dark and light mode']::after {
   content: attr(title);
   position: absolute;
   top: calc(100% + 10px);
@@ -195,7 +196,7 @@ button[aria-label*="dark and light mode"]::after {
 }
 
 /* Arrow pointing up — aligned with button center */
-button[aria-label*="dark and light mode"]::before {
+button[aria-label*='dark and light mode']::before {
   content: '';
   position: absolute;
   top: calc(100% + 4px);
@@ -208,19 +209,19 @@ button[aria-label*="dark and light mode"]::before {
   z-index: 100;
 }
 
-button[aria-label*="dark and light mode"]:hover::after,
-button[aria-label*="dark and light mode"]:hover::before {
+button[aria-label*='dark and light mode']:hover::after,
+button[aria-label*='dark and light mode']:hover::before {
   opacity: 1;
 }
 
-[data-theme='light'] button[aria-label*="dark and light mode"]::after {
+[data-theme='light'] button[aria-label*='dark and light mode']::after {
   background: #fff;
   color: #1a1714;
   border-color: #e5e7eb;
   box-shadow: 0 2px 8px rgb(0, 0, 0, 0.1);
 }
 
-[data-theme='light'] button[aria-label*="dark and light mode"]::before {
+[data-theme='light'] button[aria-label*='dark and light mode']::before {
   border-bottom-color: #e5e7eb;
   border-top-color: transparent;
 }
@@ -248,7 +249,9 @@ button[aria-label*="dark and light mode"]:hover::before {
   font-size: 0.875rem;
   border-radius: 6px;
   padding: 6px 10px;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
 
 .navbar__link:hover {
@@ -258,13 +261,13 @@ button[aria-label*="dark and light mode"]:hover::before {
 
 [data-theme='dark'] .navbar__link:hover {
   color: #7592ff;
-  background: rgb(117, 146, 255, 0.10);
+  background: rgb(117, 146, 255, 0.1);
 }
 
 /* Force direct properties — CSS variables alone are not reliable for navbar
    in all Docusaurus deployment modes (SSG, CSR, file:// local builds). */
 [data-theme='dark'] .navbar {
-  background-color: #111827;   /* Void gray-900 — same as AppHeader dark:bg-gray-dark */
+  background-color: #111827; /* Void gray-900 — same as AppHeader dark:bg-gray-dark */
   border-bottom-color: #1f2937; /* Void gray-800 */
 }
 
@@ -286,8 +289,8 @@ button[aria-label*="dark and light mode"]:hover::before {
 }
 
 [data-theme='dark'] .theme-doc-sidebar-container {
-  border-right-color: #1f2937 !important;  /* Void gray-800 */
-  background: #111827;                      /* Void gray-900 */
+  border-right-color: #1f2937 !important; /* Void gray-800 */
+  background: #111827; /* Void gray-900 */
 }
 
 .theme-doc-sidebar-menu {
@@ -300,14 +303,16 @@ button[aria-label*="dark and light mode"]:hover::before {
 .menu__list-item .menu__link {
   border-radius: 8px;
   font-weight: 500;
-  transition: background 0.12s, color 0.12s;
+  transition:
+    background 0.12s,
+    color 0.12s;
 }
 
 /* Active sidebar link — brand tint bg + brand color text */
 .menu__link--active,
 .menu__link--active:hover {
   background: #ecf3ff;
-  color: #465fff;       
+  color: #465fff;
   font-weight: 600;
 }
 
@@ -323,18 +328,18 @@ button[aria-label*="dark and light mode"]:hover::before {
 }
 
 .menu__list-item-collapsible:hover {
-  background: #f3f4f6;  /* Slate gray-100 */
+  background: #f3f4f6; /* Slate gray-100 */
 }
 
 [data-theme='dark'] .menu__list-item-collapsible:hover {
-  background: rgb(255,255,255,0.05);
+  background: rgb(255, 255, 255, 0.05);
 }
 
 /* Sidebar section separator — exact Rackscope LayoutLabel pattern */
 .sidebar_menu_section_title {
-  font-size: 0.625rem;  /* 10px — matches text-[10px] */
+  font-size: 0.625rem; /* 10px — matches text-[10px] */
   font-weight: 700;
-  letter-spacing: 0.12em;  /* tracking-wider */
+  letter-spacing: 0.12em; /* tracking-wider */
   text-transform: uppercase;
   color: #a3a3a3;
   padding: 12px 12px 4px;
@@ -342,14 +347,16 @@ button[aria-label*="dark and light mode"]:hover::before {
 
 /* ── Code blocks ─────────────────────────────────────────────────────────── */
 .prism-code {
-  border-radius: 12px;  /* rounded-xl — matches Rackscope input/button radius */
+  border-radius: 12px; /* rounded-xl — matches Rackscope input/button radius */
   font-size: 0.8625rem;
   line-height: 1.65;
 }
 
 [data-theme='dark'] .prism-code {
   /* Heavier shadow in dark — matches Rackscope shadow-card pattern */
-  box-shadow: 0 1px 3px rgb(0, 0, 0, 0.4), 0 1px 2px rgb(0, 0, 0, 0.3);
+  box-shadow:
+    0 1px 3px rgb(0, 0, 0, 0.4),
+    0 1px 2px rgb(0, 0, 0, 0.3);
 }
 
 /* Code block title bar */
@@ -417,11 +424,11 @@ code {
 /* Dark mode — Infima applies --ifm-table-head-background directly on th,
    so we must target th explicitly (higher specificity than thead).           */
 [data-theme='dark'] table {
-  border-color: #374151;  /* gray-700 — slightly more visible than gray-800 */
+  border-color: #374151; /* gray-700 — slightly more visible than gray-800 */
 }
 
 [data-theme='dark'] th {
-  background-color: #111827;  /* Void gray-900 */
+  background-color: #111827; /* Void gray-900 */
   color: #e5e5e5;
   border-color: #374151;
 }
@@ -477,7 +484,7 @@ code {
 }
 
 [data-theme='dark'] .breadcrumbs__link:not(.breadcrumbs__link--active) {
-  color: #9ca3af;  /* gray-400 — readable on Void dark without being dominant */
+  color: #9ca3af; /* gray-400 — readable on Void dark without being dominant */
 }
 
 /* ── Right navbar — unified ghost button style ───────────────────────────── */
@@ -499,7 +506,10 @@ code {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    color 0.15s;
 }
 
 .navbar__items--right .navbar__link:hover {
@@ -509,19 +519,21 @@ code {
 }
 
 /* Color mode toggle — match the ghost button style of external links */
-button[aria-label*="dark and light mode"] {
+button[aria-label*='dark and light mode'] {
   border: 1px solid var(--ifm-toc-border-color) !important;
   border-radius: 8px !important;
   padding: 5px 8px !important;
-  transition: border-color 0.15s, background 0.15s !important;
+  transition:
+    border-color 0.15s,
+    background 0.15s !important;
 }
 
-button[aria-label*="dark and light mode"]:hover {
+button[aria-label*='dark and light mode']:hover {
   border-color: var(--ifm-color-primary) !important;
   background: rgb(70, 95, 255, 0.08) !important;
 }
 
-[data-theme='dark'] button[aria-label*="dark and light mode"] {
+[data-theme='dark'] button[aria-label*='dark and light mode'] {
   color: #e5e5e5;
 }
 
@@ -534,7 +546,9 @@ button[aria-label*="dark and light mode"]:hover {
 
 .table-of-contents__link {
   font-size: 0.8125rem;
-  transition: color 0.12s, background 0.12s;
+  transition:
+    color 0.12s,
+    background 0.12s;
   border-radius: 5px;
   padding: 2px 6px;
   margin-left: -7px;
@@ -549,7 +563,7 @@ button[aria-label*="dark and light mode"]:hover {
 }
 
 [data-theme='dark'] .table-of-contents > ul > li > .table-of-contents__link {
-  color: #d1d5db;  /* gray-300 — matches Rackscope sidebar label prominence */
+  color: #d1d5db; /* gray-300 — matches Rackscope sidebar label prominence */
 }
 
 /* H3-level TOC items (nested) — muted secondary */
@@ -559,7 +573,7 @@ button[aria-label*="dark and light mode"]:hover {
 }
 
 [data-theme='dark'] .table-of-contents > ul > li > ul .table-of-contents__link {
-  color: #71717a;  /* zinc-500 — subtle */
+  color: #71717a; /* zinc-500 — subtle */
 }
 
 /* Hover state */
@@ -588,7 +602,7 @@ button[aria-label*="dark and light mode"]:hover {
    dark:border-gray-800 dark:bg-gray-900                                      */
 details {
   border: 1px solid var(--ifm-toc-border-color);
-  border-radius: 16px;  /* rounded-2xl */
+  border-radius: 16px; /* rounded-2xl */
   background: var(--ifm-background-surface-color);
   margin-bottom: 1rem;
   overflow: hidden;
@@ -598,7 +612,9 @@ details {
 [data-theme='dark'] details {
   background: #111827;
   border-color: #1f2937;
-  box-shadow: 0 1px 3px rgb(0, 0, 0, 0.4), 0 1px 2px rgb(0, 0, 0, 0.3);
+  box-shadow:
+    0 1px 3px rgb(0, 0, 0, 0.4),
+    0 1px 2px rgb(0, 0, 0, 0.3);
 }
 
 details > summary {
@@ -649,8 +665,8 @@ details > :not(summary) {
 /* Full all-around border with semantic opacity — matches Rackscope AlertBanner:
    rounded-2xl border px-5 py-3.5 (border + bg at semantic opacity)           */
 .alert {
-  border-radius: 16px;     /* rounded-2xl */
-  border-left-width: 3px;  /* keep accent left stripe */
+  border-radius: 16px; /* rounded-2xl */
+  border-left-width: 3px; /* keep accent left stripe */
   padding: 16px 20px;
 }
 
@@ -723,8 +739,8 @@ details > :not(summary) {
 }
 
 [data-theme='dark'] .footer {
-  background-color: #030712;   /* Void gray-950 — AppLayout dark:bg-gray-950 */
-  border-top-color: #1f2937;   /* Void gray-800 */
+  background-color: #030712; /* Void gray-950 — AppLayout dark:bg-gray-950 */
+  border-top-color: #1f2937; /* Void gray-800 */
   color: #a3a3a3;
 }
 
@@ -741,8 +757,10 @@ details > :not(summary) {
 /* ── Pagination nav ───────────────────────────────────────────────────────── */
 .pagination-nav__link {
   border-color: var(--ifm-toc-border-color);
-  border-radius: 12px;  /* rounded-xl — matches Rackscope button radius */
-  transition: border-color 0.15s, box-shadow 0.15s;
+  border-radius: 12px; /* rounded-xl — matches Rackscope button radius */
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 
 .pagination-nav__link:hover {
@@ -751,7 +769,9 @@ details > :not(summary) {
 }
 
 [data-theme='dark'] .pagination-nav__link:hover {
-  box-shadow: 0 4px 12px rgb(0, 0, 0, 0.3), 0 0 0 2px rgb(117, 146, 255, 0.2);
+  box-shadow:
+    0 4px 12px rgb(0, 0, 0, 0.3),
+    0 0 0 2px rgb(117, 146, 255, 0.2);
 }
 
 /* ── Progress bar (page loading indicator) ───────────────────────────────── */
@@ -781,7 +801,7 @@ details > :not(summary) {
 }
 
 .announcement-close {
-  color: rgb(255,255,255,0.7);
+  color: rgb(255, 255, 255, 0.7);
 }
 
 .announcement-close:hover {
@@ -794,27 +814,29 @@ details > :not(summary) {
 
 /* ── Breadcrumbs ─────────────────────────────────────────────────────────── */
 :root {
-  --ifm-breadcrumb-color-active:            #465fff;
-  --ifm-breadcrumb-item-background-active:  rgb(70, 95, 255, 0.08);
-  --ifm-breadcrumb-border-radius:           6px;
-  --ifm-breadcrumb-padding-horizontal:      8px;
-  --ifm-breadcrumb-padding-vertical:        4px;
+  --ifm-breadcrumb-color-active: #465fff;
+  --ifm-breadcrumb-item-background-active: rgb(70, 95, 255, 0.08);
+  --ifm-breadcrumb-border-radius: 6px;
+  --ifm-breadcrumb-padding-horizontal: 8px;
+  --ifm-breadcrumb-padding-vertical: 4px;
   --ifm-breadcrumb-separator-size-multiplier: 0.6;
 }
 
 .breadcrumbs__link {
   border-radius: 6px;
   font-size: 0.8125rem;
-  transition: background 0.12s, color 0.12s;
+  transition:
+    background 0.12s,
+    color 0.12s;
 }
 
 /* ── Tabs ────────────────────────────────────────────────────────────────── */
 :root {
-  --ifm-tabs-color:               #5c574f;
-  --ifm-tabs-color-active:        #465fff;
+  --ifm-tabs-color: #5c574f;
+  --ifm-tabs-color-active: #465fff;
   --ifm-tabs-color-active-border: #465fff;
-  --ifm-tabs-padding-horizontal:  16px;
-  --ifm-tabs-padding-vertical:    10px;
+  --ifm-tabs-padding-horizontal: 16px;
+  --ifm-tabs-padding-vertical: 10px;
 }
 
 [data-theme='dark'] {
@@ -825,7 +847,9 @@ details > :not(summary) {
   border-radius: 6px 6px 0 0;
   font-weight: 500;
   font-size: 0.875rem;
-  transition: color 0.12s, background 0.12s;
+  transition:
+    color 0.12s,
+    background 0.12s;
 }
 
 .tabs__item:hover:not(.tabs__item--active) {
@@ -836,23 +860,27 @@ details > :not(summary) {
 /* ── Cards ───────────────────────────────────────────────────────────────── */
 :root {
   --ifm-card-background-color: #fff;
-  --ifm-card-border-radius:    16px;  /* rounded-2xl — matches Rackscope SectionCard */
+  --ifm-card-border-radius: 16px; /* rounded-2xl — matches Rackscope SectionCard */
 }
 
 [data-theme='dark'] {
-  --ifm-card-background-color: #111827;  /* Void gray-900 */
+  --ifm-card-background-color: #111827; /* Void gray-900 */
 }
 
 .card {
   border: 1px solid var(--ifm-toc-border-color);
   border-radius: var(--ifm-card-border-radius);
   box-shadow: var(--ifm-global-shadow-lw);
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
 }
 
 /* Dark mode: heavier shadow — matches Rackscope shadow-card pattern */
 [data-theme='dark'] .card {
-  box-shadow: 0 1px 3px rgb(0, 0, 0, 0.4), 0 1px 2px rgb(0, 0, 0, 0.3);
+  box-shadow:
+    0 1px 3px rgb(0, 0, 0, 0.4),
+    0 1px 2px rgb(0, 0, 0, 0.3);
 }
 
 .card:hover {
@@ -861,19 +889,21 @@ details > :not(summary) {
 }
 
 [data-theme='dark'] .card:hover {
-  box-shadow: 0 10px 25px rgb(0, 0, 0, 0.5), 0 4px 6px rgb(0, 0, 0, 0.2);
+  box-shadow:
+    0 10px 25px rgb(0, 0, 0, 0.5),
+    0 4px 6px rgb(0, 0, 0, 0.2);
 }
 
 /* ── Tags ────────────────────────────────────────────────────────────────── */
 :root {
-  --ifm-tag-background:    rgb(70, 95, 255, 0.08);
-  --ifm-tag-color:         #465fff;
-  --ifm-tag-border-color:  rgb(70, 95, 255, 0.2);
+  --ifm-tag-background: rgb(70, 95, 255, 0.08);
+  --ifm-tag-color: #465fff;
+  --ifm-tag-border-color: rgb(70, 95, 255, 0.2);
 }
 
 [data-theme='dark'] {
-  --ifm-tag-background:   rgb(117, 146, 255, 0.1);
-  --ifm-tag-color:        #7592ff;
+  --ifm-tag-background: rgb(117, 146, 255, 0.1);
+  --ifm-tag-color: #7592ff;
   --ifm-tag-border-color: rgb(117, 146, 255, 0.25);
 }
 
@@ -882,7 +912,9 @@ details > :not(summary) {
   font-size: 0.75rem;
   font-weight: 500;
   padding: 2px 10px;
-  transition: background 0.12s, color 0.12s;
+  transition:
+    background 0.12s,
+    color 0.12s;
 }
 
 /* ── Back-to-top button ──────────────────────────────────────────────────── */
@@ -913,8 +945,7 @@ details > :not(summary) {
   /* Modal dropdown */
   --search-local-modal-background: #fff;
   --search-local-modal-shadow:
-    0 8px 24px rgb(0, 0, 0, 0.12),
-    inset 1px 1px 0 0 rgb(255, 255, 255, 0.8);
+    0 8px 24px rgb(0, 0, 0, 0.12), inset 1px 1px 0 0 rgb(255, 255, 255, 0.8);
   /* Result items */
   --search-local-hit-background: #fff;
   --search-local-hit-shadow: 0 1px 3px rgb(0, 0, 0, 0.08);
@@ -932,11 +963,9 @@ details > :not(summary) {
 
 /* Dark mode (Void) */
 [data-theme='dark'] {
-  --search-local-modal-background: #111827;  /* Void gray-900 */
-  --search-local-modal-shadow:
-    inset 1px 1px 0 0 #2c2e40,
-    0 8px 32px rgb(0, 0, 0, 0.5);
-  --search-local-hit-background: #1f2937;    /* Void gray-800 */
+  --search-local-modal-background: #111827; /* Void gray-900 */
+  --search-local-modal-shadow: inset 1px 1px 0 0 #2c2e40, 0 8px 32px rgb(0, 0, 0, 0.5);
+  --search-local-hit-background: #1f2937; /* Void gray-800 */
   --search-local-hit-shadow: none;
   --search-local-hit-color: #e5e5e5;
   --search-local-muted-color: #71717a;
@@ -965,7 +994,10 @@ details > :not(summary) {
   font-size: 0.875rem !important;
   background-color: #f3f4f6 !important;
   color: #1a1714 !important;
-  transition: border-color 0.15s, background-color 0.15s, box-shadow 0.15s !important;
+  transition:
+    border-color 0.15s,
+    background-color 0.15s,
+    box-shadow 0.15s !important;
 }
 
 .navbar__search-input::placeholder {
@@ -985,7 +1017,7 @@ details > :not(summary) {
 .navbar__search-input:focus {
   border-color: var(--ifm-color-primary) !important;
   background-color: var(--ifm-background-surface-color) !important;
-  box-shadow: 0 0 0 3px rgb(70, 95, 255, 0.10) !important;
+  box-shadow: 0 0 0 3px rgb(70, 95, 255, 0.1) !important;
   outline: none !important;
 }
 
@@ -998,14 +1030,14 @@ details > :not(summary) {
    Uses currentColor border so it adapts to both Void and Slate automatically. */
 
 /* Inner hint wrapper: flex row for the two keys */
-[class*="searchHint"]:not([class*="Container"]) {
+[class*='searchHint']:not([class*='Container']) {
   display: inline-flex !important;
   align-items: center !important;
   gap: 0 !important;
 }
 
 /* Each key: ghost chip, no fill, hairline border */
-[class*="searchHintContainer"] kbd {
+[class*='searchHintContainer'] kbd {
   background: transparent !important;
   border: 1px solid var(--ifm-toc-border-color) !important;
   border-radius: 4px !important;
@@ -1021,11 +1053,11 @@ details > :not(summary) {
 }
 
 /* "+" separator between the two kbd elements */
-[class*="searchHintContainer"] kbd + kbd {
+[class*='searchHintContainer'] kbd + kbd {
   margin-left: 2px !important;
 }
 
-[class*="searchHintContainer"] kbd + kbd::before {
+[class*='searchHintContainer'] kbd + kbd::before {
   content: '+';
   font-family: var(--ifm-font-family-monospace) !important;
   font-size: 0.6rem !important;
@@ -1035,8 +1067,8 @@ details > :not(summary) {
 }
 
 /* Whole hint brightens on input focus — discovery moment */
-.navbar__search-input:focus ~ [class*="searchHintContainer"],
-.navbar__search-input:focus + [class*="searchHintContainer"] {
+.navbar__search-input:focus ~ [class*='searchHintContainer'],
+.navbar__search-input:focus + [class*='searchHintContainer'] {
   opacity: 0.9 !important;
 }
 
@@ -1046,8 +1078,8 @@ details > :not(summary) {
    Use !important to beat any default ordering.                                */
 
 /* Search container (class contains 'navbarSearch') — leftmost */
-[class*="navbarSearch"],
-[class*="navbarSearchContainer"] {
+[class*='navbarSearch'],
+[class*='navbarSearchContainer'] {
   order: -1 !important;
 }
 
@@ -1057,47 +1089,47 @@ details > :not(summary) {
 }
 
 /* Color mode toggle wrapper — rightmost */
-[class*="colorModeToggle"] {
+[class*='colorModeToggle'] {
   order: 1 !important;
 }
 
 /* ── Algolia DocSearch ───────────────────────────────────────────────────── */
 /* Applied when Algolia search is configured in themeConfig.algolia.         */
 [data-theme='light'] .DocSearch {
-  --docsearch-primary-color:             #465fff;
-  --docsearch-text-color:                #1a1714;
-  --docsearch-muted-color:               #5c574f;
-  --docsearch-container-background:      rgb(26, 23, 20, 0.6);
-  --docsearch-modal-background:          #fff;
-  --docsearch-modal-shadow:              0px 8px 24px rgb(0, 0, 0, 0.12);
-  --docsearch-searchbox-background:      #f9fafb;
-  --docsearch-searchbox-focus-background:#fff;
-  --docsearch-searchbox-shadow:          inset 0 0 0 2px #465fff;
-  --docsearch-hit-color:                 #1a1714;
-  --docsearch-hit-active-color:          #fff;
-  --docsearch-hit-background:            #fff;
-  --docsearch-hit-shadow:                0 1px 3px rgb(0, 0, 0, 0.08);
-  --docsearch-footer-background:         #f9fafb;
-  --docsearch-logo-color:                #465fff;
+  --docsearch-primary-color: #465fff;
+  --docsearch-text-color: #1a1714;
+  --docsearch-muted-color: #5c574f;
+  --docsearch-container-background: rgb(26, 23, 20, 0.6);
+  --docsearch-modal-background: #fff;
+  --docsearch-modal-shadow: 0px 8px 24px rgb(0, 0, 0, 0.12);
+  --docsearch-searchbox-background: #f9fafb;
+  --docsearch-searchbox-focus-background: #fff;
+  --docsearch-searchbox-shadow: inset 0 0 0 2px #465fff;
+  --docsearch-hit-color: #1a1714;
+  --docsearch-hit-active-color: #fff;
+  --docsearch-hit-background: #fff;
+  --docsearch-hit-shadow: 0 1px 3px rgb(0, 0, 0, 0.08);
+  --docsearch-footer-background: #f9fafb;
+  --docsearch-logo-color: #465fff;
 }
 
 [data-theme='dark'] .DocSearch {
-  --docsearch-primary-color:             #7592ff;
-  --docsearch-text-color:                #e5e5e5;
-  --docsearch-muted-color:               #a3a3a3;
-  --docsearch-container-background:      rgb(3, 7, 18, 0.8);
-  --docsearch-modal-background:          #111827;
-  --docsearch-modal-shadow:              0px 8px 24px rgb(0, 0, 0, 0.4);
-  --docsearch-searchbox-background:      #030712;
-  --docsearch-searchbox-focus-background:#030712;
-  --docsearch-searchbox-shadow:          inset 0 0 0 2px #7592ff;
-  --docsearch-hit-color:                 #e5e5e5;
-  --docsearch-hit-active-color:          #fff;
-  --docsearch-hit-background:            #1f2937;
-  --docsearch-hit-shadow:                none;
-  --docsearch-footer-background:         #030712;
-  --docsearch-key-gradient:              linear-gradient(-26.5deg, #1f2937 0%, #111827 100%);
-  --docsearch-logo-color:                #7592ff;
+  --docsearch-primary-color: #7592ff;
+  --docsearch-text-color: #e5e5e5;
+  --docsearch-muted-color: #a3a3a3;
+  --docsearch-container-background: rgb(3, 7, 18, 0.8);
+  --docsearch-modal-background: #111827;
+  --docsearch-modal-shadow: 0px 8px 24px rgb(0, 0, 0, 0.4);
+  --docsearch-searchbox-background: #030712;
+  --docsearch-searchbox-focus-background: #030712;
+  --docsearch-searchbox-shadow: inset 0 0 0 2px #7592ff;
+  --docsearch-hit-color: #e5e5e5;
+  --docsearch-hit-active-color: #fff;
+  --docsearch-hit-background: #1f2937;
+  --docsearch-hit-shadow: none;
+  --docsearch-footer-background: #030712;
+  --docsearch-key-gradient: linear-gradient(-26.5deg, #1f2937 0%, #111827 100%);
+  --docsearch-logo-color: #7592ff;
 }
 
 /* ── Scrollbar — 4px, matches Rackscope index.css ───────────────────────── */
@@ -1116,11 +1148,11 @@ details > :not(summary) {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a3a3a3;  /* neutral gray-400 */
+  background: #a3a3a3; /* neutral gray-400 */
 }
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb {
-  background: #374151;  /* Void gray-700 */
+  background: #374151; /* Void gray-700 */
 }
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
@@ -1144,7 +1176,7 @@ details > :not(summary) {
 }
 
 [data-theme='dark'] .theme-doc-sidebar-menu .menu__list .menu__list {
-  border-left-color: #374151;  /* Void gray-700 — slightly more visible */
+  border-left-color: #374151; /* Void gray-700 — slightly more visible */
 }
 
 /* Sub-items: slightly smaller + muted when inactive */
@@ -1157,7 +1189,11 @@ details > :not(summary) {
   color: var(--ifm-font-color-secondary);
 }
 
-[data-theme='dark'] .menu__list .menu__list > .menu__list-item > .menu__link:not(.menu__link--active) {
+[data-theme='dark']
+  .menu__list
+  .menu__list
+  > .menu__list-item
+  > .menu__link:not(.menu__link--active) {
   color: #71717a;
 }
 
@@ -1165,12 +1201,12 @@ details > :not(summary) {
 /* Usage: { type: 'category', label: '...', className: 'sidebar-cat-rocket'} */
 /* Icon = black SVG via ::before — inverted in dark mode with filter:invert   */
 
-[class*="sidebar-cat-"] > .menu__list-item-collapsible > .menu__link {
+[class*='sidebar-cat-'] > .menu__list-item-collapsible > .menu__link {
   display: flex;
   align-items: center;
 }
 
-[class*="sidebar-cat-"] > .menu__list-item-collapsible > .menu__link::before {
+[class*='sidebar-cat-'] > .menu__list-item-collapsible > .menu__link::before {
   content: '';
   display: inline-block;
   flex-shrink: 0;
@@ -1185,13 +1221,13 @@ details > :not(summary) {
 }
 
 /* Dark mode — invert the black SVG to white */
-[data-theme='dark'] [class*="sidebar-cat-"] > .menu__list-item-collapsible > .menu__link::before {
+[data-theme='dark'] [class*='sidebar-cat-'] > .menu__list-item-collapsible > .menu__link::before {
   filter: invert(1);
 }
 
 /* Hover + active state — full opacity */
-[class*="sidebar-cat-"] > .menu__list-item-collapsible > .menu__link--active::before,
-[class*="sidebar-cat-"] > .menu__list-item-collapsible:hover > .menu__link::before {
+[class*='sidebar-cat-'] > .menu__list-item-collapsible > .menu__link--active::before,
+[class*='sidebar-cat-'] > .menu__list-item-collapsible:hover > .menu__link::before {
   opacity: 1;
 }
 
@@ -1259,19 +1295,19 @@ details > :not(summary) {
    pinned to the bottom regardless of content height or scroll position. */
 /* Sidebar viewport — flex column so version badge is always pinned at the bottom.
    Targets the CSS-module class via attribute substring match (Docusaurus 3). */
-[class*="sidebarViewport"] {
+[class*='sidebarViewport'] {
   display: flex !important;
   flex-direction: column !important;
 }
 
 /* The scrollable menu fills the available space */
-[class*="sidebarViewport"] > .menu {
+[class*='sidebarViewport'] > .menu {
   flex: 1 !important;
   min-height: 0 !important;
 }
 
 /* Version badge — flex child OUTSIDE the scroll area, always at the very bottom */
-[class*="sidebarViewport"]::after {
+[class*='sidebarViewport']::after {
   content: var(--cosmos-version);
   flex-shrink: 0;
   display: block;
@@ -1287,7 +1323,7 @@ details > :not(summary) {
   border-top: 1px solid #e5e7eb;
 }
 
-[data-theme='dark'] [class*="sidebarViewport"]::after {
+[data-theme='dark'] [class*='sidebarViewport']::after {
   color: #374151;
   background: #111827;
   border-top-color: #1f2937;
@@ -1303,26 +1339,26 @@ details > :not(summary) {
    Uses CSS filter to colorize since Docusaurus SVG paths use hardcoded fill. */
 
 /* Dark mode shows the sun icon */
-[data-theme='dark'] [class*="toggleButton"] [class*="lightToggleIcon"],
-[data-theme='dark'] [class*="toggleButton"] svg {
+[data-theme='dark'] [class*='toggleButton'] [class*='lightToggleIcon'],
+[data-theme='dark'] [class*='toggleButton'] svg {
   filter: drop-shadow(0 0 0 #fbbf24) sepia(1) saturate(4) hue-rotate(5deg) brightness(1.1);
 }
 
 /* Light mode shows the moon icon */
-[data-theme='light'] [class*="toggleButton"] [class*="darkToggleIcon"],
-[data-theme='light'] [class*="toggleButton"] svg {
+[data-theme='light'] [class*='toggleButton'] [class*='darkToggleIcon'],
+[data-theme='light'] [class*='toggleButton'] svg {
   filter: drop-shadow(0 0 0 #7592ff) sepia(1) saturate(6) hue-rotate(190deg) brightness(0.9);
 }
 
 /* ── 2. TOCCollapsible (mobile table of contents) ────────────────────────── */
-[class*="tocCollapsible"] {
+[class*='tocCollapsible'] {
   border: 1px solid var(--ifm-toc-border-color);
   border-radius: 10px;
   margin-bottom: 1rem;
   overflow: hidden;
 }
 
-[class*="tocCollapsibleButton"] {
+[class*='tocCollapsibleButton'] {
   background: none;
   border: none;
   cursor: pointer;
@@ -1337,42 +1373,47 @@ details > :not(summary) {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ifm-font-color-secondary);
-  transition: color 0.12s, background 0.12s;
+  transition:
+    color 0.12s,
+    background 0.12s;
 }
 
-[class*="tocCollapsibleButton"]:hover {
+[class*='tocCollapsibleButton']:hover {
   color: var(--ifm-color-primary);
   background: rgb(70, 95, 255, 0.04);
 }
 
-[class*="tocCollapsibleContent"] {
+[class*='tocCollapsibleContent'] {
   border-top: 1px solid var(--ifm-toc-border-color);
   padding: 8px 0;
 }
 
 /* ── 3. DocCard / DocCardList (auto-generated category index pages) ─────── */
-[class*="cardContainer"] > article.card {
+[class*='cardContainer'] > article.card {
   height: 100%;
-  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s,
+    transform 0.15s;
 }
 
-[class*="cardContainer"] > article.card:hover {
+[class*='cardContainer'] > article.card:hover {
   transform: translateY(-2px);
 }
 
-[class*="cardContainer"] a {
+[class*='cardContainer'] a {
   text-decoration: none;
 }
 
 /* Category card title */
-[class*="cardContainer"] h2 {
+[class*='cardContainer'] h2 {
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 /* Category card description */
-[class*="cardContainer"] p {
+[class*='cardContainer'] p {
   font-size: 0.875rem;
   color: var(--ifm-font-color-secondary);
   margin: 0;
@@ -1380,21 +1421,23 @@ details > :not(summary) {
 
 /* ── 4. Announcement bar close button ────────────────────────────────────── */
 .announcement-close,
-[class*="announcementBarClose"] {
+[class*='announcementBarClose'] {
   color: rgb(255, 255, 255, 0.65) !important;
   border-radius: 6px !important;
   padding: 4px 6px !important;
-  transition: color 0.15s, background 0.15s !important;
+  transition:
+    color 0.15s,
+    background 0.15s !important;
 }
 
 .announcement-close:hover,
-[class*="announcementBarClose"]:hover {
+[class*='announcementBarClose']:hover {
   color: #fff !important;
   background: rgb(255, 255, 255, 0.12) !important;
 }
 
 /* ── 5. Tag pages (/docs/tags/...) ───────────────────────────────────────── */
-[class*="tagList"] {
+[class*='tagList'] {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -1403,8 +1446,8 @@ details > :not(summary) {
   margin: 0;
 }
 
-[class*="tagItem"] a,
-[class*="tag_"] {
+[class*='tagItem'] a,
+[class*='tag_'] {
   display: inline-flex;
   align-items: center;
   border: 1px solid var(--ifm-toc-border-color);
@@ -1414,11 +1457,14 @@ details > :not(summary) {
   font-weight: 500;
   color: var(--ifm-font-color-base);
   text-decoration: none;
-  transition: border-color 0.15s, background 0.15s, color 0.15s;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    color 0.15s;
 }
 
-[class*="tagItem"] a:hover,
-[class*="tag_"]:hover {
+[class*='tagItem'] a:hover,
+[class*='tag_']:hover {
   border-color: var(--ifm-color-primary);
   background: rgb(70, 95, 255, 0.06);
   color: var(--ifm-color-primary);
@@ -1431,7 +1477,9 @@ details > :not(summary) {
     min-width: 0 !important;
     width: 2rem !important;
     padding-left: 2rem !important;
-    transition: width 0.25s ease, background-color 0.15s !important;
+    transition:
+      width 0.25s ease,
+      background-color 0.15s !important;
   }
 
   .navbar__search-input:focus {
@@ -1454,9 +1502,9 @@ details > :not(summary) {
   .prism-code,
   .alert,
   .card,
-  [class*="sidebar-cat-"] > .menu__list-item-collapsible > .menu__link,
-  [class*="toggleIcon"],
-  button[aria-label*="dark and light mode"] {
+  [class*='sidebar-cat-'] > .menu__list-item-collapsible > .menu__link,
+  [class*='toggleIcon'],
+  button[aria-label*='dark and light mode'] {
     transition: none !important;
     animation: none !important;
   }
@@ -1516,7 +1564,7 @@ details > :not(summary) {
 }
 
 .status-unknown {
-  color: #6b7280;  /* neutral gray-500 */
+  color: #6b7280; /* neutral gray-500 */
   font-weight: 600;
 }
 
