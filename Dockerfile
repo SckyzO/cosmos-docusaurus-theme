@@ -1,7 +1,12 @@
-FROM node:20-alpine
+FROM node:20.19-alpine3.21
 
-WORKDIR /app
+# Copy the theme package first so demo/package.json can resolve "file:.." locally
+WORKDIR /workspace
+COPY src/ ./src/
+COPY package.json ./
 
+# Install demo dependencies — resolves file:.. to /workspace
+WORKDIR /workspace/demo
 COPY demo/package.json demo/package-lock.json* ./
 RUN npm install --legacy-peer-deps
 

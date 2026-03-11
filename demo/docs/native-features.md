@@ -1,43 +1,46 @@
 ---
 id: native-features
-title: Native Docusaurus Features
-sidebar_position: 6
+title: What's Styled
+sidebar_position: 4
 ---
 
-# Native Docusaurus Features
+# What's Styled
 
-The theme provides styling for every native Docusaurus element — no configuration
-required beyond installing the package.
+Every native Docusaurus element covered by the theme — applied automatically, no configuration needed.
 
-## Progress bar
+## Navbar
 
-The page-loading progress bar uses the brand color automatically.
+The navbar uses a **ghost button** style for all right-side items. The brand area has a `|` separator and the site title renders as a wordmark.
 
-```css title="Controlled by"
---docusaurus-progress-bar-color: #465fff;  /* light */
---docusaurus-progress-bar-color: #7592ff;  /* dark  */
+Key CSS variables:
+```css
+--ifm-navbar-height:           72px;
+--ifm-navbar-link-color:       /* warm dark / neutral light */
+--ifm-navbar-link-hover-color: #465fff;
 ```
 
-## Announcement bar
+## Sidebar
 
-Add a dismissible banner above the navbar via `themeConfig.announcementBar`:
+Category icons via `className` in `sidebars.js`:
 
-```js title="docusaurus.config.js"
-themeConfig: {
-  announcementBar: {
-    id: 'new-release',
-    content: '🎉 v1.1.0 is out — <a href="/changelog">see what\'s new</a>',
-    isCloseable: true,
-  },
-},
+```js title="sidebars.js"
+{
+  type: 'category',
+  label: 'Getting Started',
+  className: 'sidebar-cat-rocket',   // ← adds Lucide rocket icon
+  items: ['getting-started'],
+}
 ```
 
-The theme styles it with the brand indigo color (dark-friendly).
+Available icon classes: `rocket` `monitor` `pencil` `puzzle` `sliders` `folder` `server` `database` `layers` `grid` `code`
 
-## Breadcrumbs
+The sidebar also shows a **version badge** pinned at the bottom (reads from `package.json` automatically via `injectHtmlTags()`).
 
-Automatically styled — active crumb uses brand color, items have a subtle hover
-background. No configuration needed.
+## Breadcrumb
+
+ChevronRight separator, brand hover, muted inactive trail — automatic.
+
+> Home › Documentation › Getting Started
 
 ## Tabs
 
@@ -45,78 +48,115 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-  <TabItem value="npm" label="npm" default>
+  <TabItem value="dark" label="Dark (Void)" default>
 
-```bash
-npm install cosmos-docusaurus-theme
+Deep neutral blacks — Tailwind gray-950/900/800, no blue tint.
+
+```css
+--ifm-background-color: #030712;         /* gray-950 */
+--ifm-background-surface-color: #111827; /* gray-900 */
 ```
 
   </TabItem>
-  <TabItem value="yarn" label="yarn">
+  <TabItem value="light" label="Light (Slate)">
 
-```bash
-yarn add cosmos-docusaurus-theme
-```
+Warm white backgrounds — brown-toned text, not cold blue-gray.
 
-  </TabItem>
-  <TabItem value="pnpm" label="pnpm">
-
-```bash
-pnpm add cosmos-docusaurus-theme
+```css
+--ifm-background-color: #f9fafb;  /* gray-50 */
+--ifm-font-color-base:  #1a1714;  /* warm near-black */
 ```
 
   </TabItem>
 </Tabs>
 
+## Admonitions
+
+Five types — Toast Showcase style: icon pinned left, semantic title, muted body.
+
+:::note
+Neutral context — supplementary information that's good to know.
+:::
+
+:::tip
+Best practice, shortcut, or recommended approach.
+:::
+
+:::info
+Contextual guidance or clarification.
+:::
+
+:::warning
+May cause unexpected behavior or data loss if ignored.
+:::
+
+:::danger
+Destructive, irreversible, or security-critical operation.
+:::
+
 ## Cards
 
 <div class="card" style={{padding: '16px 20px', marginBottom: '12px'}}>
 
-**Card title**
+**Styled card**
 
-Cards get a styled border, rounded corners and a hover effect.
-Use them freely in MDX with `<div class="card">`.
-
-</div>
-
-<div class="card" style={{padding: '16px 20px'}}>
-
-**Another card**
-
-Hover me to see the brand-colored border appear.
+Border, `border-radius: 16px`, dark shadow, brand border on hover.
 
 </div>
+
+```mdx
+<div class="card">Your content</div>
+```
 
 ## Tags
 
 <span class="tag">docusaurus</span>&nbsp;
 <span class="tag">css-only</span>&nbsp;
-<span class="tag">dark-mode</span>&nbsp;
-<span class="tag">infima</span>
+<span class="tag">dark-first</span>&nbsp;
+<span class="tag">void-palette</span>
 
 ```mdx
 <span class="tag">docusaurus</span>
-<span class="tag">css-only</span>
 ```
 
-## Back-to-top button
+## Details / Accordion
 
-Enabled in `docusaurus.config.js`:
+<details>
+<summary>How does the sidebar version badge work?</summary>
+
+The `injectHtmlTags()` lifecycle hook reads `version` from `package.json` and injects:
+```html
+<style>:root { --cosmos-version: "cosmos v2.x.x"; }</style>
+```
+The sidebar `::after` pseudo-element uses `content: var(--cosmos-version)`.
+
+</details>
+
+## Keyboard keys
+
+Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to open search. Press <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> for the command palette.
+
+## Blockquote
+
+> Use `>` markdown syntax for pull-quotes and context notes. The left border uses the brand indigo accent.
+
+## Progress bar & announcement bar
 
 ```js title="docusaurus.config.js"
 themeConfig: {
-  docs: {
-    sidebar: { autoCollapseCategories: true },
+  announcementBar: {
+    id: 'v2',
+    content: 'cosmos v2.1.0 is out — <a href="/changelog">see what\'s new</a>',
+    isCloseable: true,
   },
-}
+},
 ```
 
-The button uses the brand indigo color and has a hover state.
+The progress bar color is controlled by `--docusaurus-progress-bar-color` (set to brand indigo automatically).
 
 ## Algolia DocSearch
 
-When Algolia is configured, the search modal is fully styled to match the
-Void/Slate palette — dark modal, brand-colored highlights.
+All `--docsearch-*` variables are overridden for both Void (dark) and Slate (light). No extra configuration needed.
 
 ```js title="docusaurus.config.js"
 themeConfig: {
@@ -127,5 +167,3 @@ themeConfig: {
   },
 },
 ```
-
-All `--docsearch-*` variables are overridden for both light and dark modes.

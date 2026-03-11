@@ -1,7 +1,7 @@
 {
   "name": "cosmos-docusaurus-theme",
-  "version": "2.0.2",
-  "description": "A clean, dark-first Docusaurus CSS theme based on TailAdmin design system with Outfit typography",
+  "version": "2.0.3",
+  "description": "A clean, dark-first Docusaurus theme aligned with the Rackscope Void/Slate design system — CSS-only, IBM Plex Mono + Outfit typography, brand indigo",
   "keywords": [
     "docusaurus",
     "docusaurus-theme",

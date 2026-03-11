@@ -66,10 +66,16 @@ const config = {
         defaultMode: 'dark',
         respectPrefersColorScheme: true,
       },
+      announcementBar: {
+        id: 'cosmos-v210',
+        content:
+          'cosmos <strong>v2.1.0</strong> is out — <a href="/utility-classes">see all new utility classes →</a>',
+        isCloseable: true,
+      },
       navbar: {
-        title: 'Cosmos Theme',
+        title: 'cosmos',
         logo: {
-          alt: 'Cosmos Theme Logo',
+          alt: 'cosmos logo',
           src: 'img/logo.svg',
           href: '/',
         },
@@ -79,6 +85,12 @@ const config = {
             sidebarId: 'docs',
             position: 'left',
             label: 'Documentation',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'components',
+            position: 'left',
+            label: 'Components',
           },
           // Search positioned explicitly before external links
           { type: 'search', position: 'right' },
@@ -94,28 +106,19 @@ const config = {
           },
         ],
       },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Theme',
-            items: [
-              { label: 'Getting Started', to: '/' },
-              { label: 'Customization', to: '/customization' },
-              { label: 'Components', to: '/components' },
-            ],
-          },
-          {
-            title: 'Resources',
-            items: [
-              { label: 'GitHub', href: 'https://github.com/SckyzO/cosmos-docusaurus-theme' },
-              { label: 'npm', href: 'https://www.npmjs.com/package/cosmos-docusaurus-theme' },
-              { label: 'Issues', href: 'https://github.com/SckyzO/cosmos-docusaurus-theme/issues' },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} SckyzO. MIT License.`,
-      },
+      // Footer disabled on the demo site — the theme ships full footer CSS support.
+      // To enable a 4-column footer, add a footer block here. Example:
+      //
+      // footer: {
+      //   style: 'dark',
+      //   links: [
+      //     { title: 'Docs',       items: [...] },
+      //     { title: 'Components', items: [...] },
+      //     { title: 'Resources',  items: [...] },
+      //     { title: 'Community',  items: [...] },
+      //   ],
+      //   copyright: `© ${new Date().getFullYear()} Your Project. MIT License.`,
+      // },
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,

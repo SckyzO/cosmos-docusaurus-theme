@@ -17,7 +17,7 @@
  */
 
 /* ── Outfit + JetBrains Mono fonts ───────────────────────────────────────── */
-@import 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap';
 
 /* ── Light mode ──────────────────────────────────────────────────────────── */
 :root {
@@ -32,7 +32,7 @@
 
   /* Typography — Outfit + JetBrains Mono, same as Rackscope app */
   --ifm-font-family-base: 'Outfit', system-ui, -apple-system, sans-serif;
-  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', monospace;
+  --ifm-font-family-monospace: 'IBM Plex Mono', 'Fira Code', monospace;
   --ifm-font-size-base: 16.5px;
   --ifm-font-weight-bold: 600;
   --ifm-line-height-base: 1.7;
@@ -234,14 +234,37 @@ button[aria-label*='dark and light mode']:hover::before {
 }
 
 .navbar__brand {
-  font-weight: 700;
-  font-size: 1.125rem;
-  letter-spacing: -0.3px;
   gap: 10px;
+  /* Thin vertical separator between brand area and nav items */
+  margin-right: 8px;
+  padding-right: 16px;
+  position: relative;
+}
+
+.navbar__brand::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 18px;
+  width: 1px;
+  background: var(--ifm-toc-border-color);
+}
+
+/* Brand title — Outfit 700 uppercase wordmark, brand indigo */
+.navbar__title {
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #465fff;
 }
 
 .navbar__logo {
   height: 28px;
+  border-radius: 6px;
 }
 
 .navbar__link {
@@ -259,16 +282,41 @@ button[aria-label*='dark and light mode']:hover::before {
   color: var(--ifm-color-primary);
 }
 
+/* Active nav item — underline indicator matching Tabs style */
+.navbar__link--active {
+  color: #465fff !important;
+  position: relative;
+}
+
+.navbar__link--active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 8px;
+  right: 8px;
+  height: 2px;
+  background: #465fff;
+  border-radius: 2px 2px 0 0;
+}
+
 [data-theme='dark'] .navbar__link:hover {
   color: #7592ff;
   background: rgb(117, 146, 255, 0.1);
 }
 
+[data-theme='dark'] .navbar__link--active {
+  color: #7592ff !important;
+}
+
+[data-theme='dark'] .navbar__link--active::after {
+  background: #7592ff;
+}
+
 /* Force direct properties — CSS variables alone are not reliable for navbar
    in all Docusaurus deployment modes (SSG, CSR, file:// local builds). */
 [data-theme='dark'] .navbar {
-  background-color: #111827; /* Void gray-900 — same as AppHeader dark:bg-gray-dark */
-  border-bottom-color: #1f2937; /* Void gray-800 */
+  background-color: #111827;
+  border-bottom-color: #1f2937;
 }
 
 [data-theme='dark'] .navbar__link {
@@ -277,6 +325,14 @@ button[aria-label*='dark and light mode']:hover::before {
 
 [data-theme='dark'] .navbar__brand {
   color: #e5e5e5;
+}
+
+[data-theme='dark'] .navbar__brand::after {
+  background: #1f2937; /* Void gray-800 */
+}
+
+[data-theme='dark'] .navbar__title {
+  color: #7592ff;
 }
 
 [data-theme='dark'] .navbar__toggle {
@@ -479,10 +535,6 @@ code {
   background: none;
 }
 
-[data-theme='dark'] .breadcrumbs__item + .breadcrumbs__item::before {
-  color: #374151;
-}
-
 [data-theme='dark'] .breadcrumbs__link:not(.breadcrumbs__link--active) {
   color: #9ca3af; /* gray-400 — readable on Void dark without being dominant */
 }
@@ -639,12 +691,17 @@ details > summary:hover {
 }
 
 details > summary::before {
-  content: '›';
-  font-size: 1.125rem;
-  color: var(--ifm-color-primary);
-  transition: transform 0.2s;
-  display: inline-block;
-  line-height: 1;
+  content: '';
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23465fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E")
+    center / 16px no-repeat;
+  transition: transform 0.2s ease;
+}
+
+[data-theme='dark'] details > summary::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237592ff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E");
 }
 
 details[open] > summary::before {
@@ -661,59 +718,188 @@ details > :not(summary) {
   border-top-color: #1f2937;
 }
 
-/* ── Admonitions — AlertBanner style (Rackscope rounded-2xl full border) ─── */
-/* Full all-around border with semantic opacity — matches Rackscope AlertBanner:
-   rounded-2xl border px-5 py-3.5 (border + bg at semantic opacity)           */
+/* ── Banners — Dismissible Alert style (Rackscope ui-library/alerts) ─────── */
+/* flex items-start gap-3 rounded-xl bg p-4 — full border all sides,
+   icon aligned with title baseline, icon = title color.                      */
+
+/* Reset Infima's left-border-only pattern → uniform 1px border all sides */
 .alert {
-  border-radius: 16px; /* rounded-2xl */
-  border-left-width: 3px; /* keep accent left stripe */
-  padding: 16px 20px;
+  border: 1px solid;
+  border-radius: 12px;
+  padding: 16px;
 }
 
-/* Light mode — 5% opacity bg, 25% opacity border */
-.alert--info {
-  border-color: rgb(70, 95, 255, 0.25);
-  border-left-color: #465fff;
-  background: rgb(70, 95, 255, 0.05);
+/* Heading — flex row: icon as first item, title text as second.
+   align-items: center = perfect icon ↔ title baseline alignment.             */
+[class*='admonitionHeading'] {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.4;
+  margin-bottom: 8px;
 }
 
+/* Icon span — 20px, natural Docusaurus SVG size */
+[class*='admonitionIcon'] {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+[class*='admonitionIcon'] svg {
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  max-height: 20px;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Force SVG paths to inherit color from parent (overrides any hardcoded fill) */
+[class*='admonitionIcon'] svg path,
+[class*='admonitionIcon'] svg circle,
+[class*='admonitionIcon'] svg rect,
+[class*='admonitionIcon'] svg polyline,
+[class*='admonitionIcon'] svg line {
+  fill: currentcolor;
+  stroke: none;
+}
+
+/* Body — indented under title (20px icon + 12px gap = 32px) */
+[class*='admonitionContent'] {
+  font-size: 0.875rem;
+  padding-left: 32px;
+  color: #4b5563;
+}
+
+[data-theme='dark'] [class*='admonitionContent'] {
+  color: #9ca3af;
+}
+
+[class*='admonitionContent'] > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Code blocks inside banners — full width, cancel body indent */
+[class*='admonitionContent'] pre,
+[class*='admonitionContent'] [class*='codeBlockContainer'] {
+  margin-left: -32px;
+  margin-right: 0;
+}
+
+/* ── note (secondary) — gray ─────────────────── */
+.alert--secondary {
+  border-color: rgb(107, 114, 128, 0.25);
+  background: rgb(107, 114, 128, 0.05);
+}
+
+.alert--secondary [class*='admonitionHeading'],
+.alert--secondary [class*='admonitionIcon'] {
+  color: #374151; /* gray-700 */
+}
+
+/* ── tip (success) — green ───────────────────── */
 .alert--success {
-  border-color: rgb(18, 183, 106, 0.25);
-  border-left-color: #12b76a;
+  border-color: rgb(18, 183, 106, 0.3);
   background: rgb(18, 183, 106, 0.05);
 }
 
+.alert--success [class*='admonitionHeading'],
+.alert--success [class*='admonitionIcon'] {
+  color: #0b7a45; /* success-700 */
+}
+
+/* ── info — brand indigo ─────────────────────── */
+.alert--info {
+  border-color: rgb(70, 95, 255, 0.3);
+  background: rgb(70, 95, 255, 0.05);
+}
+
+.alert--info [class*='admonitionHeading'],
+.alert--info [class*='admonitionIcon'] {
+  color: #252dae; /* brand-700 */
+}
+
+/* ── warning — amber ─────────────────────────── */
 .alert--warning {
-  border-color: rgb(247, 144, 9, 0.25);
-  border-left-color: #f79009;
+  border-color: rgb(247, 144, 9, 0.3);
   background: rgb(247, 144, 9, 0.05);
 }
 
+.alert--warning [class*='admonitionHeading'],
+.alert--warning [class*='admonitionIcon'] {
+  color: #92400e; /* warning-700 / amber-800 */
+}
+
+/* ── danger — red ────────────────────────────── */
 .alert--danger {
-  border-color: rgb(240, 68, 56, 0.25);
-  border-left-color: #f04438;
+  border-color: rgb(240, 68, 56, 0.3);
   background: rgb(240, 68, 56, 0.05);
 }
 
-/* Dark mode — 8% opacity bg, 20% opacity border (subtle on dark surface) */
-[data-theme='dark'] .alert--info {
-  border-color: rgb(70, 95, 255, 0.2);
-  background: rgb(70, 95, 255, 0.08);
+.alert--danger [class*='admonitionHeading'],
+.alert--danger [class*='admonitionIcon'] {
+  color: #991b1b; /* error-700 */
+}
+
+/* ── Dark mode — bg opacity up, lighter title+icon ── */
+[data-theme='dark'] .alert--secondary {
+  border-color: rgb(107, 114, 128, 0.2);
+  background: rgb(107, 114, 128, 0.08);
+}
+
+[data-theme='dark'] .alert--secondary [class*='admonitionHeading'],
+[data-theme='dark'] .alert--secondary [class*='admonitionIcon'] {
+  color: #9ca3af; /* gray-400 */
 }
 
 [data-theme='dark'] .alert--success {
-  border-color: rgb(18, 183, 106, 0.2);
+  border-color: rgb(18, 183, 106, 0.25);
   background: rgb(18, 183, 106, 0.08);
 }
 
+[data-theme='dark'] .alert--success [class*='admonitionHeading'],
+[data-theme='dark'] .alert--success [class*='admonitionIcon'] {
+  color: #34d399; /* emerald-400 */
+}
+
+[data-theme='dark'] .alert--info {
+  border-color: rgb(70, 95, 255, 0.25);
+  background: rgb(70, 95, 255, 0.08);
+}
+
+[data-theme='dark'] .alert--info [class*='admonitionHeading'],
+[data-theme='dark'] .alert--info [class*='admonitionIcon'] {
+  color: #7592ff; /* brand-400 */
+}
+
 [data-theme='dark'] .alert--warning {
-  border-color: rgb(247, 144, 9, 0.2);
+  border-color: rgb(247, 144, 9, 0.25);
   background: rgb(247, 144, 9, 0.08);
 }
 
+[data-theme='dark'] .alert--warning [class*='admonitionHeading'],
+[data-theme='dark'] .alert--warning [class*='admonitionIcon'] {
+  color: #fbbf24; /* amber-400 */
+}
+
 [data-theme='dark'] .alert--danger {
-  border-color: rgb(240, 68, 56, 0.2);
+  border-color: rgb(240, 68, 56, 0.25);
   background: rgb(240, 68, 56, 0.08);
+}
+
+[data-theme='dark'] .alert--danger [class*='admonitionHeading'],
+[data-theme='dark'] .alert--danger [class*='admonitionIcon'] {
+  color: #f87171; /* red-400 */
 }
 
 /* ── Badges ───────────────────────────────────────────────────────────────── */
@@ -732,16 +918,108 @@ details > :not(summary) {
   color: white;
 }
 
-/* ── Footer ───────────────────────────────────────────────────────────────── */
+/* ── Footer — 4-column layout ────────────────────────────────────────────── */
+/* Designed for sites that enable a footer in docusaurus.config.js.
+   Supports 2, 3, or 4 columns — centered, max-width contained.
+   The demo site has footer disabled — see docusaurus.config.js comments.    */
 .footer {
   border-top: 1px solid var(--ifm-toc-border-color);
   font-size: 0.875rem;
+  padding: 48px 0 32px;
 }
 
 [data-theme='dark'] .footer {
-  background-color: #030712; /* Void gray-950 — AppLayout dark:bg-gray-950 */
-  border-top-color: #1f2937; /* Void gray-800 */
+  background-color: #030712;
+  border-top-color: #1f2937;
   color: #a3a3a3;
+}
+
+/* Container — centered, max-width for readability */
+.footer .container {
+  max-width: 960px !important;
+}
+
+/* Links grid — 4 equal columns, responsive */
+.footer__links {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 2rem !important;
+  margin-bottom: 40px !important;
+}
+
+@media (width <= 768px) {
+  .footer__links {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (width <= 480px) {
+  .footer__links {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Column */
+.footer__col {
+  min-width: 0 !important;
+}
+
+/* Column title */
+.footer__title {
+  font-family: var(--ifm-font-family-monospace) !important;
+  font-size: 0.62rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--ifm-color-primary) !important;
+  margin-bottom: 16px !important;
+  opacity: 0.9;
+}
+
+[data-theme='dark'] .footer__title {
+  color: #7592ff !important;
+}
+
+/* Footer links */
+.footer__link-item {
+  display: block;
+  font-size: 0.875rem !important;
+  color: var(--ifm-font-color-secondary) !important;
+  padding: 3px 0;
+  transition:
+    color 0.12s,
+    opacity 0.12s !important;
+  opacity: 0.8;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary) !important;
+  opacity: 1 !important;
+  text-decoration: none !important;
+}
+
+[data-theme='dark'] .footer__link-item {
+  color: #6b7280 !important;
+}
+
+[data-theme='dark'] .footer__link-item:hover {
+  color: #7592ff !important;
+}
+
+/* Copyright bar */
+.footer__copyright {
+  font-family: var(--ifm-font-family-monospace) !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.04em !important;
+  border-top: 1px solid var(--ifm-toc-border-color) !important;
+  padding-top: 20px !important;
+  text-align: center;
+  color: var(--ifm-font-color-secondary) !important;
+  opacity: 0.5;
+}
+
+[data-theme='dark'] .footer__copyright {
+  border-top-color: #1f2937 !important;
 }
 
 /* Force dark background on main page body — mirrors AppLayout dark:bg-gray-950 */
@@ -755,23 +1033,44 @@ details > :not(summary) {
 }
 
 /* ── Pagination nav ───────────────────────────────────────────────────────── */
+/* Matches Rackscope PageActionButton style — rounded-lg, brand hover ring.   */
 .pagination-nav__link {
   border-color: var(--ifm-toc-border-color);
-  border-radius: 12px; /* rounded-xl — matches Rackscope button radius */
+  border-radius: 8px; /* rounded-lg */
   transition:
     border-color 0.15s,
+    background 0.15s,
     box-shadow 0.15s;
 }
 
 .pagination-nav__link:hover {
   border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 3px rgb(70, 95, 255, 0.12);
+  background: rgb(70, 95, 255, 0.04);
+  box-shadow: 0 0 0 3px rgb(70, 95, 255, 0.1);
 }
 
 [data-theme='dark'] .pagination-nav__link:hover {
+  background: rgb(117, 146, 255, 0.06);
   box-shadow:
     0 4px 12px rgb(0, 0, 0, 0.3),
-    0 0 0 2px rgb(117, 146, 255, 0.2);
+    0 0 0 2px rgb(117, 146, 255, 0.15);
+}
+
+/* Sublabel — monospace uppercase like sidebar section labels */
+.pagination-nav__sublabel {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  opacity: 0.8;
+  margin-bottom: 4px;
+}
+
+.pagination-nav__label {
+  font-weight: 600;
+  font-size: 0.9375rem;
 }
 
 /* ── Progress bar (page loading indicator) ───────────────────────────────── */
@@ -785,23 +1084,32 @@ details > :not(summary) {
 
 /* ── Announcement bar ─────────────────────────────────────────────────────── */
 .announcement {
-  background-color: #465fff;
+  /* Dark band with subtle gradient — more refined than flat indigo */
+  background: linear-gradient(135deg, #2a31d8 0%, #465fff 60%, #3641f5 100%);
   color: #fff;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
+  letter-spacing: 0.01em;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.1);
 }
 
 .announcement a {
-  color: #dde9ff;
-  text-decoration: underline;
+  color: #c2d6ff;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgb(194, 214, 255, 0.4);
+  transition:
+    color 0.12s,
+    border-color 0.12s;
 }
 
 .announcement a:hover {
   color: #fff;
+  border-bottom-color: #fff;
 }
 
 .announcement-close {
-  color: rgb(255, 255, 255, 0.7);
+  color: rgb(255, 255, 255, 0.6);
 }
 
 .announcement-close:hover {
@@ -809,30 +1117,78 @@ details > :not(summary) {
 }
 
 [data-theme='dark'] .announcement {
-  background-color: #3641f5;
+  background: linear-gradient(135deg, #1e2a6e 0%, #2a31d8 60%, #252dae 100%);
+  border-bottom-color: rgb(255, 255, 255, 0.08);
 }
 
 /* ── Breadcrumbs ─────────────────────────────────────────────────────────── */
+/* Matches Rackscope "With Icons" variant — ChevronRight separator,
+   brand hover on inactive items, muted color for trail.                      */
 :root {
   --ifm-breadcrumb-color-active: #465fff;
-  --ifm-breadcrumb-item-background-active: rgb(70, 95, 255, 0.08);
-  --ifm-breadcrumb-border-radius: 6px;
-  --ifm-breadcrumb-padding-horizontal: 8px;
-  --ifm-breadcrumb-padding-vertical: 4px;
-  --ifm-breadcrumb-separator-size-multiplier: 0.6;
+  --ifm-breadcrumb-item-background-active: transparent;
+  --ifm-breadcrumb-border-radius: 4px;
+  --ifm-breadcrumb-padding-horizontal: 4px;
+  --ifm-breadcrumb-padding-vertical: 2px;
+  /* Disable Infima's built-in separator — we supply our own SVG via ::before */
+  --ifm-breadcrumb-separator: none;
+  --ifm-breadcrumb-separator-size-multiplier: 0;
 }
 
 .breadcrumbs__link {
-  border-radius: 6px;
+  border-radius: 4px;
   font-size: 0.8125rem;
+  color: #6b7280; /* gray-500 — muted trail */
   transition:
-    background 0.12s,
-    color 0.12s;
+    color 0.12s,
+    background 0.12s;
+}
+
+.breadcrumbs__link:hover {
+  background: transparent;
+  color: var(--ifm-color-primary);
+}
+
+/* ChevronRight separator — our SVG, Infima's built-in separator disabled via
+   --ifm-breadcrumb-separator: none above. background shorthand resets all
+   sub-properties to prevent Infima's background from bleeding through.       */
+/* Each breadcrumb item is a flex row — ::before becomes a flex item,
+   align-items: center provides true pixel-perfect vertical centering.
+   vertical-align has no effect in flex context and is intentionally omitted. */
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumbs__item + .breadcrumbs__item::before {
+  content: '';
+  display: block; /* flex item, not inline-block */
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E")
+    center / 14px no-repeat;
+  margin: 0 2px;
+}
+
+[data-theme='dark'] .breadcrumbs__item + .breadcrumbs__item::before {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 18l6-6-6-6'/%3E%3C/svg%3E")
+    center / 14px no-repeat;
+}
+
+[data-theme='dark'] .breadcrumbs__link {
+  color: #6b7280;
+}
+
+[data-theme='dark'] .breadcrumbs__link:hover {
+  color: #7592ff;
 }
 
 /* ── Tabs ────────────────────────────────────────────────────────────────── */
+/* Matches Rackscope Tabs component — flat underline, brand active,
+   no background fill on hover (clean underline-only style).                  */
 :root {
-  --ifm-tabs-color: #5c574f;
+  --ifm-tabs-color: #6b7280; /* gray-500 — inactive */
   --ifm-tabs-color-active: #465fff;
   --ifm-tabs-color-active-border: #465fff;
   --ifm-tabs-padding-horizontal: 16px;
@@ -840,21 +1196,37 @@ details > :not(summary) {
 }
 
 [data-theme='dark'] {
-  --ifm-tabs-color: #a3a3a3;
+  --ifm-tabs-color: #6b7280;
+  --ifm-tabs-color-active: #7592ff;
+  --ifm-tabs-color-active-border: #7592ff;
+}
+
+/* Tab strip — bottom border as container */
+.tabs {
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  gap: 0;
 }
 
 .tabs__item {
-  border-radius: 6px 6px 0 0;
+  border-radius: 0; /* flat underline — no top radius */
+  border-bottom: 2px solid transparent;
   font-weight: 500;
   font-size: 0.875rem;
+  color: var(--ifm-tabs-color);
   transition:
     color 0.12s,
-    background 0.12s;
+    border-color 0.12s;
+}
+
+.tabs__item--active {
+  border-bottom-color: var(--ifm-tabs-color-active-border);
+  color: var(--ifm-tabs-color-active);
 }
 
 .tabs__item:hover:not(.tabs__item--active) {
-  background: var(--ifm-breadcrumb-item-background-active);
-  color: var(--ifm-color-primary);
+  background: transparent; /* no fill — clean underline style */
+  color: var(--ifm-font-color-base);
+  border-bottom-color: var(--ifm-toc-border-color);
 }
 
 /* ── Cards ───────────────────────────────────────────────────────────────── */
@@ -1510,6 +1882,129 @@ details > :not(summary) {
   }
 }
 
+/* ── Blockquote ──────────────────────────────────────────────────────────── */
+/* Left-border accent + subtle tint — used for callouts, pull-quotes, notes. */
+.markdown blockquote {
+  border-left: 3px solid var(--ifm-color-primary);
+  background: rgb(70, 95, 255, 0.04);
+  border-radius: 0 8px 8px 0;
+  padding: 12px 20px;
+  margin: 1rem 0;
+  color: var(--ifm-font-color-secondary);
+  font-style: italic;
+}
+
+[data-theme='dark'] .markdown blockquote {
+  background: rgb(70, 95, 255, 0.07);
+  border-left-color: #7592ff;
+}
+
+.markdown blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Keyboard key <kbd> ──────────────────────────────────────────────────── */
+/* Chip-style keyboard key — matches Rackscope monospace chip design.        */
+kbd {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-toc-border-color);
+  border-bottom-width: 2px; /* subtle 3D shadow effect */
+  border-radius: 5px;
+  color: var(--ifm-font-color-base);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 1px 7px;
+  white-space: nowrap;
+}
+
+[data-theme='dark'] kbd {
+  background: #1f2937; /* Void gray-800 */
+  border-color: #374151; /* gray-700 */
+}
+
+/* ── Markdown images ─────────────────────────────────────────────────────── */
+/* Rounded corners + shadow — consistent with Rackscope card aesthetics.     */
+.markdown img {
+  border-radius: 12px;
+  box-shadow: var(--ifm-global-shadow-md);
+  max-width: 100%;
+}
+
+[data-theme='dark'] .markdown img {
+  box-shadow:
+    0 4px 16px rgb(0, 0, 0, 0.4),
+    0 1px 4px rgb(0, 0, 0, 0.3);
+}
+
+/* ── Horizontal rule ─────────────────────────────────────────────────────── */
+hr {
+  border: none;
+  border-top: 1px solid var(--ifm-toc-border-color);
+  margin: 2rem 0;
+}
+
+/* ── Tooltip — abbr[title] + .tooltip utility ────────────────────────────── */
+/* Styled tooltip for abbreviations and .tooltip utility class.
+   Design: dark chip (Void gray-900), brand arrow, smooth fade.              */
+abbr[title] {
+  position: relative;
+  cursor: help;
+  text-decoration: underline dotted rgb(70, 95, 255, 0.5);
+  text-underline-offset: 3px;
+}
+
+abbr[title]::after {
+  content: attr(title);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111827; /* Void gray-900 */
+  color: #e5e5e5;
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  padding: 5px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 200;
+  box-shadow: 0 4px 12px rgb(0, 0, 0, 0.3);
+}
+
+abbr[title]::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #111827;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 200;
+}
+
+abbr[title]:hover::after,
+abbr[title]:hover::before {
+  opacity: 1;
+}
+
+[data-theme='light'] abbr[title]::after {
+  background: #1f2937;
+}
+
+[data-theme='light'] abbr[title]::before {
+  border-top-color: #1f2937;
+}
+
 /* =============================================================================
    OPTIONAL UTILITY CLASSES
    The following classes are not required for the theme to work.
@@ -1587,4 +2082,263 @@ details > :not(summary) {
 .state-unknown {
   color: #6b7280;
   font-weight: 600;
+}
+
+/* ── Release / version badges ─────────────────────────────────────────────── */
+/* Inline pill badges for marking feature lifecycle state in documentation.   */
+/* Usage: <span class="badge-new">New</span>                                  */
+
+.badge-new,
+.badge-beta,
+.badge-deprecated,
+.badge-experimental {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  vertical-align: middle;
+  border: 1px solid;
+}
+
+.badge-new {
+  background: rgb(70, 95, 255, 0.1);
+  color: #465fff;
+  border-color: rgb(70, 95, 255, 0.25);
+}
+
+.badge-beta {
+  background: rgb(247, 144, 9, 0.1);
+  color: #f79009;
+  border-color: rgb(247, 144, 9, 0.25);
+}
+
+.badge-deprecated {
+  background: rgb(107, 114, 128, 0.1);
+  color: #6b7280;
+  border-color: rgb(107, 114, 128, 0.25);
+}
+
+.badge-experimental {
+  background: rgb(155, 89, 182, 0.1);
+  color: #9b59b6;
+  border-color: rgb(155, 89, 182, 0.25);
+}
+
+/* Dark mode — slightly brighter colors for readability on Void surface */
+[data-theme='dark'] .badge-new {
+  background: rgb(70, 95, 255, 0.15);
+  color: #7592ff;
+  border-color: rgb(70, 95, 255, 0.3);
+}
+
+[data-theme='dark'] .badge-beta {
+  background: rgb(247, 144, 9, 0.12);
+  color: #fbbf24;
+  border-color: rgb(247, 144, 9, 0.3);
+}
+
+[data-theme='dark'] .badge-deprecated {
+  background: rgb(107, 114, 128, 0.12);
+  color: #9ca3af;
+  border-color: rgb(107, 114, 128, 0.3);
+}
+
+[data-theme='dark'] .badge-experimental {
+  background: rgb(155, 89, 182, 0.12);
+  color: #c084fc;
+  border-color: rgb(155, 89, 182, 0.3);
+}
+
+/* ── Buttons (.btn-*) ─────────────────────────────────────────────────────── */
+/* Utility button classes for use in MDX docs pages and landing sections.     */
+/* Usage: <a class="btn btn-primary" href="/docs/getting-started">Start</a>   */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none !important;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    box-shadow 0.15s,
+    color 0.15s;
+}
+
+.btn-primary {
+  background: #465fff;
+  color: #fff !important;
+  border-color: #465fff;
+}
+
+.btn-primary:hover {
+  background: #3641f5;
+  border-color: #3641f5;
+  box-shadow: 0 0 0 3px rgb(70, 95, 255, 0.2);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ifm-font-color-base) !important;
+  border-color: var(--ifm-toc-border-color);
+}
+
+.btn-secondary:hover {
+  border-color: var(--ifm-color-primary);
+  background: rgb(70, 95, 255, 0.05);
+  color: var(--ifm-color-primary) !important;
+}
+
+.btn-danger {
+  background: rgb(240, 68, 56, 0.07);
+  color: #f04438 !important;
+  border-color: rgb(240, 68, 56, 0.3);
+}
+
+.btn-danger:hover {
+  background: rgb(240, 68, 56, 0.12);
+  border-color: #f04438;
+}
+
+.btn-sm {
+  padding: 5px 12px;
+  font-size: 0.8125rem;
+}
+
+.btn-lg {
+  padding: 12px 24px;
+  font-size: 1rem;
+}
+
+/* ── Numbered steps (.steps) ──────────────────────────────────────────────── */
+/* For multi-step guides, install sequences, and how-to procedures.           */
+/* Usage: <ol class="steps"><li>Step one</li><li>Step two</li></ol>            */
+
+ol.steps {
+  counter-reset: step-counter;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+ol.steps > li {
+  counter-increment: step-counter;
+  position: relative;
+  padding-left: 3rem;
+  padding-bottom: 1.5rem;
+  border-left: 2px solid var(--ifm-toc-border-color);
+  margin-left: 1rem;
+}
+
+ol.steps > li:last-child {
+  border-left-color: transparent;
+  padding-bottom: 0;
+}
+
+ol.steps > li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: -1.1rem;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  background: #465fff;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px var(--ifm-background-color);
+}
+
+[data-theme='dark'] ol.steps > li::before {
+  background: #7592ff;
+}
+
+/* ── Timeline (.timeline) ─────────────────────────────────────────────────── */
+/* For changelogs, roadmaps, and versioned event sequences.                   */
+/* Usage: <ul class="timeline"><li><strong>v1.0</strong> Released</li></ul>   */
+
+ul.timeline {
+  position: relative;
+  list-style: none;
+  padding: 0 0 0 1.5rem;
+  margin: 1.5rem 0;
+}
+
+ul.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.4rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: var(--ifm-toc-border-color);
+}
+
+ul.timeline > li {
+  position: relative;
+  padding-bottom: 1.25rem;
+  padding-left: 1rem;
+}
+
+ul.timeline > li:last-child {
+  padding-bottom: 0;
+}
+
+ul.timeline > li::before {
+  content: '';
+  position: absolute;
+  left: -1.15rem;
+  top: 0.35rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: var(--ifm-color-primary);
+  border: 2px solid var(--ifm-background-color);
+  box-shadow: 0 0 0 2px var(--ifm-color-primary);
+}
+
+/* ── Check list (.list-check) ─────────────────────────────────────────────── */
+/* Checkmark list — useful for feature lists, requirements, and prerequisites. */
+/* Usage: <ul class="list-check"><li>Feature one</li><li>Feature two</li></ul> */
+
+ul.list-check {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+ul.list-check > li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+ul.list-check > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2312b76a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  background-size: 16px;
+  background-repeat: no-repeat;
 }

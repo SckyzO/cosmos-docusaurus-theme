@@ -72,7 +72,7 @@ install:
 
 ## Install demo site dependencies
 demo-install:
-	cd $(DEMO_DIR) && $(NPM) install --legacy-peer-deps
+	cd $(DEMO_DIR) && $(NPM) ci --legacy-peer-deps
 
 # ── Lint & Quality ────────────────────────────────────────────────────────────
 

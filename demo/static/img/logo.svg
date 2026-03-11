@@ -1,6 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <!-- Cosmos theme logo: abstract layered squares representing a theme/layers concept -->
-  <rect x="4" y="4" width="24" height="24" rx="6" fill="#465fff" opacity="0.15"/>
-  <rect x="8" y="8" width="16" height="16" rx="4" fill="#465fff" opacity="0.35"/>
-  <rect x="12" y="12" width="8" height="8" rx="2" fill="#465fff"/>
+  <!-- Cosmos atom logo — matches favicon injected by injectHtmlTags() -->
+  <rect width="32" height="32" rx="7" fill="#465fff"/>
+  <circle cx="16" cy="16" r="6.5" fill="none" stroke="white" stroke-width="1.5" opacity="0.45"/>
+  <circle cx="16" cy="16" r="2.5" fill="white"/>
+  <circle cx="16" cy="9"  r="1.5" fill="white"/>
+  <circle cx="22" cy="20" r="1.5" fill="white"/>
+  <circle cx="10" cy="20" r="1.5" fill="white"/>
 </svg>

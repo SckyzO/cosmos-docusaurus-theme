@@ -7,9 +7,12 @@ slug: /
 
 # Getting Started
 
-**Cosmos Docusaurus Theme** is a CSS-only theme plugin for [Docusaurus 3](https://docusaurus.io).
-Aligned with the Rackscope Void/Slate design system — no component swizzling,
-no JavaScript, just clean CSS.
+**cosmos** is a CSS-only theme plugin for [Docusaurus 3](https://docusaurus.io) — aligned with the Rackscope Void/Slate design system.
+No component swizzling, no JavaScript, pure CSS.
+
+:::tip Zero config
+Drop it in and every Docusaurus native element is styled automatically. No `customCss` entry needed.
+:::
 
 ## Installation
 
@@ -44,16 +47,15 @@ pnpm add cosmos-docusaurus-theme
 git clone https://github.com/SckyzO/cosmos-docusaurus-theme.git
 cd cosmos-docusaurus-theme
 docker compose up
+# → http://localhost:3000
 ```
-
-Open **http://localhost:3000** — the full demo site runs with the theme.
 
   </TabItem>
 </Tabs>
 
 ## Setup
 
-Register as a Docusaurus theme plugin in `docusaurus.config.js`:
+Add the theme to the `themes` array in `docusaurus.config.js`:
 
 ```js title="docusaurus.config.js"
 export default {
@@ -68,55 +70,61 @@ export default {
 };
 ```
 
-The CSS is injected automatically via `getClientModules()`. No `customCss` entry needed.
-
-:::tip Alternative — direct CSS import
+:::info Alternative — direct CSS import
+If you prefer to import the CSS manually instead of using the theme plugin:
 ```js
-theme: {
-  customCss: [require.resolve('cosmos-docusaurus-theme/css/theme.css')],
-}
+presets: [['classic', { theme: { customCss: ['cosmos-docusaurus-theme/css/theme.css'] } }]]
 ```
 :::
 
-## Docker
-
-The repository ships a `docker-compose.yml` for a zero-install preview
-of the theme with the full demo site.
-
-```bash
-# Clone and start
-git clone https://github.com/SckyzO/cosmos-docusaurus-theme.git
-cd cosmos-docusaurus-theme
-docker compose up
-
-# Or pull the image directly (once published)
-docker run -p 3000:3000 ghcr.io/sckyzo/cosmos-docusaurus-theme:latest
-```
-
-Open **[http://localhost:3000](http://localhost:3000)** — the full component showcase runs instantly.
-
 ## What's included
 
-| Element | Styled |
-|---|:---:|
-| Navbar + toggle button | ✅ |
-| Sidebar + section labels | ✅ |
-| Code blocks (all languages) | ✅ |
-| Admonitions — AlertBanner style | ✅ |
-| Tables | ✅ |
-| Tabs + Details/summary | ✅ |
-| Cards | ✅ |
-| Tags + Badges | ✅ |
-| Pagination | ✅ |
-| Breadcrumbs | ✅ |
-| Footer | ✅ |
-| Back-to-top + Progress bar | ✅ |
-| Algolia DocSearch | ✅ |
-| Smooth dark/light transition | ✅ |
-| Scrollbar (4px) | ✅ |
+### Native Docusaurus elements
+
+Everything styled automatically — no classes, no configuration required:
+
+| Element | Notes |
+| --- | --- |
+| Navbar — ghost buttons, brand, toggle | COSMOS wordmark · brand indigo title |
+| Sidebar — icons, sub-menu line, version badge | `className: 'sidebar-cat-*'` for icons |
+| Breadcrumb — ChevronRight separator | Automatic, brand hover |
+| Tabs — flat underline, brand active | `import Tabs from '@theme/Tabs'` |
+| Pagination — sublabel monospace, brand hover | Automatic prev / next |
+| Code blocks — all languages, titles | Line highlighting supported |
+| Admonitions — Toast style, semantic icons | 5 types: note / tip / info / warning / danger |
+| Tables — full-width desktop, scroll mobile | Automatic |
+| Cards — rounded-2xl, dark shadow, hover | `<div class="card">` |
+| Tags — pill style, brand hover | `<span class="tag">` |
+| Details / summary — accordion style | `<details><summary>` |
+| TOC — active pill, H2/H3 hierarchy | Right panel |
+| Blockquote — brand left border | `>` markdown syntax |
+| `<kbd>` — chip style, 3D border | `<kbd>Ctrl</kbd>` |
+| Images — rounded-xl, shadow | `![alt](src)` in markdown |
+| `<abbr title>` — tooltip on hover | `<abbr title="...">` |
+| Back-to-top + progress bar | Automatic |
+| Algolia DocSearch | `--docsearch-*` variables overridden |
+| Local search (easyops-cn) | `--search-local-*` variables overridden |
+
+### Utility classes (MDX)
+
+Optional classes for MDX pages — full reference at [Utility Classes](/utility-classes):
+
+| Class | Purpose |
+| --- | --- |
+| `.btn` `.btn-primary` `.btn-secondary` `.btn-danger` | CTA buttons in docs pages |
+| `.badge-new` `.badge-beta` `.badge-deprecated` `.badge-experimental` | Release lifecycle labels |
+| `.method-get/post/put/delete/patch` | HTTP method labels for API docs |
+| `.status-ok/warn/crit/unknown` | Operational health indicators |
+| `.steps` on `<ol>` | Numbered procedure guide |
+| `.timeline` on `<ul>` | Version history / changelog |
+| `.list-check` on `<ul>` | Feature checklist |
 
 ## Requirements
 
-- Docusaurus **3.0+**
+- Docusaurus **3.0+** <span class="badge-new">Required</span>
 - Node.js **18+**
-- Docker (optional — for zero-install preview)
+- Docker — optional for zero-install preview
+
+:::note
+CSS-only — no React components, no swizzling, no JavaScript runtime.
+:::

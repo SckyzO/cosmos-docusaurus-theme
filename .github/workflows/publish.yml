@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       ref:
-        description: "Tag to publish (e.g. v2.0.2)"
+        description: "Tag to publish (e.g. v2.1.0)"
         required: true
-        default: "v2.0.2"
+        # No default — forces explicit input to avoid accidental republish
       skip_npm:
         description: "Skip npm publish"
         required: false
@@ -38,22 +38,22 @@ jobs:
     if: ${{ github.event.inputs.skip_npm != 'true' }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: ${{ github.event.inputs.ref || github.ref }}
 
       - name: Set up Node.js with npm registry
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
-          node-version: "20"
+          node-version: "20.19"
           registry-url: "https://registry.npmjs.org"
           cache: "npm"
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run CSS linter before publish
-        run: npm run lint:css
+      - name: Run full lint suite before publish
+        run: npm run lint
 
       - name: Publish package to npm
         run: npm publish --access public
@@ -68,19 +68,19 @@ jobs:
     if: ${{ always() && !failure() && github.event.inputs.skip_docker != 'true' }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: ${{ github.event.inputs.ref || github.ref }}
 
       - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2 # v4.0.0
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd # v4.0.0
 
       - name: Extract version tag
         id: meta
@@ -89,8 +89,26 @@ jobs:
           TAG="${REF#refs/tags/}"
           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v6
+      - name: Build Docker image for scanning
+        uses: docker/build-push-action@d08e5c354a6adb9ed34480a06d141179aa583294 # v7.0.0
+        with:
+          context: .
+          push: false
+          load: true
+          provenance: false
+          sbom: false
+          tags: cosmos-docusaurus-theme:scan
+
+      - name: Scan Docker image for vulnerabilities
+        uses: aquasecurity/trivy-action@6e7b7d1fd3e4fef0c5fa8cce1229c54b2c9bd0d8 # v0.30.0
+        with:
+          image-ref: "cosmos-docusaurus-theme:scan"
+          severity: "HIGH,CRITICAL"
+          exit-code: "1"
+          ignore-unfixed: true
+
+      - name: Push Docker image
+        uses: docker/build-push-action@d08e5c354a6adb9ed34480a06d141179aa583294 # v7.0.0
         with:
           context: .
           push: true
@@ -107,7 +125,7 @@ jobs:
     if: ${{ always() && !failure() && startsWith(github.ref, 'refs/tags/') }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Extract changelog section
         id: changelog
@@ -121,14 +139,19 @@ jobs:
           echo "$NOTES" > /tmp/release-notes.md
           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
-      - name: Create or update GitHub Release
+      - name: Create GitHub Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TAG="${{ steps.changelog.outputs.tag }}"
-          gh release delete "$TAG" --repo ${{ github.repository }} --yes 2>/dev/null || true
-          gh release create "$TAG" \
-            --repo ${{ github.repository }} \
-            --title "$TAG" \
-            --notes-file /tmp/release-notes.md \
-            --latest
+          if gh release view "$TAG" --repo ${{ github.repository }} > /dev/null 2>&1; then
+            gh release edit "$TAG" \
+              --repo ${{ github.repository }} \
+              --notes-file /tmp/release-notes.md
+          else
+            gh release create "$TAG" \
+              --repo ${{ github.repository }} \
+              --title "$TAG" \
+              --notes-file /tmp/release-notes.md \
+              --latest
+          fi

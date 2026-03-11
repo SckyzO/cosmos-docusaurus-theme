@@ -7,6 +7,30 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.0.3] — 2026-03-11
+
+### Added
+
+- **Makefile** — developer targets: `lint`, `lint-css`, `lint-js`, `lint-md`,
+  `lint-format`, `format`, `lint-fix`, `security`, `audit`, `install`,
+  `demo-build`, `demo-start`, `demo-serve`, `demo-clear`, `docker-build`,
+  `docker-up`, `docker-down`, `clean`
+- **ESLint** (`eslint@9`, `@eslint/js`) — flat config (`eslint.config.mjs`),
+  lints `src/**/*.js`; rules: `no-unused-vars` (allow `_` prefix), `no-console off`
+- **Prettier** (`prettier@3`) — formats CSS, JS, JSON, MD; `.prettierrc` + `.prettierignore`
+- **markdownlint-cli** (`@0.48`) — lints `*.md` and `docs/**/*.md`; `.markdownlint.json`
+  with `MD024: siblings_only` (CHANGELOG-friendly), `MD013/MD033/MD041` disabled
+- `npm` scripts: `lint:js`, `lint:md`, `lint:format`, `format`, `lint:fix`;
+  `lint` now runs all four linters in sequence
+- **CI** — `lint` job extended with JS (ESLint), Markdown, and Prettier steps
+
+### Fixed
+
+- `README.md`: `MD001` heading jump `###` → `##` for Live Demo link; `MD060` table
+  pipe spacing on two tables; Development section updated to reference `make` commands
+- `CHANGELOG.md`: `MD004` unordered list style — `+` continuation replaced with `and`
+- `src/css/theme.css`: reformatted by Prettier (alignment, spacing — no logic change)
+
 ## [2.0.2] — 2026-03-11
 
 ### Added

@@ -20,16 +20,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
         with:
-          node-version: "20"
+          node-version: "20.19"
 
       - name: Install demo dependencies
         working-directory: demo
-        run: npm install
+        run: npm ci --legacy-peer-deps
 
       - name: Build demo site
         working-directory: demo
@@ -38,10 +38,10 @@ jobs:
           DOCS_BASE_URL: /cosmos-docusaurus-theme/
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4.0.0
         with:
           path: demo/build
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5

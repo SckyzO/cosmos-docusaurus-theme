@@ -2,8 +2,8 @@
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
+  // ── Documentation sidebar ──────────────────────────────────────────────────
   docs: [
-    // ── Getting Started ───────────────────────────────────────────────────────
     {
       type: 'category',
       label: 'Getting Started',
@@ -15,35 +15,36 @@ const sidebars = {
         'color-tokens',
       ],
     },
-
-    // ── Component Reference ───────────────────────────────────────────────────
     {
       type: 'category',
-      label: 'Component Reference',
+      label: 'Reference',
       className: 'sidebar-cat-layers',
       collapsed: false,
       items: [
         'native-features',
-        'components',
-        'typography',
         'utility-classes',
       ],
     },
+  ],
 
-    // ── Showcase ──────────────────────────────────────────────────────────────
+  // ── Components sidebar ─────────────────────────────────────────────────────
+  components: [
     {
       type: 'category',
-      label: 'Showcase',
-      className: 'sidebar-cat-grid',
-      collapsed: true,
+      label: 'Components',
+      className: 'sidebar-cat-puzzle',
+      collapsed: false,
       items: [
-        'showcase/showcase-index',
-        'showcase/showcase-text',
-        'showcase/showcase-code',
-        'showcase/showcase-admonitions',
-        'showcase/showcase-tabs-details',
-        'showcase/showcase-tables-lists',
-        'showcase/showcase-badges',
+        'components/overview',
+        'components/typography',
+        'components/banners',
+        'components/code-blocks',
+        'components/tables-lists',
+        'components/tabs',
+        'components/navigation',
+        'components/badges-labels',
+        'components/buttons',
+        'components/utilities',
       ],
     },
   ],

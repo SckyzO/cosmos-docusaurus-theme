@@ -1,10 +1,9 @@
 ---
-id: showcase-admonitions
-title: Admonitions
-sidebar_position: 4
+title: Banners
+sidebar_position: 3
 ---
 
-# Admonitions
+# Banners
 
 ## Five built-in types
 
