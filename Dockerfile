@@ -1,12 +1,11 @@
 FROM node:20-alpine
 
-# Copy the entire project so demo/package.json can resolve "file:.." to /workspace
-WORKDIR /workspace
-COPY . .
+WORKDIR /app
 
-# Install demo dependencies (resolves file:.. to /workspace/src)
-WORKDIR /workspace/demo
+COPY demo/package.json demo/package-lock.json* ./
 RUN npm install --legacy-peer-deps
+
+COPY demo/ .
 
 EXPOSE 3000
 

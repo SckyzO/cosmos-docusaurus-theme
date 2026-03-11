@@ -7,6 +7,30 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.0.2] — 2026-03-11
+
+### Added
+
+- **Dynamic version badge** — sidebar badge now reads version from `package.json` at
+  build time via `injectHtmlTags()` in `src/index.js`; no longer hardcoded in CSS.
+  Consumers upgrading the package will see the correct version without any manual edit.
+
+### Changed
+
+- **Font weights** — Outfit loaded with 4 weights (`400;500;600;700`) instead of 6
+  (`300;400;500;600;700;800`) — `300` and `800` were unused, reducing Google Fonts payload
+- **demo/package.json** — `cosmos-docusaurus-theme: "latest"` → `"^2"` to prevent
+  pulling an unexpected future major version at Docker build time
+- **Dockerfile** — simplified: only `demo/` is copied (no longer needs the full project
+  tree since `file:..` dependency is replaced by `^2` from npm); proper layer caching
+  with `package.json` copied before source files
+- **workflow_dispatch default** — `ref` input default updated from `v2.0.0` → `v2.0.2`
+
+### Removed
+
+- Hardcoded `:root { --cosmos-version: "cosmos v1.2.6" }` from `theme.css`
+  (superseded by `injectHtmlTags()` injection)
+
 ## [2.0.1] — 2026-03-10
 
 ### Fixed

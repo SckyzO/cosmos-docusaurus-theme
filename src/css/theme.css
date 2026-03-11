@@ -17,7 +17,7 @@
  */
 
 /* ── Outfit + JetBrains Mono fonts ───────────────────────────────────────── */
-@import 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap';
 
 /* ── Light mode ──────────────────────────────────────────────────────────── */
 :root {
@@ -1257,10 +1257,6 @@ details > :not(summary) {
    Converting it to flex-column + making the scrollable nav flex:1 means the
    ::after pseudo-element is a flex-child OUTSIDE the scroll area — always
    pinned to the bottom regardless of content height or scroll position. */
-:root {
-  --cosmos-version: "cosmos v1.2.6";
-}
-
 /* Sidebar viewport — flex column so version badge is always pinned at the bottom.
    Targets the CSS-module class via attribute substring match (Docusaurus 3). */
 [class*="sidebarViewport"] {

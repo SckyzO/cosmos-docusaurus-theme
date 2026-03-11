@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       ref:
-        description: "Tag to publish (e.g. v2.0.0)"
+        description: "Tag to publish (e.g. v2.0.2)"
         required: true
-        default: "v2.0.0"
+        default: "v2.0.2"
       skip_npm:
         description: "Skip npm publish"
         required: false

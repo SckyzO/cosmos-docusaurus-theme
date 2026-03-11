@@ -15,6 +15,7 @@
 'use strict';
 
 const path = require('path');
+const { version } = require('../package.json');
 
 /**
  * @param {import('@docusaurus/types').LoadContext} _context
@@ -33,6 +34,23 @@ function cosmosDocusaurusTheme(_context, _options) {
      */
     getClientModules() {
       return [path.resolve(__dirname, 'css/theme.css')];
+    },
+
+    /**
+     * Inject the package version as a CSS custom property so the sidebar
+     * version badge stays in sync with package.json automatically.
+     *
+     * @returns {import('@docusaurus/types').HtmlTags}
+     */
+    injectHtmlTags() {
+      return {
+        headTags: [
+          {
+            tagName: 'style',
+            innerHTML: `:root { --cosmos-version: "cosmos v${version}"; }`,
+          },
+        ],
+      };
     },
   };
 }
