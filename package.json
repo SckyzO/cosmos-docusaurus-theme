@@ -44,7 +44,7 @@
     "audit:check": "npm audit --audit-level=moderate"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.4",
+    "@eslint/js": "^10.0.1",
     "eslint": "^9.39.4",
     "markdownlint-cli": "^0.48.0",
     "prettier": "^3.8.1",
