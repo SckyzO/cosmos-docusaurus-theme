@@ -1,4 +1,4 @@
-FROM node:20.19-alpine3.21
+FROM node:20.20.1-alpine3.23
 
 # Copy the theme package first so demo/package.json can resolve "file:.." locally
 WORKDIR /workspace
