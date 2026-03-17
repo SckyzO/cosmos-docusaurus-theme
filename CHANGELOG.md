@@ -7,6 +7,25 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.1.2] — 2026-03-17
+
+### Fixed
+
+- **Mobile navbar sidebar**: `.navbar-sidebar` had no background rule —
+  Infima's default rendered it white in both light and dark mode. Now
+  inherits `--ifm-navbar-background-color` (correct for both themes).
+- **Mobile navbar overflow**: external links (e.g. GitHub) in
+  `.navbar__items--right` were visible on mobile (≤ 996px), overlapping
+  the search bar. Hidden on mobile — accessible via the hamburger menu.
+
+### Changed
+
+- **eslint**: `9.39.4` → `10.0.3`
+- **@eslint/js**: `9.39.4` → `10.0.1`
+- **aquasecurity/trivy-action**: `0.30.0` → `0.35.0` (SHA pinned)
+
+---
+
 ## [2.1.1] — 2026-03-11
 
 ### Fixed
