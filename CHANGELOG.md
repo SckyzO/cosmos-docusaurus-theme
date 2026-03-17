@@ -7,6 +7,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.1.3] — 2026-03-17
+
+### Security
+
+- **Dockerfile**: base image `node:20.19-alpine3.21` → `node:20.20.1-alpine3.23`
+  (fixes CVE-2025-15467 CRITICAL + 4 HIGH in `libcrypto3`/`libssl3`)
+- **demo**: force `serialize-javascript ^7.0.4` via `overrides`
+  (fixes HIGH in webpack transitive chain — Docusaurus 3.9 ships vulnerable version)
+
+---
+
 ## [2.1.2] — 2026-03-17
 
 ### Fixed
