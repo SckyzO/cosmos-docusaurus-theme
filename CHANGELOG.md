@@ -7,6 +7,19 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.1.4] — 2026-03-17
+
+### Security
+
+- **Dockerfile**: add `apk upgrade --no-cache` (fixes zlib CVE-2026-22184 CRITICAL)
+- **demo**: add overrides for `cross-spawn`, `glob`, `minimatch`, `tar`
+  (actual installed versions are patched; overrides force resolution to fixed versions)
+- **`.trivyignore`**: suppress Trivy false positives where nested `package.json`
+  version specs are read instead of actual installed (overridden) versions
+- **publish.yml**: pass `trivyignore` path to `trivy-action`
+
+---
+
 ## [2.1.3] — 2026-03-17
 
 ### Security
