@@ -1,6 +1,6 @@
 {
   "name": "cosmos-docusaurus-theme",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A clean, dark-first Docusaurus theme aligned with the Rackscope Void/Slate design system — CSS-only, IBM Plex Mono + Outfit typography, brand indigo",
   "keywords": [
     "docusaurus",
@@ -44,8 +44,8 @@
     "audit:check": "npm audit --audit-level=moderate"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.4",
-    "eslint": "^9.39.4",
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.0.3",
     "markdownlint-cli": "^0.48.0",
     "prettier": "^3.8.1",
     "stylelint": "^17.4.0",
