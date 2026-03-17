@@ -1,0 +1,28 @@
+# ── False positives — npm overrides in demo/ ─────────────────────────────────
+#
+# Trivy scans package.json files nested inside node_modules (the dependencies
+# declared by each installed package). This causes it to report the version
+# *required* by a transitive dep's package.json rather than the version
+# *actually installed* (which is patched via demo/package.json overrides).
+#
+# All packages below are pinned to their patched versions via `overrides` in
+# demo/package.json. The actual installed versions are not vulnerable.
+
+# cross-spawn: installed 7.0.6 (fix), Trivy finds 7.0.3 in nested package.json
+CVE-2024-21538
+
+# glob: not installed in demo/node_modules (no direct or indirect dependency)
+CVE-2025-64756
+
+# minimatch: installed 9.0.9 (fix), Trivy finds 9.0.5 in nested package.json
+CVE-2026-26996
+CVE-2026-27903
+CVE-2026-27904
+
+# tar: not installed in demo/node_modules (no direct or indirect dependency)
+CVE-2026-23745
+CVE-2026-23950
+CVE-2026-24842
+CVE-2026-26960
+CVE-2026-29786
+CVE-2026-31802
