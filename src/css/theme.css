@@ -339,6 +339,13 @@ button[aria-label*='dark and light mode']:hover::before {
   color: #e5e5e5;
 }
 
+/* ── Mobile navbar sidebar (hamburger menu) ─────────────────────────────── */
+/* Infima's default .navbar-sidebar has no background, causing it to render
+   white in both light and dark mode. Match the navbar background color.    */
+.navbar-sidebar {
+  background-color: var(--ifm-navbar-background-color);
+}
+
 /* ── Sidebar ─────────────────────────────────────────────────────────────── */
 .theme-doc-sidebar-container {
   border-right: 1px solid var(--ifm-toc-border-color) !important;
@@ -556,6 +563,14 @@ code {
   border-color: var(--ifm-color-primary);
   background: rgb(70, 95, 255, 0.08);
   color: var(--ifm-color-primary);
+}
+
+/* Hide external navbar links on mobile — they overlap the search bar.
+   They remain accessible via the hamburger menu sidebar.                   */
+@media (width <= 996px) {
+  .navbar__items--right > .navbar__item.navbar__link {
+    display: none;
+  }
 }
 
 /* Color mode toggle — match the ghost button style of external links */
