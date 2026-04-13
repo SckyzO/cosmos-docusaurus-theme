@@ -16,7 +16,7 @@
     "cosmos-docusaurus-theme": "file:..",
     "prism-react-renderer": "^2.4.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.2.5"
   },
   "overrides": {
     "serialize-javascript": "^7.0.4",
