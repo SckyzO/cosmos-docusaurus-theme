@@ -15,7 +15,7 @@
     "@easyops-cn/docusaurus-search-local": "^0.55",
     "cosmos-docusaurus-theme": "file:..",
     "prism-react-renderer": "^2.4.0",
-    "react": "^19.0.0",
+    "react": "^19.2.5",
     "react-dom": "^19.0.0"
   },
   "overrides": {
