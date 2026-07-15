@@ -7,6 +7,52 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.2.0] — 2026-07-15
+
+### Added
+
+- **Self-hosted fonts**: Outfit + IBM Plex Mono are now bundled as woff2
+  (`src/css/fonts/`, SIL OFL 1.1) instead of a Google Fonts `@import`. No
+  visitor-IP leak to Google (GDPR), no render-blocking third-party request,
+  and it works under a strict Content-Security-Policy. Outfit ships as one
+  variable file per subset (weight axis 400–700).
+- **Brand recolor via custom properties**: `--cosmos-brand`,
+  `--cosmos-brand-rgb`, `--cosmos-brand-light`, `--cosmos-brand-light-rgb` —
+  override two variables to recolor the whole theme (light + dark).
+- **README**: customization/override guide (wiring `custom.css`, `!important`
+  note) and a known-limitation note about the color-mode toggle on i18n sites.
+
+### Changed
+
+- **Badges**: `.badge--success/warning/danger` backgrounds darkened to the
+  `-700` design tokens to meet WCAG AA contrast (were 2.35–3.76:1 with white
+  text, now ≥ 4.8:1).
+- **Base font size**: `--ifm-font-size-base` moved from `16.5px` to
+  `1.0313rem` so it honors the browser's font-size preference (identical at the
+  default root size).
+- **Docker**: `npm install` → `npm ci` for reproducible, lockfile-exact builds.
+- **demo**: React `19.2.4` → `19.2.7`, Docusaurus `3.9.2` → `3.10.1`.
+- **Dev tooling**: `markdownlint-cli` → `0.49.1`, `prettier` → `3.9.5`,
+  `eslint` → `10.7.0`, `stylelint` → `17.14.0`.
+- **CI actions** (SHA-pinned): `docker/build-push-action` v7.3.0,
+  `actions/upload-pages-artifact` v5.0.0, `actions/setup-node` v7.0.0,
+  `docker/login-action` v4.1.0, `actions/deploy-pages` v5.0.0.
+- **Internal**: the brand color is now a single source of truth via custom
+  properties (no visual change — computed values are identical).
+
+### Fixed
+
+- **Code block title**: matched by class substring (`[class*='codeBlockTitle']`)
+  instead of a build-generated CSS-module hash (`.codeBlockTitle_Ktv7`) that
+  would silently stop matching on a Docusaurus upgrade.
+
+### Security
+
+- Resolved **all** `npm audit` advisories in the dev toolchain (4 HIGH plus
+  moderates → **0**). The published package still ships no runtime dependencies.
+
+---
+
 ## [2.1.4] — 2026-03-17
 
 ### Security
