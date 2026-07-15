@@ -8,10 +8,11 @@ WORKDIR /workspace
 COPY src/ ./src/
 COPY package.json ./
 
-# Install demo dependencies — resolves file:.. to /workspace
+# Install demo dependencies — resolves file:.. to /workspace.
+# npm ci (not install) for a reproducible, lockfile-exact build, matching CI.
 WORKDIR /workspace/demo
-COPY demo/package.json demo/package-lock.json* ./
-RUN npm install --legacy-peer-deps
+COPY demo/package.json demo/package-lock.json ./
+RUN npm ci --legacy-peer-deps
 
 COPY demo/ .
 

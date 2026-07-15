@@ -7,7 +7,7 @@
  *   - Light → "Slate" : Tailwind gray-50/white with warm brown text tones
  *
  * Brand: #465fff (indigo)
- * Font:  Outfit + JetBrains Mono for code
+ * Font:  Outfit (display) + IBM Plex Mono (code) — self-hosted, no CDN
  *
  * Usage:
  *   themes: ['cosmos-docusaurus-theme']
@@ -16,24 +16,105 @@
  * @license MIT
  */
 
-/* ── Outfit + JetBrains Mono fonts ───────────────────────────────────────── */
-@import 'https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap';
+/* ── Fonts — self-hosted (Outfit + IBM Plex Mono) ────────────────────────── */
+/* Bundled as woff2 in ./fonts/ instead of a Google Fonts @import. This avoids
+   leaking every visitor's IP to Google (GDPR), removes a render-blocking
+   third-party request, and works under a strict Content-Security-Policy.
+   Both families are licensed under the SIL Open Font License 1.1 — see
+   ./fonts/OFL.txt. Subsets: latin + latin-ext. Outfit ships as a single
+   variable file (weight axis 400-700). */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/ibm-plex-mono-400-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/ibm-plex-mono-500-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/ibm-plex-mono-400-latin-ext.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/ibm-plex-mono-500-latin-ext.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Outfit;
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('./fonts/outfit-variable-latin.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Outfit;
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('./fonts/outfit-variable-latin-ext.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
 
 /* ── Light mode ──────────────────────────────────────────────────────────── */
 :root {
+  /* Brand indigo — single source of truth. Every hardcoded #465fff / #7592ff
+     and their rgb() tinted variants now reference these. The *-rgb pairs feed
+     rgb(var(--cosmos-brand-rgb), <alpha>) for translucent fills. */
+  --cosmos-brand: #465fff;
+  --cosmos-brand-rgb: 70, 95, 255;
+  --cosmos-brand-light: #7592ff;
+  --cosmos-brand-light-rgb: 117, 146, 255;
+
   /* Brand palette (indigo) — matches Rackscope accent color */
-  --ifm-color-primary: #465fff;
+  --ifm-color-primary: var(--cosmos-brand);
   --ifm-color-primary-dark: #3641f5;
   --ifm-color-primary-darker: #2a31d8;
   --ifm-color-primary-darkest: #252dae;
-  --ifm-color-primary-light: #7592ff;
+  --ifm-color-primary-light: var(--cosmos-brand-light);
   --ifm-color-primary-lighter: #9cb9ff;
   --ifm-color-primary-lightest: #dde9ff;
 
-  /* Typography — Outfit + JetBrains Mono, same as Rackscope app */
+  /* Typography — Outfit + IBM Plex Mono, same as Rackscope app */
   --ifm-font-family-base: 'Outfit', system-ui, -apple-system, sans-serif;
   --ifm-font-family-monospace: 'IBM Plex Mono', 'Fira Code', monospace;
-  --ifm-font-size-base: 16.5px;
+  --ifm-font-size-base: 1.0313rem; /* ~16.5px, but rem-based so it honors the user's browser font-size */
   --ifm-font-weight-bold: 600;
   --ifm-line-height-base: 1.7;
   --ifm-code-font-size: 93%;
@@ -54,8 +135,8 @@
   --ifm-navbar-background-color: #fff;
   --ifm-navbar-shadow: 0px 1px 3px 0px rgb(16, 24, 40, 0.1), 0px 1px 2px 0px rgb(16, 24, 40, 0.06);
   --ifm-navbar-link-color: #2c2822; /* warm dark text */
-  --ifm-navbar-link-hover-color: #465fff;
-  --ifm-navbar-link-active-color: #465fff;
+  --ifm-navbar-link-hover-color: var(--cosmos-brand);
+  --ifm-navbar-link-active-color: var(--cosmos-brand);
 
   /* Sidebar */
   --ifm-sidebar-width: 280px;
@@ -64,7 +145,7 @@
   --docusaurus-collapse-button-bg-hover-color: #f3f4f6;
 
   /* Links */
-  --ifm-link-color: #465fff;
+  --ifm-link-color: var(--cosmos-brand);
   --ifm-link-hover-color: #3641f5;
 
   /* Borders — Slate: Tailwind gray-200 */
@@ -76,7 +157,7 @@
   /* Code blocks */
   --ifm-code-background: #f3f4f6; /* Tailwind gray-100 */
   --prism-background-color: #1f2937; /* Void gray-800 — dark code on light pages */
-  --docusaurus-highlighted-code-line-bg: rgb(70, 95, 255, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgb(var(--cosmos-brand-rgb), 0.1);
 
   /* Shadows */
   --ifm-global-shadow-md:
@@ -95,14 +176,14 @@
 /* ── Dark mode ───────────────────────────────────────────────────────────── */
 [data-theme='dark'] {
   /* Primary — lighter variant for readability on dark backgrounds */
-  --ifm-color-primary: #7592ff;
-  --ifm-color-primary-dark: #465fff;
+  --ifm-color-primary: var(--cosmos-brand-light);
+  --ifm-color-primary-dark: var(--cosmos-brand);
   --ifm-color-primary-darker: #3641f5;
   --ifm-color-primary-darkest: #2a31d8;
   --ifm-color-primary-light: #9cb9ff;
   --ifm-color-primary-lighter: #c2d6ff;
   --ifm-color-primary-lightest: #dde9ff;
-  --docusaurus-highlighted-code-line-bg: rgb(117, 146, 255, 0.15);
+  --docusaurus-highlighted-code-line-bg: rgb(var(--cosmos-brand-light-rgb), 0.15);
 
   /* Background — Void: Tailwind gray-950 / gray-900 neutral blacks */
   --ifm-background-color: #030712; /* gray-950 — deepest background */
@@ -123,13 +204,13 @@
   --ifm-table-head-background: #111827;
 
   /* Links */
-  --ifm-link-color: #7592ff;
+  --ifm-link-color: var(--cosmos-brand-light);
   --ifm-link-hover-color: #9cb9ff;
 
   /* Navbar */
   --ifm-navbar-link-color: #e5e5e5;
-  --ifm-navbar-link-hover-color: #7592ff;
-  --ifm-navbar-link-active-color: #7592ff;
+  --ifm-navbar-link-hover-color: var(--cosmos-brand-light);
+  --ifm-navbar-link-active-color: var(--cosmos-brand-light);
   --ifm-navbar-shadow: 0px 1px 0px 0px #1f2937;
 
   /* Code */
@@ -259,7 +340,7 @@ button[aria-label*='dark and light mode']:hover::before {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #465fff;
+  color: var(--cosmos-brand);
 }
 
 .navbar__logo {
@@ -278,13 +359,13 @@ button[aria-label*='dark and light mode']:hover::before {
 }
 
 .navbar__link:hover {
-  background: rgb(70, 95, 255, 0.08);
+  background: rgb(var(--cosmos-brand-rgb), 0.08);
   color: var(--ifm-color-primary);
 }
 
 /* Active nav item — underline indicator matching Tabs style */
 .navbar__link--active {
-  color: #465fff !important;
+  color: var(--cosmos-brand) !important;
   position: relative;
 }
 
@@ -295,21 +376,21 @@ button[aria-label*='dark and light mode']:hover::before {
   left: 8px;
   right: 8px;
   height: 2px;
-  background: #465fff;
+  background: var(--cosmos-brand);
   border-radius: 2px 2px 0 0;
 }
 
 [data-theme='dark'] .navbar__link:hover {
-  color: #7592ff;
-  background: rgb(117, 146, 255, 0.1);
+  color: var(--cosmos-brand-light);
+  background: rgb(var(--cosmos-brand-light-rgb), 0.1);
 }
 
 [data-theme='dark'] .navbar__link--active {
-  color: #7592ff !important;
+  color: var(--cosmos-brand-light) !important;
 }
 
 [data-theme='dark'] .navbar__link--active::after {
-  background: #7592ff;
+  background: var(--cosmos-brand-light);
 }
 
 /* Force direct properties — CSS variables alone are not reliable for navbar
@@ -332,7 +413,7 @@ button[aria-label*='dark and light mode']:hover::before {
 }
 
 [data-theme='dark'] .navbar__title {
-  color: #7592ff;
+  color: var(--cosmos-brand-light);
 }
 
 [data-theme='dark'] .navbar__toggle {
@@ -375,14 +456,14 @@ button[aria-label*='dark and light mode']:hover::before {
 .menu__link--active,
 .menu__link--active:hover {
   background: #ecf3ff;
-  color: #465fff;
+  color: var(--cosmos-brand);
   font-weight: 600;
 }
 
 [data-theme='dark'] .menu__link--active,
 [data-theme='dark'] .menu__link--active:hover {
-  background: rgb(70, 95, 255, 0.12);
-  color: #7592ff;
+  background: rgb(var(--cosmos-brand-rgb), 0.12);
+  color: var(--cosmos-brand-light);
 }
 
 /* Sidebar category toggle */
@@ -422,8 +503,10 @@ button[aria-label*='dark and light mode']:hover::before {
     0 1px 2px rgb(0, 0, 0, 0.3);
 }
 
-/* Code block title bar */
-.codeBlockTitle_Ktv7 {
+/* Code block title bar.
+   Match on the CSS-module class substring — the hash suffix (e.g. _Ktv7) is
+   build-generated and not stable across Docusaurus versions. */
+[class*='codeBlockTitle'] {
   border-radius: 12px 12px 0 0;
 }
 
@@ -561,7 +644,7 @@ code {
 
 .navbar__items--right .navbar__link:hover {
   border-color: var(--ifm-color-primary);
-  background: rgb(70, 95, 255, 0.08);
+  background: rgb(var(--cosmos-brand-rgb), 0.08);
   color: var(--ifm-color-primary);
 }
 
@@ -585,7 +668,7 @@ button[aria-label*='dark and light mode'] {
 
 button[aria-label*='dark and light mode']:hover {
   border-color: var(--ifm-color-primary) !important;
-  background: rgb(70, 95, 255, 0.08) !important;
+  background: rgb(var(--cosmos-brand-rgb), 0.08) !important;
 }
 
 [data-theme='dark'] button[aria-label*='dark and light mode'] {
@@ -634,22 +717,22 @@ button[aria-label*='dark and light mode']:hover {
 /* Hover state */
 .table-of-contents__link:hover {
   color: var(--ifm-color-primary);
-  background: rgb(70, 95, 255, 0.06);
+  background: rgb(var(--cosmos-brand-rgb), 0.06);
 }
 
 [data-theme='dark'] .table-of-contents__link:hover {
-  background: rgb(117, 146, 255, 0.08);
+  background: rgb(var(--cosmos-brand-light-rgb), 0.08);
 }
 
 /* Active — bg pill, brand color */
 .table-of-contents__link--active {
   color: var(--ifm-color-primary) !important;
   font-weight: 600;
-  background: rgb(70, 95, 255, 0.08);
+  background: rgb(var(--cosmos-brand-rgb), 0.08);
 }
 
 [data-theme='dark'] .table-of-contents__link--active {
-  background: rgb(117, 146, 255, 0.1);
+  background: rgb(var(--cosmos-brand-light-rgb), 0.1);
 }
 
 /* ── Details / Summary — SectionCard style ───────────────────────────────── */
@@ -686,7 +769,7 @@ details > summary {
 }
 
 details > summary:hover {
-  background: rgb(70, 95, 255, 0.04);
+  background: rgb(var(--cosmos-brand-rgb), 0.04);
 }
 
 [data-theme='dark'] details > summary:hover {
@@ -784,8 +867,8 @@ details > :not(summary) {
 
 /* ── info — brand indigo ─────────────────────── */
 .alert--info {
-  border-color: rgb(70, 95, 255, 0.3);
-  background: rgb(70, 95, 255, 0.05);
+  border-color: rgb(var(--cosmos-brand-rgb), 0.3);
+  background: rgb(var(--cosmos-brand-rgb), 0.05);
 }
 
 .alert--info [class*='admonitionHeading'],
@@ -837,13 +920,13 @@ details > :not(summary) {
 }
 
 [data-theme='dark'] .alert--info {
-  border-color: rgb(70, 95, 255, 0.25);
-  background: rgb(70, 95, 255, 0.08);
+  border-color: rgb(var(--cosmos-brand-rgb), 0.25);
+  background: rgb(var(--cosmos-brand-rgb), 0.08);
 }
 
 [data-theme='dark'] .alert--info [class*='admonitionHeading'],
 [data-theme='dark'] .alert--info [class*='admonitionIcon'] {
-  color: #7592ff; /* brand-400 */
+  color: var(--cosmos-brand-light); /* brand-400 */
 }
 
 [data-theme='dark'] .alert--warning {
@@ -867,18 +950,21 @@ details > :not(summary) {
 }
 
 /* ── Badges ───────────────────────────────────────────────────────────────── */
+/* Solid pill badges carry white text, so the background must clear WCAG AA
+   (>=4.5:1). The vivid brand shades (#12b76a/#f79009/#f04438) only reach
+   2.35-3.76:1 with white — darkened to the -700 design tokens below. */
 .badge--success {
-  background: #12b76a;
+  background: #0b7a45; /* success-700 — 5.41:1 on white */
   color: white;
 }
 
 .badge--warning {
-  background: #f79009;
+  background: #b54708; /* amber-800 — 5.43:1 on white */
   color: white;
 }
 
 .badge--danger {
-  background: #f04438;
+  background: #d92d20; /* error-600 — 4.83:1 on white */
   color: white;
 }
 
@@ -941,7 +1027,7 @@ details > :not(summary) {
 }
 
 [data-theme='dark'] .footer__title {
-  color: #7592ff !important;
+  color: var(--cosmos-brand-light) !important;
 }
 
 /* Footer links */
@@ -967,7 +1053,7 @@ details > :not(summary) {
 }
 
 [data-theme='dark'] .footer__link-item:hover {
-  color: #7592ff !important;
+  color: var(--cosmos-brand-light) !important;
 }
 
 /* Copyright bar */
@@ -1009,15 +1095,15 @@ details > :not(summary) {
 
 .pagination-nav__link:hover {
   border-color: var(--ifm-color-primary);
-  background: rgb(70, 95, 255, 0.04);
-  box-shadow: 0 0 0 3px rgb(70, 95, 255, 0.1);
+  background: rgb(var(--cosmos-brand-rgb), 0.04);
+  box-shadow: 0 0 0 3px rgb(var(--cosmos-brand-rgb), 0.1);
 }
 
 [data-theme='dark'] .pagination-nav__link:hover {
-  background: rgb(117, 146, 255, 0.06);
+  background: rgb(var(--cosmos-brand-light-rgb), 0.06);
   box-shadow:
     0 4px 12px rgb(0, 0, 0, 0.3),
-    0 0 0 2px rgb(117, 146, 255, 0.15);
+    0 0 0 2px rgb(var(--cosmos-brand-light-rgb), 0.15);
 }
 
 /* Sublabel — monospace uppercase like sidebar section labels */
@@ -1039,17 +1125,17 @@ details > :not(summary) {
 
 /* ── Progress bar (page loading indicator) ───────────────────────────────── */
 :root {
-  --docusaurus-progress-bar-color: #465fff;
+  --docusaurus-progress-bar-color: var(--cosmos-brand);
 }
 
 [data-theme='dark'] {
-  --docusaurus-progress-bar-color: #7592ff;
+  --docusaurus-progress-bar-color: var(--cosmos-brand-light);
 }
 
 /* ── Announcement bar ─────────────────────────────────────────────────────── */
 .announcement {
   /* Dark band with subtle gradient — more refined than flat indigo */
-  background: linear-gradient(135deg, #2a31d8 0%, #465fff 60%, #3641f5 100%);
+  background: linear-gradient(135deg, #2a31d8 0%, var(--cosmos-brand) 60%, #3641f5 100%);
   color: #fff;
   font-size: 0.8125rem;
   font-weight: 500;
@@ -1090,7 +1176,7 @@ details > :not(summary) {
    Text separator › always vertically aligned (no SVG alignment hell).
    Active item: brand color. Inactive: muted gray. Hover: brand.              */
 :root {
-  --ifm-breadcrumb-color-active: #465fff;
+  --ifm-breadcrumb-color-active: var(--cosmos-brand);
   --ifm-breadcrumb-item-background-active: transparent;
   --ifm-breadcrumb-border-radius: 4px;
   --ifm-breadcrumb-padding-horizontal: 0;
@@ -1154,12 +1240,12 @@ ul.breadcrumbs {
 }
 
 [data-theme='dark'] .breadcrumbs__link:hover {
-  color: #7592ff;
+  color: var(--cosmos-brand-light);
 }
 
 [data-theme='dark'] .breadcrumbs__link--active,
 [data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link {
-  color: #7592ff;
+  color: var(--cosmos-brand-light);
 }
 
 [data-theme='dark'] .breadcrumbs__item + .breadcrumbs__item::before {
@@ -1171,16 +1257,16 @@ ul.breadcrumbs {
    no background fill on hover (clean underline-only style).                  */
 :root {
   --ifm-tabs-color: #6b7280; /* gray-500 — inactive */
-  --ifm-tabs-color-active: #465fff;
-  --ifm-tabs-color-active-border: #465fff;
+  --ifm-tabs-color-active: var(--cosmos-brand);
+  --ifm-tabs-color-active-border: var(--cosmos-brand);
   --ifm-tabs-padding-horizontal: 16px;
   --ifm-tabs-padding-vertical: 10px;
 }
 
 [data-theme='dark'] {
   --ifm-tabs-color: #6b7280;
-  --ifm-tabs-color-active: #7592ff;
-  --ifm-tabs-color-active-border: #7592ff;
+  --ifm-tabs-color-active: var(--cosmos-brand-light);
+  --ifm-tabs-color-active-border: var(--cosmos-brand-light);
 }
 
 /* Tab strip — bottom border as container */
@@ -1250,15 +1336,15 @@ ul.breadcrumbs {
 
 /* ── Tags ────────────────────────────────────────────────────────────────── */
 :root {
-  --ifm-tag-background: rgb(70, 95, 255, 0.08);
-  --ifm-tag-color: #465fff;
-  --ifm-tag-border-color: rgb(70, 95, 255, 0.2);
+  --ifm-tag-background: rgb(var(--cosmos-brand-rgb), 0.08);
+  --ifm-tag-color: var(--cosmos-brand);
+  --ifm-tag-border-color: rgb(var(--cosmos-brand-rgb), 0.2);
 }
 
 [data-theme='dark'] {
-  --ifm-tag-background: rgb(117, 146, 255, 0.1);
-  --ifm-tag-color: #7592ff;
-  --ifm-tag-border-color: rgb(117, 146, 255, 0.25);
+  --ifm-tag-background: rgb(var(--cosmos-brand-light-rgb), 0.1);
+  --ifm-tag-color: var(--cosmos-brand-light);
+  --ifm-tag-border-color: rgb(var(--cosmos-brand-light-rgb), 0.25);
 }
 
 .tag {
@@ -1273,7 +1359,7 @@ ul.breadcrumbs {
 
 /* ── Back-to-top button ──────────────────────────────────────────────────── */
 .theme-back-to-top-button {
-  background-color: #465fff;
+  background-color: var(--cosmos-brand);
   border-radius: 8px;
 }
 
@@ -1282,7 +1368,7 @@ ul.breadcrumbs {
 }
 
 [data-theme='dark'] .theme-back-to-top-button {
-  background-color: #7592ff;
+  background-color: var(--cosmos-brand-light);
 }
 
 [data-theme='dark'] .theme-back-to-top-button:hover {
@@ -1307,8 +1393,8 @@ ul.breadcrumbs {
   /* Muted text (paths, icons) */
   --search-local-muted-color: #8a8479;
   /* Brand highlight */
-  --search-local-highlight-color: #465fff;
-  --search-local-input-active-border-color: #465fff;
+  --search-local-highlight-color: var(--cosmos-brand);
+  --search-local-input-active-border-color: var(--cosmos-brand);
   /* Navbar search input */
   --ifm-navbar-search-input-background-color: #f3f4f6;
   --ifm-navbar-search-input-color: #1a1714;
@@ -1323,8 +1409,8 @@ ul.breadcrumbs {
   --search-local-hit-shadow: none;
   --search-local-hit-color: #e5e5e5;
   --search-local-muted-color: #71717a;
-  --search-local-highlight-color: #7592ff;
-  --search-local-input-active-border-color: #7592ff;
+  --search-local-highlight-color: var(--cosmos-brand-light);
+  --search-local-input-active-border-color: var(--cosmos-brand-light);
   /* Navbar search input */
   --ifm-navbar-search-input-background-color: #1f2937;
   --ifm-navbar-search-input-color: #e5e5e5;
@@ -1371,13 +1457,13 @@ ul.breadcrumbs {
 .navbar__search-input:focus {
   border-color: var(--ifm-color-primary) !important;
   background-color: var(--ifm-background-surface-color) !important;
-  box-shadow: 0 0 0 3px rgb(70, 95, 255, 0.1) !important;
+  box-shadow: 0 0 0 3px rgb(var(--cosmos-brand-rgb), 0.1) !important;
   outline: none !important;
 }
 
 [data-theme='dark'] .navbar__search-input:focus {
   background-color: #111827 !important;
-  box-shadow: 0 0 0 3px rgb(117, 146, 255, 0.12) !important;
+  box-shadow: 0 0 0 3px rgb(var(--cosmos-brand-light-rgb), 0.12) !important;
 }
 
 /* Ctrl+K hint — ghost style: transparent, blends into the input surface.
@@ -1450,7 +1536,7 @@ ul.breadcrumbs {
 /* ── Algolia DocSearch ───────────────────────────────────────────────────── */
 /* Applied when Algolia search is configured in themeConfig.algolia.         */
 [data-theme='light'] .DocSearch {
-  --docsearch-primary-color: #465fff;
+  --docsearch-primary-color: var(--cosmos-brand);
   --docsearch-text-color: #1a1714;
   --docsearch-muted-color: #5c574f;
   --docsearch-container-background: rgb(26, 23, 20, 0.6);
@@ -1458,17 +1544,17 @@ ul.breadcrumbs {
   --docsearch-modal-shadow: 0px 8px 24px rgb(0, 0, 0, 0.12);
   --docsearch-searchbox-background: #f9fafb;
   --docsearch-searchbox-focus-background: #fff;
-  --docsearch-searchbox-shadow: inset 0 0 0 2px #465fff;
+  --docsearch-searchbox-shadow: inset 0 0 0 2px var(--cosmos-brand);
   --docsearch-hit-color: #1a1714;
   --docsearch-hit-active-color: #fff;
   --docsearch-hit-background: #fff;
   --docsearch-hit-shadow: 0 1px 3px rgb(0, 0, 0, 0.08);
   --docsearch-footer-background: #f9fafb;
-  --docsearch-logo-color: #465fff;
+  --docsearch-logo-color: var(--cosmos-brand);
 }
 
 [data-theme='dark'] .DocSearch {
-  --docsearch-primary-color: #7592ff;
+  --docsearch-primary-color: var(--cosmos-brand-light);
   --docsearch-text-color: #e5e5e5;
   --docsearch-muted-color: #a3a3a3;
   --docsearch-container-background: rgb(3, 7, 18, 0.8);
@@ -1476,14 +1562,14 @@ ul.breadcrumbs {
   --docsearch-modal-shadow: 0px 8px 24px rgb(0, 0, 0, 0.4);
   --docsearch-searchbox-background: #030712;
   --docsearch-searchbox-focus-background: #030712;
-  --docsearch-searchbox-shadow: inset 0 0 0 2px #7592ff;
+  --docsearch-searchbox-shadow: inset 0 0 0 2px var(--cosmos-brand-light);
   --docsearch-hit-color: #e5e5e5;
   --docsearch-hit-active-color: #fff;
   --docsearch-hit-background: #1f2937;
   --docsearch-hit-shadow: none;
   --docsearch-footer-background: #030712;
   --docsearch-key-gradient: linear-gradient(-26.5deg, #1f2937 0%, #111827 100%);
-  --docsearch-logo-color: #7592ff;
+  --docsearch-logo-color: var(--cosmos-brand-light);
 }
 
 /* ── Scrollbar — 4px, matches Rackscope index.css ───────────────────────── */
@@ -1696,7 +1782,8 @@ ul.breadcrumbs {
 /* Light mode shows the moon icon */
 [data-theme='light'] [class*='toggleButton'] [class*='darkToggleIcon'],
 [data-theme='light'] [class*='toggleButton'] svg {
-  filter: drop-shadow(0 0 0 #7592ff) sepia(1) saturate(6) hue-rotate(190deg) brightness(0.9);
+  filter: drop-shadow(0 0 0 var(--cosmos-brand-light)) sepia(1) saturate(6) hue-rotate(190deg)
+    brightness(0.9);
 }
 
 /* ── 2. TOCCollapsible (mobile table of contents) ────────────────────────── */
@@ -1729,7 +1816,7 @@ ul.breadcrumbs {
 
 [class*='tocCollapsibleButton']:hover {
   color: var(--ifm-color-primary);
-  background: rgb(70, 95, 255, 0.04);
+  background: rgb(var(--cosmos-brand-rgb), 0.04);
 }
 
 [class*='tocCollapsibleContent'] {
@@ -1815,11 +1902,11 @@ ul.breadcrumbs {
 [class*='tagItem'] a:hover,
 [class*='tag_']:hover {
   border-color: var(--ifm-color-primary);
-  background: rgb(70, 95, 255, 0.06);
+  background: rgb(var(--cosmos-brand-rgb), 0.06);
   color: var(--ifm-color-primary);
 }
 
-/* ── 7. Responsive search ─────────────────────────────────────────────────── */
+/* ── 6. Responsive search ─────────────────────────────────────────────────── */
 /* On mobile the input collapses — restore sizing on focus */
 @media (width <= 576px) {
   .navbar__search-input {
@@ -1836,7 +1923,7 @@ ul.breadcrumbs {
   }
 }
 
-/* ── 8. prefers-reduced-motion ───────────────────────────────────────────── */
+/* ── 7. prefers-reduced-motion ───────────────────────────────────────────── */
 /* Respects the OS-level "reduce motion" accessibility setting by
    disabling all transitions and animations. */
 @media (prefers-reduced-motion: reduce) {
@@ -1863,7 +1950,7 @@ ul.breadcrumbs {
 /* Left-border accent + subtle tint — used for callouts, pull-quotes, notes. */
 .markdown blockquote {
   border-left: 3px solid var(--ifm-color-primary);
-  background: rgb(70, 95, 255, 0.04);
+  background: rgb(var(--cosmos-brand-rgb), 0.04);
   border-radius: 0 8px 8px 0;
   padding: 12px 20px;
   margin: 1rem 0;
@@ -1872,8 +1959,8 @@ ul.breadcrumbs {
 }
 
 [data-theme='dark'] .markdown blockquote {
-  background: rgb(70, 95, 255, 0.07);
-  border-left-color: #7592ff;
+  background: rgb(var(--cosmos-brand-rgb), 0.07);
+  border-left-color: var(--cosmos-brand-light);
 }
 
 .markdown blockquote p:last-child {
@@ -1928,7 +2015,7 @@ hr {
 abbr[title] {
   position: relative;
   cursor: help;
-  text-decoration: underline dotted rgb(70, 95, 255, 0.5);
+  text-decoration: underline dotted rgb(var(--cosmos-brand-rgb), 0.5);
   text-underline-offset: 3px;
 }
 
@@ -1996,7 +2083,7 @@ abbr[title]:hover::before {
 }
 
 .method-post {
-  color: #465fff;
+  color: var(--cosmos-brand);
   font-weight: 700;
   font-family: var(--ifm-font-family-monospace);
 }
@@ -2083,9 +2170,9 @@ abbr[title]:hover::before {
 }
 
 .badge-new {
-  background: rgb(70, 95, 255, 0.1);
-  color: #465fff;
-  border-color: rgb(70, 95, 255, 0.25);
+  background: rgb(var(--cosmos-brand-rgb), 0.1);
+  color: var(--cosmos-brand);
+  border-color: rgb(var(--cosmos-brand-rgb), 0.25);
 }
 
 .badge-beta {
@@ -2108,9 +2195,9 @@ abbr[title]:hover::before {
 
 /* Dark mode — slightly brighter colors for readability on Void surface */
 [data-theme='dark'] .badge-new {
-  background: rgb(70, 95, 255, 0.15);
-  color: #7592ff;
-  border-color: rgb(70, 95, 255, 0.3);
+  background: rgb(var(--cosmos-brand-rgb), 0.15);
+  color: var(--cosmos-brand-light);
+  border-color: rgb(var(--cosmos-brand-rgb), 0.3);
 }
 
 [data-theme='dark'] .badge-beta {
@@ -2155,15 +2242,15 @@ abbr[title]:hover::before {
 }
 
 .btn-primary {
-  background: #465fff;
+  background: var(--cosmos-brand);
   color: #fff !important;
-  border-color: #465fff;
+  border-color: var(--cosmos-brand);
 }
 
 .btn-primary:hover {
   background: #3641f5;
   border-color: #3641f5;
-  box-shadow: 0 0 0 3px rgb(70, 95, 255, 0.2);
+  box-shadow: 0 0 0 3px rgb(var(--cosmos-brand-rgb), 0.2);
 }
 
 .btn-secondary {
@@ -2174,7 +2261,7 @@ abbr[title]:hover::before {
 
 .btn-secondary:hover {
   border-color: var(--ifm-color-primary);
-  background: rgb(70, 95, 255, 0.05);
+  background: rgb(var(--cosmos-brand-rgb), 0.05);
   color: var(--ifm-color-primary) !important;
 }
 
@@ -2231,7 +2318,7 @@ ol.steps > li::before {
   top: 0;
   width: 2rem;
   height: 2rem;
-  background: #465fff;
+  background: var(--cosmos-brand);
   color: #fff;
   border-radius: 50%;
   display: flex;
@@ -2245,7 +2332,7 @@ ol.steps > li::before {
 }
 
 [data-theme='dark'] ol.steps > li::before {
-  background: #7592ff;
+  background: var(--cosmos-brand-light);
 }
 
 /* ── Timeline (.timeline) ─────────────────────────────────────────────────── */

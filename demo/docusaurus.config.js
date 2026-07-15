@@ -67,9 +67,10 @@ const config = {
         respectPrefersColorScheme: true,
       },
       announcementBar: {
-        id: 'cosmos-v210',
+        // Bump both id and version on each release so the banner reappears.
+        id: 'cosmos-v214',
         content:
-          'cosmos <strong>v2.1.0</strong> is out — <a href="/utility-classes">see all new utility classes →</a>',
+          'cosmos <strong>v2.1.4</strong> is out — <a href="/utility-classes">explore the utility classes →</a>',
         isCloseable: true,
       },
       navbar: {

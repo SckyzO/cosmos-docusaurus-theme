@@ -21,7 +21,7 @@ Dark-first, opinionated, pixel-perfect.
 
 - **Void** dark palette — deep neutral blacks (`#030712 / #111827`) with indigo accents
 - **Slate** light palette — warm white surfaces with brown text tones, not cold blue-gray
-- **Outfit** display typeface + **IBM Plex Mono** for code
+- **Outfit** display typeface + **IBM Plex Mono** for code — self-hosted woff2, no Google Fonts CDN (GDPR / CSP friendly)
 - Zero JavaScript, no swizzled components — pure CSS override of Docusaurus Infima
 - Every native Docusaurus element styled out of the box
 - Utility classes for MDX pages: buttons, badges, steps, timeline, check lists
@@ -151,19 +151,43 @@ Available icons: `rocket` `monitor` `pencil` `puzzle` `sliders` `folder` `server
 
 ## Customization
 
-Override any CSS variable in `custom.css`:
+Load a `custom.css` of your own through the classic preset — it applies on top
+of the theme:
+
+```js title="docusaurus.config.js"
+presets: [
+  ['classic', {
+    theme: { customCss: require.resolve('./src/css/custom.css') },
+  }],
+],
+```
+
+### Recolor the brand
+
+The brand indigo lives in one place. Override two variables and the whole theme
+(links, active states, buttons, tints) follows — both light and dark:
 
 ```css title="src/css/custom.css"
 :root {
-  --ifm-color-primary: #e11d48;
-  --ifm-color-primary-dark: #be123c;
-  --ifm-color-primary-darker: #9f1239;
-  --ifm-color-primary-darkest: #881337;
-  --ifm-color-primary-light: #fb7185;
-  --ifm-color-primary-lighter: #fda4af;
-  --ifm-color-primary-lightest: #ffe4e6;
+  --cosmos-brand: #e11d48; /* light-mode accent */
+  --cosmos-brand-rgb: 225, 29, 72; /* same color, for translucent fills */
+}
+
+[data-theme='dark'] {
+  --cosmos-brand-light: #fb7185; /* dark-mode accent (lighter for contrast) */
+  --cosmos-brand-light-rgb: 251, 113, 133;
 }
 ```
+
+You can still override the full Infima palette (`--ifm-color-primary`,
+`--ifm-color-primary-dark`, …) the usual way if you need finer control.
+
+### Overriding styles, not just colors
+
+The theme leans on `!important` in places to win against Infima and Docusaurus
+CSS-module classes. Variable overrides above cascade normally, but if you
+override a concrete property (padding, radius, a specific selector) and it does
+not take, match the theme's specificity or add `!important` to your rule.
 
 ---
 
@@ -181,6 +205,20 @@ make docker-up       # demo in Docker at http://localhost:3000
 
 ---
 
+## Known limitations
+
+- **Localized sites (i18n).** The color-mode toggle's ghost-button border and
+  hover tooltip are matched on the button's English `aria-label` (`"dark and
+light mode"`). On a site running in another locale, Docusaurus translates that
+  label, so those two touches don't apply — the toggle still works and its
+  sun/moon icon coloring (class-based) is unaffected. Everything else in the
+  theme is language-agnostic.
+
+---
+
 ## License
 
 [MIT](LICENSE) — © SckyzO
+
+Bundled fonts (Outfit, IBM Plex Mono) are licensed separately under the
+[SIL Open Font License 1.1](src/css/fonts/OFL.txt).

@@ -46,25 +46,6 @@ for (const page of REQUIRED_PAGES) {
   }
 }
 
-// Also check for React `class=` warnings by scanning built HTML
-// (React outputs className= in the final HTML, so class= in HTML = problem)
-let classWarnings = 0;
-function scanHTML(dir) {
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      scanHTML(full);
-    } else if (entry.name.endsWith('.html')) {
-      const content = fs.readFileSync(full, 'utf8');
-      // Look for React's "Invalid DOM property" markers — these won't appear
-      // in static HTML, but we can check for unrendered class= in attributes
-      // that React would warn about (class= on custom components)
-      // For native HTML elements, React converts class→className correctly.
-      // This check is intentionally minimal — runtime console errors need Playwright.
-    }
-  }
-}
-
 if (errors > 0) {
   console.error(`\n✖ ${errors} required page(s) missing from build.`);
   process.exit(1);
