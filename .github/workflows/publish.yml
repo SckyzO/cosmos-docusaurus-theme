@@ -35,6 +35,13 @@ jobs:
   publish-npm:
     name: Publish to npm
     runs-on: ubuntu-latest
+    # OIDC trusted publishing — no long-lived npm token (npm bypass-2FA tokens
+    # are being deprecated). Requires a trusted publisher configured for this
+    # package on npmjs.com (GitHub Actions -> SckyzO/cosmos-docusaurus-theme,
+    # workflow publish.yml). Job-scoped permissions override the top-level block.
+    permissions:
+      id-token: write # mint the OIDC token npm exchanges for publish auth
+      contents: read
     if: ${{ github.event.inputs.skip_npm != 'true' }}
     steps:
       - name: Checkout repository
@@ -45,9 +52,13 @@ jobs:
       - name: Set up Node.js with npm registry
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: "20.19"
+          # Node 24 + latest npm — OIDC trusted publishing needs npm >= 11.5.1.
+          # No dependency cache in release builds (npm guidance).
+          node-version: "24"
           registry-url: "https://registry.npmjs.org"
-          cache: "npm"
+
+      - name: Ensure npm supports OIDC trusted publishing (>= 11.5.1)
+        run: npm install -g npm@latest
 
       - name: Install dependencies
         run: npm ci
@@ -55,10 +66,9 @@ jobs:
       - name: Run full lint suite before publish
         run: npm run lint
 
-      - name: Publish package to npm
+      - name: Publish package to npm (OIDC trusted publishing)
+        # No NODE_AUTH_TOKEN — npm authenticates via the GitHub OIDC token.
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   build-docker:
     name: Build & push Docker image to GHCR
