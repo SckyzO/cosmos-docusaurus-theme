@@ -1906,7 +1906,7 @@ ul.breadcrumbs {
   color: var(--ifm-color-primary);
 }
 
-/* ── 7. Responsive search ─────────────────────────────────────────────────── */
+/* ── 6. Responsive search ─────────────────────────────────────────────────── */
 /* On mobile the input collapses — restore sizing on focus */
 @media (width <= 576px) {
   .navbar__search-input {
@@ -1923,7 +1923,7 @@ ul.breadcrumbs {
   }
 }
 
-/* ── 8. prefers-reduced-motion ───────────────────────────────────────────── */
+/* ── 7. prefers-reduced-motion ───────────────────────────────────────────── */
 /* Respects the OS-level "reduce motion" accessibility setting by
    disabling all transitions and animations. */
 @media (prefers-reduced-motion: reduce) {
