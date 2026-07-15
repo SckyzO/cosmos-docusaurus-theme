@@ -422,8 +422,10 @@ button[aria-label*='dark and light mode']:hover::before {
     0 1px 2px rgb(0, 0, 0, 0.3);
 }
 
-/* Code block title bar */
-.codeBlockTitle_Ktv7 {
+/* Code block title bar.
+   Match on the CSS-module class substring — the hash suffix (e.g. _Ktv7) is
+   build-generated and not stable across Docusaurus versions. */
+[class*='codeBlockTitle'] {
   border-radius: 12px 12px 0 0;
 }
 
