@@ -33,7 +33,7 @@
   /* Typography — Outfit + JetBrains Mono, same as Rackscope app */
   --ifm-font-family-base: 'Outfit', system-ui, -apple-system, sans-serif;
   --ifm-font-family-monospace: 'IBM Plex Mono', 'Fira Code', monospace;
-  --ifm-font-size-base: 16.5px;
+  --ifm-font-size-base: 1.0313rem; /* ~16.5px, but rem-based so it honors the user's browser font-size */
   --ifm-font-weight-bold: 600;
   --ifm-line-height-base: 1.7;
   --ifm-code-font-size: 93%;
@@ -869,18 +869,21 @@ details > :not(summary) {
 }
 
 /* ── Badges ───────────────────────────────────────────────────────────────── */
+/* Solid pill badges carry white text, so the background must clear WCAG AA
+   (>=4.5:1). The vivid brand shades (#12b76a/#f79009/#f04438) only reach
+   2.35-3.76:1 with white — darkened to the -700 design tokens below. */
 .badge--success {
-  background: #12b76a;
+  background: #0b7a45; /* success-700 — 5.41:1 on white */
   color: white;
 }
 
 .badge--warning {
-  background: #f79009;
+  background: #b54708; /* amber-800 — 5.43:1 on white */
   color: white;
 }
 
 .badge--danger {
-  background: #f04438;
+  background: #d92d20; /* error-600 — 4.83:1 on white */
   color: white;
 }
 
