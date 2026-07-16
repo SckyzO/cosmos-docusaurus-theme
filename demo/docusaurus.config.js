@@ -18,7 +18,26 @@ const config = {
   baseUrl: process.env.DOCS_BASE_URL || '/',
 
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  // Moved from the deprecated top-level onBrokenMarkdownLinks (removed in v4).
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
+
+  // Docusaurus Faster (Rspack + SWC + Lightning CSS). ssgWorkerThreads is
+  // omitted on purpose: it requires a v4 future flag, kept out of this build.
+  future: {
+    faster: {
+      swcJsLoader: true,
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
+      mdxCrossCompilerCache: true,
+      rspackBundler: true,
+      rspackPersistentCache: true,
+    },
+  },
 
   i18n: {
     defaultLocale: 'en',
