@@ -13,8 +13,7 @@ but not critical for the main task.
 :::
 
 :::tip
-This is a **tip**. Great for best practices, shortcuts, and recommended approaches that
-improve the experience.
+This is a **tip**. Good for best practices, shortcuts, and recommended approaches.
 :::
 
 :::info
@@ -23,7 +22,7 @@ background information.
 :::
 
 :::warning
-This is a **warning**. Use sparingly — reserved for situations that may cause
+This is a **warning**. Use sparingly, for situations that may cause
 unexpected behavior or data loss if ignored.
 :::
 
@@ -67,7 +66,7 @@ Set `incident_mode` to one of: `full_ok`, `light`, `medium`, `heavy`, `chaos`.
 
 :::
 
-## Nested Tabs in Admonition
+## Nested tabs in an admonition
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

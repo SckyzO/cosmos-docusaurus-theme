@@ -18,7 +18,7 @@ docker compose up -d
 git commit -m "feat: add cosmos theme"
 ```
 
-## JavaScript — with title and line numbers
+## JavaScript with title and line numbers
 
 ```js title="docusaurus.config.js" showLineNumbers
 export default {
@@ -47,7 +47,7 @@ function useTokens(isDark: boolean): ThemeTokens {
 }
 ```
 
-## CSS — with highlighted lines
+## CSS with highlighted lines
 
 ```css title="src/css/custom.css"
 /* Override brand color */
@@ -85,7 +85,7 @@ plugins:
   "name": "my-docs",
   "dependencies": {
     "@docusaurus/core": "^3.9.2",
-    "cosmos-docusaurus-theme": "^1.1.7"
+    "cosmos-docusaurus-theme": "^2.2.1"
   }
 }
 ```

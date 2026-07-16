@@ -5,11 +5,11 @@ sidebar_position: 10
 
 # Utilities
 
-Layout and content utilities for enriching documentation pages.
+Layout and content utilities for documentation pages.
 
 ## Numbered steps `.steps`
 
-Use `<ol className="steps">` for multi-step guides, install sequences, and procedures.
+Use `<ol className="steps">` for multi-step guides and install sequences.
 
 <ol className="steps">
   <li>
@@ -22,11 +22,11 @@ Use `<ol className="steps">` for multi-step guides, install sequences, and proce
   </li>
   <li>
     <strong>Configure dark mode</strong><br/>
-    Set <code>defaultMode: 'dark'</code> in <code>themeConfig.colorMode</code> for the best experience.
+    Set <code>defaultMode: 'dark'</code> in <code>themeConfig.colorMode</code>.
   </li>
   <li>
     <strong>Start your site</strong><br/>
-    Run <code>npm start</code> — the theme is applied automatically.
+    Run <code>npm start</code>. The theme applies automatically.
   </li>
 </ol>
 
@@ -39,32 +39,32 @@ Use `<ol className="steps">` for multi-step guides, install sequences, and proce
 
 ## Timeline `.timeline`
 
-Use `<ul className="timeline">` for changelogs, roadmaps, and versioned event sequences.
+Use `<ul className="timeline">` for changelogs, roadmaps, and version histories.
 
 <ul className="timeline">
-  <li><strong>v2.1.0</strong> — Buttons, steps, timeline, blockquote, kbd, tooltip utilities</li>
-  <li><strong>v2.0.3</strong> — Makefile, ESLint, Prettier, markdownlint full lint suite</li>
-  <li><strong>v2.0.2</strong> — Dynamic version badge via <code>injectHtmlTags()</code>, Dockerfile simplified</li>
-  <li><strong>v2.0.1</strong> — Tables full-width on desktop, scrollable on mobile</li>
-  <li><strong>v2.0.0</strong> — 8 native Docusaurus components covered, GHCR workflow fix</li>
-  <li><strong>v1.2.6</strong> — Sidebar icons, sub-menu line, version badge, Ctrl+K ghost style</li>
+  <li><strong>v2.1.0</strong>: Buttons, steps, timeline, blockquote, kbd, tooltip utilities</li>
+  <li><strong>v2.0.3</strong>: Makefile, ESLint, Prettier, markdownlint full lint suite</li>
+  <li><strong>v2.0.2</strong>: Dynamic version badge via <code>injectHtmlTags()</code>, Dockerfile simplified</li>
+  <li><strong>v2.0.1</strong>: Tables full-width on desktop, scrollable on mobile</li>
+  <li><strong>v2.0.0</strong>: 8 native Docusaurus components covered, GHCR workflow fix</li>
+  <li><strong>v1.2.6</strong>: Sidebar icons, sub-menu line, version badge, Ctrl+K ghost style</li>
 </ul>
 
 ```mdx
 <ul class="timeline">
-  <li><strong>v2.1.0</strong> — New utility classes released</li>
-  <li><strong>v2.0.0</strong> — Major refactor</li>
+  <li><strong>v2.1.0</strong>: New utility classes released</li>
+  <li><strong>v2.0.0</strong>: Major refactor</li>
 </ul>
 ```
 
 ## Check list `.list-check`
 
-Use `<ul className="list-check">` for feature lists, requirements, and prerequisites.
+Use `<ul className="list-check">` for feature lists and requirements.
 
 <ul className="list-check">
-  <li>Zero JavaScript — pure CSS theme override</li>
+  <li>Zero JavaScript: pure CSS theme override</li>
   <li>Dark-first with full light mode support</li>
-  <li>Outfit + JetBrains Mono typography</li>
+  <li>Outfit + IBM Plex Mono typography</li>
   <li>All native Docusaurus components styled</li>
   <li>Search (easyops-cn local) palette overrides included</li>
   <li>Sidebar icons, sub-menu line, version badge</li>
@@ -72,7 +72,7 @@ Use `<ul className="list-check">` for feature lists, requirements, and prerequis
 
 ```mdx
 <ul class="list-check">
-  <li>Zero JavaScript — pure CSS theme override</li>
+  <li>Zero JavaScript: pure CSS theme override</li>
   <li>Dark-first with full light mode support</li>
 </ul>
 ```

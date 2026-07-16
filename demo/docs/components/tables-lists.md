@@ -1,5 +1,5 @@
 ---
-title: Tables & Lists & Images
+title: Tables, Lists & Images
 sidebar_position: 5
 ---
 
@@ -25,7 +25,7 @@ Full-width on desktop, horizontally scrollable on mobile.
 
 ## Unordered lists
 
-- First item — standard bullet list
+- First item, a standard bullet list
 - Second item with **bold** content
   - Nested item with indentation
   - Another nested item

@@ -5,7 +5,7 @@ sidebar_position: 9
 
 # Buttons
 
-`.btn-*` utility classes for MDX documentation pages — call-to-action links, download buttons, and inline actions.
+`.btn-*` utility classes for MDX documentation pages: call-to-action links, download buttons, and inline actions.
 
 ## Variants
 
@@ -31,7 +31,7 @@ sidebar_position: 9
 <a class="btn btn-primary btn-lg" href="#">Large</a>
 ```
 
-## Typical usage — landing page CTA
+## Typical usage: landing page CTA
 
 <div style={{display:'flex', gap:'12px', flexWrap:'wrap', marginBottom:'1rem'}}>
   <a className="btn btn-primary btn-lg" href="/docs/getting-started">Quick start →</a>
