@@ -26,3 +26,13 @@ CVE-2026-24842
 CVE-2026-26960
 CVE-2026-29786
 CVE-2026-31802
+
+# ── Not applicable — build-time only ─────────────────────────────────────────
+#
+# sigstore lives in the base image's *bundled npm*
+# (/usr/local/lib/node_modules/npm/node_modules/sigstore), not in the demo's
+# dependency tree. It is used only for provenance verification during
+# npm install/publish — never by the demo runtime (`npm start` serving a static
+# docs site). node 20's npm ships sigstore 2.3.1; the fix (4.1.1) requires
+# npm >= 12, which needs node >= 22. Deferred to a future base-image bump.
+CVE-2026-48815
