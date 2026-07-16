@@ -7,6 +7,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.2.3] — 2026-07-16
+
+### Security
+
+- **demo dependency**: pin `websocket-driver` to `^0.7.5` via `overrides`
+  (fixes CVE-2026-54466, **CRITICAL**, message corruption). It reaches the demo
+  Docker image through `webpack-dev-server` → `faye-websocket`; not part of the
+  npm package. This is the vulnerability that failed the v2.2.2 Docker/GHCR
+  publish, so this release also carries the container image and GitHub release
+  that 2.2.2 could not.
+
+The published theme output is unchanged from 2.2.1.
+
+---
+
 ## [2.2.2] — 2026-07-16
 
 ### Changed
