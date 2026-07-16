@@ -7,6 +7,30 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.2.1] — 2026-07-16
+
+### Security
+
+- **demo dependencies**: pin patched versions via `overrides` for transitive
+  deps flagged by Trivy in the Docker image — `shell-quote` (CVE-2026-9277,
+  **CRITICAL**), `lodash`, `fast-uri`, `undici`, plus, scoped to their parent so
+  other majors stay untouched, `picomatch` (under `anymatch`), `ws` (under
+  `webpack-bundle-analyzer` and `webpack-dev-server`), and `path-to-regexp`
+  (under `express`). None of these ship in the npm package (CSS-only, no runtime
+  deps) — they affect the demo Docker image only.
+- **`.trivyignore`**: document `sigstore` CVE-2026-48815 as not-applicable — it
+  lives in the base image's bundled npm (build-time provenance only, never the
+  demo runtime); the fix needs npm ≥ 12 / node ≥ 22, deferred to a future
+  base-image bump.
+
+### Fixed
+
+- **publish.yml**: the Trivy scan passed the input `trivyignore` (singular), but
+  `aquasecurity/trivy-action` expects **`trivyignores`** — so `.trivyignore` was
+  silently never applied. Fixed, so the documented suppressions take effect.
+
+---
+
 ## [2.2.0] — 2026-07-15
 
 ### Added

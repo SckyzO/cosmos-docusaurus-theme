@@ -23,6 +23,22 @@
     "cross-spawn": "^7.0.5",
     "glob": "^10.5.0",
     "minimatch": "^9.0.6",
-    "tar": "^7.5.3"
+    "tar": "^7.5.3",
+    "shell-quote": "^1.8.4",
+    "lodash": "^4.18.0",
+    "fast-uri": "^3.1.1",
+    "undici": "^7.28.0",
+    "anymatch": {
+      "picomatch": "2.3.2"
+    },
+    "webpack-bundle-analyzer": {
+      "ws": "7.5.11"
+    },
+    "webpack-dev-server": {
+      "ws": "^8.21.0"
+    },
+    "express": {
+      "path-to-regexp": "0.1.13"
+    }
   }
 }
