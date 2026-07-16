@@ -37,6 +37,11 @@ const config = {
       rspackBundler: true,
       rspackPersistentCache: true,
     },
+    // v4: Infima moves into @layer docusaurus.infima. The theme's CSS stays
+    // unlayered, so it wins against Infima regardless of specificity.
+    v4: {
+      useCssCascadeLayers: true,
+    },
   },
 
   i18n: {

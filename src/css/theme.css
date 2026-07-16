@@ -14,6 +14,15 @@
  *
  * @see https://github.com/SckyzO/cosmos-docusaurus-theme
  * @license MIT
+ *
+ * MAINTAINER NOTE — Docusaurus upgrades.
+ * Being swizzle-free, this theme styles some components by matching their
+ * CSS-module class prefix, e.g. [class*='admonitionHeading'], 'cardContainer',
+ * 'toggleButton', 'sidebarViewport', 'searchHintContainer', 'tocCollapsible',
+ * 'tagItem', 'colorModeToggle', 'codeBlockTitle'. Those prefixes are NOT part
+ * of Docusaurus's public theming API (hashed CSS-module names are excluded), so
+ * re-verify these selectors on every Docusaurus major. Never pin the hash
+ * suffix (e.g. codeBlockTitle_Ktv7) — always match the prefix only.
  */
 
 /* ── Fonts — self-hosted (Outfit + IBM Plex Mono) ────────────────────────── */
