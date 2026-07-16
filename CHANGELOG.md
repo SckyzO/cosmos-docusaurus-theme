@@ -7,6 +7,32 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.2.2] — 2026-07-16
+
+### Changed
+
+- **Docs**: audited and rewrote all 15 demo docs. Every class/option/font/hex
+  claim was verified against the source and corrected (e.g. the broken
+  `@import 'cosmos-docusaurus-theme'` CSS example, a non-existent
+  `import { themes }`, stale "JetBrains Mono", a wrong breadcrumb color, and a
+  false `hide_table_of_contents` breadcrumb claim); AI-writing tells were
+  removed (zero em/en dashes across the set).
+- **demo (v4 readiness)**: migrated `onBrokenMarkdownLinks` to
+  `markdown.hooks.onBrokenMarkdownLinks` (top-level deprecated, removed in v4);
+  enabled Docusaurus Faster (Rspack + SWC + Lightning CSS); verified the theme
+  builds and renders correctly with `future.v4.useCssCascadeLayers` (the theme
+  stays unlayered, so it wins over the now-layered Infima by spec).
+
+### Internal
+
+- Maintainer note in `theme.css` cataloguing the CSS-module class prefixes the
+  theme matches (outside Docusaurus's public API, re-verify each major).
+
+The published theme output is unchanged from 2.2.1 (docs, demo config, and a CSS
+comment only).
+
+---
+
 ## [2.2.1] — 2026-07-16
 
 ### Security
