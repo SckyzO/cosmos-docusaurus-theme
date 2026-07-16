@@ -29,7 +29,9 @@ Inline pill badges for marking feature lifecycle state. Monospace uppercase, sem
 
 ## Legacy CSV export <span className="badge-deprecated">Deprecated</span>
 
-## Docusaurus built-in `.badge--*`
+## Infima badges `.badge--*`
+
+Docusaurus ships the `.badge--*` variants through Infima. The theme darkens `.badge--success`, `.badge--warning`, and `.badge--danger` to WCAG AA contrast tokens so their white text stays legible. `.badge--primary`, `.badge--secondary`, and `.badge--info` render with Infima's default colors.
 
 <span className="badge badge--primary">primary</span>&nbsp;
 <span className="badge badge--secondary">secondary</span>&nbsp;
@@ -46,7 +48,7 @@ Inline pill badges for marking feature lifecycle state. Monospace uppercase, sem
 
 ## HTTP method badges `.method-*`
 
-For API reference pages — monospace, semantic colors.
+For API reference pages. Monospace, semantic colors.
 
 <span className="method-get">GET</span> `/api/topology/rooms`
 

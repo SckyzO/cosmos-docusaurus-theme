@@ -7,7 +7,7 @@ slug: /
 
 # Getting Started
 
-**cosmos** is a CSS-only theme plugin for [Docusaurus 3](https://docusaurus.io) — aligned with the Rackscope Void/Slate design system.
+**cosmos** is a CSS-only theme plugin for [Docusaurus 3](https://docusaurus.io), aligned with the Rackscope Void/Slate design system.
 No component swizzling, no JavaScript, pure CSS.
 
 :::tip Zero config
@@ -70,7 +70,7 @@ export default {
 };
 ```
 
-:::info Alternative — direct CSS import
+:::info Alternative: direct CSS import
 If you prefer to import the CSS manually instead of using the theme plugin:
 ```js
 presets: [['classic', { theme: { customCss: ['cosmos-docusaurus-theme/css/theme.css'] } }]]
@@ -81,33 +81,33 @@ presets: [['classic', { theme: { customCss: ['cosmos-docusaurus-theme/css/theme.
 
 ### Native Docusaurus elements
 
-Everything styled automatically — no classes, no configuration required:
+Everything here is styled automatically, with no classes or configuration required:
 
 | Element | Notes |
 | --- | --- |
-| Navbar — ghost buttons, brand, toggle | COSMOS wordmark · brand indigo title |
-| Sidebar — icons, sub-menu line, version badge | `className: 'sidebar-cat-*'` for icons |
-| Breadcrumb — ChevronRight separator | Automatic, brand hover |
-| Tabs — flat underline, brand active | `import Tabs from '@theme/Tabs'` |
-| Pagination — sublabel monospace, brand hover | Automatic prev / next |
-| Code blocks — all languages, titles | Line highlighting supported |
-| Admonitions — Toast style, semantic icons | 5 types: note / tip / info / warning / danger |
-| Tables — full-width desktop, scroll mobile | Automatic |
-| Cards — rounded-2xl, dark shadow, hover | `<div className="card">` |
-| Tags — pill style, brand hover | `<span className="tag">` |
-| Details / summary — accordion style | `<details><summary>` |
-| TOC — active pill, H2/H3 hierarchy | Right panel |
-| Blockquote — brand left border | `>` markdown syntax |
-| `<kbd>` — chip style, 3D border | `<kbd>Ctrl</kbd>` |
-| Images — rounded-xl, shadow | `![alt](src)` in markdown |
-| `<abbr title>` — tooltip on hover | `<abbr title="...">` |
+| Navbar: ghost buttons, brand, toggle | COSMOS wordmark · brand indigo title |
+| Sidebar: icons, sub-menu line, version badge | `className: 'sidebar-cat-*'` for icons |
+| Breadcrumb: ChevronRight separator | Automatic, brand hover |
+| Tabs: flat underline, brand active | `import Tabs from '@theme/Tabs'` |
+| Pagination: sublabel monospace, brand hover | Automatic prev / next |
+| Code blocks: all languages, titles | Line highlighting supported |
+| Admonitions: semantic icons | 5 types: note / tip / info / warning / danger |
+| Tables: full-width desktop, scroll mobile | Automatic |
+| Cards: rounded-2xl, dark shadow, hover | `<div className="card">` |
+| Tags: pill style, brand hover | `<span className="tag">` |
+| Details / summary: accordion style | `<details><summary>` |
+| TOC: active pill, H2/H3 hierarchy | Right panel |
+| Blockquote: brand left border | `>` markdown syntax |
+| `<kbd>`: chip style, 3D border | `<kbd>Ctrl</kbd>` |
+| Images: rounded-xl, shadow | `![alt](src)` in markdown |
+| `<abbr title>`: tooltip on hover | `<abbr title="...">` |
 | Back-to-top + progress bar | Automatic |
 | Algolia DocSearch | `--docsearch-*` variables overridden |
 | Local search (easyops-cn) | `--search-local-*` variables overridden |
 
 ### Utility classes (MDX)
 
-Optional classes for MDX pages — full reference at [Utility Classes](/utility-classes):
+Optional classes for MDX pages. Full reference at [Utility Classes](/utility-classes):
 
 | Class | Purpose |
 | --- | --- |
@@ -123,8 +123,8 @@ Optional classes for MDX pages — full reference at [Utility Classes](/utility-
 
 - Docusaurus **3.0+** <span className="badge-new">Required</span>
 - Node.js **18+**
-- Docker — optional for zero-install preview
+- Docker (optional) for a zero-install preview
 
 :::note
-CSS-only — no React components, no swizzling, no JavaScript runtime.
+CSS-only: no React components, no swizzling, no JavaScript runtime.
 :::

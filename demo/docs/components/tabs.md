@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Tabs
 
-Clean underline style — flat `border-bottom` indicator, brand color on active, no background fill.
+Flat underline style: a `border-bottom` indicator, brand color on the active tab, no background fill.
 
 ## Package manager
 
@@ -36,12 +36,12 @@ pnpm add cosmos-docusaurus-theme
   </TabItem>
 </Tabs>
 
-## Dark / Light palette reference
+## Dark / light palette reference
 
 <Tabs>
-  <TabItem value="dark" label="Void — Dark" default>
+  <TabItem value="dark" label="Void (dark)" default>
 
-The **Void** palette uses Tailwind neutral-950/900/800 blacks — no blue tint.
+The **Void** palette uses Tailwind gray-950/900/800 blacks, with no blue tint.
 
 ```css
 --ifm-background-color:         #030712; /* gray-950 */
@@ -51,9 +51,9 @@ The **Void** palette uses Tailwind neutral-950/900/800 blacks — no blue tint.
 ```
 
   </TabItem>
-  <TabItem value="light" label="Slate — Light">
+  <TabItem value="light" label="Slate (light)">
 
-The **Slate** palette uses warm white backgrounds with brown text tones.
+The **Slate** palette uses gray-50/white backgrounds with warm brown text tones.
 
 ```css
 --ifm-background-color:         #f9fafb; /* gray-50 */
@@ -65,7 +65,7 @@ The **Slate** palette uses warm white backgrounds with brown text tones.
   </TabItem>
   <TabItem value="brand" label="Brand">
 
-The brand color is **indigo `#465fff`** — lighter variant `#7592ff` for dark mode.
+The brand color is **indigo `#465fff`**, with the lighter variant `#7592ff` in dark mode.
 
 ```css
 --ifm-color-primary:       #465fff; /* light mode */
@@ -80,9 +80,8 @@ The brand color is **indigo `#465fff`** — lighter variant `#7592ff` for dark m
 <Tabs groupId="framework">
   <TabItem value="react" label="React" default>
 
-```tsx
-import { themes } from 'cosmos-docusaurus-theme';
-
+```js
+// docusaurus.config.js
 export default {
   themes: ['cosmos-docusaurus-theme'],
 };
@@ -92,7 +91,7 @@ export default {
   <TabItem value="vue" label="Vue / Vuepress">
 
 ```js
-// Not applicable — cosmos-docusaurus-theme is Docusaurus-specific.
+// Not applicable: cosmos-docusaurus-theme is Docusaurus-specific.
 // For VitePress, use the raw CSS import:
 import 'cosmos-docusaurus-theme/css/theme.css';
 ```
@@ -107,7 +106,7 @@ Tabs with the same `groupId` stay in sync across all instances on the page.
 <Tabs groupId="framework">
   <TabItem value="react" label="React" default>
 
-Synced with the tab above — clicking **Vue** there also selects it here.
+Synced with the tab above: clicking **Vue** there also selects it here.
 
   </TabItem>
   <TabItem value="vue" label="Vue / Vuepress">

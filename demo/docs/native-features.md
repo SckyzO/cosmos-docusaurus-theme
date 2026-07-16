@@ -6,11 +6,11 @@ sidebar_position: 4
 
 # What's Styled
 
-Every native Docusaurus element covered by the theme — applied automatically, no configuration needed.
+Native Docusaurus elements the theme styles automatically, with no configuration needed.
 
 ## Navbar
 
-The navbar uses a **ghost button** style for all right-side items. The brand area has a `|` separator and the site title renders as a wordmark.
+The navbar gives the right-side links and the color-mode toggle a **ghost button** style. The brand area has a thin vertical separator, and the site title renders as a wordmark.
 
 Key CSS variables:
 ```css
@@ -32,13 +32,13 @@ Category icons via `className` in `sidebars.js`:
 }
 ```
 
-Available icon classes: `rocket` `monitor` `pencil` `puzzle` `sliders` `folder` `server` `database` `layers` `grid` `code`
+Available icon suffixes (each used as `sidebar-cat-<name>`): `rocket` `monitor` `pencil` `puzzle` `sliders` `folder` `server` `database` `layers` `grid` `code`
 
 The sidebar also shows a **version badge** pinned at the bottom (reads from `package.json` automatically via `injectHtmlTags()`).
 
 ## Breadcrumb
 
-ChevronRight separator, brand hover, muted inactive trail — automatic.
+ChevronRight separator, brand-colored hover, and a muted inactive trail, applied automatically.
 
 > Home › Documentation › Getting Started
 
@@ -50,7 +50,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="dark" label="Dark (Void)" default>
 
-Deep neutral blacks — Tailwind gray-950/900/800, no blue tint.
+Deep neutral blacks: Tailwind gray-950/900/800, no blue tint.
 
 ```css
 --ifm-background-color: #030712;         /* gray-950 */
@@ -60,7 +60,7 @@ Deep neutral blacks — Tailwind gray-950/900/800, no blue tint.
   </TabItem>
   <TabItem value="light" label="Light (Slate)">
 
-Warm white backgrounds — brown-toned text, not cold blue-gray.
+Warm white backgrounds with brown-toned text, not cold blue-gray.
 
 ```css
 --ifm-background-color: #f9fafb;  /* gray-50 */
@@ -72,10 +72,10 @@ Warm white backgrounds — brown-toned text, not cold blue-gray.
 
 ## Admonitions
 
-Five types — Toast Showcase style: icon pinned left, semantic title, muted body.
+Five types. Icon pinned left, semantic title, muted body.
 
 :::note
-Neutral context — supplementary information that's good to know.
+Neutral context: supplementary information that's good to know.
 :::
 
 :::tip
@@ -119,7 +119,7 @@ Border, `border-radius: 16px`, dark shadow, brand border on hover.
 <span class="tag">docusaurus</span>
 ```
 
-## Details / Accordion
+## Details / accordion
 
 <details>
 <summary>How does the sidebar version badge work?</summary>
@@ -146,7 +146,7 @@ Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to open search. Press <kbd>Cmd</kbd> + <kbd
 themeConfig: {
   announcementBar: {
     id: 'v2',
-    content: 'cosmos v2.1.0 is out — <a href="/changelog">see what\'s new</a>',
+    content: 'cosmos v2.1.0 is out. <a href="/changelog">See what\'s new</a>',
     isCloseable: true,
   },
 },

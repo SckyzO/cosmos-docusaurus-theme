@@ -7,10 +7,10 @@ sidebar_position: 2
 
 ## Headings
 
-# Heading 1 — Page title
-## Heading 2 — Major section
-### Heading 3 — Sub-section
-#### Heading 4 — Detail level
+# Heading 1: page title
+## Heading 2: major section
+### Heading 3: subsection
+#### Heading 4: detail level
 ##### Heading 5
 ###### Heading 6
 
@@ -18,12 +18,12 @@ sidebar_position: 2
 
 Regular paragraph text rendered in **Outfit** at 16.5px / line-height 1.7. Long-form prose is comfortable at full width across both Void (dark) and Slate (light) themes.
 
-**Bold** text uses `font-weight: 600` — readable without being heavy. *Italic* for emphasis.
+**Bold** text uses `font-weight: 600`, readable without being heavy. *Italic* for emphasis.
 ~~Strikethrough~~ for deprecated or removed content.
 
 ## Inline code
 
-Use `inline code` for commands, file paths, and short snippets. Styled with JetBrains Mono, subtle background, and border.
+Use `inline code` for commands, file paths, and short snippets. Styled with IBM Plex Mono, a subtle background, and a border.
 
 ```
 `file path`, `variable`, `command --flag`
@@ -45,7 +45,7 @@ Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to open the search bar.
 
 > Use blockquotes for pull quotes, context notes, and referenced content. The left-border accent ties to the brand color.
 
-> **Note**: Blockquotes inherit the brand indigo left border and a subtle tint background — both modes.
+> **Note**: Blockquotes inherit the brand-color left border and a subtle tint background in both modes.
 
 ```mdx
 > This is a blockquote with a **bold** element inside.
@@ -61,10 +61,10 @@ Rules are thin, low-contrast, and non-distracting.
 
 Hover any abbreviation to see a styled tooltip:
 
-The <abbr title="HyperText Markup Language">HTML</abbr> document uses <abbr title="Cascading Style Sheets">CSS</abbr> for visual styling, and <abbr title="PromQL — Prometheus Query Language">PromQL</abbr> for metric expressions.
+The <abbr title="HyperText Markup Language">HTML</abbr> document uses <abbr title="Cascading Style Sheets">CSS</abbr> for visual styling, and <abbr title="Prometheus Query Language">PromQL</abbr> for metric expressions.
 
 ```mdx
-<abbr title="PromQL — Prometheus Query Language">PromQL</abbr>
+<abbr title="Prometheus Query Language">PromQL</abbr>
 ```
 
 ## Inline HTML elements

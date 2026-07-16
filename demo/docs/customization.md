@@ -6,13 +6,13 @@ sidebar_position: 2
 
 # Customization
 
-The theme uses standard Infima CSS variables. Override any of them after importing
-the theme in your own `custom.css`.
+The theme builds on standard Infima CSS variables. Override any of them in your
+own `custom.css`.
 
 ## Changing the brand color
 
 ```css title="src/css/custom.css"
-@import 'cosmos-docusaurus-theme';
+@import 'cosmos-docusaurus-theme/css/theme.css';
 
 /* Replace the indigo palette with your own brand color */
 :root {
@@ -32,6 +32,10 @@ to get the full scale from a single hex value.
 :::
 
 ## Changing the font
+
+The theme ships Outfit (display) and IBM Plex Mono (code), self-hosted as woff2
+files. To use a different font, override `--ifm-font-family-base`. The example
+below loads Inter from Google Fonts.
 
 ```css title="src/css/custom.css"
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -62,7 +66,7 @@ to get the full scale from a single hex value.
 
 ## Available CSS variables
 
-Below are the key variables exposed by the theme. All standard
+Below are the main variables the theme sets. All standard
 [Infima variables](https://infima.dev/docs/variables) are also available.
 
 ```css

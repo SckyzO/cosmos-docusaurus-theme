@@ -6,7 +6,7 @@ sidebar_position: 5
 
 # Utility Classes
 
-Optional CSS classes for use in MDX pages. All included in `theme.css` — no extra import needed.
+Optional CSS classes for use in MDX pages. All are included in `theme.css`, so no extra import is needed.
 
 ## Buttons `.btn-*`
 
@@ -66,42 +66,42 @@ Inline pill labels for marking feature lifecycle state.
 ## Numbered steps `<ol className="steps">`
 
 <ol className="steps">
-  <li><strong>Install</strong> — run <code>npm install cosmos-docusaurus-theme</code></li>
-  <li><strong>Register</strong> — add <code>'cosmos-docusaurus-theme'</code> to the <code>themes</code> array</li>
-  <li><strong>Configure</strong> — set <code>defaultMode: 'dark'</code> in <code>colorMode</code></li>
-  <li><strong>Start</strong> — run <code>npm start</code> and open <a href="http://localhost:3000">localhost:3000</a></li>
+  <li><strong>Install</strong>: run <code>npm install cosmos-docusaurus-theme</code></li>
+  <li><strong>Register</strong>: add <code>'cosmos-docusaurus-theme'</code> to the <code>themes</code> array</li>
+  <li><strong>Configure</strong>: set <code>defaultMode: 'dark'</code> in <code>colorMode</code></li>
+  <li><strong>Start</strong>: run <code>npm start</code> and open <a href="http://localhost:3000">localhost:3000</a></li>
 </ol>
 
 ```mdx
 <ol class="steps">
-  <li><strong>Install</strong> — <code>npm install cosmos-docusaurus-theme</code></li>
-  <li><strong>Register</strong> — add to <code>themes</code> array</li>
+  <li><strong>Install</strong>: <code>npm install cosmos-docusaurus-theme</code></li>
+  <li><strong>Register</strong>: add to <code>themes</code> array</li>
 </ol>
 ```
 
 ## Timeline `<ul className="timeline">`
 
 <ul className="timeline">
-  <li><strong>v2.1.0</strong> — Buttons, steps, timeline, blockquote, kbd, tooltip, 4-col footer</li>
-  <li><strong>v2.0.3</strong> — Full lint suite: ESLint, Prettier, markdownlint, Makefile</li>
-  <li><strong>v2.0.2</strong> — Dynamic version badge via <code>injectHtmlTags()</code></li>
-  <li><strong>v2.0.1</strong> — Tables full-width desktop, scrollable mobile</li>
-  <li><strong>v2.0.0</strong> — 8 native Docusaurus components, GHCR workflow fix</li>
+  <li><strong>v2.1.0</strong>: Buttons, steps, timeline, blockquote, kbd, tooltip, 4-col footer</li>
+  <li><strong>v2.0.3</strong>: Full lint suite: ESLint, Prettier, markdownlint, Makefile</li>
+  <li><strong>v2.0.2</strong>: Dynamic version badge via <code>injectHtmlTags()</code></li>
+  <li><strong>v2.0.1</strong>: Tables full-width desktop, scrollable mobile</li>
+  <li><strong>v2.0.0</strong>: 8 native Docusaurus components, GHCR workflow fix</li>
 </ul>
 
 ```mdx
 <ul class="timeline">
-  <li><strong>v2.1.0</strong> — New utility classes</li>
-  <li><strong>v2.0.0</strong> — Major refactor</li>
+  <li><strong>v2.1.0</strong>: New utility classes</li>
+  <li><strong>v2.0.0</strong>: Major refactor</li>
 </ul>
 ```
 
 ## Check list `<ul className="list-check">`
 
 <ul className="list-check">
-  <li>CSS-only — no JavaScript, no React component swizzling</li>
+  <li>CSS-only: no JavaScript, no React component swizzling</li>
   <li>Dark-first with full light mode support (Void + Slate palettes)</li>
-  <li>Outfit + JetBrains Mono typography</li>
+  <li>Outfit + IBM Plex Mono typography</li>
   <li>Every native Docusaurus element styled</li>
   <li>Sidebar icons, sub-menu line, version badge</li>
   <li>Local search (easyops-cn) palette overrides</li>
@@ -109,12 +109,14 @@ Inline pill labels for marking feature lifecycle state.
 
 ```mdx
 <ul class="list-check">
-  <li>CSS-only — no JavaScript</li>
+  <li>CSS-only: no JavaScript</li>
   <li>Dark-first with full light mode support</li>
 </ul>
 ```
 
 ## Docusaurus built-in badges
+
+Infima ships these badge colors. The theme darkens `badge--success`, `badge--warning`, and `badge--danger` to meet WCAG AA contrast; `badge--primary` and `badge--secondary` keep the Infima defaults.
 
 <span className="badge badge--primary">primary</span>&nbsp;
 <span className="badge badge--secondary">secondary</span>&nbsp;
