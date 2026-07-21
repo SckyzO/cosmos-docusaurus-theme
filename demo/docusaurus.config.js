@@ -52,7 +52,7 @@ const config = {
   themes: [
     // CSS theme plugin
     'cosmos-docusaurus-theme',
-    // Local search — zero config, works offline, no API key required
+    // Local search: zero config, works offline, no API key required
     [
       require.resolve('@easyops-cn/docusaurus-search-local'),
       {
@@ -78,7 +78,7 @@ const config = {
           sidebarPath: './sidebars.js',
         },
         blog: false,
-        // No customCss here — the theme plugin handles injection via getClientModules()
+        // No customCss here: the theme plugin handles injection via getClientModules()
       }),
     ],
   ],
@@ -92,9 +92,9 @@ const config = {
       },
       announcementBar: {
         // Bump both id and version on each release so the banner reappears.
-        id: 'cosmos-v214',
+        id: 'cosmos-v223',
         content:
-          'cosmos <strong>v2.1.4</strong> is out — <a href="/utility-classes">explore the utility classes →</a>',
+          'cosmos <strong>v2.2.3</strong> is out: <a href="/utility-classes">explore the utility classes →</a>',
         isCloseable: true,
       },
       navbar: {
@@ -131,7 +131,7 @@ const config = {
           },
         ],
       },
-      // Footer disabled on the demo site — the theme ships full footer CSS support.
+      // Footer disabled on the demo site: the theme ships full footer CSS support.
       // To enable a 4-column footer, add a footer block here. Example:
       //
       // footer: {
