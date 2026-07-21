@@ -1,4 +1,4 @@
-FROM node:20.20.1-alpine3.23
+FROM node:26.5.0-alpine3.23
 
 # Upgrade OS packages to pick up security patches (e.g. zlib CVE-2026-22184)
 RUN apk upgrade --no-cache
