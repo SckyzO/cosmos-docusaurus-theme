@@ -23,6 +23,14 @@ updates:
       - "dependencies"
       - "npm"
       - "demo"
+    groups:
+      # Docusaurus refuses to build when official @docusaurus/* packages resolve
+      # to different versions, so they must be bumped in a single PR. Ungrouped,
+      # Dependabot opens one PR per package and each is broken on its own.
+      # Excludes third-party plugins like @easyops-cn/*, which version freely.
+      docusaurus:
+        patterns:
+          - "@docusaurus/*"
 
   # GitHub Actions versions (covers all workflow files)
   - package-ecosystem: "github-actions"
