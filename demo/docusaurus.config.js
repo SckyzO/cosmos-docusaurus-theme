@@ -37,11 +37,13 @@ const config = {
       rspackBundler: true,
       rspackPersistentCache: true,
     },
-    // v4: Infima moves into @layer docusaurus.infima. The theme's CSS stays
-    // unlayered, so it wins against Infima regardless of specificity.
-    v4: {
-      useCssCascadeLayers: true,
-    },
+    // useCssCascadeLayers is intentionally OFF.
+    // Lightning CSS flattens @layer by inflating the layered (Infima) rules
+    // with :not(#\#):not(#\#), which outranks this theme's plain-specificity
+    // :root / [data-theme] custom properties. Infima then wins every variable
+    // override: --ifm-background-surface-color resolved to #242526 instead of
+    // #111827, so the navbar no longer matched the sidebar. Re-enable only
+    // once the theme declares its own layer or raises its specificity.
   },
 
   i18n: {

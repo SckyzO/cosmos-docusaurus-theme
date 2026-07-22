@@ -7,6 +7,25 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.2.4] - 2026-07-22
+
+### Fixed
+
+- **demo**: disabled `future.v4.useCssCascadeLayers`, which caused a visible
+  regression on the demo site: the navbar rendered `#242526` instead of
+  `#111827`, so it no longer matched the sidebar. Lightning CSS flattens
+  `@layer` by inflating the layered (Infima) rules with `:not(#\#):not(#\#)`,
+  and that outranks this theme's plain-specificity `:root` / `[data-theme]`
+  custom properties. Infima then won every variable override, including
+  `--ifm-background-surface-color`. The 2.2.2 note claiming the theme rendered
+  correctly under cascade layers was wrong: only the build had been checked,
+  not the rendering. Re-enable this flag only once the theme declares its own
+  cascade layer or raises the specificity of its overrides.
+
+The published theme output is unchanged from 2.2.1.
+
+---
+
 ## [2.2.3] - 2026-07-16
 
 ### Security
