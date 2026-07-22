@@ -203,8 +203,15 @@ make security        # npm audit + no-runtime-deps
 make demo-build      # build demo static site
 make demo-check      # verify 12 key pages exist in build output
 make demo-start      # dev server at http://localhost:3000
+make render-test     # assert computed styles in a real browser
 make docker-up       # demo in Docker at http://localhost:3000
 ```
+
+`make render-test` runs the render smoke test: it builds the demo, loads it in
+Chromium, and checks that the theme's variables, fonts and layout actually
+resolve on the page rather than falling back to Infima defaults. For a CSS-only
+theme, a build that compiles proves very little, so this is the gate that
+matters. See [`tests/render/`](tests/render/README.md).
 
 ---
 

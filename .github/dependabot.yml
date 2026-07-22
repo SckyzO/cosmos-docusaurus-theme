@@ -32,6 +32,18 @@ updates:
         patterns:
           - "@docusaurus/*"
 
+  # Render smoke test dependencies (Playwright)
+  - package-ecosystem: "npm"
+    directory: "/tests/render"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "npm"
+      - "tests"
+
   # GitHub Actions versions (covers all workflow files)
   - package-ecosystem: "github-actions"
     directory: "/"

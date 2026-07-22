@@ -1,0 +1,13 @@
+{
+  "name": "cosmos-render-smoke",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Rendering smoke test for cosmos-docusaurus-theme — asserts computed styles in a real browser",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1"
+  }
+}

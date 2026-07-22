@@ -20,6 +20,7 @@ DOCKER       ?= docker
 COMPOSE      ?= docker compose
 
 DEMO_DIR     := demo
+RENDER_DIR   := tests/render
 
 # ── Default ───────────────────────────────────────────────────────────────────
 
@@ -54,6 +55,10 @@ help:
 	@echo "    demo-start       Start demo dev server (http://localhost:3000)"
 	@echo "    demo-serve       Serve the built demo site"
 	@echo "    demo-clear       Clear Docusaurus cache"
+	@echo ""
+	@echo "  Rendering"
+	@echo "    render-test      Assert computed styles in a real browser"
+	@echo "    render-install   Install Playwright and Chromium"
 	@echo ""
 	@echo "  Docker"
 	@echo "    docker-build     Build the demo Docker image (no push)"
@@ -153,9 +158,9 @@ audit:
 demo-build: demo-install
 	cd $(DEMO_DIR) && $(NPM) run build
 
-## HTTP smoke test: check key pages return 200 (requires demo-serve or docker-up first)
+## Check that every required page made it into the build (requires demo-build first)
 demo-check:
-	DEMO_URL=http://localhost:3000 $(NODE) $(DEMO_DIR)/scripts/check-pages.js
+	$(NODE) $(DEMO_DIR)/scripts/check-pages.js
 
 ## Start demo dev server with hot-reload (http://localhost:3000)
 demo-start: demo-install
@@ -168,6 +173,16 @@ demo-serve:
 ## Clear Docusaurus cache and build artifacts
 demo-clear:
 	cd $(DEMO_DIR) && $(NPM) run clear
+
+# ── Rendering ─────────────────────────────────────────────────────────────────
+
+## Install Playwright and the Chromium binary used by the smoke test
+render-install:
+	cd $(RENDER_DIR) && $(NPM) ci && npx playwright install chromium
+
+## Load the built demo in a browser and assert computed styles (runs demo-build)
+render-test: demo-build render-install
+	cd $(RENDER_DIR) && $(NPM) test
 
 # ── Docker ────────────────────────────────────────────────────────────────────
 
