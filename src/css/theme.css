@@ -147,11 +147,14 @@
   --ifm-navbar-link-hover-color: var(--cosmos-brand);
   --ifm-navbar-link-active-color: var(--cosmos-brand);
 
-  /* Sidebar */
-  --ifm-sidebar-width: 280px;
+  /* Sidebar. --doc-sidebar-width is the name Docusaurus reads; --ifm-sidebar-*
+     never existed in Infima and was removed rather than renamed.
+     The sidebar collapse button keeps theme-classic's own hover shades: it
+     declares --docusaurus-collapse-button-bg* from a CSS module that loads
+     after this file, so matching its selector is not enough to win and the
+     theme would have to inflate specificity for a hover tint that is visually
+     interchangeable with the default. */
   --doc-sidebar-width: 280px;
-  --ifm-sidebar-padding: 16px;
-  --docusaurus-collapse-button-bg-hover-color: #f3f4f6;
 
   /* Links */
   --ifm-link-color: var(--cosmos-brand);
@@ -159,7 +162,7 @@
 
   /* Borders — Slate: Tailwind gray-200 */
   --ifm-toc-border-color: #e5e7eb;
-  --ifm-hr-border-color: #e5e7eb;
+  --ifm-hr-background-color: #e5e7eb;
   --ifm-color-emphasis-300: #e5e7eb;
   --ifm-color-emphasis-600: #5c574f;
 
@@ -206,7 +209,7 @@
 
   /* Borders — Void: Tailwind gray-800. --ifm-toc-border-color and the two
      emphasis steps live in the html[data-theme='dark'] block below. */
-  --ifm-hr-border-color: #1f2937;
+  --ifm-hr-background-color: #1f2937;
   --ifm-table-border-color: #1f2937;
   --ifm-table-head-background: #111827;
 
@@ -221,9 +224,6 @@
   --ifm-navbar-shadow: 0px 1px 0px 0px #1f2937;
 
   /* Code — --ifm-code-background lives in the html[data-theme='dark'] block. */
-
-  /* Sidebar collapse button */
-  --docusaurus-collapse-button-bg-hover-color: rgb(255, 255, 255, 0.05);
 }
 
 /* ── Dark mode, html-scoped ──────────────────────────────────────────────── */
@@ -1362,18 +1362,9 @@ ul.breadcrumbs {
 }
 
 /* ── Tags ────────────────────────────────────────────────────────────────── */
-:root {
-  --ifm-tag-background: rgb(var(--cosmos-brand-rgb), 0.08);
-  --ifm-tag-color: var(--cosmos-brand);
-  --ifm-tag-border-color: rgb(var(--cosmos-brand-rgb), 0.2);
-}
-
-[data-theme='dark'] {
-  --ifm-tag-background: rgb(var(--cosmos-brand-light-rgb), 0.1);
-  --ifm-tag-color: var(--cosmos-brand-light);
-  --ifm-tag-border-color: rgb(var(--cosmos-brand-light-rgb), 0.25);
-}
-
+/* Infima has no --ifm-tag-* variables, so the six that used to sit here were
+   read by nothing. Tag colors come from the [class*='tagItem'] rules further
+   down, which set the properties directly. */
 .tag {
   border-radius: 20px;
   font-size: 0.75rem;

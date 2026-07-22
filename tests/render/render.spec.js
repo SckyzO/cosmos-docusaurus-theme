@@ -40,10 +40,14 @@ const MODE_VARS = {
     '--ifm-background-color': '#f9fafb', // Infima default: #fff
     '--ifm-background-surface-color': '#fff',
     '--ifm-navbar-background-color': '#fff',
+    // Was declared as --ifm-hr-border-color, a name Infima does not read, so
+    // horizontal rules rendered with the Infima emphasis-500 grey.
+    '--ifm-hr-background-color': '#e5e7eb',
   },
   dark: {
     '--ifm-color-primary': '#7592ff', // Infima default: #3578e5
     '--ifm-navbar-background-color': '#111827',
+    '--ifm-hr-background-color': '#1f2937', // see the light-mode note above
     // The six below are declared by Infima at html[data-theme='dark'] (0,1,1).
     // The theme has to match that selector to reach them — see the
     // html[data-theme='dark'] block in src/css/theme.css.

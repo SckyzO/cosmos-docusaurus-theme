@@ -36,6 +36,33 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
   This is the bug the new render smoke test caught on its very first run.
 
+- **horizontal rules**: the theme declared `--ifm-hr-border-color`, a name
+  Infima does not read. The variable Infima reads is
+  `--ifm-hr-background-color`, so `<hr>` rendered with the Infima
+  emphasis-500 grey instead of the theme's gray-200 / gray-800. Renamed, so
+  the intended color now applies.
+
+### Removed
+
+- Six custom properties that nothing read, ten declarations in total:
+  `--ifm-sidebar-width` and `--ifm-sidebar-padding` (Infima has neither; the
+  name Docusaurus reads is `--doc-sidebar-width`, which the theme already
+  set), `--ifm-tag-background`, `--ifm-tag-color` and `--ifm-tag-border-color`
+  (Infima has no tag variables; tag colors come from the `[class*='tagItem']`
+  rules, which set the properties directly), and
+  `--docusaurus-collapse-button-bg-hover-color` (a misspelling of
+  `--docusaurus-collapse-button-bg-hover`).
+
+  The collapse button keeps theme-classic's own hover shades rather than being
+  renamed onto the correct variable. theme-classic declares it from a CSS
+  module that loads after this file, so matching its selector is not enough to
+  win, and the theme would have to inflate specificity for a hover tint that
+  is visually interchangeable with the default. Say so if you want the subtler
+  5% shade back; it is a deliberate choice, not an oversight.
+
+  No rendering changes from these removals: every one of them was already
+  inert.
+
 ### Added
 
 - **CI**: a render smoke test (`tests/render/`, Playwright + Chromium) loads
