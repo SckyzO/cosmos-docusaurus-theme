@@ -42,7 +42,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
   the built demo in a real browser and asserts computed styles in both color
   modes: theme variables, navbar and sidebar sharing one background, navbar
   height, the Outfit and IBM Plex Mono stacks, and the self-hosted woff2 files
-  returning 200.
+  returning 200. One assertion is structural rather than value-based: no
+  dark-mode variable may be declared at both `[data-theme=dark]` and
+  `html[data-theme=dark]`, which catches the bug above for variables added
+  later, not just the six known ones.
 
   The 2.2.2 cascade-layers regression passed stylelint, the demo build, the
   page check and Trivy while the site rendered as near-vanilla Docusaurus,

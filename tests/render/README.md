@@ -39,6 +39,13 @@ In both light and dark mode:
 - `--ifm-font-family-base` and `--ifm-font-family-monospace` carry Outfit and
   IBM Plex Mono
 
+Structurally, once:
+
+- no dark-mode variable is declared at both `[data-theme=dark]` (0,1,0) and
+  `html[data-theme=dark]` (0,1,1). The plain one can never win, so whoever
+  loses is writing dead CSS. This one catches variables added in the future,
+  which the named expectations above cannot.
+
 Plus, on the rendered page:
 
 - navbar and sidebar share one background in dark mode, the symptom that
