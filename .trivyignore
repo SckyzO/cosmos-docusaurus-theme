@@ -27,12 +27,16 @@ CVE-2026-26960
 CVE-2026-29786
 CVE-2026-31802
 
-# ── Not applicable — build-time only ─────────────────────────────────────────
+# ── Discharged ───────────────────────────────────────────────────────────────
 #
-# sigstore lives in the base image's *bundled npm*
-# (/usr/local/lib/node_modules/npm/node_modules/sigstore), not in the demo's
-# dependency tree. It is used only for provenance verification during
-# npm install/publish — never by the demo runtime (`npm start` serving a static
-# docs site). node 20's npm ships sigstore 2.3.1; the fix (4.1.1) requires
-# npm >= 12, which needs node >= 22. Deferred to a future base-image bump.
-CVE-2026-48815
+# CVE-2026-48815 (sigstore in the base image's bundled npm) used to be
+# suppressed here, deferred to "a future base-image bump" because the fix
+# needed npm >= 12 and the base was node 20. The base is node 26 now and the
+# Dockerfile installs npm 12 explicitly, so the deferral is discharged and the
+# entry is gone rather than left to rot.
+#
+# As of the 2.2.6 scan, a fresh-database Trivy run reports zero HIGH/CRITICAL
+# even with this file empty of that entry. The suppressions above are kept
+# because they cover a recurring Trivy behaviour (reading versions from nested
+# package.json files) rather than a one-off, so they can resurface at any DB
+# update. Anything that can be fixed is fixed, not suppressed.
