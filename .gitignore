@@ -1,10 +1,15 @@
 # Dependencies
 node_modules/
 demo/node_modules/
+tests/render/node_modules/
 
 # Docusaurus build output
 demo/.docusaurus/
 demo/build/
+
+# Playwright render smoke test output
+tests/render/test-results/
+tests/render/playwright-report/
 
 # OS artifacts
 .DS_Store
