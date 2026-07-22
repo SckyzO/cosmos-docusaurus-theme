@@ -41,10 +41,13 @@ In both light and dark mode:
 
 Structurally, once:
 
-- no dark-mode variable is declared at both `[data-theme=dark]` (0,1,0) and
-  `html[data-theme=dark]` (0,1,1). The plain one can never win, so whoever
-  loses is writing dead CSS. This one catches variables added in the future,
-  which the named expectations above cannot.
+- no dark-mode variable is declared at two of the three root-scoped
+  specificities in play: `[data-theme=dark]` (0,1,0, the theme),
+  `html[data-theme=dark]` (0,1,1, Infima), `[data-theme=dark]:root` (0,2,0,
+  Docusaurus core). The lower declaration can never win, so it is dead CSS, and
+  when the loser is the theme the site renders someone else's default. This one
+  catches variables added in the future, which the named expectations above
+  cannot.
 
 Plus, on the rendered page:
 

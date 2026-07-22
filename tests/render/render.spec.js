@@ -114,16 +114,36 @@ test.describe('cascade integrity', () => {
     await gotoInMode(page, '/', 'dark');
 
     // The trap this whole suite exists for, checked structurally rather than
-    // variable by variable: `[data-theme=dark]` is 0,1,0 and
-    // `html[data-theme=dark]` is 0,1,1, so a name declared at both can only
-    // ever resolve to the html-scoped one. Whoever loses is writing dead CSS,
-    // and if the loser is the theme the site silently renders Infima defaults.
+    // variable by variable. Several selectors target the root element in dark
+    // mode at different specificities:
     //
-    // This catches variables added in the future, which the named expectations
-    // above cannot. When it fails, move the variable into the theme's
-    // html[data-theme='dark'] block in src/css/theme.css.
-    const groups = await page.evaluate(() => {
-      const collected = { plain: [], html: [] };
+    //   [data-theme=dark]        0,1,0   the theme's main block
+    //   html[data-theme=dark]    0,1,1   Infima, and the theme's second block
+    //   [data-theme=dark]:root   0,2,0   Docusaurus core
+    //
+    // A custom property declared at two of them always resolves to the higher
+    // one, so the lower declaration is dead CSS. When the loser is the theme,
+    // the site silently renders someone else's default, which is exactly the
+    // shape of the six-variable bug fixed in 2.2.5.
+    //
+    // Grouping by specificity rather than naming the selectors pairwise means
+    // this keeps working when a variable is added later, which the named
+    // expectations above cannot do. When it fails, move the variable into the
+    // theme's html[data-theme='dark'] block in src/css/theme.css.
+    //
+    // :where([data-theme=dark]) is deliberately out of scope: its specificity
+    // is zero by design, so being outranked is the intent, not a bug.
+    const declarations = await page.evaluate(() => {
+      /** Root-scoped dark selectors only, in their CSSOM-normalized form. */
+      const SPECIFICITY = {
+        '[data-theme=dark]': '0,1,0',
+        'html[data-theme=dark]': '0,1,1',
+        ':root[data-theme=dark]': '0,2,0',
+        '[data-theme=dark]:root': '0,2,0',
+      };
+
+      /** @type {Record<string, string[]>} property name -> specificities */
+      const found = {};
       for (const sheet of Array.from(document.styleSheets)) {
         let rules;
         try {
@@ -135,30 +155,36 @@ test.describe('cascade integrity', () => {
           if (!rule.selectorText) continue;
           // The CSSOM re-serializes attribute values with quotes, and a rule
           // may carry a selector list, so normalize and inspect every part.
-          const parts = rule.selectorText
+          const levels = rule.selectorText
             .split(',')
-            .map((part) => part.replace(/\s+/g, '').replace(/["']/g, ''));
-          const buckets = [];
-          if (parts.includes('[data-theme=dark]')) buckets.push('plain');
-          if (parts.includes('html[data-theme=dark]')) buckets.push('html');
-          if (!buckets.length) continue;
+            .map((part) => SPECIFICITY[part.replace(/\s+/g, '').replace(/["']/g, '')])
+            .filter(Boolean);
+          if (!levels.length) continue;
           for (const property of Array.from(rule.style)) {
             if (!property.startsWith('--')) continue;
-            for (const bucket of buckets) collected[bucket].push(property);
+            found[property] = found[property] || [];
+            for (const level of levels) {
+              if (!found[property].includes(level)) found[property].push(level);
+            }
           }
         }
       }
-      return collected;
+      return found;
     });
 
     // A parsing miss would make the assertion below pass on an empty set.
-    expect(groups.plain.length, 'found no [data-theme=dark] variables at all').toBeGreaterThan(10);
-    expect(groups.html.length, 'found no html[data-theme=dark] variables at all').toBeGreaterThan(
-      5
-    );
+    const byLevel = (level) =>
+      Object.values(declarations).filter((levels) => levels.includes(level)).length;
+    expect(byLevel('0,1,0'), 'found no [data-theme=dark] variables at all').toBeGreaterThan(10);
+    expect(byLevel('0,1,1'), 'found no html[data-theme=dark] variables at all').toBeGreaterThan(5);
 
-    const shadowed = groups.plain.filter((name) => groups.html.includes(name)).sort();
-    expect(shadowed, 'declared at both 0,1,0 and 0,1,1 — the plain one can never win').toEqual([]);
+    const shadowed = Object.entries(declarations)
+      .filter(([, levels]) => levels.length > 1)
+      .map(([name, levels]) => `${name} (${levels.sort().join(' and ')})`)
+      .sort();
+    expect(shadowed, 'declared at two specificities: the lower declaration can never win').toEqual(
+      []
+    );
   });
 });
 
