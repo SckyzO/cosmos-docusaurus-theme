@@ -41,6 +41,32 @@ A fresh-database scan of the rebuilt image reports **zero HIGH or CRITICAL**.
 The stale `sigstore` suppression was removed along with its now-false
 rationale.
 
+Nine of the ten moderate advisories in the demo tree are also resolved. They
+matter more than the severity suggests: the demo container runs `npm start`,
+so `webpack-dev-server` is its runtime, and the advisories covered cross-origin
+source exposure, CSRF on internal developer endpoints and a Host-header denial
+of service.
+
+- `webpack-dev-server` 5.2.3 to 5.2.6, `express` 4.22.1 to 4.22.2,
+  `body-parser` 1.20.4 to 1.20.6, `qs` 6.14.2 to 6.15.3,
+  `http-proxy-middleware` 2.0.9 to 2.0.10, `joi` 17.13.3 to 17.13.4,
+  `launch-editor` 2.13.1 to 2.14.1, `follow-redirects` 1.15.11 to 1.16.0.
+  All within their existing majors, no `--force` needed.
+
+The tenth, `uuid` 8.3.2 (GHSA-w5hq-g745-h8pq), is **left as is on purpose**.
+It reaches the tree only through `sockjs`, and the flaw is a missing buffer
+bounds check in the v3, v5 and v6 generators when a `buf` argument is passed.
+`sockjs` calls `uuid.v4()` with no arguments and nothing else
+(`lib/transport.js:37`), so the vulnerable path cannot be reached. Clearing
+the warning would mean forcing `uuid` across three majors inside a dependency
+that provably cannot trigger it, which is more risk than the warning is worth.
+
+### Changed
+
+- **demo**: React and React DOM 19.2.7 to 19.2.8, bumped as a pair because
+  Docusaurus refuses to build when they diverge.
+- **CI**: `actions/upload-artifact` 5.0.0 to 7.0.1.
+
 The published theme output is unchanged from 2.2.5.
 
 ---
