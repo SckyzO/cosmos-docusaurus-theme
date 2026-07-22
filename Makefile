@@ -1,4 +1,4 @@
-# ── cosmos-docusaurus-theme — Developer Makefile ──────────────────────────────
+# ── cosmos-docusaurus-theme: Developer Makefile ──────────────────────────────
 #
 # Usage:
 #   make              → lint + security + demo-build (default)
@@ -30,7 +30,7 @@ all: lint security demo-build
 
 help:
 	@echo ""
-	@echo "  cosmos-docusaurus-theme — available targets"
+	@echo "  cosmos-docusaurus-theme: available targets"
 	@echo ""
 	@echo "  Setup"
 	@echo "    install          Install root devDependencies (stylelint)"
@@ -117,7 +117,7 @@ lint-mdx:
 	      lines.forEach((line, i) => { \
 	        if (/^[\x60~]{3}/.test(line.trim())) inCode = !inCode; \
 	        if (!inCode && / class=\"/.test(line)) { \
-	          console.error('  ' + full + ':' + (i+1) + ' — class= should be className='); \
+	          console.error('  ' + full + ':' + (i+1) + ': class= should be className='); \
 	          errors++; \
 	        } \
 	      }); \
@@ -153,7 +153,7 @@ audit:
 demo-build: demo-install
 	cd $(DEMO_DIR) && $(NPM) run build
 
-## HTTP smoke test — check key pages return 200 (requires demo-serve or docker-up first)
+## HTTP smoke test: check key pages return 200 (requires demo-serve or docker-up first)
 demo-check:
 	DEMO_URL=http://localhost:3000 $(NODE) $(DEMO_DIR)/scripts/check-pages.js
 

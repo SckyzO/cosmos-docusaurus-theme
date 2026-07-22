@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
-## [2.2.3] — 2026-07-16
+## [2.2.3] - 2026-07-16
 
 ### Security
 
@@ -22,21 +22,22 @@ The published theme output is unchanged from 2.2.1.
 
 ---
 
-## [2.2.2] — 2026-07-16
+## [2.2.2] - 2026-07-16
 
 ### Changed
 
-- **Docs**: audited and rewrote all 15 demo docs. Every class/option/font/hex
-  claim was verified against the source and corrected (e.g. the broken
-  `@import 'cosmos-docusaurus-theme'` CSS example, a non-existent
+- **Docs**: audited and rewrote all 15 demo docs. Verified every
+  class/option/font/hex claim against the source and corrected the wrong ones
+  (the broken `@import 'cosmos-docusaurus-theme'` CSS example, a non-existent
   `import { themes }`, stale "JetBrains Mono", a wrong breadcrumb color, and a
-  false `hide_table_of_contents` breadcrumb claim); AI-writing tells were
-  removed (zero em/en dashes across the set).
+  false `hide_table_of_contents` breadcrumb claim). Also removed AI-writing
+  tells (zero em/en dashes across the set).
 - **demo (v4 readiness)**: migrated `onBrokenMarkdownLinks` to
   `markdown.hooks.onBrokenMarkdownLinks` (top-level deprecated, removed in v4);
-  enabled Docusaurus Faster (Rspack + SWC + Lightning CSS); verified the theme
-  builds and renders correctly with `future.v4.useCssCascadeLayers` (the theme
-  stays unlayered, so it wins over the now-layered Infima by spec).
+  enabled Docusaurus Faster (Rspack + SWC + Lightning CSS); enabled
+  `future.v4.useCssCascadeLayers` and verified the theme builds and renders
+  correctly under it (the theme stays unlayered, so it wins over the
+  now-layered Infima by spec).
 
 ### Internal
 
@@ -48,18 +49,18 @@ comment only).
 
 ---
 
-## [2.2.1] — 2026-07-16
+## [2.2.1] - 2026-07-16
 
 ### Security
 
 - **demo dependencies**: pin patched versions via `overrides` for transitive
-  deps flagged by Trivy in the Docker image — `shell-quote` (CVE-2026-9277,
+  deps flagged by Trivy in the Docker image: `shell-quote` (CVE-2026-9277,
   **CRITICAL**), `lodash`, `fast-uri`, `undici`, plus, scoped to their parent so
   other majors stay untouched, `picomatch` (under `anymatch`), `ws` (under
   `webpack-bundle-analyzer` and `webpack-dev-server`), and `path-to-regexp`
   (under `express`). None of these ship in the npm package (CSS-only, no runtime
-  deps) — they affect the demo Docker image only.
-- **`.trivyignore`**: document `sigstore` CVE-2026-48815 as not-applicable — it
+  deps); they affect the demo Docker image only.
+- **`.trivyignore`**: document `sigstore` CVE-2026-48815 as not-applicable. It
   lives in the base image's bundled npm (build-time provenance only, never the
   demo runtime); the fix needs npm ≥ 12 / node ≥ 22, deferred to a future
   base-image bump.
@@ -67,12 +68,12 @@ comment only).
 ### Fixed
 
 - **publish.yml**: the Trivy scan passed the input `trivyignore` (singular), but
-  `aquasecurity/trivy-action` expects **`trivyignores`** — so `.trivyignore` was
+  `aquasecurity/trivy-action` expects **`trivyignores`**, so `.trivyignore` was
   silently never applied. Fixed, so the documented suppressions take effect.
 
 ---
 
-## [2.2.0] — 2026-07-15
+## [2.2.0] - 2026-07-15
 
 ### Added
 
@@ -80,17 +81,17 @@ comment only).
   (`src/css/fonts/`, SIL OFL 1.1) instead of a Google Fonts `@import`. No
   visitor-IP leak to Google (GDPR), no render-blocking third-party request,
   and it works under a strict Content-Security-Policy. Outfit ships as one
-  variable file per subset (weight axis 400–700).
+  variable file per subset (weight axis 400-700).
 - **Brand recolor via custom properties**: `--cosmos-brand`,
-  `--cosmos-brand-rgb`, `--cosmos-brand-light`, `--cosmos-brand-light-rgb` —
-  override two variables to recolor the whole theme (light + dark).
+  `--cosmos-brand-rgb`, `--cosmos-brand-light`, `--cosmos-brand-light-rgb`.
+  Override the light pair and the dark pair to recolor the whole theme.
 - **README**: customization/override guide (wiring `custom.css`, `!important`
   note) and a known-limitation note about the color-mode toggle on i18n sites.
 
 ### Changed
 
 - **Badges**: `.badge--success/warning/danger` backgrounds darkened to the
-  `-700` design tokens to meet WCAG AA contrast (were 2.35–3.76:1 with white
+  `-700` design tokens to meet WCAG AA contrast (were 2.35-3.76:1 with white
   text, now ≥ 4.8:1).
 - **Base font size**: `--ifm-font-size-base` moved from `16.5px` to
   `1.0313rem` so it honors the browser's font-size preference (identical at the
@@ -101,9 +102,9 @@ comment only).
   `eslint` → `10.7.0`, `stylelint` → `17.14.0`.
 - **CI actions** (SHA-pinned): `docker/build-push-action` v7.3.0,
   `actions/upload-pages-artifact` v5.0.0, `actions/setup-node` v7.0.0,
-  `docker/login-action` v4.1.0, `actions/deploy-pages` v5.0.0.
+  `docker/login-action` v4.4.0, `actions/deploy-pages` v5.0.0.
 - **Internal**: the brand color is now a single source of truth via custom
-  properties (no visual change — computed values are identical).
+  properties (no visual change; computed values are identical).
 
 ### Fixed
 
@@ -113,12 +114,12 @@ comment only).
 
 ### Security
 
-- Resolved **all** `npm audit` advisories in the dev toolchain (4 HIGH plus
-  moderates → **0**). The published package still ships no runtime dependencies.
+- Resolved all `npm audit` advisories in the dev toolchain (4 HIGH plus
+  moderates → 0). The published package still ships no runtime dependencies.
 
 ---
 
-## [2.1.4] — 2026-03-17
+## [2.1.4] - 2026-03-17
 
 ### Security
 
@@ -131,27 +132,27 @@ comment only).
 
 ---
 
-## [2.1.3] — 2026-03-17
+## [2.1.3] - 2026-03-17
 
 ### Security
 
 - **Dockerfile**: base image `node:20.19-alpine3.21` → `node:20.20.1-alpine3.23`
   (fixes CVE-2025-15467 CRITICAL + 4 HIGH in `libcrypto3`/`libssl3`)
 - **demo**: force `serialize-javascript ^7.0.4` via `overrides`
-  (fixes HIGH in webpack transitive chain — Docusaurus 3.9 ships vulnerable version)
+  (fixes HIGH in webpack transitive chain: Docusaurus 3.9 ships a vulnerable version)
 
 ---
 
-## [2.1.2] — 2026-03-17
+## [2.1.2] - 2026-03-17
 
 ### Fixed
 
-- **Mobile navbar sidebar**: `.navbar-sidebar` had no background rule —
+- **Mobile navbar sidebar**: `.navbar-sidebar` had no background rule, so
   Infima's default rendered it white in both light and dark mode. Now
   inherits `--ifm-navbar-background-color` (correct for both themes).
 - **Mobile navbar overflow**: external links (e.g. GitHub) in
   `.navbar__items--right` were visible on mobile (≤ 996px), overlapping
-  the search bar. Hidden on mobile — accessible via the hamburger menu.
+  the search bar. Hidden on mobile, reachable via the hamburger menu.
 
 ### Changed
 
@@ -161,14 +162,14 @@ comment only).
 
 ---
 
-## [2.1.1] — 2026-03-11
+## [2.1.1] - 2026-03-11
 
 ### Fixed
 
-- **Breadcrumb**: `ul.breadcrumbs { display: flex }` + `::after { content: none }` — kills Infima's
+- **Breadcrumb**: `ul.breadcrumbs { display: flex }` + `::after { content: none }` kills Infima's
   whitespace injection between items; ChevronRight separator correctly aligned as flex child
 - **Sidebar sub-menu**: corrected CSS selector from `.theme-doc-sidebar-menu .menu__list .menu__list`
-  to `.menu__list > .menu__list-item > .menu__list` (direct child `>`) — matches actual DOM depth;
+  to `.menu__list > .menu__list-item > .menu__list` (direct child `>`) to match the actual DOM depth;
   `margin-left: 35px !important` aligns `|` line under category title text (measured 51.3px)
 - **Sidebar sub-menu color**: `var(--ifm-menu-color)` instead of muted secondary
 - **Banners (admonitions)**: reverted unsolicited CSS overrides; kept only the two requested rules:
@@ -178,20 +179,20 @@ comment only).
 
 ### Added
 
-- **`lint-mdx`** Makefile target — scans `demo/docs/**/*.md` for `class=` outside code blocks,
+- **`lint-mdx`** Makefile target: scans `demo/docs/**/*.md` for `class=` outside code blocks,
   preventing React prop warnings from slipping through the lint pipeline
-- **`demo-check`** Makefile target — verifies 12 key pages exist in the static build output
+- **`demo-check`** Makefile target: verifies 12 key pages exist in the static build output
   after `make demo-build`; more reliable than HTTP checks against the SPA dev server
-- **`demo/scripts/check-pages.js`** — static build file checker used by `demo-check`
+- **`demo/scripts/check-pages.js`**: static build file checker used by `demo-check`
 - `lint` target now includes `lint-mdx` as 5th step
 
-## [2.1.0] — 2026-03-11
+## [2.1.0] - 2026-03-11
 
 ### Added
 
-- **Banners (admonitions) — complete redesign**: Dismissible Alert style from Rackscope
-  `ui-library/alerts` — uniform full border (not left-only), semantic icon colors, flex
-  heading layout, `overflow: hidden` clips child shadows at rounded corners
+- **Banners (admonitions), complete redesign**: Dismissible Alert style from Rackscope
+  `ui-library/alerts` with a uniform full border (not left-only), semantic icon colors, flex
+  heading layout, and `overflow: hidden` to clip child shadows at rounded corners
 - **Navbar COSMOS wordmark**: Outfit 700 uppercase, brand indigo `#465fff` / `#7592ff` dark;
   `|` vertical separator; active nav tab underline indicator matching Tabs style
 - **Tabs**: flat underline (no border-radius), brand active state, proper dark mode vars
@@ -204,14 +205,14 @@ comment only).
 - **`<abbr title>`**: styled tooltip on hover
 - **Buttons**: `.btn` `.btn-primary` `.btn-secondary` `.btn-danger` `.btn-sm` `.btn-lg`
 - **Release badges**: `.badge-new` `.badge-beta` `.badge-deprecated` `.badge-experimental`
-- **Steps**: `ol.steps` — numbered procedure with circle indicators
-- **Timeline**: `ul.timeline` — versioned event list with vertical line
-- **Check list**: `ul.list-check` — feature list with checkmarks
+- **Steps**: `ol.steps`, a numbered procedure with circle indicators
+- **Timeline**: `ul.timeline`, a versioned event list with a vertical line
+- **Check list**: `ul.list-check`, a feature list with checkmarks
 - **Footer CSS**: 4-column grid, responsive (4→2→1), monospace section titles, brand colors
 - **Announcement bar**: gradient indigo, improved link style
 - **Favicon**: cosmos atom SVG injected via `injectHtmlTags()` with opt-out option
   `injectFavicon: false`; SVG properly `encodeURIComponent()`-encoded for `data:` URI
-- **`validateOptions()`** exported — Docusaurus options validation for the theme plugin
+- **`validateOptions()`** exported: Docusaurus options validation for the theme plugin
 - **Demo site restructure**: `showcase/` → `components/` (10 pages); dual navbar
   Documentation | Components; Components sidebar dedicated; `class=` → `className=` in MDX
 
@@ -226,91 +227,91 @@ comment only).
 - **`demo/package.json`**: `@easyops-cn ^0.55` (was `latest`); `file:..` dependency
 - **package.json**: description updated, removes stale "TailAdmin" reference
 
-## [2.0.3] — 2026-03-11
+## [2.0.3] - 2026-03-11
 
 ### Added
 
-- **Makefile** — developer targets: `lint`, `lint-css`, `lint-js`, `lint-md`,
+- **Makefile** with developer targets: `lint`, `lint-css`, `lint-js`, `lint-md`,
   `lint-format`, `format`, `lint-fix`, `security`, `audit`, `install`,
   `demo-build`, `demo-start`, `demo-serve`, `demo-clear`, `docker-build`,
   `docker-up`, `docker-down`, `clean`
-- **ESLint** (`eslint@9`, `@eslint/js`) — flat config (`eslint.config.mjs`),
+- **ESLint** (`eslint@9`, `@eslint/js`): flat config (`eslint.config.mjs`),
   lints `src/**/*.js`; rules: `no-unused-vars` (allow `_` prefix), `no-console off`
-- **Prettier** (`prettier@3`) — formats CSS, JS, JSON, MD; `.prettierrc` + `.prettierignore`
-- **markdownlint-cli** (`@0.48`) — lints `*.md` and `docs/**/*.md`; `.markdownlint.json`
+- **Prettier** (`prettier@3`): formats CSS, JS, JSON, MD; `.prettierrc` + `.prettierignore`
+- **markdownlint-cli** (`@0.48`): lints `*.md` and `docs/**/*.md`; `.markdownlint.json`
   with `MD024: siblings_only` (CHANGELOG-friendly), `MD013/MD033/MD041` disabled
 - `npm` scripts: `lint:js`, `lint:md`, `lint:format`, `format`, `lint:fix`;
   `lint` now runs all four linters in sequence
-- **CI** — `lint` job extended with JS (ESLint), Markdown, and Prettier steps
+- **CI**: `lint` job extended with JS (ESLint), Markdown, and Prettier steps
 
 ### Fixed
 
 - `README.md`: `MD001` heading jump `###` → `##` for Live Demo link; `MD060` table
   pipe spacing on two tables; Development section updated to reference `make` commands
-- `CHANGELOG.md`: `MD004` unordered list style — `+` continuation replaced with `and`
-- `src/css/theme.css`: reformatted by Prettier (alignment, spacing — no logic change)
+- `CHANGELOG.md`: `MD004` unordered list style, `+` continuation replaced with `and`
+- `src/css/theme.css`: reformatted by Prettier (alignment, spacing; no logic change)
 
-## [2.0.2] — 2026-03-11
+## [2.0.2] - 2026-03-11
 
 ### Added
 
-- **Dynamic version badge** — sidebar badge now reads version from `package.json` at
+- **Dynamic version badge**: the sidebar badge now reads the version from `package.json` at
   build time via `injectHtmlTags()` in `src/index.js`; no longer hardcoded in CSS.
   Consumers upgrading the package will see the correct version without any manual edit.
 
 ### Changed
 
-- **Font weights** — Outfit loaded with 4 weights (`400;500;600;700`) instead of 6
-  (`300;400;500;600;700;800`) — `300` and `800` were unused, reducing Google Fonts payload
-- **demo/package.json** — `cosmos-docusaurus-theme: "latest"` → `"^2"` to prevent
+- **Font weights**: Outfit loaded with 4 weights (`400;500;600;700`) instead of 6
+  (`300;400;500;600;700;800`); `300` and `800` were unused, reducing the Google Fonts payload
+- **demo/package.json**: `cosmos-docusaurus-theme: "latest"` → `"^2"` to prevent
   pulling an unexpected future major version at Docker build time
-- **Dockerfile** — simplified: only `demo/` is copied (no longer needs the full project
+- **Dockerfile** simplified: only `demo/` is copied (no longer needs the full project
   tree since `file:..` dependency is replaced by `^2` from npm); proper layer caching
   with `package.json` copied before source files
-- **workflow_dispatch default** — `ref` input default updated from `v2.0.0` → `v2.0.2`
+- **workflow_dispatch default**: `ref` input default updated from `v2.0.0` → `v2.0.2`
 
 ### Removed
 
 - Hardcoded `:root { --cosmos-version: "cosmos v1.2.6" }` from `theme.css`
   (superseded by `injectHtmlTags()` injection)
 
-## [2.0.1] — 2026-03-10
+## [2.0.1] - 2026-03-10
 
 ### Fixed
 
 - **Tables full-width**: `display:table; width:100%` on desktop (>996px),
-  `display:block; overflow-x:auto` on mobile — responsive, never breaks layout
+  `display:block; overflow-x:auto` on mobile. Responsive, never breaks layout
 
-## [2.0.0] — 2026-03-10
+## [2.0.0] - 2026-03-10
 
-### Added — Native Docusaurus component coverage
+### Added: native Docusaurus component coverage
 
-1. **Color mode toggle icons** — sun (amber `#fbbf24`) in dark mode, moon (brand indigo `#7592ff`) in light mode via CSS `filter` colorization
-2. **TOCCollapsible** — mobile table-of-contents styled as bordered card with uppercase monospace label, matching sidebar section labels
-3. **DocCard / DocCardList** — auto-generated category index cards follow Void/Slate palette with hover lift
-4. **Announcement bar close button** — `×` styled with opacity + hover bg tint
-5. **Tag pages** — `/docs/tags/...` pages use pill tags with brand hover state
-6. **Mobile search** — search input collapses to `2rem` icon-only on ≤576px, expands on focus with smooth width transition
-7. **prefers-reduced-motion** — all transitions and animations disabled when the OS accessibility setting is active
+1. **Color mode toggle icons**: sun (amber `#fbbf24`) in dark mode, moon (brand indigo `#7592ff`) in light mode via CSS `filter` colorization
+2. **TOCCollapsible**: mobile table-of-contents styled as bordered card with uppercase monospace label, matching sidebar section labels
+3. **DocCard / DocCardList**: auto-generated category index cards follow Void/Slate palette with hover lift
+4. **Announcement bar close button**: `×` styled with opacity + hover bg tint
+5. **Tag pages**: `/docs/tags/...` pages use pill tags with brand hover state
+6. **Mobile search**: search input collapses to `2rem` icon-only on ≤576px, expands on focus with smooth width transition
+7. **prefers-reduced-motion**: all transitions and animations disabled when the OS accessibility setting is active
 
 ### Fixed
 
-- **Docker GHCR push timeout** — `provenance: false` + `sbom: false` on `docker/build-push-action` eliminates attestation overhead that caused network timeouts; `timeout-minutes: 30` on job; `docker/setup-buildx-action` added explicitly
-- **CSS comments** — removed stale TailAdmin references, fixed redundant inline color-name comments
+- **Docker GHCR push timeout**: `provenance: false` + `sbom: false` on `docker/build-push-action` eliminates attestation overhead that caused network timeouts; `timeout-minutes: 30` on job; `docker/setup-buildx-action` added explicitly
+- **CSS comments**: removed stale TailAdmin references, fixed redundant inline color-name comments
 
-## [1.2.6] — 2026-03-10
+## [1.2.6] - 2026-03-10
 
 ### Added
 
-- **Sidebar icons** — category icon system via `className: 'sidebar-cat-*'` in `sidebars.js`.
+- **Sidebar icons**: category icon system via `className: 'sidebar-cat-*'` in `sidebars.js`.
   10 Lucide-style SVG icons (rocket, monitor, pencil, puzzle, sliders, folder, server,
   database, layers, grid, code). CSS-only with dark-mode `filter:invert(1)`.
-- **Sidebar sub-menu vertical line** — Rackscope-style left border on nested items.
+- **Sidebar sub-menu vertical line**: Rackscope-style left border on nested items.
   Sub-items: slightly smaller font, muted color, left padding.
-- **Sidebar version badge** — always pinned at the very bottom of the sidebar viewport
+- **Sidebar version badge**: always pinned at the very bottom of the sidebar viewport
   (`[class*="sidebarViewport"]` flex-column + `::after` outside scroll area).
   Hardcoded backgrounds (#fff / #111827) to always cover scrolled content.
-- **Ctrl+K hint redesign** — ghost style: transparent chips with hairline border,
+- **Ctrl+K hint redesign**: ghost style with transparent chips and a hairline border,
   `+` separator via `::before`, opacity 0.7 at rest, 0.9 on input focus.
   Preserves plugin positioning (only kbd elements restyled).
 
@@ -321,24 +322,24 @@ comment only).
   `searchBarShortcutHint: true`
 - Dockerfile: copies full project so `file:..` resolves during local dev
 
-## [1.2.5] — 2026-03-10
+## [1.2.5] - 2026-03-10
 
 ### Fixed
 
 - **Search position**: add `{ type: 'search' }` in demo config before external links
   (CSS `order` alone insufficient when easyops inserts search last in DOM)
 - **Search CSS selectors**: `[class*="navbarSearchContainer"]` with `order: -1 !important`
-  and `[class*="navbarSearch"]` — previous `.navbar__search` didn't match actual class
+  and `[class*="navbarSearch"]`; the previous `.navbar__search` didn't match the actual class
 - **Search input styling**: `!important` on bg/color to beat CSS module specificity
 - **CTRL+K**: redesigned as compact transparent pill with clean kbd elements
 - **colorModeToggle**: `order: 1 !important` on wrapper div (not button)
 - **Hover**: navbar link color now changes to brand primary in both modes
 
-## [1.2.2] — 2026-03-10
+## [1.2.2] - 2026-03-10
 
 ### Added
 
-- **`@easyops-cn/docusaurus-search-local` native support** — CSS palette overrides
+- **`@easyops-cn/docusaurus-search-local` native support**: CSS palette overrides
   so the search dropdown matches Void (dark) / Slate (light) out of the box.
   Set `--search-local-*` variables and `--ifm-navbar-search-input-*` for both modes.
   Navbar search input styled as ghost button matching navbar external links.
@@ -349,42 +350,42 @@ comment only).
 - Screenshots updated to 2560×1440 (2K) with search bar visible
 - New `search.png` screenshot of active search dropdown
 
-## [1.2.0] — 2026-03-10
+## [1.2.0] - 2026-03-10
 
-### Changed — Rackscope design system alignment
+### Changed: Rackscope design system alignment
 
 6 axes inspired by the `templates/default` component library:
 
 - **Border radius**: Cards `16px` (rounded-2xl), code `12px`, inline code `6px`, pagination `12px`
-- **Admonitions**: AlertBanner style — `rounded-2xl`, all-around border at semantic opacity, `padding: 16px 20px`
+- **Admonitions**: AlertBanner style with `rounded-2xl`, all-around border at semantic opacity, `padding: 16px 20px`
 - **Dark shadows**: shadow-card pattern on cards + code blocks (heavier on dark surfaces)
-- **Details/summary**: SectionCard style — `rounded-2xl`, chevron that rotates, dark bg-gray-900
+- **Details/summary**: SectionCard style with `rounded-2xl`, chevron that rotates, dark bg-gray-900
 - **TOC active**: bg pill `rgb(70,95,255,0.08)` + border-radius + padding (mirrors sidebar active)
-- **Sidebar labels**: `10px` + `letter-spacing: 0.12em` — exact Rackscope LayoutLabel
+- **Sidebar labels**: `10px` + `letter-spacing: 0.12em` (exact Rackscope LayoutLabel)
 - **Typography**: `h1 font-weight: 800`, tight letter-spacing (`-0.04em` → `-0.01em`)
-- **Scrollbar**: `4px` (was 5px) — matches Rackscope index.css
+- **Scrollbar**: `4px` (was 5px) to match Rackscope index.css
 
-## [1.1.6] — 2026-03-10
+## [1.1.6] - 2026-03-10
 
 ### Changed
 
-- **Navbar right items**: unified ghost button style — external links (GitHub, npm…)
+- **Navbar right items**: unified ghost button style. External links (GitHub, npm, etc.)
   and the color mode toggle now share the same bordered appearance:
   `1px solid border`, `border-radius: 8px`, identical hover (indigo border + tint)
 - Replaces the inconsistent circular toggle + plain text link combo
 
-## [1.1.5] — 2026-03-10
+## [1.1.5] - 2026-03-10
 
 ### Fixed
 
 - **Tooltip**: right-aligned to prevent viewport overflow; appears below button
-- **Tables dark mode**: direct overrides on `th`/`td`/`thead` — CSS variables
-  were not cascaded to table cells by Infima
+- **Tables dark mode**: direct overrides on `th`/`td`/`thead`, because Infima did not
+  cascade the CSS variables down to table cells
 - **Cards dark mode**: direct `background-color: #111827` override
 - **Breadcrumbs**: explicit active/inactive link colors + separator in dark mode
 - **Toggle button**: subtle hover background for better visibility
 
-## [1.1.4] — 2026-03-10
+## [1.1.4] - 2026-03-10
 
 ### Fixed
 
@@ -392,23 +393,23 @@ comment only).
   by the top of the viewport since the navbar sits at the very top of the page)
 - Arrow direction corrected accordingly (points up toward the button)
 
-## [1.1.3] — 2026-03-10
+## [1.1.3] - 2026-03-10
 
 ### Added
 
 - **Theme transition**: smooth 0.25s fade on `background-color`, `color`, `border-color`
-  for navbar, sidebar, article, footer and cards — no more abrupt color switch
+  for navbar, sidebar, article, footer and cards; no more abrupt color switch
 - **Color mode tooltip**: shows current mode (`dark mode` / `light mode` / `system mode`)
-  on hover over the Docusaurus toggle button — styled per Void/Slate palette
+  on hover over the Docusaurus toggle button, styled per the Void/Slate palette
 
-## [1.1.2] — 2026-03-10
+## [1.1.2] - 2026-03-10
 
 ### Added
 
-- `.state-ok`, `.state-warn`, `.state-crit`, `.state-unknown` — aliases for projects
-  that use `.state-*` naming convention (identical colors to `.status-*`)
+- `.state-ok`, `.state-warn`, `.state-crit`, `.state-unknown`: aliases for projects
+  that use the `.state-*` naming convention (identical colors to `.status-*`)
 
-## [1.1.1] — 2026-03-09
+## [1.1.1] - 2026-03-09
 
 ### Fixed
 
@@ -421,7 +422,7 @@ comment only).
 - Dark mode `.main-wrapper`: `background-color: #030712` forced directly
 - Navbar links/brand/toggle: explicit `color: #e5e5e5` in dark mode
 
-## [1.1.0] — 2026-03-09
+## [1.1.0] - 2026-03-09
 
 ### Added
 
@@ -434,30 +435,30 @@ comment only).
 - **Back-to-top button**: brand indigo with hover state (both modes)
 - **Algolia DocSearch**: full `--docsearch-*` variable set for light and dark
 - **Demo**: now loads `cosmos-docusaurus-theme` as a real npm package (`file:..`)
-  instead of a local path — exactly mirrors real consumer setup
-- **Demo**: new "Native Features" page showcasing all newly styled elements
+  instead of a local path, which mirrors a real consumer setup exactly
+- **Demo**: new "Native Features" page demonstrating all newly styled elements
 
 ### Changed
 
 - `demo/docusaurus.config.js`: `themes: ['cosmos-docusaurus-theme']` (was local path)
 - `demo/package.json`: added `cosmos-docusaurus-theme: "file:.."` dependency
 
-## [1.0.1] — 2026-03-09
+## [1.0.1] - 2026-03-09
 
 ### Fixed
 
-- Aligned dark palette to **Void** (Tailwind gray-950/900/800 neutral blacks — not TailAdmin bluish-gray)
-- Aligned light palette to **Slate** (warm brown text tones `#1a1714` / `#5c574f` — not cold blue-gray)
+- Aligned dark palette to **Void** (Tailwind gray-950/900/800 neutral blacks, not TailAdmin bluish-gray)
+- Aligned light palette to **Slate** (warm brown text tones `#1a1714` / `#5c574f`, not cold blue-gray)
 - Corrected all hardcoded color values in sidebar, navbar border, footer border, scrollbar
 - Updated screenshots to reflect corrected palette
 
-## [1.0.0] — 2024-03-09
+## [1.0.0] - 2024-03-09
 
 ### Added
 
 - Initial release of `cosmos-docusaurus-theme`
 - CSS-only theme based on TailAdmin design system
-- Proper Docusaurus theme plugin via `getClientModules()` — use with `themes: ['cosmos-docusaurus-theme']`
+- Proper Docusaurus theme plugin via `getClientModules()`: use with `themes: ['cosmos-docusaurus-theme']`
 - Backwards-compatible CSS import via `cosmos-docusaurus-theme/css/theme.css`
 - Light and dark mode support (`[data-theme='dark']`)
 - Outfit + JetBrains Mono typography loaded from Google Fonts

@@ -19,26 +19,29 @@
 A **CSS-only** Docusaurus theme built from the same design system that powers [Rackscope](https://rackscope.dev).
 Dark-first, opinionated, pixel-perfect.
 
-- **Void** dark palette — deep neutral blacks (`#030712 / #111827`) with indigo accents
-- **Slate** light palette — warm white surfaces with brown text tones, not cold blue-gray
-- **Outfit** display typeface + **IBM Plex Mono** for code — self-hosted woff2, no Google Fonts CDN (GDPR / CSP friendly)
-- Zero JavaScript, no swizzled components — pure CSS override of Docusaurus Infima
+- **Void** dark palette: deep neutral blacks (`#030712 / #111827`) with indigo accents
+- **Slate** light palette: gray-50/white surfaces with warm brown text tones, not cold blue-gray
+- **Outfit** display typeface and **IBM Plex Mono** for code, self-hosted as woff2 (no Google Fonts CDN, so GDPR and CSP friendly)
+- Zero JavaScript and no swizzled components: a pure CSS override of Docusaurus Infima
 - Every native Docusaurus element styled out of the box
 - Utility classes for MDX pages: buttons, badges, steps, timeline, check lists
+
+Built for Docusaurus 3 and verified against the v4 future flags, including
+Docusaurus Faster (Rspack) and CSS cascade layers.
 
 ---
 
 ## Screenshots
 
-> Dark mode — Void palette
+> Dark mode: Void palette
 
 ![Dark mode](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/dark.png)
 
-> Light mode — Slate palette
+> Light mode: Slate palette
 
 ![Light mode](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/light.png)
 
-> Banners — Dismissible Alert style, semantic icons, full border
+> Banners: Dismissible Alert style, semantic icons, full border
 
 ![Banners](https://raw.githubusercontent.com/SckyzO/cosmos-docusaurus-theme/main/docs/screenshots/banners.png)
 
@@ -89,31 +92,31 @@ docker compose up
 
 ### Native Docusaurus elements
 
-Styled automatically — no configuration needed:
+Styled automatically, with no configuration needed:
 
-| Element                                                 | Notes                                         |
-| ------------------------------------------------------- | --------------------------------------------- |
-| Navbar — COSMOS wordmark, ghost buttons, `\|` separator | Brand indigo title                            |
-| Sidebar — icons, sub-menu line, version badge           | `className: 'sidebar-cat-*'` for icons        |
-| Breadcrumb — ChevronRight separator, brand hover        | Automatic                                     |
-| Tabs — flat underline, brand active                     | `import Tabs from '@theme/Tabs'`              |
-| Pagination — monospace sublabel, brand hover            | Automatic prev / next                         |
-| Code blocks — all languages, titles                     | IBM Plex Mono                                 |
-| Banners — Dismissible Alert style, semantic icons       | 5 types: note / tip / info / warning / danger |
-| Tables — full-width desktop, scroll mobile              | Automatic                                     |
-| Cards — rounded-2xl, dark shadow, hover                 | `<div class="card">`                          |
-| Tags                                                    | `<span class="tag">`                          |
-| Details / summary — accordion style                     | `<details><summary>`                          |
-| TOC — H2/H3 hierarchy + active pill                     | Right panel                                   |
-| Blockquote — brand left border                          | `>` markdown syntax                           |
-| `<kbd>` — chip style                                    | `<kbd>Ctrl</kbd>`                             |
-| Images — rounded-xl, shadow                             | `![alt](src)`                                 |
-| `<abbr title>` — tooltip on hover                       | `<abbr title="...">`                          |
-| Back-to-top + progress bar                              | Automatic                                     |
-| Algolia DocSearch                                       | `--docsearch-*` variables                     |
-| Local search (easyops-cn)                               | `--search-local-*` variables                  |
-| Announcement bar                                        | `themeConfig.announcementBar`                 |
-| Smooth dark/light transition                            | Automatic                                     |
+| Element                                                  | Notes                                         |
+| -------------------------------------------------------- | --------------------------------------------- |
+| Navbar: wordmark, ghost buttons, thin vertical separator | Brand indigo title                            |
+| Sidebar: icons, sub-menu line, version badge             | `className: 'sidebar-cat-*'` for icons        |
+| Breadcrumb: ChevronRight separator, brand hover          | Automatic                                     |
+| Tabs: flat underline, brand active                       | `import Tabs from '@theme/Tabs'`              |
+| Pagination: monospace sublabel, brand hover              | Automatic prev / next                         |
+| Code blocks: all languages, titles                       | IBM Plex Mono                                 |
+| Banners: Dismissible Alert style, semantic icons         | 5 types: note / tip / info / warning / danger |
+| Tables: full-width desktop, scroll mobile                | Automatic                                     |
+| Cards: rounded-2xl, dark shadow, hover                   | `<div class="card">`                          |
+| Tags                                                     | `<span class="tag">`                          |
+| Details / summary: accordion style                       | `<details><summary>`                          |
+| TOC: H2/H3 hierarchy + active pill                       | Right panel                                   |
+| Blockquote: brand left border                            | `>` markdown syntax                           |
+| `<kbd>`: chip style                                      | `<kbd>Ctrl</kbd>`                             |
+| Images: rounded-xl, shadow                               | `![alt](src)`                                 |
+| `<abbr title>`: tooltip on hover                         | `<abbr title="...">`                          |
+| Back-to-top + progress bar                               | Automatic                                     |
+| Algolia DocSearch                                        | `--docsearch-*` variables                     |
+| Local search (easyops-cn)                                | `--search-local-*` variables                  |
+| Announcement bar                                         | `themeConfig.announcementBar`                 |
+| Smooth dark/light transition                             | Automatic                                     |
 
 ### Utility classes
 
@@ -125,7 +128,7 @@ For use in MDX pages (`className=` in JSX context):
 | `.btn-sm` `.btn-lg`                                                  | Button sizes                |
 | `.badge-new` `.badge-beta` `.badge-deprecated` `.badge-experimental` | Release lifecycle labels    |
 | `.method-get/post/put/delete/patch`                                  | HTTP method labels          |
-| `.status-ok/warn/crit/unknown`                                       | Operational health labels   |
+| `.status-ok/warn/crit/unknown` (aliases: `.state-*`)                 | Operational health labels   |
 | `ol.steps`                                                           | Numbered procedure guide    |
 | `ul.timeline`                                                        | Version history / changelog |
 | `ul.list-check`                                                      | Feature checklist           |
@@ -151,7 +154,7 @@ Available icons: `rocket` `monitor` `pencil` `puzzle` `sliders` `folder` `server
 
 ## Customization
 
-Load a `custom.css` of your own through the classic preset — it applies on top
+Load a `custom.css` of your own through the classic preset. It applies on top
 of the theme:
 
 ```js title="docusaurus.config.js"
@@ -165,7 +168,7 @@ presets: [
 ### Recolor the brand
 
 The brand indigo lives in one place. Override two variables and the whole theme
-(links, active states, buttons, tints) follows — both light and dark:
+(links, active states, buttons, tints) follows, in both light and dark:
 
 ```css title="src/css/custom.css"
 :root {
@@ -208,17 +211,17 @@ make docker-up       # demo in Docker at http://localhost:3000
 ## Known limitations
 
 - **Localized sites (i18n).** The color-mode toggle's ghost-button border and
-  hover tooltip are matched on the button's English `aria-label` (`"dark and
-light mode"`). On a site running in another locale, Docusaurus translates that
-  label, so those two touches don't apply — the toggle still works and its
-  sun/moon icon coloring (class-based) is unaffected. Everything else in the
-  theme is language-agnostic.
+  hover tooltip are matched on the button's English `aria-label`
+  (`"dark and light mode"`). On a site running in another locale, Docusaurus
+  translates that label, so those two touches do not apply. The toggle itself
+  still works and its sun/moon icon coloring (class-based) is unaffected.
+  Everything else in the theme is language-agnostic.
 
 ---
 
 ## License
 
-[MIT](LICENSE) — © SckyzO
+[MIT](LICENSE) © SckyzO
 
 Bundled fonts (Outfit, IBM Plex Mono) are licensed separately under the
 [SIL Open Font License 1.1](src/css/fonts/OFL.txt).
