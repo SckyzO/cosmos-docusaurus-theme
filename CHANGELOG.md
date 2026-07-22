@@ -7,6 +7,44 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.2.6] - 2026-07-22
+
+### Security
+
+Six newly disclosed advisories failed the release-time Trivy scan on the 2.2.5
+container. The scan runs before the push, so no vulnerable image reached GHCR;
+2.2.5 published to npm but shipped neither a container image nor a GitHub
+release. This release carries both. None of these reach the npm package, which
+is CSS-only with no runtime dependencies.
+
+Two lived in the demo's own tree and are pinned via `overrides`:
+
+- `brace-expansion` to `^2.1.2` (CVE-2026-13149, **HIGH**, denial of service
+  through exponential-time complexity).
+- `js-yaml` to `^4.3.0` (CVE-2026-59869, **HIGH**, denial of service via
+  crafted YAML documents).
+
+Four lived in the npm bundled with the base image, reachable only while
+building the image, never by the demo runtime:
+
+- `tar` (CVE-2026-59873, **CRITICAL**, gzip bomb; CVE-2026-59874, **HIGH**,
+  malformed archive header), `undici` (CVE-2026-12151, **HIGH**) and
+  `brace-expansion` (CVE-2026-13149, **HIGH**).
+
+Rather than suppress them, the Dockerfile now installs `npm@12.0.1`, which
+bundles `tar >= 7.5.19`. This is exactly the base-image bump `.trivyignore`
+deferred back when the base was node 20 and npm 12 could not be installed on
+it. The version is pinned rather than floating so the image stays
+reproducible.
+
+A fresh-database scan of the rebuilt image reports **zero HIGH or CRITICAL**.
+The stale `sigstore` suppression was removed along with its now-false
+rationale.
+
+The published theme output is unchanged from 2.2.5.
+
+---
+
 ## [2.2.5] - 2026-07-22
 
 ### Fixed
