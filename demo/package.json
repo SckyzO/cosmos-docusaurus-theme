@@ -10,8 +10,8 @@
     "clear": "docusaurus clear"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.10.1",
-    "@docusaurus/preset-classic": "^3.10.1",
+    "@docusaurus/core": "^3.10.2",
+    "@docusaurus/preset-classic": "^3.10.2",
     "@easyops-cn/docusaurus-search-local": "^0.55",
     "cosmos-docusaurus-theme": "file:..",
     "prism-react-renderer": "^2.4.0",
@@ -43,6 +43,6 @@
     }
   },
   "devDependencies": {
-    "@docusaurus/faster": "^3.10.1"
+    "@docusaurus/faster": "^3.10.2"
   }
 }
