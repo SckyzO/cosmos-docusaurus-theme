@@ -7,6 +7,55 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [2.2.5] - 2026-07-22
+
+### Fixed
+
+- **dark mode**: six custom properties never reached the page. Infima declares
+  them under `html[data-theme='dark']` (specificity 0,1,1) while the theme used
+  a plain `[data-theme='dark']` block (0,1,0), so Infima won regardless of load
+  order and the theme's values were silently discarded. They now sit in a
+  matching `html[data-theme='dark']` block.
+
+  | Variable                         | Rendered before            | Renders now |
+  | -------------------------------- | -------------------------- | ----------- |
+  | `--ifm-background-color`         | `#1b1b1d`                  | `#030712`   |
+  | `--ifm-background-surface-color` | `#242526`                  | `#111827`   |
+  | `--ifm-code-background`          | `rgba(255,255,255,.1)`     | `#1f2937`   |
+  | `--ifm-color-emphasis-300`       | `--ifm-color-gray-700`     | `#1f2937`   |
+  | `--ifm-color-emphasis-600`       | `--ifm-color-gray-400`     | `#a3a3a3`   |
+  | `--ifm-toc-border-color`         | `--ifm-color-emphasis-200` | `#1f2937`   |
+
+  Dark mode therefore looks different after upgrading: the page background is
+  deeper, surfaces and inline code pick up the intended gray-900 / gray-800,
+  and borders are no longer Infima gray. This restores the values the theme
+  always declared, so it is a fix rather than a redesign, but the change is
+  visible on every site. If you were overriding any of these six with a plain
+  `[data-theme='dark']` rule, raise it to `html[data-theme='dark']`. That
+  override was losing to Infima before this release too.
+
+  This is the bug the new render smoke test caught on its very first run.
+
+### Added
+
+- **CI**: a render smoke test (`tests/render/`, Playwright + Chromium) loads
+  the built demo in a real browser and asserts computed styles in both color
+  modes: theme variables, navbar and sidebar sharing one background, navbar
+  height, the Outfit and IBM Plex Mono stacks, and the self-hosted woff2 files
+  returning 200.
+
+  The 2.2.2 cascade-layers regression passed stylelint, the demo build, the
+  page check and Trivy while the site rendered as near-vanilla Docusaurus,
+  because no gate looked at rendering. Reading CSS as text cannot catch a
+  specificity inversion; only a real cascade engine can. Re-enabling
+  `useCssCascadeLayers` now fails all eight assertions, which is how the test
+  was verified.
+
+  Playwright lives in its own package rather than in `demo/` so that the demo
+  build, the Pages deploy and the Docker image do not pull a browser binary.
+
+---
+
 ## [2.2.4] - 2026-07-22
 
 ### Fixed

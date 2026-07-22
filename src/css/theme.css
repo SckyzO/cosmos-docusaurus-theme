@@ -194,9 +194,9 @@
   --ifm-color-primary-lightest: #dde9ff;
   --docusaurus-highlighted-code-line-bg: rgb(var(--cosmos-brand-light-rgb), 0.15);
 
-  /* Background — Void: Tailwind gray-950 / gray-900 neutral blacks */
-  --ifm-background-color: #030712; /* gray-950 — deepest background */
-  --ifm-background-surface-color: #111827; /* gray-900 — cards, sidebar, panels */
+  /* Background — Void: Tailwind gray-950 / gray-900 neutral blacks.
+     --ifm-background-color and --ifm-background-surface-color live in the
+     html[data-theme='dark'] block below — see the note there. */
   --ifm-navbar-background-color: #111827;
   --ifm-footer-background-color: #030712;
 
@@ -204,11 +204,9 @@
   --ifm-font-color-base: #e5e5e5; /* neutral light */
   --ifm-font-color-secondary: #a3a3a3; /* neutral muted */
 
-  /* Borders — Void: Tailwind gray-800 */
-  --ifm-toc-border-color: #1f2937;
+  /* Borders — Void: Tailwind gray-800. --ifm-toc-border-color and the two
+     emphasis steps live in the html[data-theme='dark'] block below. */
   --ifm-hr-border-color: #1f2937;
-  --ifm-color-emphasis-300: #1f2937;
-  --ifm-color-emphasis-600: #a3a3a3;
   --ifm-table-border-color: #1f2937;
   --ifm-table-head-background: #111827;
 
@@ -222,11 +220,31 @@
   --ifm-navbar-link-active-color: var(--cosmos-brand-light);
   --ifm-navbar-shadow: 0px 1px 0px 0px #1f2937;
 
-  /* Code */
-  --ifm-code-background: #1f2937;
+  /* Code — --ifm-code-background lives in the html[data-theme='dark'] block. */
 
   /* Sidebar collapse button */
   --docusaurus-collapse-button-bg-hover-color: rgb(255, 255, 255, 0.05);
+}
+
+/* ── Dark mode, html-scoped ──────────────────────────────────────────────── */
+/* Infima declares these six under `html[data-theme='dark']` (specificity
+   0,1,1). A plain `[data-theme='dark']` block is 0,1,0, so Infima wins no
+   matter where the theme is loaded, and every one of these silently fell back
+   to a Docusaurus default: the page background rendered #1b1b1d instead of
+   #030712, surfaces #242526 instead of #111827, inline code got a translucent
+   white wash instead of gray-800.
+   Matching Infima's selector puts them back on equal footing, and source order
+   then favors the theme, which loads after Infima.
+   Only add a variable here when Infima declares it at html[data-theme='dark'];
+   anything else belongs in the block above, where user overrides written as
+   `[data-theme='dark']` can still reach it. */
+html[data-theme='dark'] {
+  --ifm-background-color: #030712; /* gray-950 — deepest background */
+  --ifm-background-surface-color: #111827; /* gray-900 — cards, sidebar, panels */
+  --ifm-code-background: #1f2937;
+  --ifm-color-emphasis-300: #1f2937;
+  --ifm-color-emphasis-600: #a3a3a3;
+  --ifm-toc-border-color: #1f2937;
 }
 
 /* ── Global body ─────────────────────────────────────────────────────────── */
