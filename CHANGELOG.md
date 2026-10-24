@@ -26,6 +26,55 @@ through `markdownlint-cli`. Their sole fix is the major downgrade `npm audit
 fix --force` proposes, which is not worth it for a linter that only reads this
 repository's own Markdown.
 
+The demo container would have failed the release-time Trivy scan again. A
+fresh-database scan of the image built from 2.2.6 reports 44 HIGH or CRITICAL
+findings, where the 2.2.6 release scan reported none. None reach the npm
+package either. They matter for the container, whose `CMD` is `npm start`: the
+dev server stack is its runtime.
+
+In the demo tree, `npm audit fix` clears every HIGH and CRITICAL within
+existing majors, among them `proxy-addr` 2.0.8 (**CRITICAL**, IP spoofing
+through IPv4-mapped IPv6 trust subnets), `shell-quote` 1.12.0 (**CRITICAL**,
+command injection in `quote()`), `body-parser` 1.20.9, `compression` 1.8.2,
+`express` 4.22.3, `webpack-dev-server` 5.2.7 and `undici` 7.30.1.
+
+`webpack-dev-middleware` moves to 7.4.6 separately. Its path traversal
+advisory is inconsistent (vulnerable below 7.4.5, first fixed in 7.4.6), so
+`npm audit` passes 7.4.5 while Trivy flags it. 7.4.6 settles it either way.
+
+`tinypool` is pinned to `^2.1.2` via `overrides` (two **CRITICAL**
+prototype-pollution gadgets). Docusaurus 3.10.2 still asks for `^1.0.2`, but
+its next major already requires `^2.1.2`, and dropping Node 18 is tinypool 2's
+only breaking change. The demo never loads it, since SSG worker threads are
+off, and a build forced onto a two-thread pool still renders every page.
+
+The Dockerfile now installs `npm@12.2.1`. Its bundled `brace-expansion`,
+`ip-address` and `tar` include the fixes for the advisories raised against the
+copies bundled in 12.0.1.
+
+Three findings are accepted in `.trivyignore` until 2026-12-31. Each is
+unreachable, and none can be fixed from this repository yet:
+
+- `undici` 6.29.0 inside npm 12.2.1, required only by `node-gyp` to download
+  Node headers. No npm release bundles 6.29.1 yet.
+- `tinypool` 1.1.1 (both advisories above) compiled into `@rspack/core`
+  1.7.12, loaded only for `experiments.parallelLoader`, which Docusaurus never
+  enables. 1.7.12 is the latest Rspack 1.x, and Docusaurus does not allow
+  Rspack 2 yet.
+
+The expiry makes the scan fail again on that date rather than let the
+suppressions rot.
+
+Two moderate advisories in the demo tree are left alone on purpose. `uuid`
+8.3.2 stays for the reason given under 2.2.6: `sockjs` 0.3.24 still only calls
+`uuid.v4()`. `postcss-selector-parser` 6.1.5 has a fix only in 7.x, which its
+cssnano 6 consumers do not accept, and the advisory only concerns parsing
+untrusted selectors, not the build-time CSS here.
+
+A fresh-database scan with Trivy 0.70.0, the version the release gate runs,
+reports **zero HIGH or CRITICAL**. The built demo site matches 2.2.6's byte
+for byte, save the build directory path it embeds.
+
 ---
 
 ## [2.2.6] - 2026-07-22
