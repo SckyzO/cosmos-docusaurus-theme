@@ -7,6 +7,27 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [Unreleased]
+
+### Security
+
+Advisories disclosed since 2.2.6 failed the CI `npm audit --audit-level=high`
+gate on every open pull request. All of them sit in the root dev tooling
+(stylelint, ESLint, markdownlint), so none reach the npm package, which is
+CSS-only with no runtime dependencies.
+
+`npm audit fix` clears every HIGH within existing majors: `brace-expansion`
+5.0.12, `fast-uri` 3.1.9, `js-yaml` 4.3.2, `markdown-it` 14.3.3, `nanoid`
+3.3.20, `smol-toml` 1.7.2 and `source-map-js` 1.2.2, plus the moderate
+`@humanfs/node`, `colord`, `postcss` and `postcss-selector-parser`.
+
+What remains is three low and three moderate advisories, all reachable only
+through `markdownlint-cli`. Their sole fix is the major downgrade `npm audit
+fix --force` proposes, which is not worth it for a linter that only reads this
+repository's own Markdown.
+
+---
+
 ## [2.2.6] - 2026-07-22
 
 ### Security
