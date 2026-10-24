@@ -31,6 +31,12 @@ updates:
       docusaurus:
         patterns:
           - "@docusaurus/*"
+      # Same constraint: Docusaurus refuses to build when react and react-dom
+      # resolve to different versions, so a lone react-dom bump fails CI.
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
 
   # Render smoke test dependencies (Playwright)
   - package-ecosystem: "npm"
