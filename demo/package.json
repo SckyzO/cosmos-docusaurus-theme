@@ -31,6 +31,7 @@
     "websocket-driver": "^0.7.5",
     "brace-expansion": "^2.1.2",
     "js-yaml": "^4.3.0",
+    "tinypool": "^2.1.2",
     "anymatch": {
       "picomatch": "2.3.2"
     },
