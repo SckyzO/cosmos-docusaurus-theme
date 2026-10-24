@@ -40,3 +40,31 @@ CVE-2026-31802
 # because they cover a recurring Trivy behaviour (reading versions from nested
 # package.json files) rather than a one-off, so they can resurface at any DB
 # update. Anything that can be fixed is fixed, not suppressed.
+
+# ── Accepted until 2026-12-31 — unreachable, no fix reachable from here ──────
+#
+# Each of these has a patched upstream version, so ignore-unfixed does not
+# skip them, but none can be reached by a version bump in this repository yet.
+# Every entry carries an expiry: the scan fails again on that date and forces
+# a re-check rather than letting the suppression rot.
+
+# undici 6.29.0, bundled inside npm 12.2.1 (fetch() crash on excessive
+# content codings). Only npm's node-gyp requires it, to download Node headers
+# when compiling a native addon; `npm start`, the container's CMD, never
+# reaches it. No npm release bundles undici >= 6.29.1 yet. Discharge: bump the
+# Dockerfile npm pin once one does.
+CVE-2026-109869 exp:2026-12-31
+
+# tinypool 1.1.1, vendored (compiled in) by @rspack/core 1.7.12 under
+# compiled/tinypool, which npm overrides cannot reach. Rspack only loads this
+# copy for experiments.parallelLoader, which defaults to off and which
+# Docusaurus never enables. @docusaurus/faster 3.10.2 requires @rspack/core
+# ^1.7.10 and 1.7.12 is the latest 1.x. Discharge: once Docusaurus allows
+# Rspack 2 (2.2.9 vendors tinypool 2.2.0) or a 1.x release vendors
+# tinypool >= 2.1.2.
+#
+# These IDs are not path-scoped, so they would also hide a vulnerable copy of
+# the demo's own tinypool. That copy is fixed by the "tinypool" override in
+# demo/package.json, which must stay until Docusaurus requires tinypool 2.
+CVE-2026-104848 exp:2026-12-31
+CVE-2026-104849 exp:2026-12-31
