@@ -34,6 +34,13 @@ that extension still requires `katex` ^0.16.0.
 The built demo site is byte-identical. The published theme output is
 unchanged.
 
+### Added
+
+- `CONTRIBUTING.md`: repository layout, the checks a pull request must pass
+  and how to run them locally, the theme's rules, and the release steps.
+- `SECURITY.md`: supported versions, scope, and private vulnerability
+  reporting through GitHub, now enabled on the repository.
+
 ---
 
 ## [2.2.7] - 2026-10-25
