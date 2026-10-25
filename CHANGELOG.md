@@ -75,6 +75,14 @@ A fresh-database scan with Trivy 0.70.0, the version the release gate runs,
 reports **zero HIGH or CRITICAL**. The built demo site matches 2.2.6's byte
 for byte, save the build directory path it embeds.
 
+### Fixed
+
+- **publish.yml**: the release published to npm before it built and scanned the
+  container, so a failed scan stopped it halfway: 2.2.5 is on npm with no image
+  on GHCR and no GitHub Release. The image is now built, scanned and pushed
+  first, and npm publishes only after that. A GHCR tag can be pushed again; an
+  npm version can never be republished.
+
 ---
 
 ## [2.2.6] - 2026-07-22
