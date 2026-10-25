@@ -82,6 +82,9 @@ for byte, save the build directory path it embeds.
   on GHCR and no GitHub Release. The image is now built, scanned and pushed
   first, and npm publishes only after that. A GHCR tag can be pushed again; an
   npm version can never be republished.
+- **publish.yml**: the release jobs were gated on `always()`, which also holds
+  after a cancel, so cancelling a release midway could still push the image or
+  create the GitHub Release. They now use `!cancelled()`.
 
 ---
 
