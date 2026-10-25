@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
-## [Unreleased]
+## [2.2.7] - 2026-10-25
 
 ### Security
 
@@ -72,8 +72,22 @@ cssnano 6 consumers do not accept, and the advisory only concerns parsing
 untrusted selectors, not the build-time CSS here.
 
 A fresh-database scan with Trivy 0.70.0, the version the release gate runs,
-reports **zero HIGH or CRITICAL**. The built demo site matches 2.2.6's byte
-for byte, save the build directory path it embeds.
+reports **zero HIGH or CRITICAL**. These lockfile changes alone leave the built
+demo site identical to 2.2.6's byte for byte, save the build directory path it
+embeds.
+
+### Changed
+
+- **demo**: React and React DOM 19.2.8 to 19.3.1, again as a pair, and
+  `@easyops-cn/docusaurus-search-local` 0.55.2 to 0.55.3. Dependabot now groups
+  `react` and `react-dom` into one pull request, since a lone bump of either
+  fails the build.
+- **Dev tooling**: ESLint 10.7.0 to 10.13.0, Stylelint 17.14.1 to 17.16.0,
+  Prettier 3.9.6 to 3.9.10, and `@playwright/test` 1.61.1 to 1.64.1 in the
+  render smoke test.
+- **CI**: `actions/setup-node` 7.0.0 to 7.1.0, `actions/deploy-pages` 5.0.0 to
+  5.0.1, `docker/build-push-action` 7.3.0 to 7.4.0, `docker/login-action` 4.4.0
+  to 4.6.0 and `docker/setup-buildx-action` 4.2.0 to 4.4.1.
 
 ### Fixed
 
@@ -93,6 +107,8 @@ for byte, save the build directory path it embeds.
   disclosed finding fails a scheduled run instead of the next release. It also
   runs on pull requests that change `Dockerfile`, `.trivyignore` or the workflow
   itself.
+
+The published theme output is unchanged from 2.2.6.
 
 ---
 
