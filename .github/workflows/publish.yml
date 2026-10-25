@@ -64,6 +64,8 @@ jobs:
           TAG="${REF#refs/tags/}"
           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
+      # container-scan.yml replays these two steps every week; change both files
+      # together.
       - name: Build Docker image for scanning
         uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:

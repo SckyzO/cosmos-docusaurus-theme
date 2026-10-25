@@ -86,6 +86,14 @@ for byte, save the build directory path it embeds.
   after a cancel, so cancelling a release midway could still push the image or
   create the GitHub Release. They now use `!cancelled()`.
 
+### Internal
+
+- **container-scan.yml**: a new workflow replays the release scan from
+  `publish.yml` every Monday with the current Trivy database, so a newly
+  disclosed finding fails a scheduled run instead of the next release. It also
+  runs on pull requests that change `Dockerfile`, `.trivyignore` or the workflow
+  itself.
+
 ---
 
 ## [2.2.6] - 2026-07-22
