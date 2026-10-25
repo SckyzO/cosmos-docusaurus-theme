@@ -7,6 +7,35 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [Unreleased]
+
+### Security
+
+Two moderate Dependabot alerts in the demo tree had no automatic fix. Their
+parents cap them below the patched versions, so every Dependabot security
+update for them failed with `security_update_not_possible`. Both are now
+pinned via `overrides`. Neither reaches the npm package, and the demo never
+loads either vulnerable copy:
+
+- `uuid` 11.1.1 (missing buffer bounds check in v3, v5 and v6 when `buf` is
+  provided), held at 8.3.2 by `sockjs` 0.3.24. webpack-dev-server loads
+  `sockjs` only when `webSocketServer.type` is `"sockjs"`, Docusaurus keeps
+  the default `"ws"`, and `sockjs` only calls `uuid.v4()`.
+- `postcss-selector-parser` 7.1.7 (quadratic parsing of flat selectors), held
+  at 6.1.5 by six plugins of the cssnano 6 presets. With Rspack, Docusaurus
+  always minifies CSS with Lightning CSS, so cssnano never runs. The rest of
+  the demo tree already used 7.1.7.
+
+The remaining low advisory, `katex` in the root dev tooling, is dismissed as
+unused code. markdownlint imports only the math syntax extension of
+`micromark-extension-math`, so KaTeX never renders, and the latest release of
+that extension still requires `katex` ^0.16.0.
+
+The built demo site is byte-identical. The published theme output is
+unchanged.
+
+---
+
 ## [2.2.7] - 2026-10-25
 
 ### Security
